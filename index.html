@@ -1,6 +1,9 @@
 <!DOCTYPE html>
-<html>
-    <head></head>
+<html lang="en">
+    <head>
+        <title>Hello there!</title>
+        <meta charset="UTF-8" />
+    </head>
     <body>
     <h1 title="This is a title">My first website</h1>
     <div>It has some info.</div>
@@ -8,12 +11,18 @@
     <p>It also has separate lines.</p>
     <p>But let me tell you 
     <em>something important</em></p>
-    <input value="Go on!"/>
-    <input type="password"/>
-    <input id="terms" type="checkbox" value="Agreed" checked="true"/>
-    <label for="terms">I agree with whatever you say</label>
-    <input type="color"/>
-    <input disabled/>
-    <label><input type="button" value="Go on!"/></label>
+    <form action="">
+        <input value="Go on!" name="login"/>
+        <input type="password" name="password"/>
+        <input id="terms" type="checkbox" value="Agreed" checked="true"/>
+        <label for="terms">I agree with whatever you say</label>
+        <input type="color"/>
+        <input disabled/>
+        <button type="submit">Go on!</button>
+        <p>But first, tell me who you are</p>
+        <div><input type="radio" name="relations-type"/>Friend</div>
+        <div><input type="radio" name="relations-type"/>Partner</div>
+        <div><input type="radio" name="relations-type"/>Unknown</div></form>
+    
     </body>
 </html>
