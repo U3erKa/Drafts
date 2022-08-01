@@ -5,6 +5,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Articles</title>
+    <style>
+      /* 
+      This is a CSS comment
+      */
+      /* Specificity = 1 */
+      p {
+        color:orange;
+        font-size: 18px;
+      }
+      h2 {
+        color:rgb(200, 25, 75);
+      }
+      h3 {
+        color:rgba(175, 40, 30, 0.75);
+      }
+      h1 {
+        color:#ec1af0bd;
+        font-size: 96px;
+      }
+      /* Specificity = 10 */
+      .text {
+        color:brown;
+      }
+      .text2 {
+        color:crimson;
+      }
+      /* Specificity = 100 */
+      #article3 {
+        color: red;
+      }
+    </style>
   </head>
 
   <body>
@@ -25,13 +56,13 @@
     <main>
       <nav>
         <ul>
-          <li>
+          <li class="text">
             <a href="#article1">Article name 1</a>
           </li>
-          <li>
+          <li class="text">
             <a href="#article2">Article name 2</a>
           </li>
-          <li>
+          <li class="text">
             <a href="#article3">Article name 3</a>
           </li>
         </ul>
@@ -41,7 +72,7 @@
         <h2>Article name 1</h2>
         <section>
           <h3>Section name 1</h3>
-          <p>
+          <p class="text">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Perferendis, impedit! Quos placeat sunt vitae, repellendus
             accusantium consequatur est laboriosam commodi quidem fugiat ex.
@@ -53,7 +84,7 @@
         </section>
         <section>
           <h3>Section name 2</h3>
-          <p>
+          <p class="text" id="text">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Reprehenderit quasi corrupti suscipit aliquam perspiciatis mollitia
             eaque cumque ea minus numquam cupiditate iusto provident assumenda
@@ -68,7 +99,7 @@
         <h2>Article name 2</h2>
         <section>
           <h3>Section name 1</h3>
-          <p>
+          <p class="text text2">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Perferendis, impedit! Quos placeat sunt vitae, repellendus
             accusantium consequatur est laboriosam commodi quidem fugiat ex.
@@ -80,7 +111,7 @@
         </section>
         <section>
           <h3>Section name 2</h3>
-          <p>
+          <p class="text2 text">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Reprehenderit quasi corrupti suscipit aliquam perspiciatis mollitia
             eaque cumque ea minus numquam cupiditate iusto provident assumenda
@@ -95,7 +126,7 @@
         <h2>Article name 3</h2>
         <section>
           <h3>Section name 1</h3>
-          <p>
+          <p style="font-size:16px;">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Perferendis, impedit! Quos placeat sunt vitae, repellendus
             accusantium consequatur est laboriosam commodi quidem fugiat ex.
