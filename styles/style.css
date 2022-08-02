@@ -1,0 +1,63 @@
+/* 
+This is a CSS comment
+*/
+/* Specificity = 1 */
+p {
+  color: orange;
+  background-color: rgb(238, 203, 8);
+  font-size: 18px;
+}
+h2 {
+  color: rgb(200, 25, 75);
+}
+h3 {
+  color: rgba(175, 40, 30, 0.75);
+}
+h1 {
+  color: #ec1af0bd;
+  font-size: 96px;
+}
+/* Specificity = 10 */
+.text {
+  color: brown;
+  font-size: 18px;
+  line-height: 1.5;
+  font-weight: bold;
+  font-style: italic;
+  font-family: "sans-serif" "Times New Roman"; /* First one is preferred */
+  text-align: justify;
+  text-transform: capitalize;
+  text-decoration: underline double blue;
+  /*
+  text-decoration-color: blue;
+  text-decoration-line: overline;
+  text-decoration-style: wavy; 
+  */
+}
+.text2 {
+  color: crimson;
+}
+/* Specificity = 100 */
+#article3 {
+  color: yellowgreen;
+}
+.article {
+  font-size: 24px;
+}
+.article-heading {
+
+}
+.article-text {
+
+}
+.link {
+  background-color: pink;
+  text-decoration: none;
+}
+.heading {
+  text-align: center; /* block elements only */
+}
+/* 
+.main-heading {}
+.sub-heading {}
+ */
