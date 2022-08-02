@@ -2,6 +2,9 @@
 This is a CSS comment
 */
 /* Specificity = 1 */
+html {
+  font-family: "Roboto";
+}
 p {
   color: orange;
   background-color: rgb(238, 203, 8);
@@ -43,19 +46,38 @@ h1 {
 }
 .article {
   font-size: 24px;
+  background-color: #888888;
+  padding: 25px 15px 25px 35px; /* one, two (three) or four values */
+  border: 20px solid green;
+  border-left: 20px dashed yellow;
+  margin: 0 0 5px 0px;
+  width: 550px;
+  /* height: 720px; */
+  display: inline-block;
 }
-.article-heading {
-
-}
+/* .article-heading {
+} */
 .article-text {
-
+  border: unset;
 }
 .link {
   background-color: pink;
   text-decoration: none;
+  font-size: initial;
 }
 .heading {
   text-align: center; /* block elements only */
+}
+.span {
+  font-size: 12px;
+  background-color: #a14141;
+  padding: 25px 15px 25px 35px; /* one, two (three) or four values */
+  border: 20px solid rgb(28, 0, 128);
+  border-left: 20px dashed rgb(255, 0, 200);
+  margin: 0 0 5px 0px;
+  width: 600px;
+  /* height: 720px; */
+  display: block;
 }
 /* 
 .main-heading {}
