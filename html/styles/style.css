@@ -1,0 +1,29 @@
+/* 
+This is a CSS comment
+*/
+/* Specificity = 1 */
+p {
+  color:orange;
+  font-size: 18px;
+}
+h2 {
+  color:rgb(200, 25, 75);
+}
+h3 {
+  color:rgba(175, 40, 30, 0.75);
+}
+h1 {
+  color:#ec1af0bd;
+  font-size: 96px;
+}
+/* Specificity = 10 */
+.text {
+  color:brown;
+}
+.text2 {
+  color:crimson;
+}
+/* Specificity = 100 */
+#article3 {
+  color: yellowgreen;
+}
