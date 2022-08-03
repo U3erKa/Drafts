@@ -122,6 +122,30 @@ div {
 .image-wide {
   object-position: right;
 }
+.outer {
+  background-color: aqua;
+  font-size: 30px;
+  color: orangered;
+  /* viewport width
+  100% is ok, 100vw is NOT*/
+  width: 50vw;
+  /* viewport height 
+  100 vh is ok without footer*/
+  height: 40vh;
+  overflow: auto;
+}
+.inner {
+  background-color: blue;
+  font-size: 24px;
+  width: 100%;
+}
+button {
+  max-width: 80px;
+  max-height: 32px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 /* 
 .main-heading {}
 .sub-heading {}
