@@ -100,6 +100,7 @@ div {
   margin-bottom: 50px;
 }
 .class2 {
+  /* margins can be in % */
   margin-top: -10px;
   margin-bottom: 100px;
   margin-left: auto;
@@ -107,6 +108,19 @@ div {
 }
 .class3 {
   margin: 30px auto;
+}
+.image {
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: bottom;
+}
+.image-tall {
+  object-position: bottom;
+}
+.image-wide {
+  object-position: right;
 }
 /* 
 .main-heading {}
