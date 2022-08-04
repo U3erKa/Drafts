@@ -132,6 +132,11 @@ div {
   /* viewport height 
   100 vh is ok without footer*/
   height: 40vh;
+  /* vmin, vmax - lowest or highest viewport values
+  no matter if it's width or height
+  100 vm__ is 100% */
+  /* width: 100vmin;
+  height: 100vmin; */
   overflow: auto;
 }
 .inner {
@@ -158,6 +163,14 @@ button {
   /* can't be interacted, still takes place */
   visibility: hidden;
 }
+ul {
+  list-style: none;
+  list-style: 'string';
+  /* insert UNICODE symbol */
+  list-style: \00AF;
+  list-style-image: url('');
+}
+
 /* 
 .main-heading {}
 .sub-heading {}
