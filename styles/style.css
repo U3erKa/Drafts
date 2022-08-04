@@ -146,6 +146,18 @@ button {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+.hidden1 {
+  /* the most hiden one */
+  display: none;
+}
+.hidden2 {
+  /* fully interactive */
+  opacity: 0;
+}
+.hidden3 {
+  /* can't be interacted, still takes place */
+  visibility: hidden;
+}
 /* 
 .main-heading {}
 .sub-heading {}
