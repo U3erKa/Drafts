@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href="/styles/normalize.css"> -->
+    <link rel="stylesheet" href="/styles/tables.css">
+    <title>Document</title>
+  </head>
+  <body>
+    <main>
+      <a href="../index.html">Main page</a>
+      <table>
+        <caption>
+          Clients
+        </caption>
+        <thead>
+          <tr>
+            <!--  scope="col" is required for column -->
+            <th scope="col">Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Age</th>
+            <th scope="col">Location</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>test1</td>
+            <td>test2</td>
+            <td>test3</td>
+            <td>test4</td>
+            <td>test5</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <td>Average age:</td>
+          <td colspan="4">19</td>
+        </tfoot>
+      </table>
+
+      <table>
+        <caption>
+          Clients
+        </caption>
+        <thead></thead>
+        <tbody>
+          <tr>
+            <th scope="row">Name</th>
+            <td>test1</td>
+            <td rowspan="5">1</td>
+          </tr>
+          <tr>
+            <th scope="row">Age</th>
+            <td>test2</td>
+            <!-- <td>2</td> -->
+          </tr>
+          <tr>
+            <th scope="row">Gender</th>
+            <td>test3</td>
+            <!-- <td>3</td> -->
+          </tr>
+          <tr>
+            <th scope="row">Age</th>
+            <td>test4</td>
+            <!-- <td>4</td> -->
+          </tr>
+          <tr>
+            <th scope="row">Location</th>
+            <td>test5</td>
+            <!-- <td>5</td> -->
+          </tr>
+        </tbody>
+        <tfoot>
+          <td>Average age:</td>
+          <td colspan="2">19</td>
+          <!-- add empty cell -->
+          <!-- <td></td> -->
+        </tfoot>
+      </table>
+    </main>
+  </body>
+</html>

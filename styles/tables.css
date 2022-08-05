@@ -1,0 +1,20 @@
+table {
+  border-collapse: collapse;
+
+}
+caption {
+  font-weight: bold;
+  font-size: 24px;
+  text-align: left;
+  text-indent: 30px;
+
+}
+th {
+  border: 2px solid;
+  background-color: lightblue;
+}
+td {
+  padding: 10px 20px;
+  border: 2px solid;
+  background-color: lightgray;
+}
