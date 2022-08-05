@@ -1,20 +1,72 @@
 table {
   border-collapse: collapse;
-
 }
+
 caption {
   font-weight: bold;
   font-size: 24px;
   text-align: left;
   text-indent: 30px;
-
 }
+
 th {
   border: 2px solid;
   background-color: lightblue;
 }
+
 td {
   padding: 10px 20px;
   border: 2px solid;
   background-color: lightgray;
 }
+
+[title] {
+  color: red;
+  border: 1px solid cyan;
+}
+
+[title*="test"] {
+  color: purple;
+}
+
+[title^="start"] {
+  background-color: purple;
+}
+
+[title$="end"] {
+  background-color: lime;
+}
+
+[href="../index.html"] {
+  background-color: lightblue;
+  text-decoration: wavy;
+}
+
+a[href^="https://"][title]
+{
+  background-color: cyan;
+}
+
+div p {
+  color: orangered;
+}
+
+div > p,
+div > p > a,
+div {
+  font-size: 30px;
+  color: orange;
+}
+
+p ~ p {
+  font-weight: bold;
+}
+
+p + p {
+  font-style: italic;
+}
+
+/* .article > .text + .text {
+
+} */
+
