@@ -1,0 +1,27 @@
+/* selector:pseudoclass */
+
+:root {
+  font-size: 24px;
+}
+
+body :not(.simple) {
+  font-style: italic;
+  font-weight: bold;
+}
+button {
+  background-color: blue;
+  color: wheat;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 10px 20px;
+
+}
+
+button:hover {
+  background-color: wheat;
+  color: blue;
+}
+
+.btn:active {
+  color: orangered;
+}
