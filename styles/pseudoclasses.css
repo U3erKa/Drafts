@@ -4,17 +4,17 @@
   font-size: 24px;
 }
 
-body :not(.simple) {
+body :not(.simple, span, body) {
   font-style: italic;
   font-weight: bold;
 }
+
 button {
   background-color: blue;
   color: wheat;
   border: 2px solid black;
   border-radius: 10px;
   padding: 10px 20px;
-
 }
 
 button:hover {
@@ -24,4 +24,27 @@ button:hover {
 
 .btn:active {
   color: orangered;
+}
+
+.btn:focus {
+  border-color: red;
+  outline: none;
+}
+
+/* 2n, 2n + 1 - alternating styles 
+even, odd - also work */
+.interactive-section > p:nth-child(n) {
+  border: 2px solid green;
+}
+
+/* .interactive-section {
+  background-color: cyan;
+} */
+
+.interactive-section > p:first-child {
+  border: 2px solid red;
+}
+
+.interactive-section > p:last-child {
+  color: purple;
 }
