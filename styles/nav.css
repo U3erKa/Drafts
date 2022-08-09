@@ -1,0 +1,84 @@
+.main {
+  min-height: 200vh;
+  margin: 100px 0 0 0;
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  background: teal;
+  padding: 10px;
+  width: 100%;
+  font-size: 24px;
+}
+
+.nav-list-item {
+  display: inline-block;
+}
+
+.nav-link {
+  padding: 10px 20px;
+  position: relative;
+  background-color: cyan;
+  border: 2px solid black;
+  /* border-radius: 15px; */
+  color: black;
+  /* transition-property: background-color, color;
+  transition-duration: 400ms, 500ms;
+  transition-delay: 100ms, 0.2s; */
+  /* property duration function delay */
+  transition: background-color 400ms ease 100ms, color 500ms ease 200ms;
+}
+.nav-link:hover {
+  color: white;
+  background-color: blue;
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  width: 0%;
+  top: 0px;
+  left: 0px;
+  height: 3px;
+  background-color: red;
+  transition: width 400ms ease-in 0s; 
+}
+
+.nav-link:hover::before {
+  width: 100%;
+}
+
+.animated {
+  width: 200px;
+  color: white;
+  background: black;
+  font-size: 30px;
+  padding: 10px;
+  transition-property: width;
+  transition-duration: 1s;
+}
+
+.wrapper:hover > .animated {
+  width: 800px;
+}
+
+.linear {
+  transition-timing-function: linear;
+}
+
+.ease {
+  transition-timing-function: ease;
+}
+
+.ease-in {
+  transition-timing-function: ease-in;
+}
+
+.ease-in-out {
+  transition-timing-function: ease-in-out;
+}
+
+.ease-out {
+  transition-timing-function: ease-out;
+}
