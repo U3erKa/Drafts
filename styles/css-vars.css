@@ -1,0 +1,12 @@
+:root {
+  --text-color: orange;
+  --text-font-size: 16px;
+}
+
+p {
+  color: var(--text-color);
+}
+
+span {
+  color: var(--text-color);
+}
