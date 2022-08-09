@@ -35,3 +35,31 @@ h2 {
   /* height: var(--size); */
   /* top: 40px; */
 }
+
+.corner {
+  --offset: 10px;
+  position: fixed;
+  border: 10px solid orangered;
+  z-index: 110;
+  background-color: burlywood;
+}
+
+.bottom-left {
+  bottom: var(--offset);
+  left: var(--offset);
+}
+
+.bottom-right {
+  bottom: var(--offset);
+  right: var(--offset);
+}
+
+.top-left {
+  top: var(--offset);
+  left: var(--offset);
+}
+
+.top-right {
+  top: var(--offset);
+  right: var(--offset);
+}
