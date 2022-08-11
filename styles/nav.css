@@ -20,17 +20,17 @@
   padding: 10px 20px;
   position: relative;
   background-color: cyan;
-  border: 2px solid black;
+  border: 2px solid;
   /* border-radius: 15px; */
   color: black;
   /* transition-property: background-color, color;
   transition-duration: 400ms, 500ms;
   transition-delay: 100ms, 0.2s; */
   /* property duration function delay */
-  transition: background-color 400ms ease 100ms, color 500ms ease 200ms;
+  transition: background-color 400ms ease-in-out 100ms, color 500ms ease 200ms;
 }
 .nav-link:hover {
-  color: white;
+  color: orangered;
   background-color: blue;
 }
 
