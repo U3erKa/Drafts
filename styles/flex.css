@@ -9,29 +9,16 @@
   /* changes main axis direction */
   flex-direction: row;
   /* affects main axis */
-  justify-content: flex-start;
+  justify-content: center;
   /* affects cross axis */
-  align-items: flex-start;
+  align-items: center;
   /* if there are too many items in flex */
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   /* how gap between wrapped element appear to be
-  can disable align-items */
-  align-content: flex-start;
+  can disable align-items unless align-content: stretch */
+  /* align-content: flex-start; */
   /* flex-direction flex-wrap */
   flex-flow: row wrap;
-}
-
-.item,
-.item-container {
-  /* min-width: 60px; 
-  min-height: 60px; */
-  color: white;
-  border: 5px solid red;
-  background-color: green;
-  font-size: 40px;
-  margin: 0;
-  text-align: center;
-  padding: 10px;
 }
 
 .item-container {
@@ -39,4 +26,57 @@
   border: 5px solid blue;
   background-color: lime;
   align-items: center;
+}
+
+/* .item-container, */
+.item {
+  /* min-width: 60px;  */
+  /* min-height: 60px; */
+  color: white;
+  border: 5px solid red;
+  background-color: green;
+  font-size: 40px;
+  margin: 0;
+  text-align: center;
+  padding: 10px;
+  margin: 10px;
+  /* coefficient of element's size
+  elements take as much space as possible at first */
+  flex-grow: 1;
+  /* similar to grow but affects decrease in size */
+  flex-shrink: 1;
+  /* grow shrink basis */
+  flex: 50 15 300px;
+}
+
+.m-left {
+  margin-left: auto;
+}
+
+.order {
+  background-color: darkgreen;
+  /* any integer, default: 0
+  note: screen readers ignore the order */
+  order: -1;
+}
+
+.align-self {
+  background-color: lime;
+  /* just like align-content but for single item */
+  align-self: flex-start;
+}
+
+.flex-basis {
+  /* main axis length to be as close as possible to */
+  flex-basis: 100px;
+}
+
+.flex-grow {
+  /* take even more space */
+  flex-grow: 5;
+}
+
+.flex-shrink {
+  flex-grow: 5;
+  flex-shrink: 5;
 }
