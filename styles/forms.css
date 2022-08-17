@@ -8,9 +8,47 @@
   width: 600px;
   border: 2px solid black;
   margin: 0 auto;
+  padding: 20px;
 }
 
 .input {
   display: block;
+}
+textarea {
+  resize: none;
+}
 
+input {
+  border: 10px solid orange;
+}
+
+input:required {
+  border: 10px solid red;
+}
+
+input:optional {
+  border: 10px solid yellow;
+}
+
+:checked {
+  position: absolute;
+  top: 10px;
+}
+
+input:disabled {
+  border: 10px solid grey;
+  opacity: 0.3;
+}
+
+/* :in-range {} */
+
+:out-of-range {
+  color: red;
+}
+
+input:valid {
+  background-color: green;
+}
+input:invalid {
+  background-color: orange;
 }
