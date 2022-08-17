@@ -4,83 +4,25 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HTML Forms</title>
-    <link rel="stylesheet" href="./styles/forms.css" />
+    <title>Media requests</title>
+    <link rel="stylesheet" href="./styles/em-rem.css" />
   </head>
   <body>
-    <h1>Form</h1>
-    <!-- <form class="form" action="https://example.com/register" method="get"> -->
-    <!-- <form class="form" action="" method="post" enctype="multipart/form-data"> -->
-    <form class="form" action="" method="get">
-      <section>
-        <h2>Auth data</h2>
-        <fieldset>
-          <label for="name">Name:</label>
-          <input
-            id="name"
-            class="input"
-            name="username"
-            type="text"
-            placeholder="Enter your name"
-            pattern="^[a-z0-9_-]{3,15}$"
-            autofocus
-            autocomplete="username"
-          />
-          <label
-            >Nickname:<input class="input" name="nickname" type="text"
-          /></label>
-          <label
-            >Password:<input
-              class="input"
-              name="password"
-              type="password"
-              autocomplete="new-password"
-          /></label>
-          <label for="mail">Email:</label>
-          <input id="mail" type="email" name="email" required />
-        </fieldset>
-        <fieldset>
-          <input type="number" min="-1" max="10" step="0.1" />
-          <label
-            ><input
-              type="radio"
-              name="gender"
-              value="male"
-              required
-            />Male</label
-          >
-          <label
-            ><input type="radio" name="gender" value="female" />Female</label
-          >
-          <label><input type="radio" name="gender" value="other" />Other</label>
-          <label for="is-adult">Are you mature?</label>
-          <input id="is-adult" type="checkbox" />
-          <input type="color" name="color" />
-          <input type="date" name="date" />
-          <select class="input" name="city">
-            <optgroup label="Ukraine">
-              <option value="kyiv">Kyiv</option>
-              <option value="zaporizhzhia">Zaporizhzhia</option>
-            </optgroup>
-            <optgroup label="Poland">
-              <option value="warsaw">Warsaw</option>
-            </optgroup>
-          </select>
-        </fieldset>
-        <textarea name="" id="" cols="73" rows="10" maxlength="5"></textarea>
-        <datalist id="city-list">
-          <option value="Kyiv">Kyiv</option>
-          <option value="Lviv">Lviv</option>
-          <option value="Zaporizhzhia">Zaporizhzhia</option>
-          <option value="Warsaw">Warsaw</option>
-        </datalist>
-        <input type="text" name="city-2" list="city-list">
-        <input type="number" min="1" max="10">
-        <button type="submit">Submit</button>
-        <button type="reset">Reset</button>
-        <button type="button">Do sth with JS</button>
-        <!-- <input type="hidden" value="secret"> -->
-      </section>
-    </form>
+    <h1>Lorem ipsum dolor sit amet, consectetur adipisicing.</h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt,
+      repellat.
+    </p>
+    <ul>
+      <li>
+        <p>p text<span>span text</span></p>
+      </li>
+      <li>
+        <p>p text<span>span text</span></p>
+      </li>
+      <li>
+        <p>p text<span>span text</span></p>
+      </li>
+    </ul>
   </body>
 </html>

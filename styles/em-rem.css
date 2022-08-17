@@ -1,0 +1,12 @@
+:root {
+  --base-font-size: 20px;
+  --header-font-size-multiplier: 2;
+}
+
+body {
+  font-size: var(--base-font-size);
+}
+
+h1 {
+  font-size: calc(var(--base-font-size) * var(--header-font-size-multiplier));
+}
