@@ -1,12 +1,50 @@
 :root {
   --base-font-size: 20px;
-  --header-font-size-multiplier: 2;
+  font-size: 12px;
 }
 
 body {
   font-size: var(--base-font-size);
 }
 
+/*h1 {
+  font-size: 2em;
+  border: 0.2em solid black;
+}
+
+  ul {
+  font-size: 1em;
+}
+
+li {
+  font-size: 2em;
+}
+
+p {
+  font-size: 5em;
+}
+
+span {
+  font-size: 10em;
+} */
+
 h1 {
-  font-size: calc(var(--base-font-size) * var(--header-font-size-multiplier));
+  font-size: 2rem;
+  border: 0.2rem solid black;
+}
+
+ul {
+  font-size: 1rem;
+}
+
+li {
+  font-size: 2rem;
+}
+
+p {
+  font-size: 5rem;
+}
+
+span {
+  font-size: 10rem;
 }
