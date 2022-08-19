@@ -4,76 +4,31 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="./styles/reset.css">
-    <link rel="stylesheet" href="./styles/media.css" />
-    <!-- <link rel="stylesheet" href="./styles/print-styles.css" media="print">
-    <link rel="stylesheet" href="./styles/screen-styles.css" media="screen"> -->
+    <title>Images of various sizes/types</title>
+    <link rel="stylesheet" href="./styles/reset.css" />
+    <link rel="stylesheet" href="./styles/images.css" />
   </head>
   <body>
-    <header class="header">
-      <div class="container flex-container">
-        <h1 class="logo">My site</h1>
-        <nav class="nav">
-          <ul class="nav-list">
-            <li class="ul nav-list-item">
-              <a href="#" class="link nav-link">item1</a>
-            </li>
-            <li class="ul nav-list-item">
-              <a href="#" class="link nav-link">item2</a>
-            </li>
-            <li class="ul nav-list-item">
-              <a href="#" class="link nav-link">item3</a>
-            </li>
-            <li class="ul nav-list-item">
-              <a href="#" class="link nav-link">item4</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </header>
-    <main>
-      <div class="container">
-        <article class="article">
-          <h1 class="article-header">H1</h1>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
-            commodi maiores unde quod veniam consequatur accusamus quis rerum
-            beatae? Voluptatibus!
-          </p>
-        </article>
-        <article class="article">
-          <h1 class="article-header">H1</h1>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
-            commodi maiores unde quod veniam consequatur accusamus quis rerum
-            beatae? Voluptatibus!
-          </p>
-        </article>
-        <article class="article">
-          <h1 class="article-header">H1</h1>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
-            commodi maiores unde quod veniam consequatur accusamus quis rerum
-            beatae? Voluptatibus!
-          </p>
-        </article>
-        <article class="article">
-          <h1 class="article-header">H1</h1>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
-            commodi maiores unde quod veniam consequatur accusamus quis rerum
-            beatae? Voluptatibus!
-          </p>
-        </article>
-      </div>
-    </main>
-    <footer class="footer">
-      <p class="footer-text">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem ipsum nemo
-        esse error minus, est quos labore quibusdam soluta beatae similique
-        pariatur a facilis voluptatum illo officia quod optio odio.
-      </p>
-    </footer>
+    <picture class="wrapper">
+      <source
+        srcset="./images/Dragon.webp"
+        type="image/webp"
+        media="(min-width:600px)"
+      />
+      <source
+        srcset="./images/Dragon.jpg"
+        type="image/jpeg"
+        media="(min-width:600px)"
+      />
+      <source
+        srcset="./images/Dragon-tiny.jpg"
+        type="image/webp"
+        media="(max-width:600px)"
+      />
+      <img class="img" src="./images/Dragon.jpg" alt="Huge Dragon" />
+    </picture>
+    <div class="wrapper">
+      <img src="./images/icon.png" alt="Boo" class="img" />
+    </div>
   </body>
 </html>
