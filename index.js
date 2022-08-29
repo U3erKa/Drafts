@@ -52,3 +52,16 @@ sitPower = me;
 console.log(standPower);
 console.log(sitPower);
 console.log (myName, ',', standPower, ',', me)
+
+/* 
+'10' == 10
+'lorem' -> NaN (return !StringToNumber(argument))
+symbol ToString -> TypeError
+*/
+
+const text = 'I said: \n"Pay? \"That\" works" \u00e6';
+const lorem = '\tLorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate corrupti,\
+earum incidunt pariatur consectetur tenetur sit cum quod magni. Nemo, at\
+blanditiis ullam nihil a assumenda esse inventore cumque sapiente!'
+console.log(text);
+console.log(lorem);
