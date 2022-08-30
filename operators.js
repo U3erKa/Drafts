@@ -3,6 +3,10 @@ let num = 5;
 let num2 = 10;
 let negativeNum = -9;
 let verdict = true;
+let val = NaN;
+const number = 100;
+let t1 = 40, t2 = 30, t3 = 20, t4 = 10;
+let x = 10
 
 // some possible operations + - * / % **
 
@@ -29,3 +33,27 @@ console.log((0.1 / 100 + 0.2 / 100) * 100);
 console.log(!verdict);
 console.log(!!verdict); // true if verdict != 0
 console.log(Boolean(verdict));
+
+'text' > 'test'; // true, compares unicode numbers
+'10' == 10; // true (do not use too often)
+'10' === 10; // false
+
+console.log('val === val');
+console.log(val === val);
+console.log(isNaN(val));
+
+console.log('number range');
+console.log(number > 20);
+console.log(number < 50);
+console.log(20 < number < 50); // true (wrong!)
+console.log(number > 20 && number < 50);
+
+// && - first false, last true
+// || - first true, last false
+
+console.log('typeof <sth>');
+console.log(typeof num);
+console.log(typeof 'text');
+console.log(typeof null);
+
+// console.log(2 * 2, 100, 3 / 4);
