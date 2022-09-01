@@ -1,7 +1,7 @@
 // const input = prompt('Enter your name below');
 
 const greetingMessage = function (name) {
-  const result = 'Hello '+ name;
+  const result = 'Hello ' + name;
   return result;
 };
 

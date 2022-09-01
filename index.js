@@ -39,7 +39,7 @@ console.log(string);
 console.log(myName);
 // console.log('My name is ' + myName);
 
-let me = 'ME.'
+let me = 'ME.';
 const standPower = me;
 let sitPower = me;
 console.log(standPower);
@@ -51,7 +51,7 @@ me = 'not-a me';
 sitPower = me;
 console.log(standPower);
 console.log(sitPower);
-console.log (myName, ',', standPower, ',', me)
+console.log(myName, ',', standPower, ',', me);
 
 /* 
 '10' == 10
@@ -59,9 +59,10 @@ console.log (myName, ',', standPower, ',', me)
 symbol ToString -> TypeError
 */
 
-const text = 'I said: \n"Pay? \"That\" works" \u00e6';
-const lorem = '\tLorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate corrupti,\
+const text = 'I said: \n"Pay? "That" works" \u00e6';
+const lorem =
+  '\tLorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate corrupti,\
 earum incidunt pariatur consectetur tenetur sit cum quod magni. Nemo, at\
-blanditiis ullam nihil a assumenda esse inventore cumque sapiente!'
+blanditiis ullam nihil a assumenda esse inventore cumque sapiente!';
 console.log(text);
 console.log(lorem);

@@ -4,10 +4,10 @@ const input2 = prompt('Enter 2nd number');
 
 const getSumOfTwo = function (num1, num2) {
   const result = +num1 + Number(num2);
-  
+
   return result;
   // const message = num1 + ' + ' + num2 + ' = ' + result;
-  
+
   // alert(num1 + ' + ' + num2 + ' = ' + (+num1 + +num2));
   // console.log(message);
 };
