@@ -1,5 +1,7 @@
-const calculator9001 = function (a, b) {
-  const action = prompt('Choose how to calculate two numbers:\n+, -, *, /');
+const calculator9001 = function (a, b, action) {
+  if (typeof a !== 'number' || typeof b !== 'number' || isNaN(a - b)) {
+    return null;
+  }
 
   switch (action) {
     case '+': {

@@ -1,3 +1,4 @@
+/*
 const friendName = 'Vik';
 const bigBadBossGuy = 'Vik';
 const bigShot = 'Viktor';
@@ -49,6 +50,7 @@ switch (input) {
     console.log("You didn't choose anything, did you.");
   }
 }
+*/
 
 // debugger;
 // if (input > 5) {
@@ -69,3 +71,19 @@ switch (input) {
 //   console.log(var1);
 // }
 // console.log(var1);
+
+let userName = 'U3';
+const isGreeting = true;
+
+let message = isGreeting ? 'Hello ' + userName : 'Bye-bye ' + userName;
+
+// Big Bad code
+// too bad to use
+// 10 > 0
+//   ? console.log('Yess')
+//   : 10 < 0
+//   ? console.log('...no...')
+//   : console.log('M-maybe..?');
+
+const verdict = false;
+verdict ? alert('Umm... Hello world..?') : console.log('NaN is actually a number');
