@@ -1,3 +1,9 @@
+for (let i = 0; i < 10; i++) {
+  console.log('for ' + i)
+  
+}
+
+/*
 let shouldProceed = true;
 let i = 0;
 let counter = 0;
@@ -5,6 +11,16 @@ let counter = 0;
 do {
   console.log('do then think')
 } while (false);
+
+while (counter < 21) {
+  if (counter % 2 !== 0) {
+    counter++;
+    continue;
+  }
+  console.log(counter);
+  counter++;
+}; 
+*/
 
 // while (i < 20) {
 //   console.log(';');
@@ -24,12 +40,3 @@ do {
 //   console.log(i);
 //   shouldProceed = confirm('Proceed?');
 // }
-
-while (counter < 21) {
-  if (counter % 2 !== 0) {
-    counter++;
-    continue;
-  }
-  console.log(counter);
-  counter++;
-}
