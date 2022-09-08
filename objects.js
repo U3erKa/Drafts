@@ -55,6 +55,10 @@ const user001 = new User('Vik', 'S', undefined);
 const user002 = new User('Viktor', 'U3', 69420);
 const user003 = new User('U3erKa', 'Stepanov', 20);
 const user004 = new User('U3erKa', 'U3', 69420);
+const user005 = new User('U3erKa', 'U3', 69420);
+console.log(user004 === user005); // false
+const user006 = user005;
+console.log(user005 === user006); // true
 
 const str = `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores eligendi quae
 nemo reiciendis commodi, in exercitationem, molestias, labore modi nisi doloremque
@@ -72,16 +76,24 @@ if (isNaN(number1 - number2)) {
   );
 }
 
-/*
-const user001 = {
+const key = 'age';
+
+const user101 = {
   name: 'Vik',
-  surname: 'S.',
-  age: undefined,
-  brushTeeth: function () {
+  100: 'S.',
+  [key]: undefined,
+  'brush teeth': function () {
     console.log('Done!');
   },
 };
 
+console.log(user101['brush teeth']);
+console.log(user101[10 * 10]);
+console.log(key);
+console.log(user101[key]);
+user101[key] = -1;
+
+/*
 const user002 = {
   name: 'Viktor',
   surname: 'Stepanov',
@@ -104,3 +116,6 @@ const user003 = {
   },
 };
 */
+
+/*
+ */
