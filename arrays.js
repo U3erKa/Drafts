@@ -68,5 +68,89 @@ console.log("userNames.indexOf('Vik',7) " + userNames.indexOf('Vik', 7));
 console.log("userNames.indexOf('U2erKa') " + userNames.indexOf('U2erKa'));
 
 // array [1,2,3,4,5] becomes numbers, but not [[1, 2, 3, 4, 5]]
-const concatedArray = userNames.concat(undefined, 'Larry', [1, 2, 3, 4, 5], [[1, 2, 3, 4, 5]]);
+const concatedArray = userNames.concat(
+  undefined,
+  'Larry',
+  [1, 2, 3, 4, 5],
+  [[1, 2, 3, 4, 5]]
+);
 console.log(userNames[8] === concatedArray[8]); // true, badness... maybe
+const flatArr2 = arr2.flat(1);
+const flatArr3 = arr2.flat(Infinity);
+const joinedArr2 = arr2.join(' or ');
+
+const numbersArray1 = [
+  1, 2, 3, 4, 5, 6, 12, 13, 10, 11, 17, 14, 15, 16, 7, 8, 9, 18, 19, 20,
+];
+numbersArray1.sort();
+
+const sortFunc = function (currentValue, nextValue) {
+  // if (currentValue < nextValue) {
+  //   return -1;
+  // }
+  return currentValue - nextValue;
+  // return -1 - move left
+  // return 0 - don't move
+  // return 1 - move right
+};
+
+const sorted = numbersArray1.sort(sortFunc);
+
+const callback = function (currentElement, index, arr) {
+  console.log(`value: ${currentElement}`);
+  console.log(`index: ${index}`);
+  console.log(`array: ${arr}`);
+  // console.log(arr)
+};
+userNames.forEach(callback);
+
+const numbersArray2 = [
+  1, 2, 3, 4, 5, 6, 12, 13, 10, 11, 17, 14, 15, 16, 7, 8, 9, 18, 19, 20,
+];
+
+const newNumbers = numbersArray2.map(function (currentElement, index, arr) {
+  // return currentElement * 2;
+  return currentElement; // copy array, newNumbers === numbersArray2 is false
+});
+
+const onlyUserNames = userNames.filter(function (elem, index, arr) {
+  return typeof elem === 'string';
+  // if (typeof elem === 'string') {
+  //   return true;
+  // }
+  // return false;
+});
+
+const bestNameEver = onlyUserNames.find(function (elem, index, arr) {
+  return elem === 'Vik';
+});
+
+const foundValue = numbersArray2.find(function (elem, index, arr) {
+  return elem < 10 && elem > 3;
+});
+
+const isThereVik = onlyUserNames.some(function (elem) {
+  return elem === 'Vik';
+});
+
+const isEveryoneVik = onlyUserNames.every(function (elem) {
+  return elem === 'Vik';
+});
+
+// HOF
+const highOrderFunction1 = function (func) {
+  secret = 'Hrrn... What are you looking for?!';
+  func(secret);
+};
+
+highOrderFunction1(console.log);
+
+const highOrderFunction2 = function () {
+  console.log(';');
+  return function () {
+    console.log("function's inside log");
+  };
+};
+
+const innerFunction = highOrderFunction2();
+innerFunction();
