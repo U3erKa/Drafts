@@ -137,6 +137,17 @@ const isEveryoneVik = onlyUserNames.every(function (elem) {
   return elem === 'Vik';
 });
 
+const otherArr = [{ data: 1 }, { data: 2 }, { data: 3 }];
+const newArr2 = otherArr.map(function (elem, i) {
+  // const newObject = {
+  //   data: elem.data,
+  //   telephoneNumber: 911 + i,
+  // }
+  const newObject = structuredClone(elem);
+  newObject.telephoneNumber = 911 + i;
+  return newObject;
+});
+
 // HOF
 const highOrderFunction1 = function (func) {
   secret = 'Hrrn... What are you looking for?!';
