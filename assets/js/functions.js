@@ -29,7 +29,7 @@ function getSumOfTwo2(num1, num2) {
 
 const test123 = new getSumOfTwo2();
 const result = getSumOfTwo(input1, input2);
-console.log(result);
+// console.log(result);
 
 // arrow function
 const getSumOfTwo3 = (num1, num2) => num1 + num2;
@@ -132,3 +132,74 @@ const users = [
   new User('U4erKa', 'U4', 'email4@example.com', '21'),
   new User('U5erKa', 'U5', 'email5@example.com', '22'),
 ];
+
+const DISALLOWED_WORDS = ['', '+', '-', '*', '/'];
+function filter(string) {
+  return string.split(' ').filter((word) => !DISALLOWED_WORDS.includes(word));
+}
+
+const biggestWord = (string) =>
+  string.split(' ').reduce((a, b) => (b.length > a.length ? b : a)).length;
+
+const lengthOfBiggestWord = (string) => {
+  let longestWord = '';
+  const words = string.trim().split(' ');
+  words.forEach((word) => {
+    if (word.length > longestWord.length) {
+      longestWord = word;
+    }
+  });
+  return longestWord.length;
+};
+
+// ...numbers - rest operator
+function substract(...numbers) {
+  return numbers.reduce((res, currentnumber) => res - currentnumber);
+}
+function substract1(...numbers) {
+  let result = numbers[0] * 2;
+  for (let i = 1; i < numbers.length; i++) {
+    result -= numbers[i];
+  }
+  return result;
+}
+function substract2(...numbers) {
+  let result = numbers[0] * 2;
+  numbers.forEach((number, i) => {
+    result -= number;
+  });
+  return result;
+}
+
+const res2 = substract(600, 52, 23, 43, 66, 6);
+
+const arr = [1, 3, 5, 7, 9];
+// console.log(substract(...arr)); //spread operator
+const maleName = ['Vik', 'Viktor', 'U2erKa'];
+const femaleName = ['Viktoria', 'Viki', 'V'];
+const names = [...maleName, ...'Monsier', ...femaleName];
+const user = {
+  firstName: 'Test',
+  age: 80, // CRUD
+  age: 8,
+};
+const fullUser = {
+  lastName: 'Testov',
+  ...user,
+  // firstName: user.firstName,
+  // age: user.age,
+};
+
+function someFunc(options) {
+  const defaultOptions = {
+    amount: 10,
+    data1: 'test',
+  };
+  const finalOptions = {
+    ...defaultOptions,
+    ...options,
+    ...fullUser,
+  };
+  return finalOptions;
+}
+// console.log(someFunc({ data2: false, data3: true }));
