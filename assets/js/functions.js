@@ -203,3 +203,17 @@ function someFunc(options) {
   return finalOptions;
 }
 // console.log(someFunc({ data2: false, data3: true }));
+
+function recursive() {
+  // console.log(';');
+  recursive();
+}
+
+function countdown(number) {
+  console.log(number);
+  if (number > 0 && number <= 11390) {
+    countdown(number - 1);
+  }
+  // console.log('GO!')
+  return 'GO!';
+}
