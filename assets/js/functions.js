@@ -217,3 +217,89 @@ function countdown(number) {
   // console.log('GO!')
   return 'GO!';
 }
+
+function customCountdown(number1, number2) {
+  if (number1 > number2) {
+    console.log(number1--);
+    customCountdown(number1, number2);
+  } else if (number1 < number2) {
+    console.log(number2--);
+    customCountdown(number1, number2);
+  } else {
+    console.log(number1);
+  }
+  return 'GO!';
+}
+
+function logRange(...numbers) {
+  const min = Math.min(...numbers);
+  const max = Math.max(...numbers);
+  console.log(min);
+  if (min < max) {
+    logRange(min + 1, max);
+  }
+}
+
+function toPower(number, exp) {
+  if (exp === 1) {
+    return number;
+  } else if (exp === 0) {
+    return 1;
+  }
+  return exp > 0
+    ? number * toPower(number, exp - 1)
+    : 1 / (number * toPower(number, Math.abs(exp) - 1));
+}
+
+const tree = {
+  value: 8,
+  left: {
+    value: 3,
+    left: {
+      value: 1,
+    },
+    right: {
+      value: 6,
+      left: {
+        value: 4,
+      },
+      right: {
+        value: 7,
+      },
+    },
+  },
+  right: {
+    value: 10,
+    right: {
+      value: 14,
+      left: {
+        value: 13,
+      },
+    },
+  },
+};
+
+const easyTree = {
+  value: 1,
+  left: {
+    value: 2,
+    left: {
+      value: 3,
+    },
+  },
+  right: {
+    value: 4,
+  },
+};
+
+function reduceTree(tree) {
+  let result = tree.value;
+
+  if (tree.left) {
+    result += reduceTree(tree.left);
+  }
+  if (tree.right) {
+    result += reduceTree(tree.right);
+  }
+  return result;
+}
