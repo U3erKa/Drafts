@@ -303,3 +303,29 @@ function reduceTree(tree) {
   }
   return result;
 }
+
+function factorial(number) {
+  if (typeof number !== 'number' || isNaN(number)) {
+    throw new TypeError('parameter must be a number');
+  } else if (number < 0 || !Number.isInteger(number)) {
+    throw new RangeError('number must be positive integer');
+  }
+  if (number === 0 || number === 1) {
+    return 1;
+  } else if (number > 1) {
+    return number * factorial(number - 1);
+  }
+}
+
+try {
+  // factorial(-10)
+  factorial('100')
+} catch (error) {
+  console.log(error)
+  console.log(error.message)
+  if (error instanceof TypeError) {
+    console.log('try to enter number instead')
+  } else if (error instanceof RangeError) {
+    console.log('try to enter positive number')
+  }
+}
