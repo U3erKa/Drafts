@@ -316,3 +316,62 @@ console.log(triangle1);
 function getFigureArea(figure) {
   return figure.area;
 }
+
+/*
+class Animal {
+  #species;
+  #nickname;
+  constructor(species, nickname) {
+    this.#species = species;
+    this.#nickname = nickname;
+  }
+
+  get species() {
+    return this.#species;
+  }
+  get nickname() {
+    return this.#nickname;
+  }
+
+  speak() {
+    return `${this.#species} ${this.#nickname} is speaking`;
+  }
+
+  eat() {
+    return `${this.#species} ${this.#nickname} is eating`;
+  }
+}
+*/
+
+class Cat extends Animal {
+  constructor(nickname, speech = 'meow', diet = 'fish') {
+    super('Cat', nickname);
+    this.speech = speech;
+    this.diet = diet;
+  }
+
+  speak() {
+    return `${this.species} ${this.nickname} is ${this.speech}ing`;
+  }
+
+  eat() {
+    return `${this.species} ${this.nickname} is eating ${this.diet}`;
+  }
+}
+
+const cat1 = new Cat('Pushok');
+
+const trainer = {
+  trainVoice: function (animal) {
+    if (!animal instanceof Animal) {
+      throw new TypeError();
+    }
+    
+    if (Math.random() > 0.5) {
+      return `Trainer is training ${animal.nickname} voice
+${animal.speak()}`;
+    }
+    return `${animal.nickname} doesnt want to ${animal.speech}`
+  },
+};
+

@@ -319,13 +319,15 @@ function factorial(number) {
 
 try {
   // factorial(-10)
-  factorial('100')
+  factorial('100');
 } catch (error) {
-  console.log(error)
-  console.log(error.message)
+  console.log(error);
+  console.log(error.message);
   if (error instanceof TypeError) {
-    console.log('try to enter number instead')
+    console.log('try to enter number instead');
   } else if (error instanceof RangeError) {
-    console.log('try to enter positive number')
+    console.log('try to enter positive number');
   }
 }
+
+// Array(this.to - this.from + 1).fill().map((_, i) => this.from + i);
