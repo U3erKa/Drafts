@@ -33,6 +33,18 @@ class MyArray {
     }
     return newArray;
   }
+  [Symbol.iterator]() {
+    const context = this;
+    let i = 0;
+    return {
+      next() {
+        return {
+          done: i >= context.length,
+          value: context[i++],
+        };
+      },
+    };
+  }
   static isMyArray(obj) {
     return obj instanceof MyArray;
   }
@@ -45,3 +57,8 @@ arr1.push('copium');
 const arr3 = new MyArray();
 arr3.push(6345, 344675, 23, 4576, [4, 4, 4, 4]);
 const arr2 = arr1.concat(arr3);
+
+for (const item of arr1) {
+  // console.log('arr1');
+  console.log(item);
+}
