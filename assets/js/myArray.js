@@ -33,6 +33,26 @@ class MyArray {
     }
     return newArray;
   }
+  shift() {
+    const deleted = this[0];
+    for (let i = 0; i < this.length; i++) {
+      this[i] = this[i + 1];
+    }
+    delete this[--this.length];
+    return deleted;
+  }
+  unshift(...value) {
+    for (let i = this.length + value.length - 1; i > 0; i--) {
+      this[i] = this[i - value.length];
+    }
+    for (let i = 0; i < value.length; i++) {
+      this[i] = value[i];
+    }
+    return (this.length += value.length);
+  }
+  forEach(callback) {
+    callback(currentValue, index, array);
+  }
   [Symbol.iterator]() {
     const context = this;
     let i = 0;
@@ -54,11 +74,13 @@ arr1.push(123);
 arr1.push('123');
 arr1.push('copium');
 
-const arr3 = new MyArray();
-arr3.push(6345, 344675, 23, 4576, [4, 4, 4, 4]);
-const arr2 = arr1.concat(arr3);
+const arr2 = new MyArray();
+arr2.push(6345, 344675, 23, 4576, [4, 4, 4, 4]);
+arr2.unshift('234', '123', 'qwews');
 
-for (const item of arr1) {
-  // console.log('arr1');
-  console.log(item);
-}
+const arr3 = arr1.concat(arr2);
+
+// for (const item of arr1) {
+// console.log('arr1');
+//   console.log(item);
+// }
