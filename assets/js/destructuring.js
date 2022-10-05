@@ -108,9 +108,9 @@ function greet2([firstName, lastName, ...restOfUser]) {
   return `Hello, ${firstName} ${lastName}`;
 }
 
-for (const { isAge } of users) {
-  console.log(isAge);
-}
-for (const [key, value] of Object.entries(user3)) {
-  console.log(`key: ${key}, value: ${value}`);
-}
+// for (const { isAge } of users) {
+//   console.log(isAge);
+// }
+// for (const [key, value] of Object.entries(user3)) {
+//   console.log(`key: ${key}, value: ${value}`);
+// }
