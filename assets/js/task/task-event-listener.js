@@ -1,10 +1,7 @@
-function count() {
-  let i = 0;
-  return () => console.log(i++);
-}
-// const count = () => {
-//   let i = 0;
-//   return () => console.log(i++);
-// };
+document.querySelector('#submitBtn').addEventListener('click', clickerWrapper());
 
-document.querySelector('#submitBtn').addEventListener('click', count());
+function clickerWrapper(counter = 0) {
+  return function clickerListener(event) {
+    event.target.textContent = `Clicks: ${++counter}`;
+  };
+}
