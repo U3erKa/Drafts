@@ -5,3 +5,24 @@
   margin: 0;
   padding: 0;
 }
+
+.red {
+  color: red;
+}
+.green {
+  color: green;
+}
+.blue {
+  color: blue;
+}
+
+.normal {
+  font-style: normal;
+  font-weight: normal;
+}
+.bold {
+  font-weight: bold;
+}
+.italic {
+  font-style: italic;
+}
