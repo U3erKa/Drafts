@@ -61,8 +61,16 @@ function changePictureBack(event) {
   img.setAttribute('src', imgSrc[i]);
 }
 
-const [red, green, blue, normal, italic, bold] = document.querySelectorAll('.color-btn');
 const text = document.querySelector('.text');
+
+for (const btn of document.querySelectorAll('.color-btn')) {
+  btn.addEventListener('click', commonEventListener);
+}
+for (const btn of document.querySelectorAll('.style-btn')) {
+  btn.addEventListener('click', commonEventListener);
+}
+
+document.querySelector('#reset').addEventListener('click', (e) => text.classList.remove(...colorsArr, ...stylesArr))
 
 const colorsArr = ['red', 'green', 'blue'];
 const stylesArr = ['italic', 'normal', 'bold'];
@@ -73,15 +81,19 @@ function commonEventListener(e) {
     text.classList.add(e.target.dataset.textColor);
   }
 
-  if(e.target.dataset.textStyle) {
+  if (e.target.dataset.textStyle) {
     text.classList.remove(...stylesArr);
     text.classList.add(e.target.dataset.textStyle);
   }
 }
 
-red.addEventListener('click', commonEventListener);
-green.addEventListener('click', commonEventListener);
-blue.addEventListener('click', commonEventListener);
-normal.addEventListener('click', commonEventListener);
-italic.addEventListener('click', commonEventListener);
-bold.addEventListener('click', commonEventListener);
+/*
+function testListener(e) {
+  console.log(e.currentTarget);
+}
+
+reset.addEventListener('click', testListener, true); // btn
+container.addEventListener('click', testListener);  // div
+document.body.addEventListener('click', testListener); // body
+document.documentElement.addEventListener('click', testListener, true); // html
+*/

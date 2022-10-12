@@ -7,3 +7,19 @@
 .blue {
   color: blue;
 }
+.reset {
+  color: none;
+}
+
+.bg-red {
+  background-color: red;
+}
+.bg-green {
+  background-color: green;
+}
+.bg-blue {
+  background-color: blue;
+}
+.bg-reset {
+  background-color: none;
+}
