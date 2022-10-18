@@ -4,6 +4,11 @@ const workersList = document.querySelector('#root');
 
 workersList.append(...userCards);
 
+/**
+ * 
+ * @param {object} user 
+ * @returns {HTMLElement} 
+ */
 function createUserCard(user) {
   const fullName = (!user.firstName && !user.lastName) ? 'NO DATA' : `${user.firstName} ${user.lastName}`;
 
