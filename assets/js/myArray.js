@@ -42,13 +42,43 @@ class MyArray {
     return deleted;
   }
   unshift(...value) {
-    for (let i = this.length + value.length - 1; i > 0; i--) {
+    for (let i = this.length + value.length - 1; i >= value.length; i--) {
       this[i] = this[i - value.length];
     }
     for (let i = 0; i < value.length; i++) {
       this[i] = value[i];
     }
     return (this.length += value.length);
+  }
+  forEach(callback) {
+    if (typeof callback !== 'function') {
+      throw new TypeError('Callback must be a function');
+    }
+    for (let i = 0; i < this.length; i++) {
+      callback(this[i], i, this);
+    }
+  }
+  map(callback) {
+    if (typeof callback !== 'function') {
+      throw new TypeError('Callback must be a function');
+    }
+    const newArray = new MyArray();
+    for (let i = 0; i < this.length; i++) {
+      newArray.push(callback(this[i], i, this));
+    }
+    return newArray;
+  }
+  filter(callback) {
+    if (typeof callback !== 'function') {
+      throw new TypeError('Callback must be a function');
+    }
+    const newArray = new MyArray();
+    for (let i = 0; i < this.length; i++) {
+      if (callback(this[i], i, this)) {
+        newArray.push(this[i]);
+      }
+    }
+    return newArray;
   }
   reverse() {
     let oldArray = new MyArray();
