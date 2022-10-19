@@ -13,7 +13,7 @@ workersList.append(...userCards);
 function createUserCard(user) {
   const fullName = (!user.firstName && !user.lastName) ? 'NO DATA' : `${user.firstName} ${user.lastName}`;
 
-  const linkItems = createLinks({user})
+  const linkItems = createLinks(user.contacts);
   const linksList = createElement('ul', {className: 'linksList'}, ...linkItems);
   const linksContainer = createElement('div', {className: 'linksContainer'}, linksList);
   const h1 = createElement('h1', {className: 'cardName', textContent: fullName},);

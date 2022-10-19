@@ -1,8 +1,13 @@
-function createLinks({user}) {
+/**
+ * Creates array of <li> elements
+ * @param {string[]} contacts 
+ * @returns {HTMLLIElement[]}
+ */
+function createLinks(contacts) {
   const links = new Map()
   const linkItems = []
 
-  for (const href of user.contacts) {
+  for (const href of contacts) {
     url = new URL(href).host.split('.');
     linkType = url[url.indexOf('com') - 1];
     links.set(linkType, href);
