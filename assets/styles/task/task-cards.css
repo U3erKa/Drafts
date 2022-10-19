@@ -65,3 +65,12 @@
   color: rgb(122, 122, 122);
   line-height: 1.4;
 }
+
+.linksContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.linkItem {
+  display: inline-block;
+}
