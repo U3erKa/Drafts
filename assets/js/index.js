@@ -41,22 +41,90 @@ const countFor = () => {
 // countTimeout();
 
 const btn = document.querySelector('#btn');
+const arr = [];
 
-const promise = new Promise((resolve, reject) => {
+const loginRequest = new Promise((resolve, reject) => {
+  const user = { id: 1, login: 'qwerty', password: '12345' };
+  // reject(69);
   setTimeout(() => {
-    resolve(42);
-  }, 10000);
-  reject(69);
+    resolve(user);
+  }, 1000);
 });
-console.log(promise);
-promise.then(
-  (resolve) => {
-    console.log(resolve);
+// console.log(promise);
+
+const usersOnServer = new Map([
+  [
+    'qwerty',
+    {
+      id: 1,
+      login: 'qwerty',
+      password: '12345',
+      picSrc: 'https://example.com/image.webp',
+    },
+  ],
+]);
+
+loginRequest
+  .then(
+    (loginData) => {
+      if (usersOnServer.has(loginData.login)) {
+        const foundUser = usersOnServer.get(loginData.login);
+        if (loginData.password === foundUser.password) {
+          return foundUser;
+        }
+        throw new Error('Incorrect password');
+      }
+      throw new Error('User does not exist');
+      // console.log(resolve);
+      // return resolve
+    },
+    (reject) => {
+      // console.log(reject);
+    }
+  )
+  .then((user) => {
+    console.log(`Successful login for ${user.login}`);
+    return user;
+  })
+  .then((user) => {
+    if (Math.random() > 0.5) {
+      return user;
+    }
+    throw Error('badness');
+  })
+  .catch((err) => {
+    console.log(err.message);
+  })
+  .finally(() => {
+    console.log('COPE');
+  });
+
+const fulfilledPromise = Promise.resolve(100);
+const rejectedPromise = Promise.reject(100);
+
+const user = {
+  id: 69420,
+  name: 'U3',
+  age: 20,
+  isMale: true,
+  und: undefined,
+  0: 0,
+  getFullName: function () {
+    return this.name;
   },
-  (reject) => {
-    console.log(reject);
-  }
-);
+};
+// user.user = user
+
+const json = JSON.stringify(user); // serialization
+const unjson = JSON.parse(json); // desiarization
+// structuredClone(user);
+// JSON.parse(JSON.stringify(user));
+
+// fetch('http://localhost:5500/data.json')
+//   .then((response) => response.json())
+//   .then((data) => console.log(data));
+const response = fetch('http://localhost:5500/data.json');
+response.then((response) => response.json()).then((data) => console.log(data));
 
 /*
 setTimeout(() => {
