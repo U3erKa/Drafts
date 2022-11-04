@@ -9,9 +9,12 @@ class MyMath {
 // exports.add = MyMath.sum;
 // exports.substract = MyMath.sub;
 // exports.MyMath = MyMath;
-module.exports.add = MyMath.sum;
-module.exports.substract = MyMath.sub;
-module.exports.MyMath = MyMath;
+// module.exports.add = MyMath.sum;
+// module.exports.substract = MyMath.sub;
+// module.exports.MyMath = MyMath;
 
 // ES module
-// export const add = MyMath.sum
+export default MyMath; // once per file
+
+export const sum = MyMath.sum;
+export const number = 42;

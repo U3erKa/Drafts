@@ -13,7 +13,8 @@
         "ecmaFeatures": {
             "impliedStrict": true,
             "jsx": false
-        }
+        },
+        "sourceType": "module"
     },
     "rules": {
         "indent": [
