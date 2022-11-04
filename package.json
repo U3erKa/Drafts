@@ -1,3 +1,21 @@
 {
-  "main": "index.js"
+  "name": "node-js",
+  "version": "1.0.0",
+  "description": "My first package",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "node"
+  ],
+  "author": "U2erKa",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
 }
