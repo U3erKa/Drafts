@@ -1,3 +1,4 @@
+// @ts-check
 const countInterval = () => {
   console.time('interval');
   let i = 1;
@@ -17,7 +18,8 @@ const countTimeout = (i = 0) => {
   setTimeout(() => {
     console.log(++i);
     if (i === 20) {
-      clearTimeout(countInterval);
+      // @ts-ignore
+      clearTimeout(countTimeout);
       console.timeEnd('interval');
     } else {
       countTimeout(i);
@@ -69,6 +71,7 @@ loginRequest
     (loginData) => {
       if (usersOnServer.has(loginData.login)) {
         const foundUser = usersOnServer.get(loginData.login);
+        // @ts-ignore
         if (loginData.password === foundUser.password) {
           return foundUser;
         }
@@ -83,6 +86,7 @@ loginRequest
     }
   )
   .then((user) => {
+    // @ts-ignore
     console.log(`Successful login for ${user.login}`);
     return user;
   })
@@ -125,6 +129,108 @@ const unjson = JSON.parse(json); // desiarization
 //   .then((data) => console.log(data));
 const response = fetch('http://localhost:5500/data.json');
 response.then((response) => response.json()).then((data) => console.log(data));
+
+const random = () => Promise.resolve(Math.random());
+
+const sumRandomAsyncNumbers = async () => {
+  const first = await random();
+  const second = await random();
+  const third = await random();
+
+  console.log(`Result is ${first + second + third}`);
+};
+
+const res = sumRandomAsyncNumbers();
+
+/*
+async function loadJson(url) {
+  const response = await fetch(url);
+  return await response.json();
+}
+
+loadJson('https://javascript.info/no-such-user.json');
+*/
+
+async function loadJson(url) {
+  const response = await fetch(url);
+  if (response.status == 200) {
+    return await response.json();
+  }
+  // @ts-ignore
+  throw new Error(response.status);
+}
+
+const result = loadJson('https://javascript.info/no-such-user.json').catch(
+  console.log
+);
+
+class HttpError extends Error {
+  constructor(response) {
+    super(`${response.status} for ${response.url}`);
+    this.name = 'HttpError';
+    this.response = response;
+  }
+}
+
+async function loadJson(url) {
+  const response = await fetch(url);
+
+  if (response.status === 200) {
+    return response.json();
+  }
+  throw new HttpError(response);
+  // await Promise.reject(new HttpError(response));
+}
+
+// Запитуйте ім’я користувача, поки github не поверне дійсного користувача
+async function demoGithubUser() {
+  let user;
+  while (true) {
+    const name = prompt('Введіть ім’я?', 'iliakan');
+    try {
+      user = await loadJson(`https://api.github.com/users/${name}`);
+      break;
+    } catch (err) {
+      if (err instanceof HttpError && err.response.status === 404) {
+        alert('Такого користувача не існує, будь ласка, введіть ще раз.');
+      } else {
+        throw err;
+      }
+    }
+  }
+  alert(`Ім’я та прізвище: ${user.name}.`);
+  return user;
+
+  /*
+  return loadJson(`https://api.github.com/users/${name}`)
+    .then((user) => {
+      alert(`Ім’я та прізвище: ${user.name}.`);
+      return user;
+    })
+    .catch((err) => {
+      if (err instanceof HttpError && err.response.status == 404) {
+        alert('Такого користувача не існує, будь ласка, введіть ще раз.');
+        return demoGithubUser();
+      } else {
+        throw err;
+      }
+    });
+  */
+}
+
+demoGithubUser();
+
+async function wait() {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
+  return 10;
+}
+
+function f() {
+  wait().then(console.log);
+}
+
+f()
 
 /*
 setTimeout(() => {
