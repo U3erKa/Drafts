@@ -165,3 +165,5 @@ const highOrderFunction2 = function () {
 
 const innerFunction = highOrderFunction2();
 innerFunction();
+
+const arr = new Array(25).fill(undefined).map(() => Math.floor((Math.random() - 0.25) * 10));
