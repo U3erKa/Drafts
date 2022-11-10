@@ -8,7 +8,8 @@ import reportWebVitals from './reportWebVitals';
 // import Header from './components/Header';
 // import Greeting from './components/Greeting';
 // import Aloha from './components/Aloha';
-import AlohaList from './components/AlohaList';
+// import AlohaList from './components/AlohaList';
+import Clicker from './components/Clicker';
 // import App from './components/App';
 
 // @ts-expect-error
@@ -29,7 +30,8 @@ root.render(
     <Aloha name={'U3'} isGreeting={false} /> */}
     {/* @ts-ignore */}
     {/* <input disabled={user.name !== user} /> */}
-    <AlohaList />
+    {/* <AlohaList /> */}
+    <Clicker />
   </>
 );
 
