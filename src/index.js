@@ -3,13 +3,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-// import App from './App';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
 // import Header from './components/Header';
 // import Greeting from './components/Greeting';
 // import Aloha from './components/Aloha';
 // import AlohaList from './components/AlohaList';
-import Clicker from './components/Clicker';
+// import Clicker from './components/Clicker';
+// import Timer from './components/Timer';
 // import App from './components/App';
 
 // @ts-expect-error
@@ -21,8 +22,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 // };
 
 root.render(
+  // const {isVisible} = this.state;
   <>
-    {/* <App /> */}
+    <App />
     {/* <Header name={user.name} profilePicSrc={user.profilePicSrc} />
     <Greeting name={user.name} />
     <Greeting name={name} id={69} />
@@ -31,7 +33,10 @@ root.render(
     {/* @ts-ignore */}
     {/* <input disabled={user.name !== user} /> */}
     {/* <AlohaList /> */}
-    <Clicker />
+    {/* <Clicker /> */}
+    {/* {isVisible && <Timer />}
+    <button onClick={() => this.setState({isVisible: !isVisible})}>Toggle isVisible</button> */}
+
   </>
 );
 
