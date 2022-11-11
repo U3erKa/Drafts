@@ -23,7 +23,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   // const {isVisible} = this.state;
-  <>
+  <React.StrictMode>
     <App />
     {/* <Header name={user.name} profilePicSrc={user.profilePicSrc} />
     <Greeting name={user.name} />
@@ -37,7 +37,7 @@ root.render(
     {/* {isVisible && <Timer />}
     <button onClick={() => this.setState({isVisible: !isVisible})}>Toggle isVisible</button> */}
 
-  </>
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
