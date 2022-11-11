@@ -8,8 +8,8 @@ class App extends React.Component {
   };
   render() {
     return (
-      <main>
-        <button onClick={() => this.setState({ isVisible: !this.state.isVisible })}>Toggle isVisible</button>
+      <main className='container'>
+        <button className='btn' onClick={() => this.setState({ isVisible: !this.state.isVisible })}>Toggle isVisible</button>
         {this.state.isVisible && <Timer />}
       </main>
     );

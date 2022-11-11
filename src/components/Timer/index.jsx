@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styles from './Timer.module.css';
 
 export default class Timer extends Component {
   state = {
@@ -34,15 +35,16 @@ export default class Timer extends Component {
 
   render() {
     const { number } = this.state;
-    const styles = { color: number > 0 ? 'green' : 'red', fontSize: '24px' };
+    // const styles = { color: number > 0 ? 'green' : 'red', fontSize: '24px' };
 
     // if (number !== 0) {
     //   setTimeout(this.decrementNumber, 1000);
     // }
 
     return (
-      <div style={styles}>
+      <div>
         <p>{number}</p>
+        <button className={styles.btn} onClick={this.decrementNumber}>Decrement</button>
       </div>
     );
   }
