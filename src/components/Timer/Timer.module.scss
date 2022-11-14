@@ -1,0 +1,15 @@
+@import '../../common/styles/variables';
+
+.btn {
+  display: inline-block;
+  background-color: $btn-bg-color;
+  padding: 15px 25px;
+  border-radius: 20px;
+  border: 2px solid $btn-color;
+  margin-top: 10px;
+
+  &:hover {
+    background-color: $btn-bg-hover-color;
+    border-color: $btn-hover-color;
+  }
+}
