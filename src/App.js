@@ -1,6 +1,9 @@
+// @ts-check
+'use strict';
+
 import React from 'react';
 import './App.css';
-import Timer from './components/Timer';
+import FlexContainer from './components/FlexContainer';
 
 class App extends React.Component {
   state = {
@@ -9,8 +12,13 @@ class App extends React.Component {
   render() {
     return (
       <main className='container'>
-        <button className='btn' onClick={() => this.setState({ isVisible: !this.state.isVisible })}>Toggle isVisible</button>
-        {this.state.isVisible && <Timer />}
+        <FlexContainer justify='center' align='end'>
+          <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</li>
+          <li>Nostrum magni, sit reprehenderit maxime corrupti vel sed laudantium quod.</li>
+          <li>Dolorum corporis nesciunt rerum exercitationem neque nam velit voluptates harum sunt obcaecati.</li>
+          <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae autem pariatur a, expedita.</li>
+          <li>Eos nesciunt temporibus voluptates aliquam tempora sed rem facilis provident ad assumenda commodi.</li>
+        </FlexContainer>
       </main>
     );
   }
@@ -18,6 +26,8 @@ class App extends React.Component {
 
 export default App;
 
+{/* <button className='btn' onClick={() => this.setState({ isVisible: !this.state.isVisible })}>Toggle isVisible</button>
+{this.state.isVisible && <Timer />} */}
 /*
 import React from 'react';
 import './App.css';
