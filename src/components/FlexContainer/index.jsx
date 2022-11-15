@@ -2,8 +2,9 @@
 'use strict';
 
 import React from 'react';
-import styles from './FlexContainer.module.scss';
 import PropTypes from 'prop-types';
+import styles from './FlexContainer.module.scss';
+// import cx from 'classnames';
 
 const FlexContainer = (
   /** @type {{ children: React.ReactElement[] | React.ReactElement; justify?: string; align?: string; }} */ props
@@ -14,6 +15,20 @@ const FlexContainer = (
       {children}
     </ul>
   );
+
+  /*
+  // const classes = `container jc-${justContent} ai-${alignItems}`;
+
+  const isJCCenter = justContent === 'center';
+
+  const classes = cx(styles.container, {
+    [styles.jcCenter]: isJCCenter,
+    [styles.jcFlexStart]: justContent === 'flex-start',
+    [styles.aiCenter]: alignItems === 'center',
+  });
+
+  return <div className={classes}>{children}</div>;
+  */
 };
 FlexContainer.propTypes = {
   children: PropTypes.node.isRequired,
