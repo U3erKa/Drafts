@@ -3,31 +3,72 @@
 
 import React from 'react';
 import './App.css';
-import FlexContainer from './components/FlexContainer';
+// import FlexContainer from './components/FlexContainer';
+import Header from './components/Header';
 
 class App extends React.Component {
-  state = {
-    isVisible: true,
+  /**
+   * @param {any} props
+   */
+  constructor( props) {
+    super(props);
+
+    this.state = {
+      isVisible: true,
+
+      user: {
+        id: 123235432,
+        name: 'Test',
+        src: 'shdnfdsfndsifds.jpg',
+      },
+    };
+
+    this.intervalId = null;
+  }
+
+  handleClick = () => this.setState({ isVisible: !this.state.isVisible });
+
+  logout = () => {
+    this.setState({
+      user: null,
+    });
+    alert('Logged out successfully');
   };
+
   render() {
+    const { user } = this.state;
+
     return (
-      <main className='container'>
-        <FlexContainer justify='center' align='end'>
-          <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</li>
-          <li>Nostrum magni, sit reprehenderit maxime corrupti vel sed laudantium quod.</li>
-          <li>Dolorum corporis nesciunt rerum exercitationem neque nam velit voluptates harum sunt obcaecati.</li>
-          <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae autem pariatur a, expedita.</li>
-          <li>Eos nesciunt temporibus voluptates aliquam tempora sed rem facilis provident ad assumenda commodi.</li>
-        </FlexContainer>
-      </main>
+      <>
+        <Header
+          headerProp1={true}
+          headerProp2={42}
+          otherProp1={null}
+          user={user}
+          logout={this.logout}
+        />
+      </>
     );
   }
 }
 
 export default App;
 
-{/* <button className='btn' onClick={() => this.setState({ isVisible: !this.state.isVisible })}>Toggle isVisible</button>
-{this.state.isVisible && <Timer />} */}
+// return (
+// <main className="container">
+//   <FlexContainer justify="center" align="end">
+//     <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</li>
+//     <li>Nostrum magni, sit reprehenderit maxime corrupti vel sed laudantium quod.</li>
+//     <li>Dolorum corporis nesciunt rerum exercitationem neque nam velit voluptates harum sunt obcaecati.</li>
+//     <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae autem pariatur a, expedita.</li>
+//     <li>Eos nesciunt temporibus voluptates aliquam tempora sed rem facilis provident ad assumenda commodi.</li>
+//   </FlexContainer>
+// </main>
+// )
+
+/* <button className='btn' onClick={() => this.setState({ isVisible: !this.state.isVisible })}>Toggle isVisible</button>
+{this.state.isVisible && <Timer />} */
+
 /*
 import React from 'react';
 import './App.css';
