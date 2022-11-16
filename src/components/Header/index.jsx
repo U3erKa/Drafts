@@ -13,6 +13,7 @@ import HeaderUserCard from './HeaderUserCard';
 
 class Header extends React.Component {
   render() {
+    // const { name = './null.png', profilePicSrc = 'null image', ...userProps } = this.props;
     const { name, profilePicSrc, ...userProps } = this.props;
     return (
       <>
@@ -34,6 +35,10 @@ Header.propTypes = {
   //   name: PropTypes.string.isRequired,
   //   age: PropTypes.number,
   // }),
+};
+Header.defaultProps = {
+  profilePicSrc: './null.png',
+  alt: 'null image',
 };
 
 export default Header;

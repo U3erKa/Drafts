@@ -4,7 +4,8 @@
 import React from 'react';
 import './App.css';
 // import FlexContainer from './components/FlexContainer';
-import Header from './components/Header';
+// import Header from './components/Header';
+import SignUpForm from './components/SignUpForm';
 
 class App extends React.Component {
   /**
@@ -36,23 +37,27 @@ class App extends React.Component {
   };
 
   render() {
-    const { user } = this.state;
-
+    
     return (
-      <>
-        <Header
-          headerProp1={true}
-          headerProp2={42}
-          otherProp1={null}
-          user={user}
-          logout={this.logout}
-        />
-      </>
+      <SignUpForm />
     );
   }
 }
 
 export default App;
+
+// const { user } = this.state;
+// return (
+//   <>
+//     <Header
+//       headerProp1={true}
+//       headerProp2={42}
+//       otherProp1={null}
+//       user={user}
+//       logout={this.logout}
+//     />
+//   </>
+// );
 
 // return (
 // <main className="container">
