@@ -2,49 +2,66 @@
 'use strict';
 
 import React from 'react';
+import { Route, Switch } from 'react-router-dom';
+// import HomePage from './pages/HomePage';
+import UsersPage from './pages/UsersPage';
 import './App.css';
 // import FlexContainer from './components/FlexContainer';
 // import Header from './components/Header';
-import SignUpForm from './components/SignUpForm';
+// import SignUpForm from './components/SignUpForm';
 
 class App extends React.Component {
-  /**
-   * @param {any} props
-   */
-  constructor( props) {
+  constructor(props) {
     super(props);
-
-    this.state = {
-      isVisible: true,
-
-      user: {
-        id: 123235432,
-        name: 'Test',
-        src: 'shdnfdsfndsifds.jpg',
-      },
-    };
-
-    this.intervalId = null;
   }
-
-  handleClick = () => this.setState({ isVisible: !this.state.isVisible });
-
-  logout = () => {
-    this.setState({
-      user: null,
-    });
-    alert('Logged out successfully');
-  };
-
   render() {
-    
     return (
-      <SignUpForm />
+      <Switch>
+        {/* <Route path="/" exact component={HomePage} /> */}
+        <Route path="/" exact component={UsersPage} />
+      </Switch>
     );
   }
 }
 
 export default App;
+
+// class App extends React.Component {
+//   /**
+//    * @param {any} props
+//    */
+//   constructor( props) {
+//     super(props);
+
+//     this.state = {
+//       isVisible: true,
+
+//       user: {
+//         id: 123235432,
+//         name: 'Test',
+//         src: 'shdnfdsfndsifds.jpg',
+//       },
+//     };
+
+//     this.intervalId = null;
+//   }
+
+//   handleClick = () => this.setState({ isVisible: !this.state.isVisible });
+
+//   logout = () => {
+//     this.setState({
+//       user: null,
+//     });
+//     alert('Logged out successfully');
+//   };
+
+//   render() {
+
+//     return (
+//       <SignUpForm />
+//     );
+//   }
+// }
 
 // const { user } = this.state;
 // return (

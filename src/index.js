@@ -2,7 +2,8 @@
 // 'use strict';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './reset.css';
+import { BrowserRouter } from 'react-router-dom';
+// import './reset.css';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -25,7 +26,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // const {isVisible} = this.state;
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
     {/* <Header name={user.name} profilePicSrc={user.profilePicSrc} />
     <Greeting name={user.name} />
     <Greeting name={name} id={69} />
@@ -37,7 +40,6 @@ root.render(
     {/* <Clicker /> */}
     {/* {isVisible && <Timer />}
     <button onClick={() => this.setState({isVisible: !isVisible})}>Toggle isVisible</button> */}
-
   </React.StrictMode>
 );
 
