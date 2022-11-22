@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { getUsers } from '../../api';
+// import PropTypes from 'prop-types';
+// import { getUsers } from '../../api';
 
 class DataLoader extends Component {
   constructor(props) {
@@ -11,6 +12,9 @@ class DataLoader extends Component {
       page: 1,
     };
   }
+  // static propTypes = {
+  //   loadData: PropTypes.func,
+  // };
 
   componentDidMount() {
     this.load();
@@ -24,16 +28,12 @@ class DataLoader extends Component {
 
   load = async () => {
     try {
-      const { page } = this.state;
+      // const { page } = this.state;
+      // eslint-disable-next-line react/prop-types
+      const { loadData } = this.props;
       this.setState({ isLoading: true });
 
-      const data = await getUsers({
-        page,
-        results: 10,
-        seed: 'foobarbaz',
-        nat: 'ua',
-        inc: ['gender', 'name', 'location', 'email', 'login'],
-      });
+      const data = await loadData();
       this.setState({ data });
     } catch (error) {
       this.setState({ error: error.message });
@@ -54,22 +54,8 @@ class DataLoader extends Component {
   };
 
   render() {
-    const { data, isLoading, error } = this.state;
-    const entriesList = data.map(this.mapDataEntries);
-
-    if (isLoading) {
-      return <div>Loading...</div>;
-    }
-    if (error) {
-      return <div>Error: {error}</div>;
-    }
-
-    return (
-      <div>
-        <button onClick={this.nextPage}>Next page</button>
-        {entriesList}
-      </div>
-    );
+    // eslint-disable-next-line react/prop-types
+    return this.props.render(this.state);
   }
 }
 

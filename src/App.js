@@ -3,9 +3,11 @@
 
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-// import HomePage from './pages/HomePage';
+import HomePage from './pages/HomePage';
 import UsersPage from './pages/UsersPage';
+import PostsPage from './pages/PostsPage';
 import './App.css';
+// import DataLoader from './components/DataLoader';
 // import FlexContainer from './components/FlexContainer';
 // import Header from './components/Header';
 // import SignUpForm from './components/SignUpForm';
@@ -17,8 +19,9 @@ class App extends React.Component {
   render() {
     return (
       <Switch>
-        {/* <Route path="/" exact component={HomePage} /> */}
-        <Route path="/" exact component={UsersPage} />
+        <Route path="/" exact component={HomePage} />
+        <Route path="/users" exact component={UsersPage} />
+        <Route path="/posts" exact component={PostsPage} />
       </Switch>
     );
   }
