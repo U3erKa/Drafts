@@ -6,22 +6,43 @@ import { Route, Switch } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import UsersPage from './pages/UsersPage';
 import PostsPage from './pages/PostsPage';
+import Tree from './components/Tree';
 import './App.css';
 // import DataLoader from './components/DataLoader';
 // import FlexContainer from './components/FlexContainer';
 // import Header from './components/Header';
 // import SignUpForm from './components/SignUpForm';
 
+export const THEMES = {
+  LIGHT: 'light',
+  DARK: 'dark',
+};
+export const ThemeContext = React.createContext(THEMES.LIGHT);
+
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      theme: THEMES.LIGHT,
+    };
   }
   render() {
     return (
       <Switch>
+        <ThemeContext.Provider value={this.state.theme}>
+          <Tree />
+          <button
+            onClick={() => {
+              this.setState({ theme: this.state.theme === THEMES.LIGHT ? THEMES.DARK : THEMES.LIGHT });
+            }}
+          >
+            Swap theme
+          </button>
+        </ThemeContext.Provider>
         <Route path="/" exact component={HomePage} />
         <Route path="/users" exact component={UsersPage} />
         <Route path="/posts" exact component={PostsPage} />
+        {/* <Route path="/about" render={(routeProps) => <AboutPage {...routeProps} />} /> */}
       </Switch>
     );
   }

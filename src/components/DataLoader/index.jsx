@@ -48,11 +48,6 @@ class DataLoader extends Component {
     </div>
   );
 
-  nextPage = () => {
-    const { page } = this.state;
-    this.setState({ page: page + 1 });
-  };
-
   render() {
     // eslint-disable-next-line react/prop-types
     return this.props.render(this.state);

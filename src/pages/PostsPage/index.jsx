@@ -12,7 +12,7 @@ const PostsPage = () => {
     return (
       <ul>
         <li>
-          <pre>{JSON.stringify(loaderState.data, undefined, 4)}</pre>
+          <code>{JSON.stringify(loaderState.data, undefined, 4)}</code>
         </li>
       </ul>
     );
