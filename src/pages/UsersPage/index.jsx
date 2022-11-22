@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { getUsers } from '../../api';
 
 class UsersPage extends Component {
   constructor(props) {
@@ -8,6 +9,10 @@ class UsersPage extends Component {
       isLoading: false,
       error: null,
       page: 1,
+      results: 10,
+      seed: 'foobarbaz',
+      nat: 'ua',
+      inc: ['gender', 'name', 'location', 'email', 'login'],
     };
   }
 
@@ -21,25 +26,22 @@ class UsersPage extends Component {
     }
   }
 
-  load = () => {
-    const { page } = this.state;
-    this.setState({ isLoading: true });
-    fetch(`https://randomuser.me/api/?page=${page}&results=10&seed=foobarbaz&inc=name,gender,location`)
-      .then((res) => res.json())
-      .then((data) => {
-        const { results } = data;
-        this.setState({ users: results });
-      })
-      .catch((error) => {
-        this.setState({ error: error.message });
-      })
-      .finally(() => {
-        this.setState({ isLoading: false });
-      });
+  load = async () => {
+    try {
+      const { page, results, seed, nat, inc } = this.state;
+      this.setState({ isLoading: true });
+
+      const users = await getUsers({ page, results, seed, nat, inc });
+      this.setState({ users });
+    } catch (error) {
+      this.setState({ error: error.message });
+    } finally {
+      this.setState({ isLoading: false });
+    }
   };
 
-  mapUsers = (user) => (
-    <div key={user.id}>
+  mapUsers = (user, id) => (
+    <div key={id}>
       <pre>{JSON.stringify(user, undefined, 4)}</pre>
     </div>
   );
