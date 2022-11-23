@@ -93,6 +93,7 @@ console.log(arr12);
 console.log(mapArr);
 
 const filterArr = arr13.filter(function (currentElement) {
+  // @ts-ignore
   return currentElement.age >= 18 && currentElement.gender !== undefined;
 });
 
