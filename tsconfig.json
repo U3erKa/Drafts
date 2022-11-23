@@ -4,6 +4,7 @@
     "target": "ESNext",
     "module": "ESNext",
     "outDir": "./build",
+    "lib": ["ESNext", "DOM"],
     "noImplicitAny": true,
     "removeComments": true,
     "preserveConstEnums": true,

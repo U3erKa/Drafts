@@ -233,7 +233,7 @@ function createBook(isEBook: boolean, valueId: number, alteredValue: string) {
         break;
       }
       case 2: {
-        // @ts-expect-error
+        // @ts-ignore
         year = alteredValue;
         break;
       }
@@ -268,7 +268,7 @@ function createBook(isEBook: boolean, valueId: number, alteredValue: string) {
 
 //task 5
 function fizzBuzzNumbers(number: number) {
-  const array: number[] | string[] = [];
+  const array: (number | string)[] = [];
   for (let i = 1; i <= number; i++) {
     if (!(i % 3) && !(i % 5)) {
       array[i - 1] = 'fizzbuzz';
