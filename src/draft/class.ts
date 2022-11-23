@@ -9,7 +9,6 @@ class User {
     this.age = age;
   }
   isAdult(adultAge = 18) {
-    // @ts-expect-error
     return this.age >= adultAge;
   }
   getFullName() {
