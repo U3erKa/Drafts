@@ -7,7 +7,7 @@ import HomePage from './pages/HomePage';
 import UserPage from './pages/UserPage';
 import UsersPage from './pages/UsersPage';
 import PostsPage from './pages/PostsPage';
-// import Tree from './components/Tree';
+import Tree from './components/Tree';
 import './App.css';
 // import DataLoader from './components/DataLoader';
 // import FlexContainer from './components/FlexContainer';
@@ -44,6 +44,7 @@ class App extends React.Component {
         <Route path="/users" exact component={UsersPage} />
         <Route path="/posts" exact component={PostsPage} />
         <Route path="/user" exact component={UserPage} />
+        <Route path="/tree" exact component={Tree} />
         {/* <Route path="/about" render={(routeProps) => <AboutPage {...routeProps} />} /> */}
       </Switch>
     );
