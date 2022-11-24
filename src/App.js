@@ -9,6 +9,7 @@ import UsersPage from './pages/UsersPage';
 import PostsPage from './pages/PostsPage';
 import Tree from './components/Tree';
 import './App.css';
+import HookTimer from './components/HookTimer';
 // import DataLoader from './components/DataLoader';
 // import FlexContainer from './components/FlexContainer';
 // import Header from './components/Header';
@@ -45,6 +46,7 @@ class App extends React.Component {
         <Route path="/posts" exact component={PostsPage} />
         <Route path="/user" exact component={UserPage} />
         <Route path="/tree" exact component={Tree} />
+        <Route path="/timer" exact component={HookTimer} />
         {/* <Route path="/about" render={(routeProps) => <AboutPage {...routeProps} />} /> */}
       </Switch>
     );
