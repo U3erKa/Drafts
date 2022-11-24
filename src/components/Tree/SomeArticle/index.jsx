@@ -1,6 +1,6 @@
 import React from 'react';
-import { ThemeContext, THEMES } from '../../../App';
-import { ProductContext } from '../../../contexts';
+import { ThemeContext, THEMES } from 'App';
+import { ProductContext } from 'contexts';
 
 // const SomeArticle = () => {
 //   const renderFunc = (contextValue) => (
