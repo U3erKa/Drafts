@@ -4,9 +4,10 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import HomePage from './pages/HomePage';
+import UserPage from './pages/UserPage';
 import UsersPage from './pages/UsersPage';
 import PostsPage from './pages/PostsPage';
-import Tree from './components/Tree';
+// import Tree from './components/Tree';
 import './App.css';
 // import DataLoader from './components/DataLoader';
 // import FlexContainer from './components/FlexContainer';
@@ -29,7 +30,7 @@ class App extends React.Component {
   render() {
     return (
       <Switch>
-        <ThemeContext.Provider value={this.state.theme}>
+        {/* <ThemeContext.Provider value={this.state.theme}>
           <Tree />
           <button
             onClick={() => {
@@ -38,10 +39,11 @@ class App extends React.Component {
           >
             Swap theme
           </button>
-        </ThemeContext.Provider>
+        </ThemeContext.Provider> */}
         <Route path="/" exact component={HomePage} />
         <Route path="/users" exact component={UsersPage} />
         <Route path="/posts" exact component={PostsPage} />
+        <Route path="/user" exact component={UserPage} />
         {/* <Route path="/about" render={(routeProps) => <AboutPage {...routeProps} />} /> */}
       </Switch>
     );
