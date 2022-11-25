@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function HookTimer() {
-  const [startingNumber, setStartingNumber] = useState(0);
+  const [startingNumber, setStartingNumber] = useState(10);
   const [currentNumber, setCurrentNumber] = useState(0);
   const [isStarted, setIsStarted] = useState(false);
   const [intervalId, setIntervalId] = useState(null);
@@ -27,6 +27,25 @@ export default function HookTimer() {
   const tick = () => {
     setCurrentNumber((oldCurrentNumber) => oldCurrentNumber - 1);
   };
+
+  useEffect(() => {
+    console.log('useEffect');
+    // const intervalId = setInterval(tick, 1000);
+
+    return () => {
+      console.log('cleanup');
+      // clearInterval(intervalId);
+    };
+  });
+  useEffect(() => {
+    console.log(true);
+    return () => {
+      console.log('will unmount');
+    };
+  }, []);
+  useEffect(() => {
+    console.log(currentNumber);
+  }, [currentNumber]);
 
   return (
     <>
