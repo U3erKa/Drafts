@@ -1,4 +1,5 @@
 import React from 'react';
+// import PropTypes from 'prop-types';
 import { ThemeContext, THEMES } from 'App';
 import { ProductContext } from 'contexts';
 
@@ -14,6 +15,7 @@ import { ProductContext } from 'contexts';
 // };
 
 const SomeArticle = (props) => {
+  // eslint-disable-next-line react/prop-types
   const { product, theme } = props;
   const onClick = () => {};
 
@@ -30,6 +32,11 @@ const SomeArticle = (props) => {
   );
 };
 
+// SomeArticle.propTypes = {
+//   product: PropTypes.string,
+//   theme: PropTypes.string,
+// };
+
 function withProduct(Component) {
   function NewComponent(props) {
     return <ProductContext.Consumer>{(product) => <Component product={product} {...props} />}</ProductContext.Consumer>;
@@ -38,6 +45,7 @@ function withProduct(Component) {
   return NewComponent;
 }
 
+// eslint-disable-next-line react/display-name
 const withTheme = (Component) => (props) =>
   (
     <ThemeContext.Consumer>
