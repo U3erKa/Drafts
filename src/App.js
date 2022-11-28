@@ -8,6 +8,7 @@ import UserPage from './pages/UserPage';
 import UsersPage from './pages/UsersPage';
 import PostsPage from './pages/PostsPage';
 import Tree from './components/Tree';
+import UserLoaderHooks from './components/UserLoaderHooks';
 import './App.css';
 import HookTimer from './components/HookTimer';
 // import DataLoader from './components/DataLoader';
@@ -47,6 +48,7 @@ class App extends React.Component {
         <Route path="/user" exact component={UserPage} />
         <Route path="/tree" exact component={Tree} />
         <Route path="/timer" exact component={HookTimer} />
+        <Route path="/userhooks" exact component={UserLoaderHooks} />
         {/* <Route path="/about" render={(routeProps) => <AboutPage {...routeProps} />} /> */}
       </Switch>
     );
