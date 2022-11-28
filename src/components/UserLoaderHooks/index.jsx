@@ -1,10 +1,8 @@
 import React from 'react';
-import { useData } from 'hooks';
+import { useClicker, useData } from 'hooks';
 import * as API from 'api';
-// import PropTypes from 'prop-types';
 
-// eslint-disable-next-line no-unused-vars
-const DataLoader = (props) => {
+export const DataLoader = (props) => {
   const { data: users, isLoading, error } = useData(API.getOtherusers());
 
   const userList = users.map(({ name, email, id }) => (
@@ -23,6 +21,12 @@ const DataLoader = (props) => {
       {users.length > 0 && userList}
     </div>
   );
+};
+
+export const Clicker = (props) => {
+  const [clicks, setClicks] = useClicker(0);
+
+  return <div>{clicks}</div>;
 };
 
 export default DataLoader;

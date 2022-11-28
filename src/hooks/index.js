@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 
 /**
  * @param {function} getData
- * @returns 
  */
 export function useData(getData) {
   const [data, setData] = useState([]);
@@ -26,4 +25,21 @@ export function useData(getData) {
   }, []);
 
   return { data, isLoading, error, load };
+}
+
+export function useClicker(clicks) {
+  const [click, setClick] = useState(clicks);
+
+  const handleClick = () => {
+    setClick(click + 1);
+  };
+
+  useEffect(() => {
+    document.addEventListener('click', handleClick);
+    return () => {
+      document.removeEventListener('click', handleClick);
+    };
+  });
+
+  return [click, handleClick];
 }

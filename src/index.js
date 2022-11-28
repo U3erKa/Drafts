@@ -15,7 +15,6 @@ import reportWebVitals from './reportWebVitals';
 // import Timer from './components/Timer';
 // import App from './components/App';
 
-// @ts-expect-error
 const root = ReactDOM.createRoot(document.getElementById('root'));
 // const name = 'U3erKa';
 // const user = {
