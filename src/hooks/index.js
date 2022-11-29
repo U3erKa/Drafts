@@ -27,11 +27,11 @@ export function useData(getData) {
   return { data, isLoading, error, load };
 }
 
-export function useClicker(clicks) {
-  const [click, setClick] = useState(clicks);
+export function useClicker() {
+  const [click, setClick] = useState(0);
 
   const handleClick = () => {
-    setClick(click + 1);
+    setClick((click) => click + 1);
   };
 
   useEffect(() => {
@@ -39,7 +39,30 @@ export function useClicker(clicks) {
     return () => {
       document.removeEventListener('click', handleClick);
     };
-  });
+  }, []);
+
+  return [click, handleClick];
+}
+
+
+export function useClickerRef(/** @type {React.MutableRefObject} */ elemRef) {
+  const [click, setClick] = useState(0);
+
+  const handleClick = () => {
+    setClick((click) => click + 1);
+  };
+
+  useEffect(() => {
+    const elem = elemRef.current;
+    if (elem) {
+      elem.addEventListener('click', handleClick);
+    }
+    return () => {
+      if (elem) {
+        elem.removeEventListener('click', handleClick);
+      }
+    };
+  }, [elemRef]);
 
   return [click, handleClick];
 }

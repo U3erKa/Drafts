@@ -24,7 +24,7 @@ export const DataLoader = (props) => {
 };
 
 export const Clicker = (props) => {
-  const [clicks, setClicks] = useClicker(0);
+  const [clicks] = useClicker();
 
   return <div>{clicks}</div>;
 };
