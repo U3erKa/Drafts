@@ -1,5 +1,5 @@
 import { useClickerRef } from 'hooks';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 export const RefsClicker = (props) => {
   const elemRef = useRef();
@@ -23,9 +23,13 @@ export const RefsClicker = (props) => {
     }
   }, [inputRef]);
 
-  const handleChange = (e) => {
-    setValue(e.target.value);
-  };
+  const handleChange = useCallback((e) => setValue(e.target.value), []);
+
+  const logValue = useCallback(() => console.log(`value is ${value}`), [value]);
+
+  useEffect(() => {
+    console.log('logValue is created');
+  }, [logValue]);
 
   return (
     <div id="test">
@@ -33,6 +37,7 @@ export const RefsClicker = (props) => {
       <p>Prev clicks {prevClicks.current}</p>
       <p>Renders {renders.current}</p>
       <input ref={inputRef} type="text" value={value} onChange={handleChange} />
+      <button onClick={logValue}>Log value</button>
       <div
         ref={elemRef}
         style={{
