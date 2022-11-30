@@ -1,13 +1,7 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
-class Index extends Component {
-  render() {
-    return (
-      <div>
-        Home
-      </div>
-    );
-  }
+export default function HomePage(props) {
+  const [theme, setTheme] = useState();
+
+  return <div>Home</div>;
 }
-
-export default Index;
