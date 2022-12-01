@@ -13,6 +13,7 @@ import './App.css';
 import HookTimer from './components/HookTimer';
 import RefsClicker from 'components/RefsClicker';
 import LoginPage from 'pages/LoginPage';
+import CounterPage from 'pages/CounterPage';
 // import DataLoader from './components/DataLoader';
 // import FlexContainer from './components/FlexContainer';
 // import Header from './components/Header';
@@ -54,6 +55,7 @@ class App extends React.Component {
         <Route path="/datahooks" exact component={DataLoader} />
         <Route path="/clickerrefs" exact component={RefsClicker} />
         <Route path="/login" exact component={LoginPage} />
+        <Route path="/counter" exact component={CounterPage} />
         {/* <Route path="/about" render={(routeProps) => <AboutPage {...routeProps} />} /> */}
       </Switch>
     );
