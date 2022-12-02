@@ -1,72 +1,52 @@
 // @ts-check
 'use strict';
+/* eslint-disable react/prop-types */
 
-import React, { Component } from 'react';
+import React from 'react';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
 import styles from './SignUpForm.module.scss';
 
 const initialState = {
   email: '',
   password: '',
+  isRemembering: false,
+  gender: '',
   accountLevel: 'basic',
-  isAdult: false,
-  gender: 'female',
 };
 
-export default class SignUpForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      ...initialState,
-    };
-  }
-
-  handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    this.setState({ [name]: type === 'checkbox' ? checked : value });
-  };
-  handleSubmit = (e) => {
-    const { email, password } = this.state;
-    e.preventDefault();
-    signUp({ email, password });
-    this.setState({ ...initialState });
-    // console.log(e);
-    // console.log(e.target.elements.email.value);
-    // console.log(e.target.elements.password.value);
+export default function SignUpForm() {
+  const handleSubmit = (values, formikBag) => {
+    console.log(values);
+    formikBag.resetForm();
   };
 
-  render() {
-    const { email, password, isAdult, gender } = this.state;
-    return (
-      <form className={styles.form} onSubmit={this.handleSubmit}>
-        <input className={styles.input} type="email" name="email" value={email} onChange={this.handleChange} />
-        <input className={styles.input} type="password" name="password" value={password} onChange={this.handleChange} />
-        <select name="accountLevel" onChange={this.handleChange}>
-          <option value="basic">basic</option>
-          <option value="adv">adv</option>
-          <option value="pro">pro</option>
-        </select>
+  return (
+    <Formik initialValues={initialState} onSubmit={handleSubmit} /* validationSchema={SIGNUP_SCHEMA} */>
+      <Form className={styles.form}>
+        <Field className={styles.input} type="text" name="email" />
+        {/* <ErrorMessage name="email" component="div" /> */}
+        <Field className={styles.input} type="password" name="password" />
+        <Field as="select" name="accountLevel">
+          <option value="basic">Basic</option>
+          <option value="pro">Pro</option>
+          <option value="ultra">Ultra</option>
+        </Field>
         <label>
-          <input type="checkbox" name="isAdult" checked={isAdult} onChange={this.handleChange} />
-          Are you adult?
-        </label>
-        <p>Choose your gender</p>
-        <label>
-          <input type="radio" name="gender" value="male" checked={gender === 'male'} onChange={this.handleChange} />
+          <Field type="radio" name="gender" value="male" />
           Male
         </label>
         <label>
-          <input type="radio" name="gender" value="female" checked={gender === 'female'} onChange={this.handleChange} />
+          <Field type="radio" name="gender" value="female" />
           Female
         </label>
-        <button disabled={!isAdult} className={styles.btn} type="submit">
-          Sign Up
+        <label>
+          <Field type="checkbox" name="isRemembering" />
+          Remember me
+        </label>
+        <button className={styles.btn} type="submit">
+          Login
         </button>
-      </form>
-    );
-  }
-}
-
-function signUp(userData) {
-  const { email, password } = userData;
-  console.log(`${email} ${password} is signed up`);
+      </Form>
+    </Formik>
+  );
 }
