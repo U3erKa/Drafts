@@ -1,10 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-/**
- * @param {{name: string, id?: number}} props
- */
-function Greeting(props) {
+function Greeting(props: { name: string; id?: number; }) {
   const { name } = props;
   return (
     <p>Hello, {name}!</p>

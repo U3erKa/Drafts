@@ -26,6 +26,7 @@ export const DataLoader = (props) => {
 export const Clicker = (props) => {
   const [clicks] = useClicker();
 
+  // @ts-expect-error
   return <div>{clicks}</div>;
 };
 

@@ -1,10 +1,9 @@
 // @ts-check
-'use strict';
 
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
-export default class ClickerButton extends Component {
+export default class ClickerButton extends Component<any> {
   static propTypes = {clicker: PropTypes.func.isRequired};
 
   render() {

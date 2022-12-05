@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+// @ts-expect-error
 import styles from './Timer.module.scss';
 
-export default class Timer extends Component {
+export default class Timer extends Component<any, any> {
   state = {
     number: 10,
     isDouble: false,
@@ -18,6 +19,7 @@ export default class Timer extends Component {
 
   componentDidMount() {
     console.log('Did mount');
+    // @ts-expect-error
     this.intervalId = setInterval(this.decrementNumber, 1000);
   }
   componentDidUpdate() {
@@ -30,6 +32,7 @@ export default class Timer extends Component {
   }
   componentWillUnmount() {
     console.log('Will unmount');
+    // @ts-expect-error
     clearInterval(this.intervalId);
   }
 
@@ -44,7 +47,9 @@ export default class Timer extends Component {
     return (
       <div>
         <p>{number}</p>
-        <button className={styles.btn} onClick={this.decrementNumber}>Decrement</button>
+        <button className={styles.btn} onClick={this.decrementNumber}>
+          Decrement
+        </button>
       </div>
     );
   }

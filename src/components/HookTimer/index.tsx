@@ -4,7 +4,7 @@ export default function HookTimer() {
   const [startingNumber, setStartingNumber] = useState(10);
   const [currentNumber, setCurrentNumber] = useState(0);
   const [isStarted, setIsStarted] = useState(false);
-  const [intervalId, setIntervalId] = useState(null);
+  const [intervalId, setIntervalId] = useState(null as any);
 
   const handleChange = (e) => {
     const {

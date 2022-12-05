@@ -11,7 +11,7 @@ import HeaderUserCard from './HeaderUserCard';
 //   );
 // }
 
-class Header extends React.Component {
+class Header extends React.Component<any, any> {
   render() {
     // const { name = './null.png', profilePicSrc = 'null image', ...userProps } = this.props;
     const { name, profilePicSrc, ...userProps } = this.props;
@@ -21,12 +21,14 @@ class Header extends React.Component {
           <h1>My site</h1>
           <img src={profilePicSrc} alt={name} />
         </header>
+        {/* @ts-ignore */}
         <HeaderUserCard {...userProps} />
       </>
     );
   }
 }
 
+// @ts-ignore
 Header.propTypes = {
   name: PropTypes.string,
   profilePicSrc: PropTypes.string,
@@ -36,6 +38,7 @@ Header.propTypes = {
   //   age: PropTypes.number,
   // }),
 };
+// @ts-ignore
 Header.defaultProps = {
   profilePicSrc: './null.png',
   alt: 'null image',

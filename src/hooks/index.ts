@@ -14,6 +14,7 @@ export function useData(getData) {
       const data = await getData();
       setData(data);
     } catch (error) {
+      // @ts-expect-error
       setError(error.message);
     } finally {
       setIsLoading(false);

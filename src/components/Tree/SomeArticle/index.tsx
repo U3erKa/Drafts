@@ -17,7 +17,7 @@ import { ProductContext } from 'contexts';
 const SomeArticle = (props) => {
   // eslint-disable-next-line react/prop-types
   const { product, theme } = props;
-  const onClick = () => {};
+  const onClick = () => {console.log(true);};
 
   const styles = {
     backgroundColor: theme === THEMES.LIGHT ? 'lightgray' : '#444444',

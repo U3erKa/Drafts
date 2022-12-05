@@ -1,14 +1,14 @@
-// @ts-check
-'use strict';
-
 import React from 'react';
 import PropTypes from 'prop-types';
+// @ts-expect-error
 import styles from './FlexContainer.module.scss';
 // import cx from 'classnames';
 
-const FlexContainer = (
-  /** @type {{ children: React.ReactElement[] | React.ReactElement; justify?: string; align?: string; }} */ props
-) => {
+const FlexContainer = (props: {
+  children: React.ReactElement[] | React.ReactElement;
+  justify?: string;
+  align?: string;
+}) => {
   const { justify = 'flex-start', align = 'stretch', children } = props;
   return (
     <ul className={styles.list} style={{ justifyContent: justify, alignItems: align }}>

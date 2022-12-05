@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class Aloha extends Component {
+class Aloha extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {

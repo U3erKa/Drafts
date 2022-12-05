@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 // import { getUsers } from '../../api';
 
-class DataLoader extends Component {
+class DataLoader extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {
@@ -36,6 +36,7 @@ class DataLoader extends Component {
       const data = await loadData();
       this.setState({ data });
     } catch (error) {
+      // @ts-expect-error
       this.setState({ error: error.message });
     } finally {
       this.setState({ isLoading: false });

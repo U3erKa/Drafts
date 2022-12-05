@@ -22,7 +22,7 @@ const PostsPage = () => {
     <main>
       <h1>Posts</h1>
       <DataLoader loadData={getPosts} render={renderPosts} />
-      <DataLoader loadData={() => getUsers({ page: 5 })} render={() => {}} />
+      <DataLoader loadData={() => getUsers({ page: 5 })} render={renderPosts} />
     </main>
   );
 };

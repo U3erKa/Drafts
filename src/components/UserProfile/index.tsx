@@ -5,6 +5,7 @@ export default class UserProfile extends Component {
   render() {
     return (
       <UserContext.Consumer>
+        {/* @ts-ignore */}
         {({ username, age, gender }) => (
           <>
             <h1>Username: {username}</h1>

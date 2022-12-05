@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { getUsers } from '../../api';
 
-class UsersPage extends Component {
+class UsersPage extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {
@@ -34,6 +34,7 @@ class UsersPage extends Component {
       const users = await getUsers({ page, results, seed, nat, inc });
       this.setState({ users });
     } catch (error) {
+      // @ts-expect-error
       this.setState({ error: error.message });
     } finally {
       this.setState({ isLoading: false });

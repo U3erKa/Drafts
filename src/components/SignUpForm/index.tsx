@@ -1,9 +1,8 @@
-// @ts-check
-'use strict';
 /* eslint-disable react/prop-types */
 
 import React from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
+// @ts-expect-error
 import styles from './SignUpForm.module.scss';
 
 const initialState = {

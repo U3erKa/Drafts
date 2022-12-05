@@ -19,6 +19,7 @@ export const RefsClicker = (props) => {
 
   useEffect(() => {
     if (inputRef.current) {
+      // @ts-ignore
       inputRef.current.focus();
     }
   }, [inputRef]);
@@ -33,12 +34,16 @@ export const RefsClicker = (props) => {
 
   return (
     <div id="test">
+      {/* @ts-expect-error */}
       <h1>Clicks: {clicks}</h1>
+      {/* @ts-expect-error */}
       <p>Prev clicks {prevClicks.current}</p>
       <p>Renders {renders.current}</p>
+      {/* @ts-expect-error */}
       <input ref={inputRef} type="text" value={value} onChange={handleChange} />
       <button onClick={logValue}>Log value</button>
       <div
+        // @ts-expect-error
         ref={elemRef}
         style={{
           width: '300px',
