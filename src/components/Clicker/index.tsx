@@ -1,31 +1,13 @@
-// @ts-check
-
-/*
-  Сделать компонент кликера
-  он должен отображать счетчик лкиокв
-  и кнопку изменения счетчика
-
-  Создайте компонент ДисплейКликера - его роль отображать счет
-
-  Создайте компонент КонтроллерКликера - туда должна поехать кнопка
-
-  Кликер должен работать как обычно
-
-*/
-
-// import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import ClickerButton from '../ClickerButton';
-import ClickerScore from '../ClickerScore';
+import ClickerButton from './ClickerButton';
+import ClickerScore from './ClickerScore';
 
-export default class Clicker extends Component {
-  // static propTypes = {second: third}
+export default class Clicker extends Component<Record<string, never>, { counter: number }> {
   state = {
     counter: 0,
   };
 
   clicker = () => {
-    // this.setState({ clicks: (this.state.clicks + 1) });
     const { counter } = this.state;
     const newState = {
       counter: counter + 1,
@@ -40,10 +22,7 @@ export default class Clicker extends Component {
       <div>
         <ClickerScore score={counter} />
         <ClickerButton clicker={this.clicker} />
-        {/* <p>Clicks: {counter}</p>
-        <button onClick={this.clicker}>Click me!</button> */}
       </div>
     );
   }
 }
-

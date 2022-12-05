@@ -1,10 +1,10 @@
 import { useClickerRef } from 'hooks';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { MutableRefObject, useCallback, useEffect, useRef, useState } from 'react';
 
 export const RefsClicker = (props) => {
   const elemRef = useRef();
   const clicks = useClickerRef(elemRef);
-  const inputRef = useRef();
+  const inputRef: MutableRefObject<HTMLInputElement | undefined> = useRef();
   const prevClicks = useRef(clicks);
   const renders = useRef(1);
   const [value, setValue] = useState(0);
@@ -19,7 +19,6 @@ export const RefsClicker = (props) => {
 
   useEffect(() => {
     if (inputRef.current) {
-      // @ts-ignore
       inputRef.current.focus();
     }
   }, [inputRef]);

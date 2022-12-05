@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-// @ts-expect-error
 import { ThemeContext, ProductContext } from 'contexts';
 import CONSTANTS from 'constants';
 // @ts-expect-error

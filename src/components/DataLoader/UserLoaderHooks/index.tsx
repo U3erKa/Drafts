@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { useClicker, useData } from 'hooks';
 import * as API from 'api';
 
 export const DataLoader = (props) => {
-  const { data: users, isLoading, error } = useData(API.getOtherusers());
+  const { data: users, isLoading, error } = useData(API.getData);
 
   const userList = users.map(({ name, email, id }) => (
     <article key={id}>
@@ -26,8 +26,7 @@ export const DataLoader = (props) => {
 export const Clicker = (props) => {
   const [clicks] = useClicker();
 
-  // @ts-expect-error
-  return <div>{clicks}</div>;
+  return <div>{clicks as ReactNode}</div>;
 };
 
 export default DataLoader;

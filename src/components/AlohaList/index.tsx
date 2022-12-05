@@ -1,7 +1,7 @@
 // @ts-check
 // import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import Aloha from '../Aloha';
+import Aloha from './Aloha';
 
 export default class AlohaList extends Component {
   // static propTypes = { id: PropTypes.number.isRequired, name: PropTypes.string.isRequired };

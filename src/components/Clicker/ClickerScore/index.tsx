@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
-export default class ClickerScore extends Component<any> {
+export default class ClickerScore extends Component<{ score: number }> {
   static propTypes = { score: PropTypes.number };
 
   render() {

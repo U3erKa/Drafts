@@ -11,7 +11,10 @@ import HeaderUserCard from './HeaderUserCard';
 //   );
 // }
 
-class Header extends React.Component<any, any> {
+class Header extends React.Component<{ name: string; profilePicSrc: string }> {
+  static defaultProps: { profilePicSrc: string; alt: string };
+  static propTypes: { name: PropTypes.Validator<string>; profilePicSrc: PropTypes.Requireable<string> };
+
   render() {
     // const { name = './null.png', profilePicSrc = 'null image', ...userProps } = this.props;
     const { name, profilePicSrc, ...userProps } = this.props;
@@ -28,9 +31,8 @@ class Header extends React.Component<any, any> {
   }
 }
 
-// @ts-ignore
 Header.propTypes = {
-  name: PropTypes.string,
+  name: PropTypes.string.isRequired,
   profilePicSrc: PropTypes.string,
   // obj: PropTypes.shape({
   // obj: PropTypes.exact({
@@ -38,7 +40,6 @@ Header.propTypes = {
   //   age: PropTypes.number,
   // }),
 };
-// @ts-ignore
 Header.defaultProps = {
   profilePicSrc: './null.png',
   alt: 'null image',

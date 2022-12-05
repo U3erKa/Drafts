@@ -1,7 +1,19 @@
-import React, { Component } from 'react';
-import { getUsers } from '../../api';
+import React, { Component, Key } from 'react';
+import { getUsers } from 'api';
 
-class UsersPage extends Component<any, any> {
+class UsersPage extends Component<
+  Record<string, never>,
+  {
+    users: any[];
+    isLoading: boolean;
+    error: any;
+    page: number;
+    results: number;
+    seed: string;
+    nat: string;
+    inc: string[];
+  }
+> {
   constructor(props) {
     super(props);
     this.state = {
@@ -19,7 +31,7 @@ class UsersPage extends Component<any, any> {
   componentDidMount() {
     this.load();
   }
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(_prevProps, prevState) {
     const { page } = this.state;
     if (page !== prevState.page) {
       this.load();
@@ -34,14 +46,14 @@ class UsersPage extends Component<any, any> {
       const users = await getUsers({ page, results, seed, nat, inc });
       this.setState({ users });
     } catch (error) {
-      // @ts-expect-error
+      // @ts-expect-error error has message
       this.setState({ error: error.message });
     } finally {
       this.setState({ isLoading: false });
     }
   };
 
-  mapUsers = (user, id) => (
+  mapUsers = (user: any, id: Key) => (
     <div key={id}>
       <pre>{JSON.stringify(user, undefined, 4)}</pre>
     </div>

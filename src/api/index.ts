@@ -1,7 +1,7 @@
 import queryString from 'query-string';
 import { API_CONSTANTS } from '../configs';
 
-export async function getUsers(options) {
+export async function getUsers(options): Promise<any> {
   const defaultOptions = {
     page: API_CONSTANTS.PAGE,
     results: API_CONSTANTS.RESULTS,
@@ -17,7 +17,7 @@ export async function getUsers(options) {
   return result.results;
 }
 
-export async function getOtherusers() {
-  const res = await fetch('https://jsonplaceholder.typicode.com/users');
+export async function getData(data = 'users'): Promise<any> {
+  const res = await fetch(`https://jsonplaceholder.typicode.com/${data}`);
   return await res.json();
 }

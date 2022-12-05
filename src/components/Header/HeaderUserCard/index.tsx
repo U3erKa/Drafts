@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { MouseEventHandler } from 'react';
 import PropTypes from 'prop-types';
 
-const HeaderUserCard = (props) => {
+const HeaderUserCard = (props: {
+  user: { name: string; src: string };
+  logout: MouseEventHandler<HTMLButtonElement>;
+}) => {
   // const { user, logout, ...rest } = props;
   const { user, logout } = props;
 
@@ -15,6 +18,7 @@ const HeaderUserCard = (props) => {
     </div>
   );
 };
+
 HeaderUserCard.propTypes = {
   user: PropTypes.object.isRequired,
   logout: PropTypes.func.isRequired,

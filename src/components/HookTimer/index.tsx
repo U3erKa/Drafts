@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, ChangeEvent } from 'react';
 
 export default function HookTimer() {
   const [startingNumber, setStartingNumber] = useState(10);
@@ -6,10 +6,8 @@ export default function HookTimer() {
   const [isStarted, setIsStarted] = useState(false);
   const [intervalId, setIntervalId] = useState(null as any);
 
-  const handleChange = (e) => {
-    const {
-      target: { value },
-    } = e;
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
     setStartingNumber(+value);
     // setState({ ...state, startingNumber: value });
   };
@@ -48,12 +46,12 @@ export default function HookTimer() {
   }, [currentNumber]);
 
   return (
-    <>
+    <div>
       <p>Starting number: {startingNumber}</p>
       <p>Current number: {currentNumber}</p>
       <input type="text" value={startingNumber} onChange={handleChange} />
       <button onClick={start}>Start</button>
       <button onClick={stop}>Stop</button>
-    </>
+    </div>
   );
 }

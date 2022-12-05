@@ -1,9 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, SetStateAction, MutableRefObject } from 'react';
 
-/**
- * @param {function} getData
- */
-export function useData(getData) {
+export function useData(getData: (...args: any[]) => Promise<SetStateAction<never[]>>) {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -13,8 +10,7 @@ export function useData(getData) {
       setIsLoading(true);
       const data = await getData();
       setData(data);
-    } catch (error) {
-      // @ts-expect-error
+    } catch (error: any) {
       setError(error.message);
     } finally {
       setIsLoading(false);
@@ -23,6 +19,7 @@ export function useData(getData) {
 
   useEffect(() => {
     load();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return { data, isLoading, error, load };
@@ -45,8 +42,7 @@ export function useClicker() {
   return [click, handleClick];
 }
 
-
-export function useClickerRef(/** @type {React.MutableRefObject} */ elemRef) {
+export function useClickerRef(elemRef: MutableRefObject<HTMLElement | undefined>) {
   const [click, setClick] = useState(0);
 
   const handleClick = () => {

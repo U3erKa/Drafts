@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class Aloha extends Component<any, any> {
+export default class Aloha extends Component<
+  { name: string; makeFavourite: (id: number) => void; id: number },
+  { isGreeting: boolean; clicks: number }
+> {
   constructor(props) {
     super(props);
     this.state = {
@@ -29,6 +32,7 @@ class Aloha extends Component<any, any> {
       </div>
     );
   }
+
   static propTypes = {
     name: PropTypes.string.isRequired,
     func: PropTypes.func,
@@ -36,5 +40,3 @@ class Aloha extends Component<any, any> {
     id: PropTypes.number.isRequired,
   };
 }
-
-export default Aloha;

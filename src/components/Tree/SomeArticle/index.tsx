@@ -1,7 +1,7 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
-import { ThemeContext, THEMES } from 'App';
-import { ProductContext } from 'contexts';
+import { ProductContext, ThemeContext } from 'contexts';
+import { THEMES } from 'configs';
 
 // const SomeArticle = () => {
 //   const renderFunc = (contextValue) => (
@@ -14,10 +14,11 @@ import { ProductContext } from 'contexts';
 //   return <ThemeContext.Consumer>{renderFunc}</ThemeContext.Consumer>;
 // };
 
-const SomeArticle = (props) => {
-  // eslint-disable-next-line react/prop-types
+const SomeArticle = (props: { product: JSON; theme: THEMES }) => {
   const { product, theme } = props;
-  const onClick = () => {console.log(true);};
+  const onClick = () => {
+    console.log(true);
+  };
 
   const styles = {
     backgroundColor: theme === THEMES.LIGHT ? 'lightgray' : '#444444',
@@ -38,7 +39,7 @@ const SomeArticle = (props) => {
 // };
 
 function withProduct(Component) {
-  function NewComponent(props) {
+  function NewComponent(props: any) {
     return <ProductContext.Consumer>{(product) => <Component product={product} {...props} />}</ProductContext.Consumer>;
   }
 
@@ -46,7 +47,7 @@ function withProduct(Component) {
 }
 
 // eslint-disable-next-line react/display-name
-const withTheme = (Component) => (props) =>
+const withTheme = (Component) => (props: any) =>
   (
     <ThemeContext.Consumer>
       {([theme, onClick]) => <Component theme={theme} onClick={onClick} {...props} />}

@@ -1,5 +1,3 @@
-// @ts-check
-
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import HomePage from './pages/HomePage';
@@ -7,23 +5,18 @@ import UserPage from './pages/UserPage';
 import UsersPage from './pages/UsersPage';
 import PostsPage from './pages/PostsPage';
 import Tree from './components/Tree';
-import { DataLoader, Clicker } from './components/UserLoaderHooks';
+import { DataLoader, Clicker } from './components/DataLoader/UserLoaderHooks';
 import './App.css';
 import HookTimer from './components/HookTimer';
 import RefsClicker from 'components/RefsClicker';
 import LoginPage from 'pages/LoginPage';
 import CounterPage from 'pages/CounterPage';
 import SignUpForm from 'components/forms/SignUpForm';
+import { THEMES } from 'configs';
 // import DataLoader from './components/DataLoader';
 // import FlexContainer from './components/FlexContainer';
 // import Header from './components/Header';
 // import SignUpForm from './components/SignUpForm';
-
-export const THEMES = {
-  LIGHT: 'light',
-  DARK: 'dark',
-};
-export const ThemeContext = React.createContext(THEMES.LIGHT);
 
 class App extends React.Component {
   constructor(props) {

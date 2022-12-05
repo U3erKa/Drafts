@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
-// import { getUsers } from '../../api';
 
-class DataLoader extends Component<any, any> {
+class DataLoader extends Component<
+  { loadData: () => Promise<JSON[]>; render: (...args: unknown[]) => JSX.Element },
+  { data: unknown[]; isLoading: boolean; error: string | null; page: number }
+> {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,14 +13,11 @@ class DataLoader extends Component<any, any> {
       page: 1,
     };
   }
-  // static propTypes = {
-  //   loadData: PropTypes.func,
-  // };
 
   componentDidMount() {
     this.load();
   }
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(_prevProps, prevState: { page: number; }) {
     const { page } = this.state;
     if (page !== prevState.page) {
       this.load();
@@ -29,28 +27,25 @@ class DataLoader extends Component<any, any> {
   load = async () => {
     try {
       // const { page } = this.state;
-      // eslint-disable-next-line react/prop-types
       const { loadData } = this.props;
       this.setState({ isLoading: true });
 
       const data = await loadData();
       this.setState({ data });
-    } catch (error) {
-      // @ts-expect-error
+    } catch (error: any) {
       this.setState({ error: error.message });
     } finally {
       this.setState({ isLoading: false });
     }
   };
 
-  mapDataEntries = (data, id) => (
+  mapDataEntries = (data: JSON, id: number) => (
     <div key={id}>
       <pre>{JSON.stringify(data, undefined, 4)}</pre>
     </div>
   );
 
   render() {
-    // eslint-disable-next-line react/prop-types
     return this.props.render(this.state);
   }
 }

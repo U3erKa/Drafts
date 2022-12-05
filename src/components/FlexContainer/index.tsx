@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// @ts-expect-error
+// @ts-expect-error file exists
 import styles from './FlexContainer.module.scss';
 // import cx from 'classnames';
 

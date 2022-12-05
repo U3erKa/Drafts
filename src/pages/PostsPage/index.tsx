@@ -1,11 +1,6 @@
 import React from 'react';
-import { getUsers } from '../../api';
-import DataLoader from '../../components/DataLoader';
-
-async function getPosts() {
-  const data = await fetch('https://jsonplaceholder.typicode.com/posts');
-  return await data.json();
-}
+import { getData, getUsers } from 'api';
+import DataLoader from 'components/DataLoader';
 
 const PostsPage = () => {
   const renderPosts = (loaderState) => {
@@ -21,7 +16,7 @@ const PostsPage = () => {
   return (
     <main>
       <h1>Posts</h1>
-      <DataLoader loadData={getPosts} render={renderPosts} />
+      <DataLoader loadData={() => getData('posts')} render={renderPosts} />
       <DataLoader loadData={() => getUsers({ page: 5 })} render={renderPosts} />
     </main>
   );

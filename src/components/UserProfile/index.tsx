@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { UserContext } from '../../contexts';
+import { UserContext } from 'contexts';
 
 export default class UserProfile extends Component {
   render() {

@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
-// @ts-expect-error
+// @ts-expect-error file exists
 import styles from './Timer.module.scss';
 
-export default class Timer extends Component<any, any> {
-  state = {
-    number: 10,
-    isDouble: false,
-  };
+export default class Timer extends Component<Record<string, never>, { number: number; isDouble: boolean }> {
+  intervalId!: NodeJS.Timer;
+
+  constructor(props: Record<string, never>) {
+    super(props);
+    this.state = {
+      number: 10,
+      isDouble: false,
+    };
+  }
 
   decrementNumber = () => {
     const { number, isDouble } = this.state;
@@ -19,7 +24,6 @@ export default class Timer extends Component<any, any> {
 
   componentDidMount() {
     console.log('Did mount');
-    // @ts-expect-error
     this.intervalId = setInterval(this.decrementNumber, 1000);
   }
   componentDidUpdate() {
@@ -32,7 +36,6 @@ export default class Timer extends Component<any, any> {
   }
   componentWillUnmount() {
     console.log('Will unmount');
-    // @ts-expect-error
     clearInterval(this.intervalId);
   }
 
