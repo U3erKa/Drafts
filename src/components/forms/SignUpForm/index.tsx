@@ -1,9 +1,8 @@
-/* eslint-disable react/prop-types */
-
 import React from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
-// @ts-expect-error
+// @ts-expect-error file exists
 import styles from './SignUpForm.module.scss';
+import CustomInput from '../CustomInput';
 
 const initialState = {
   email: '',
@@ -22,14 +21,15 @@ export default function SignUpForm() {
   return (
     <Formik initialValues={initialState} onSubmit={handleSubmit} /* validationSchema={SIGNUP_SCHEMA} */>
       <Form className={styles.form}>
+        <CustomInput name='name' labelText='Enter name' />
         <Field className={styles.input} type="text" name="email" />
         {/* <ErrorMessage name="email" component="div" /> */}
         <Field className={styles.input} type="password" name="password" />
-        <Field as="select" name="accountLevel">
+        <CustomInput as="select" name="accountLevel">
           <option value="basic">Basic</option>
           <option value="pro">Pro</option>
           <option value="ultra">Ultra</option>
-        </Field>
+        </CustomInput>
         <label>
           <Field type="radio" name="gender" value="male" />
           Male

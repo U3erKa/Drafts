@@ -13,7 +13,7 @@ import HookTimer from './components/HookTimer';
 import RefsClicker from 'components/RefsClicker';
 import LoginPage from 'pages/LoginPage';
 import CounterPage from 'pages/CounterPage';
-import SignUpForm from 'components/SignUpForm';
+import SignUpForm from 'components/forms/SignUpForm';
 // import DataLoader from './components/DataLoader';
 // import FlexContainer from './components/FlexContainer';
 // import Header from './components/Header';
