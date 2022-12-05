@@ -15,7 +15,7 @@ import reportWebVitals from './reportWebVitals';
 // import Timer from './components/Timer';
 // import App from './components/App';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLDivElement);
 // const name = 'U3erKa';
 // const user = {
 //   name: 'user',
