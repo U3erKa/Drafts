@@ -1,3 +1,4 @@
+// @ts-check
 // CommonJS
 // const data = require('./MyMath.js'); // 'use strict' enables
 // const fs = require('node:fs/promises');
