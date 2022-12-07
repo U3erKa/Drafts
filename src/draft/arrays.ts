@@ -136,6 +136,7 @@ const newArr2 = otherArr.map(function (elem, i) {
   //   telephoneNumber: 911 + i,
   // }
   const newObject = structuredClone(elem);
+  // @ts-expect-error
   newObject.telephoneNumber = 911 + i;
   return newObject;
 });

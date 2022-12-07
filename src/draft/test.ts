@@ -17,7 +17,6 @@ function doFunction() {
   console.log('hello');
 }
 
-// @ts-expect-error
 el.addEventListener('onclick', doFunction);
 
 export {};

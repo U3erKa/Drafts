@@ -1,3 +1,4 @@
+// @ts-nocheck
 class MyArray {
   length: number;
   constructor() {

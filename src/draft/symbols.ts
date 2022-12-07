@@ -8,6 +8,7 @@ const obj = {
 };
 
 for (const key in obj) {
+  // @ts-ignore
   console.log(`${key}: ${obj[key]}`);
 }
 

@@ -56,9 +56,13 @@ const User = function (name: string, surname: string, age: number): void {
 
 // @ts-expect-error
 const user001 = new User('Vik', 'S', undefined);
+// @ts-expect-error
 const user002 = new User('Viktor', 'U3', 69420);
+// @ts-expect-error
 const user003 = new User('U3erKa', 'Stepanov', 20);
+// @ts-expect-error
 const user004 = new User('U3erKa', 'U3', 69420);
+// @ts-expect-error
 const user005 = new User('U3erKa', 'U3', 69420);
 console.log(user004 === user005); // false
 const user006 = user005;
@@ -83,6 +87,7 @@ const key = 'age';
 const user101 = {
   name: 'Vik',
   100: 'S.',
+  // @ts-expect-error
   [key]: undefined,
   'brush teeth': function () {
     console.log('Done!');
@@ -90,10 +95,10 @@ const user101 = {
 };
 
 console.log(user101['brush teeth']);
+// @ts-expect-error
 console.log(user101[10 * 10]);
 console.log(key);
 console.log(user101[key]);
-// @ts-expect-error
 user101[key] = -1;
 
 /*

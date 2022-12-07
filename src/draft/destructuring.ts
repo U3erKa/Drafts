@@ -99,12 +99,12 @@ const user3 = ['U4erKa', 'U4', 'maybe', true];
 // const users = [user1, user2, user3]
 const users = [user1, user2];
 
-function greet({ firstName, lastName, ...restOfUser }) {
+function greet({ firstName, lastName, ...restOfUser }: { firstName: string; lastName: string; restOfUser: any[] }) {
   // const {firstName, lastName} = user
   console.log(restOfUser);
   return `Hello, ${firstName} ${lastName}`;
 }
-function greet2([firstName, lastName, ...restOfUser]) {
+function greet2([firstName, lastName, ...restOfUser]: [string, string, any[]]) {
   // const {firstName, lastName} = user
   console.log(restOfUser);
   return `Hello, ${firstName} ${lastName}`;

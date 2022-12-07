@@ -114,11 +114,15 @@ const User = function (firstName = '', lastName = '', email: string, age = 0, is
 };
 
 const users = [
+  // @ts-expect-error
   new User('U1erKa', 'U1', 'email1@example.com', 18),
   // @ts-expect-error
   new User('U2erKa', 'U2', 'email2@example.com', 19, 'boo'),
+  // @ts-expect-error
   new User('U3erKa', 'U3', 'email3@example.com', 20, true),
+  // @ts-expect-error
   new User('U4erKa', 'U4', 'email4@example.com', 21),
+  // @ts-expect-error
   new User('U5erKa', 'U5', 'email5@example.com', 22),
 ];
 
@@ -230,7 +234,7 @@ function logRange(...numbers: number[]) {
   }
 }
 
-function toPower(number: number, exp: number) {
+function toPower(number: number, exp: number): number {
   if (exp === 1) {
     return number;
   } else if (exp === 0) {
@@ -292,7 +296,7 @@ function reduceTree(tree: { value: any; left: any; right: any }) {
   return result;
 }
 
-function factorial(number: unknown) {
+function factorial(number: number): number {
   if (typeof number !== 'number' || isNaN(number)) {
     throw new TypeError('parameter must be a number');
   } else if (number < 0 || !Number.isInteger(number)) {
@@ -307,6 +311,7 @@ function factorial(number: unknown) {
 
 try {
   // factorial(-10)
+  // @ts-expect-error
   factorial('100');
 } catch (error) {
   console.log(error);

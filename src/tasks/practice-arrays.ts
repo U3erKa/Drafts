@@ -68,18 +68,22 @@ const mapArr = arr12.map(function (currentElement, index) {
 
   switch (index) {
     case 0: {
+      // @ts-ignore
       newObject.telephoneNumber = 911;
       break;
     }
     case 1: {
+      // @ts-ignore
       newObject.telephoneNumber = 912;
       break;
     }
     case 2: {
+      // @ts-ignore
       newObject.telephoneNumber = 913;
       break;
     }
     case 3: {
+      // @ts-ignore
       newObject.telephoneNumber = 914;
       break;
     }

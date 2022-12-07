@@ -21,7 +21,9 @@ const deviceProto = {
 
 Phone.prototype = phoneProto;
 
+// @ts-expect-error
 const phone1 = new Phone('Pro', 'Android');
+// @ts-expect-error
 const phone2 = new Phone('Lite', 'Xiaomi');
 
 // const phone1 = {
