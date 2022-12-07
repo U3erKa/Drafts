@@ -10,7 +10,7 @@ export default function Home() {
           <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="/app">App</Link>
+          <Link to="/counter">Counter</Link>
         </li>
       </ul>
     </div>
