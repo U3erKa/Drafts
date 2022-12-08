@@ -1,11 +1,11 @@
-import { JSONPLACEHOLDER_RESOURCES } from 'api/fetch';
+import { JSONPLACEHOLDER_RESOURCES, PostsEntries } from 'api/fetch';
 import { useLoader } from 'hooks/dataLoader';
 import React from 'react';
 
-export default function Posts(props: {}) {
+export default function PostsList(props: {}) {
   const data = useLoader(JSONPLACEHOLDER_RESOURCES.POSTS)
 
-  const mapList = data.map(({ id, title, body }) => (
+  const mapList = data.map(({ id, title, body }: PostsEntries) => (
     <li key={id}>
       <h1>{title}</h1>
       <p>{body}</p>

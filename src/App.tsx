@@ -1,11 +1,13 @@
 import React from 'react';
-import Posts from 'components/Posts';
 import './App.css';
+import PostsList from 'components/PostsList';
+// import AlbumsList from 'components/AlbumsList';
 
 function App() {
   return (
     <div className="App">
-      <Posts />
+      <PostsList />
+      {/* <AlbumsList /> */}
     </div>
   );
 }
