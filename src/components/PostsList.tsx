@@ -1,6 +1,5 @@
 import { JSONPLACEHOLDER_RESOURCES, PostsEntries } from 'api/fetch';
 import { useLoader } from 'hooks/dataLoader';
-import React from 'react';
 
 export default function PostsList(props: {}) {
   const data = useLoader(JSONPLACEHOLDER_RESOURCES.POSTS)
