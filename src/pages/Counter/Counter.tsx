@@ -1,7 +1,7 @@
 import React, { ChangeEvent } from 'react';
 import { Dispatch } from '@reduxjs/toolkit';
 import { connect } from 'react-redux';
-import { decrement, increment, setStep } from 'store/slices/counter';
+import { decrement, increment, setStep } from 'app/slices/counter';
 
 function Counter(props: any) {
   const { count, step, increment, decrement, setStep } = props;
@@ -24,8 +24,8 @@ function Counter(props: any) {
   );
 }
 
-function mapStateToProps(state: any) {
-  return { count: state.count, step: state.step };
+function mapStateToProps({ counter }: any) {
+  return counter;
 }
 
 function mapDispatchToProps(dispatch: Dispatch) {
