@@ -1,25 +1,41 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
+import { Dispatch } from '@reduxjs/toolkit';
 import { connect } from 'react-redux';
-import { decrement, increment } from 'store/slices/counter';
+import { decrement, increment, setStep } from 'store/slices/counter';
 
 function Counter(props: any) {
-  console.log(props);
-  const { count, step, dispatch } = props;
+  const { count, step, increment, decrement, setStep } = props;
+
   return (
     <div>
       <p>Count: {count}</p>
-      <p>Step: {step}</p>
-      <button onClick={() => dispatch(increment())}>Increment</button>
-      <button onClick={() => dispatch(decrement())}>Decrement</button>
+      <label>
+        Step:
+        <input type="number" value={step} onChange={setStep} />
+        {/* <input
+          type="number"
+          value={step}
+          onChange={({ target: { value } }: ChangeEvent<HTMLInputElement>) => setStep(value)}
+        /> */}
+      </label>
+      <button onClick={increment}>Increment</button>
+      <button onClick={decrement}>Decrement</button>
     </div>
   );
 }
 
 function mapStateToProps(state: any) {
-  return state;
+  return { count: state.count, step: state.step };
 }
 
-// const withState = connect(mapStateToProps);
-// const CounterWithState = withState(Counter);
+function mapDispatchToProps(dispatch: Dispatch) {
+  return {
+    increment: () => dispatch(increment()),
+    decrement: () => dispatch(decrement()),
+    setStep: ({ target: { value } }: ChangeEvent<HTMLInputElement>) => dispatch(setStep(value)),
+  };
+}
 
-export default connect(mapStateToProps)(Counter);
+// const mapDispatchToProps = { increment, decrement, setStep };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Counter);
