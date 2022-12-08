@@ -1,11 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { LANGUAGES } from 'app/constants';
 
-const languages = [];
-
-for (const language of Object.values(LANGUAGES)) {
-  languages.push(language);
-}
+const languages: LANGUAGES[] = Object.values(LANGUAGES);
 const initialState = languages.includes(navigator.language as LANGUAGES) ? navigator.language : LANGUAGES.EN_US;
 
 const langSlice = createSlice({
@@ -21,5 +17,5 @@ const {
   actions: { setLang },
 } = langSlice;
 
-export { setLang };
+export { setLang, languages };
 export default reducer;
