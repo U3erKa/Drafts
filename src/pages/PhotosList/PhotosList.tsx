@@ -8,8 +8,9 @@ export default function PhotosList(props: {}) {
   const mapList = data.map(({ albumId, id, title, url, thumbnailUrl }: PhotosEntries) => (
     <li key={id}>
       <h1>{title}</h1>
-      <img src={url} alt={title}></img>
-      <img src={thumbnailUrl} alt={title}></img>
+      <a href={url}>
+        <img src={thumbnailUrl} alt={title}></img>
+      </a>
       <p>Id: {albumId}</p>
     </li>
   ));

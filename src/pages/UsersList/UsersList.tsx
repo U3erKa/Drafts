@@ -16,25 +16,33 @@ export default function TodoList(props: {}) {
       website,
       company: { name: companyName, catchPhrase, bs },
     }: UsersEntries) => (
-      <li key={id}>
-        <h1>{name}</h1>
-        <p>{username}</p>
-        <p>{email}</p>
-        <p>{phone}</p>
-        <p>{website}</p>
+      <li key={id} id={id as any}>
         <section>
-          <p>{street}</p>
-          <p>{suite}</p>
-          <p>{city}</p>
-          <p>{zipcode}</p>
+          <h1>Name: {name}</h1>
+          <p>Username: {username}</p>
+          <p>
+            Email: <a href={`mailto:${email}`}>{email}</a>
+          </p>
+          <p>
+            Phone: <a href={`phone:${phone}`}>{phone}</a>
+          </p>
+          <p>
+            Website: <a href={`http://${website}`}>{website}</a>
+          </p>
+        </section>
+        <section>
+          <p>City: {city}</p>
+          <p>Street: {street}</p>
+          <p>Suite: {suite}</p>
+          <p>Zipcode: {zipcode}</p>
           <p>
             Coords: {geo.lat} {geo.lng}
           </p>
         </section>
         <section>
-          <h2>{companyName}</h2>
-          <p>{catchPhrase}</p>
-          <p>{bs}</p>
+          <h2>Company: {companyName}</h2>
+          <p>Catchphrase: {catchPhrase}</p>
+          <p>BS: {bs}</p>
         </section>
       </li>
     )

@@ -5,9 +5,10 @@ import { Link } from 'react-router-dom';
 export default function PostsList(props: {}) {
   const data = useLoader(JSONPLACEHOLDER_RESOURCES.POSTS);
 
-  const mapList = data.map(({ id, title, body }: PostsEntries) => (
+  const mapList = data.map(({ userId, id, title, body }: PostsEntries) => (
     <li key={id}>
       <h1>{title}</h1>
+      <p>User ID: {userId}</p>
       <p>{body}</p>
     </li>
   ));

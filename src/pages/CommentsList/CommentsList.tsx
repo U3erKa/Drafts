@@ -7,10 +7,10 @@ export default function CommentsList(props: {}) {
 
   const mapList = data.map(({ postId, id, name, email, body }: CommentsEntries) => (
     <li key={id}>
-      <h1>{name}</h1>
-      <h2>{email}</h2>
+      <h2>Name: {name}</h2>
+      <h3>Email: {email}</h3>
       <p>{body}</p>
-      <p>ID: {postId}</p>
+      <p>Post ID: {postId}</p>
     </li>
   ));
   return (
