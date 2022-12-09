@@ -1,0 +1,22 @@
+$colorBlue: #2244aa;
+
+.commentsList {
+  display: flex;
+  flex-direction: column;
+  padding-inline-start: 20px;
+
+  &Item::marker {
+    content: '';
+  }
+  &Name {
+    margin: 10px 0;
+    font-size: 2rem;
+  }
+  &Email {
+    color: $colorBlue;
+    text-decoration: none;
+  }
+  &Body {
+    font-size: 1rem;
+  }
+}
