@@ -3,3 +3,8 @@ export enum LANGUAGES {
   UA = 'uk',
   PL = 'pl',
 }
+
+export enum THEMES {
+  LIGHT = 'light',
+  DARK = 'dark',
+}

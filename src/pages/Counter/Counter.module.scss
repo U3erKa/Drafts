@@ -1,0 +1,9 @@
+@use 'app/styles/templates';
+
+.darkTheme {
+  @extend %darkTheme;
+}
+
+.lightTheme {
+  @extend %lightTheme;
+}

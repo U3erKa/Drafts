@@ -1,10 +1,13 @@
 import { ChangeEvent } from 'react';
 import { Dispatch } from '@reduxjs/toolkit';
 import { connect } from 'react-redux';
-import { decrement, increment, setStep } from 'app/slices/counter';
-import { setLang, languages } from 'app/slices/lang';
-import { LANGUAGES } from 'app/constants';
+import cx from 'classnames';
+import { LANGUAGES, THEMES } from 'app/constants';
 import { RootState } from 'app/store';
+import { setLang, languages } from 'app/slices/lang';
+import { decrement, increment, setStep } from 'app/slices/counter';
+import { setTheme } from 'app/slices/theme';
+import styles from './Counter.module.scss';
 
 const translations = new Map([
   [LANGUAGES.EN_US, { count: 'Count', step: 'Step', increment: 'Increment', decrement: 'Decrement' }],
@@ -23,36 +26,36 @@ const translations = new Map([
 // }
 
 function Counter(props: any) {
-  const { count, step, lang, increment, decrement, setStep, setLang } = props;
+  const { count, step, lang, theme, increment, decrement, setStep, setLang, setTheme } = props;
 
   const tr = translations.get(lang);
   const selectLang = languages.map((lang) => <option key={lang} value={lang}>{`${lang}`}</option>);
 
   return (
-    <div>
+    <div
+      className={cx({ [styles.lightTheme]: theme === THEMES.LIGHT, [styles.darkTheme]: theme === THEMES.DARK })}
+    >
       <p>
         {tr?.count}: {count}
       </p>
       <label>
         {tr?.step}:
         <input type="number" value={step} onChange={setStep} />
-        {/* <input
-          type="number"
-          value={step}
-          onChange={({ target: { value } }: ChangeEvent<HTMLInputElement>) => setStep(value)}
-        /> */}
       </label>
       <button onClick={increment}>{tr?.increment}</button>
       <button onClick={decrement}>{tr?.decrement}</button>
       <select value={lang} onChange={setLang}>
         {selectLang}
       </select>
+      <button type="button" name="theme" onClick={setTheme}>
+        Change theme
+      </button>
     </div>
   );
 }
 
-function mapStateToProps({ counter, lang }: RootState) {
-  return { ...counter, lang };
+function mapStateToProps({ counter, lang, theme }: RootState) {
+  return { ...counter, lang, theme };
 }
 
 function mapDispatchToProps(dispatch: Dispatch) {
@@ -61,6 +64,7 @@ function mapDispatchToProps(dispatch: Dispatch) {
     decrement: () => dispatch(decrement()),
     setStep: ({ target: { value } }: ChangeEvent<HTMLInputElement>) => dispatch(setStep(value)),
     setLang: ({ target: { value } }: { target: { value: LANGUAGES } }) => dispatch(setLang(value)),
+    setTheme: () => dispatch(setTheme()),
   };
 }
 
