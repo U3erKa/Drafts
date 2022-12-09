@@ -1,5 +1,6 @@
 import { JSONPLACEHOLDER_RESOURCES, UsersEntries } from 'api/fetch';
-import { useLoader } from 'hooks/dataLoader';
+import { useLoader } from 'hooks/useLoader';
+import { Link } from 'react-router-dom';
 
 export default function TodoList(props: {}) {
   const data = useLoader(JSONPLACEHOLDER_RESOURCES.USERS);
@@ -26,7 +27,9 @@ export default function TodoList(props: {}) {
           <p>{suite}</p>
           <p>{city}</p>
           <p>{zipcode}</p>
-          <p>Coords: {geo.lat} {geo.lng}</p>
+          <p>
+            Coords: {geo.lat} {geo.lng}
+          </p>
         </section>
         <section>
           <h2>{companyName}</h2>
@@ -36,5 +39,10 @@ export default function TodoList(props: {}) {
       </li>
     )
   );
-  return <ul>{mapList}</ul>;
+  return (
+    <main>
+      <Link to="/">Home</Link>
+      <ul>{mapList}</ul>;
+    </main>
+  );
 }

@@ -1,22 +1,19 @@
 import React from 'react';
 import './App.css';
-import PostsList from 'components/PostsList';
-import CommentsList from 'components/CommentsList';
-import AlbumsList from 'components/AlbumsList';
-import PhotosList from 'components/PhotosList';
-import TodoList from 'components/TodoList';
-import UsersList from 'components/UsersList';
+import { Routes, Route } from 'react-router-dom';
+import { AlbumsList, CommentsList, Home, PhotosList, PostsList, TodoList, UsersList } from 'pages';
 
 function App() {
   return (
-    <div className="App">
-      {/* <PostsList /> */}
-      {/* <CommentsList /> */}
-      {/* <AlbumsList /> */}
-      {/* <PhotosList /> */}
-      {/* <TodoList /> */}
-      <UsersList />
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/posts" element={<PostsList />} />
+      <Route path="/comments" element={<CommentsList />} />
+      <Route path="/albums" element={<AlbumsList />} />
+      <Route path="/photos" element={<PhotosList />} />
+      <Route path="/todo" element={<TodoList />} />
+      <Route path="/users" element={<UsersList />} />
+    </Routes>
   );
 }
 

@@ -1,5 +1,6 @@
 import { JSONPLACEHOLDER_RESOURCES, CommentsEntries } from 'api/fetch';
-import { useLoader } from 'hooks/dataLoader';
+import { useLoader } from 'hooks/useLoader';
+import { Link } from 'react-router-dom';
 
 export default function CommentsList(props: {}) {
   const data = useLoader(JSONPLACEHOLDER_RESOURCES.COMMENTS);
@@ -12,5 +13,10 @@ export default function CommentsList(props: {}) {
       <p>ID: {postId}</p>
     </li>
   ));
-  return <ul>{mapList}</ul>;
+  return (
+    <main>
+      <Link to="/">Home</Link>
+      <ul>{mapList}</ul>
+    </main>
+  );
 }

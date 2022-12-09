@@ -1,5 +1,6 @@
 import { JSONPLACEHOLDER_RESOURCES, PhotosEntries } from 'api/fetch';
-import { useLoader } from 'hooks/dataLoader';
+import { useLoader } from 'hooks/useLoader';
+import { Link } from 'react-router-dom';
 
 export default function PhotosList(props: {}) {
   const data = useLoader(JSONPLACEHOLDER_RESOURCES.PHOTOS);
@@ -12,5 +13,10 @@ export default function PhotosList(props: {}) {
       <p>Id: {albumId}</p>
     </li>
   ));
-  return <ul>{mapList}</ul>;
+  return (
+    <main>
+      <Link to="/">Home</Link>
+      <ul>{mapList}</ul>
+    </main>
+  );
 }

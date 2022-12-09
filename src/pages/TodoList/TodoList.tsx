@@ -1,5 +1,6 @@
 import { JSONPLACEHOLDER_RESOURCES, TodoEntries } from 'api/fetch';
-import { useLoader } from 'hooks/dataLoader';
+import { useLoader } from 'hooks/useLoader';
+import { Link } from 'react-router-dom';
 
 export default function TodoList(props: {}) {
   const data = useLoader(JSONPLACEHOLDER_RESOURCES.TODOS);
@@ -11,5 +12,10 @@ export default function TodoList(props: {}) {
       <p>State: {completed ? '' : 'not '}completed</p>
     </li>
   ));
-  return <ul>{mapList}</ul>;
+  return (
+    <main>
+      <Link to="/">Home</Link>
+      <ul>{mapList}</ul>
+    </main>
+  );
 }
