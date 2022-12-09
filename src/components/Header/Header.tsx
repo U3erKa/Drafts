@@ -1,14 +1,16 @@
 import { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { bindActionCreators } from '@reduxjs/toolkit';
 import cx from 'classnames';
 import styles from './Header.module.scss';
 import { THEMES } from 'app/constants';
 import { RootState } from 'app/store';
 import { setTheme } from 'app/slices/theme';
 
-const Header: FC = function (props) {
+const Header: FC = function () {
   const theme = useSelector<RootState, THEMES>(({ theme }: RootState) => theme);
   const dispatch = useDispatch();
+  const actionCreators = bindActionCreators({ setTheme }, dispatch);
 
   const className = cx(styles.header, {
     [styles.darkTheme]: theme === THEMES.DARK,
@@ -26,7 +28,7 @@ const Header: FC = function (props) {
         </ul>
       </nav>
       <div>
-        <button onClick={() => dispatch(setTheme())}>Switch Theme</button>
+        <button onClick={() => actionCreators.setTheme()}>Switch Theme</button>
       </div>
     </header>
   );
