@@ -1,15 +1,26 @@
-import React, { ChangeEvent } from 'react';
+import { ChangeEvent } from 'react';
 import { Dispatch } from '@reduxjs/toolkit';
 import { connect } from 'react-redux';
 import { decrement, increment, setStep } from 'app/slices/counter';
 import { setLang, languages } from 'app/slices/lang';
 import { LANGUAGES } from 'app/constants';
+import { RootState } from 'app/store';
 
 const translations = new Map([
   [LANGUAGES.EN_US, { count: 'Count', step: 'Step', increment: 'Increment', decrement: 'Decrement' }],
   [LANGUAGES.UA, { count: 'Рахунок', step: 'Крок', increment: 'Збільшити', decrement: 'Зменшити' }],
   [LANGUAGES.PL, { count: 'PL_Count', step: 'PL_Step', increment: 'PL_Increment', decrement: 'PL_Decrement' }],
 ]);
+
+// interface CounterProps {
+//   count: number;
+//   step: number;
+//   lang: LANGUAGES;
+//   increment: MouseEventHandler<HTMLButtonElement>;
+//   decrement: MouseEventHandler<HTMLButtonElement>;
+//   setStep: ChangeEventHandler<HTMLInputElement>;
+//   setLang: ChangeEventHandler<HTMLSelectElement>;
+// }
 
 function Counter(props: any) {
   const { count, step, lang, increment, decrement, setStep, setLang } = props;
@@ -40,7 +51,7 @@ function Counter(props: any) {
   );
 }
 
-function mapStateToProps({ counter, lang }: any) {
+function mapStateToProps({ counter, lang }: RootState) {
   return { ...counter, lang };
 }
 
