@@ -26,7 +26,7 @@ const translations = new Map([
 // }
 
 function Counter(props: any) {
-  const { count, step, lang, theme, increment, decrement, setStep, setLang, setTheme } = props;
+  const { count, step, lang, theme, increment, decrement, setStep, setLang } = props;
 
   const tr = translations.get(lang);
   const selectLang = languages.map((lang) => <option key={lang} value={lang}>{`${lang}`}</option>);
@@ -47,9 +47,6 @@ function Counter(props: any) {
       <select value={lang} onChange={setLang}>
         {selectLang}
       </select>
-      <button type="button" name="theme" onClick={setTheme}>
-        Change theme
-      </button>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 {
   "name": "my-app-redux",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "private": true,
   "packageManager": "pnpm@7.18.1",
   "dependencies": {
