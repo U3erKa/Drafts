@@ -15,7 +15,7 @@ export default function UserList() {
   return (
     <section>
       {isLoading && <div>Loading...</div>}
-      {error && <div>Error!!!</div>}
+      {error}
       {users.length > 0 && users.map((user: UsersEntries) => <article key={user.id}>{JSON.stringify(user)}</article>)}
     </section>
   );
