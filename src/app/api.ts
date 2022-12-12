@@ -1,7 +1,7 @@
+import axios from 'axios';
 import { JSONPLACEHOLDER_RESOURCES } from './constants';
 
 export async function getUsers(resource: JSONPLACEHOLDER_RESOURCES) {
-  const res = await fetch(`https://jsonplaceholder.typicode.com/${resource}`);
-  const data = await res.json();
-  return data;
+  const { data: users } = await axios.get(`https://jsonplaceholder.typicode.com/${resource}`);
+  return users;
 }
