@@ -1,26 +1,21 @@
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import * as API from 'app/api';
 import { JSONPLACEHOLDER_RESOURCES } from 'app/constants';
-import { UsersEntries } from 'types/api';
+import { UserEntry } from 'types/api/getFromJsonPlaceholder';
+import { UserSliceState } from 'types/slices';
 
 const SLICE_NAME = 'users';
 
 const getUsers = createAsyncThunk(`${SLICE_NAME}/getUsers`, async (arg, thunkAPI) => {
   try {
-    const { data: users } = await API.getUsers(JSONPLACEHOLDER_RESOURCES.USERS);
-    return users;
+    const { data: users } = await API.getFromJsonPlaceholder(JSONPLACEHOLDER_RESOURCES.USERS);
+    return users as UserEntry[];
   } catch (error: any) {
-    return thunkAPI.rejectWithValue(error.message);
+    return thunkAPI.rejectWithValue(error.message as string);
   }
 });
 
-type SliceState = {
-  users: UsersEntries[];
-  isLoading: boolean;
-  error: any;
-};
-
-const initialState: SliceState = {
+const initialState: UserSliceState = {
   users: [],
   isLoading: false,
   error: null,
@@ -31,7 +26,7 @@ const usersSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(getUsers.pending, (state, action) => {
+    builder.addCase(getUsers.pending, (state) => {
       state.isLoading = true;
     });
     builder.addCase(getUsers.fulfilled, (state, action) => {

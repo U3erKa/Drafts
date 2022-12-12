@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 export default function Home() {
@@ -11,6 +10,9 @@ export default function Home() {
         </li>
         <li>
           <Link to="/counter">Counter</Link>
+        </li>
+        <li>
+          <Link to="/users">Users</Link>
         </li>
       </ul>
     </div>

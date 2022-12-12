@@ -4,7 +4,6 @@ import langReducer from './slices/lang';
 import themeReducer from './slices/theme';
 import usersReducer from './slices/users';
 
-
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
