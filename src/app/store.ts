@@ -2,6 +2,7 @@ import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import counterReducer from './slices/counter';
 import langReducer from './slices/lang';
 import themeReducer from './slices/theme';
+import usersReducer from './slices/users';
 
 
 export const store = configureStore({
@@ -9,6 +10,7 @@ export const store = configureStore({
     counter: counterReducer,
     lang: langReducer,
     theme: themeReducer,
+    users: usersReducer,
   },
 });
 export default store;

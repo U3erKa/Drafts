@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { bindActionCreators, Dispatch } from '@reduxjs/toolkit';
+import { bindActionCreators } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import cx from 'classnames';
 import { LANGUAGES, THEMES } from 'app/constants';
@@ -13,16 +13,6 @@ const translations = new Map([
   [LANGUAGES.UA, { count: 'Рахунок', step: 'Крок', increment: 'Збільшити', decrement: 'Зменшити' }],
   [LANGUAGES.PL, { count: 'PL_Count', step: 'PL_Step', increment: 'PL_Increment', decrement: 'PL_Decrement' }],
 ]);
-
-// interface CounterProps {
-//   count: number;
-//   step: number;
-//   lang: LANGUAGES;
-//   increment: MouseEventHandler<HTMLButtonElement>;
-//   decrement: MouseEventHandler<HTMLButtonElement>;
-//   setStep: ChangeEventHandler<HTMLInputElement>;
-//   setLang: ChangeEventHandler<HTMLSelectElement>;
-// }
 
 const Counter: FC = function () {
   const lang = useSelector<RootState, LANGUAGES>((state) => state.lang as LANGUAGES);

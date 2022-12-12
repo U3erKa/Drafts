@@ -1,7 +1,6 @@
-import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { Counter, Home, NotFound } from 'pages';
-import Header from 'components/Header/Header';
+import { Users, Counter, Home, NotFound } from 'pages';
+import { Header } from 'components';
 
 export default function App() {
   return (
@@ -9,6 +8,7 @@ export default function App() {
     <Header />
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/users" element={<Users />} />
       <Route path="/counter" element={<Counter />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
