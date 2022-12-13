@@ -8,7 +8,9 @@ const SLICE_NAME = 'users';
 
 const getUsers = createAsyncThunk(`${SLICE_NAME}/getUsers`, async (arg, thunkAPI) => {
   try {
-    const { data: users } = await API.getFromJsonPlaceholder(JSONPLACEHOLDER_RESOURCES.USERS);
+    const {
+      data: { data: users },
+    } = await API.getUsers(arg);
     return users as UserEntry[];
   } catch (error: any) {
     return thunkAPI.rejectWithValue(error.message as string);
