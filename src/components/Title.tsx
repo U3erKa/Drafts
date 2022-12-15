@@ -5,7 +5,7 @@ export type TitleProps = {
   children?: any;
 };
 
-export const Title: FC<TitleProps> = ({ title, children }): JSX.Element => {
+const Title: FC<TitleProps> = ({ title, children }): JSX.Element => {
   return (
     <div>
       {title}
@@ -13,3 +13,5 @@ export const Title: FC<TitleProps> = ({ title, children }): JSX.Element => {
     </div>
   );
 };
+
+export default Title;
