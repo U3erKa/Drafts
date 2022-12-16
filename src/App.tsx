@@ -5,6 +5,7 @@ import Counter from './components/Counter';
 import Title from './components/Title';
 import Portal from './components/Portal';
 import ContextClass from './components/ContextClass';
+import { ThemeContext, Hooks } from './components/Hooks';
 import './App.css';
 
 const App: FC = function (): JSX.Element {
@@ -16,6 +17,14 @@ const App: FC = function (): JSX.Element {
         <Form2 />
       </Portal>
       <ContextClass />
+      <ThemeContext.Provider
+        value={{
+          backgroundColor: 'black',
+          color: 'white',
+        }}
+      >
+        <Hooks />
+      </ThemeContext.Provider>
     </Title>
   );
 };
