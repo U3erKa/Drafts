@@ -1,0 +1,27 @@
+{
+  "name": "node-js",
+  "version": "1.0.0",
+  "description": "My first package",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/U3erKa/Node.git"
+  },
+  "keywords": [
+    "node"
+  ],
+  "author": "U2erKa",
+  "license": "ISC",
+  "bugs": {
+    "url": "git+https://github.com/U3erKa/Node/issues"
+  },
+  "homepage": "git+https://github.com/U3erKa/Node#readme",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}
+
