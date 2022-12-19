@@ -1,0 +1,76 @@
+:root {
+  --cardWidth: 280px;
+}
+
+.workersSection {
+  padding: 20px;
+}
+
+.workersList {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.workerItem {
+  /* ? */
+}
+
+.workerCard {
+  max-width: var(--cardWidth);
+}
+
+.imgWrapper {
+  position: relative;
+  max-width: inherit;
+  width: 100%;
+  height: var(--cardWidth);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.initials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  inset: 0;
+  font-size: 3rem;
+  font-weight: bold;
+  background-color: black;
+  color: white;
+}
+
+.cardImg {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.cardInfo {
+  margin-top: 20px;
+}
+
+.cardName {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.cardDescription {
+  margin-top: 20px;
+  color: rgb(122, 122, 122);
+  line-height: 1.4;
+}
+
+.linksContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.linkItem {
+  display: inline-block;
+}
