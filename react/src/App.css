@@ -1,0 +1,13 @@
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+
+}
+
+.btn {
+  padding: 20px 30px;
+  margin-bottom: 30px;
+  border: 5px dotted black;
+  background-color: limegreen;
+  border-radius: 10px;
+}
