@@ -1,7 +1,10 @@
-// const http = require('http');
-import http from 'http';
+import express from 'express';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 const PORT = process.env.PORT ?? 3000;
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(path.join(__filename, '..'));
 
 const DB = [
   {
@@ -14,59 +17,40 @@ const DB = [
   },
 ];
 
-const server = http.createServer(async (req, res) => {
-  const { method, url } = req;
-  switch (method) {
-    case 'GET': {
-      switch (url) {
-        case '/': {
-          res.end('<div>Hello world!</div>');
-          break;
-        }
-        case '/about': {
-          res.end('<div>about me</div>');
-          break;
-        }
-        default: {
-          res.end('404');
-          break;
-        }
-      }
-      res.writeHead(200, {});
-      break;
-    }
-    case 'POST': {
-      switch (url) {
-        case '/login': {
-          let json = '';
-          req.on('data', (chunk: any) => {
-            json += chunk;
-          });
-          req.on('end', () => {
-            const userObj = JSON.parse(json);
-            const foundUser = DB.find((user) => user.login === userObj.login);
+const app = express();
+const bodyParser = express.json();
 
-            if (foundUser?.password === userObj.password) {
-              res.end('<div>Logged in!</div>');
-            } else {
-              res.statusCode = 401;
-              res.end('<div>Invalid data</div>');
-            }
-          });
-          break;
-        }
-        default: {
-          res.writeHead(404);
-          res.end('User not found');
-          break;
-        }
-      }
-      res.writeHead(200, {});
-      break;
-    }
-  }
+app.get('/', (req, res) => {
+  res.status(200).send('Hello world');
 });
 
-server.listen(PORT, () => {
+app.get('/users', (req, res) => {
+  res.status(200).send(DB);
+});
+
+app.post(
+  '/login',
+  bodyParser,
+  (req, res) => {
+    const userObj = req.body;
+    const foundUser = DB.find((user) => user.login === userObj.login);
+
+    if (foundUser?.password === userObj.password) {
+      res.status(200).send('<div>Logged in!</div>');
+    } else {
+      res.status(400).send('<div>Invalid data</div>');
+    }
+  }
+);
+
+app.get('/test*', (req, res) => {
+  res.status(200).send(`${req.method} ${req.path}`);
+});
+
+app.get('*', (req, res) => {
+  res.status(200).send('404 not found');
+});
+
+app.listen(PORT, () => {
   console.log(`http://localhost:${PORT}`);
 });
