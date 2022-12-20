@@ -1,53 +1,65 @@
 import express from 'express';
 import path from 'path';
+import * as yup from 'yup';
 import { fileURLToPath } from 'url';
+
+const app = express();
+const bodyParser = express.json();
 
 const PORT = process.env.PORT ?? 3000;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(path.join(__filename, '..'));
 
-const DB = [
-  {
-    login: 'user',
-    password: 'U3erovich',
-  },
-  {
-    login: 'user1',
-    password: 'U3erovich2',
-  },
+const USER_SCHEMA = yup.object({
+  login: yup.string().required(),
+  password: yup.string().required(),
+});
+type User = yup.InferType<typeof USER_SCHEMA>;
+
+const DB: User[] = [
+  // {
+  //   login: 'user',
+  //   password: 'U3erovich',
+  // },
+  // {
+  //   login: 'user1',
+  //   password: 'U3erovich2',
+  // },
 ];
 
-const app = express();
-const bodyParser = express.json();
-
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
   res.status(200).send('Hello world');
 });
 
-app.get('/users', (req, res) => {
+app.get('/users', async (req, res) => {
   res.status(200).send(DB);
 });
 
 app.post(
   '/login',
   bodyParser,
-  (req, res) => {
-    const userObj = req.body;
-    const foundUser = DB.find((user) => user.login === userObj.login);
-
-    if (foundUser?.password === userObj.password) {
-      res.status(200).send('<div>Logged in!</div>');
-    } else {
-      res.status(400).send('<div>Invalid data</div>');
+  async (req, res, next) => {
+    try {
+      await USER_SCHEMA.validate(req.body);
+      next();
+    } catch (error: any) {
+      console.log(req.body);
+      res.status(400).send(error.message);
     }
+  },
+  async (req, res) => {
+    const userObj = { ...req.body, id: Date.now() };
+
+    DB.push(userObj);
+    res.send(userObj);
   }
 );
 
-app.get('/test*', (req, res) => {
+app.get('/test*', async (req, res) => {
   res.status(200).send(`${req.method} ${req.path}`);
 });
 
-app.get('*', (req, res) => {
+app.get('*', async (req, res) => {
   res.status(200).send('404 not found');
 });
 
