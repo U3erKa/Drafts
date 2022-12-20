@@ -1,5 +1,5 @@
-// const fs = require('fs/promises');
-const http = require('http');
+// const http = require('http');
+import http from 'http';
 
 const PORT = process.env.PORT ?? 3000;
 
@@ -14,7 +14,7 @@ const DB = [
   },
 ];
 
-const server = http.createServer(async (req: any, res: any) => {
+const server = http.createServer(async (req, res) => {
   const { method, url } = req;
   switch (method) {
     case 'GET': {
