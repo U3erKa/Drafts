@@ -1,29 +1,14 @@
 import { Request, Response } from 'express';
-import { userInDB } from '../DB';
-// import { DB } from '../DB.js';
-
-let DB: userInDB[] = [
-  {
-    id: 1,
-    login: 'user',
-    password: 'U3erovich',
-  },
-  {
-    id: 2,
-    login: 'user1',
-    password: 'U3erovich2',
-  },
-];
+import User from '../model/User.js';
 
 export const addUserToDB = async (req: Request, res: Response) => {
-  const userObj = { ...req.body, id: Date.now() };
-
-  DB.push(userObj);
+  const userObj = await User.create(req.body);
   res.send(userObj);
 };
 
 export const getUsers = async (req: Request, res: Response) => {
-  res.status(200).send(DB);
+  const users = await User.getAll();
+  res.status(200).send(users);
 };
 
 export const getUser = async (req: Request, res: Response) => {
@@ -32,7 +17,7 @@ export const getUser = async (req: Request, res: Response) => {
     // query: {},
   } = req;
 
-  const foundUser = DB.find(({ id }) => id === +userId);
+  const foundUser = await User.findOne(userId);
   if (!foundUser) {
     res.status(404).send('User not found');
   } else {
@@ -46,21 +31,11 @@ export const updateUser = async (req: Request, res: Response) => {
     params: { userId },
   } = req;
 
-  const foundUser = DB.find(({ id }) => id === +userId);
-  if (!foundUser) {
-    res.status(404).send('User not found');
-  } else {
-    let updatedUser;
-
-    DB = DB.map((user) => {
-      if (user.id === +userId) {
-        updatedUser = { ...user, ...body };
-        return updatedUser;
-      } else {
-        return user;
-      }
-    });
+  try {
+    const updatedUser = await User.updateOne(userId, body);
     res.status(200).send(updatedUser);
+  } catch (error: any) {
+    res.status(404).send(error.message);
   }
 };
 
@@ -69,11 +44,10 @@ export const deleteUser = async (req: Request, res: Response) => {
     params: { userId },
   } = req;
 
-  const foundUser = DB.find(({ id }) => id === +userId);
-  if (foundUser) {
-    DB = DB.filter(({ id }) => id !== +userId);
-    res.status(200).send(userId);
-  } else {
-    res.status(404).send('User not found');
+  try {
+    const deletedUser = await User.deleteOne(userId);
+    res.status(200).send(deletedUser);
+  } catch (error: any) {
+    res.status(404).send(error.message);
   }
 };

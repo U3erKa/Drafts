@@ -1,4 +1,4 @@
-import express, { Request, Response } from 'express';
+import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { bodyParser, validateUser } from './middleware/userMW.js';
@@ -18,7 +18,7 @@ app.get('/users', getUsers);
 
 app.get('/users/:userId', getUser);
 app.post('/users', bodyParser, validateUser, addUserToDB);
-app.put("/users/:userId", bodyParser, validateUser, updateUser)
+app.put('/users/:userId', bodyParser, validateUser, updateUser);
 app.delete('/users/:userId', deleteUser);
 
 app.get('/test*', async (req, res) => {
