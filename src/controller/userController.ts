@@ -11,3 +11,17 @@ export const addUserToDB = async (req: Request, res: Response) => {
 export const getUsers = async (req: Request, res: Response) => {
   res.status(200).send(DB);
 };
+
+export const getUser = async (req: Request, res: Response) => {
+  const {
+    params: { userId },
+    // query: {},
+  } = req;
+
+  const foundUser = DB.find(({ id }) => id === +userId);
+  if (!foundUser) {
+    res.status(404).send('User not found');
+  } else {
+    res.status(200).send(foundUser);
+  }
+};

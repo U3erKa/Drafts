@@ -1,6 +1,10 @@
 import { User } from './utils/validationSchema.js';
 
-export const DB: User[] = [
+export interface userInDB extends User {
+  id: number;
+};
+
+export const DB: userInDB[] = [
   // {
   //   login: 'user',
   //   password: 'U3erovich',
