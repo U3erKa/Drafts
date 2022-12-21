@@ -2,6 +2,7 @@ import express from 'express';
 import path from 'path';
 import * as yup from 'yup';
 import { fileURLToPath } from 'url';
+import { num } from './test/test.js';
 
 const app = express();
 const bodyParser = express.json();
@@ -9,6 +10,8 @@ const bodyParser = express.json();
 const PORT = process.env.PORT ?? 3000;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(path.join(__filename, '..'));
+
+console.log(num);
 
 const USER_SCHEMA = yup.object({
   login: yup.string().required(),
