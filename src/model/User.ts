@@ -35,18 +35,20 @@ export default class User {
   static async updateOne(userId: string | number, body: UserInDB) {
     const foundUser = await User.findOne(userId);
     if (foundUser) {
-      let updatedUser!: UserInDB;
+      // let updatedUser!: UserInDB;
 
-      this.DB = this.DB.map((user) => {
-        if (user.id === +userId) {
-          updatedUser = { ...user, ...body };
-          return updatedUser;
-        } else {
-          return user;
-        }
-      });
+      // this.DB = this.DB.map((user) => {
+      //   if (user.id === +userId) {
+      //     updatedUser = { ...user, ...body };
+      //     return updatedUser;
+      //   } else {
+      //     return user;
+      //   }
+      // });
 
-      return updatedUser;
+      // foundUser = {...foundUser, ...body};
+      Object.assign(foundUser, body);
+      return foundUser;
     } else {
       throw new Error('User not found');
     }
