@@ -8,7 +8,6 @@ export const validateUser = async (req: Request, res: Response, next: NextFuncti
     await USER_SCHEMA.validate(req.body);
     next();
   } catch (error: any) {
-    console.log(req.body);
-    res.status(400).send(error.message);
+    next(error);
   }
 };
