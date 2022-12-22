@@ -8,14 +8,13 @@ const app = express();
 
 const PORT = process.env.PORT ?? 3000;
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(path.join(__filename, '..'));
+export const __dirname = path.dirname(path.join(__filename, '..'));
 
 app.get('/', async (req, res) => {
   res.status(200).send('Hello world');
 });
 
 app.get('/users', getUsers);
-
 app.get('/users/:userId', getUser);
 app.post('/users', bodyParser, validateUser, addUserToDB);
 app.put('/users/:userId', bodyParser, validateUser, updateUser);

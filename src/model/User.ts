@@ -1,11 +1,11 @@
 import { User as UserSchema } from '../utils/validationSchema.js';
 
-export interface userInDB extends UserSchema {
+export interface UserInDB extends UserSchema {
   id: number;
 };
 
 export default class User {
-  static DB: userInDB[] = [
+  static DB: UserInDB[] = [
     {
       id: 1,
       login: 'user',
@@ -18,7 +18,7 @@ export default class User {
     },
   ];
 
-  static async create(userData: userInDB) {
+  static async create(userData: UserInDB) {
     const newUser = { ...userData, id: Date.now() };
     this.DB.push(newUser);
   }
@@ -31,7 +31,7 @@ export default class User {
     return this.DB.find(({ id }) => id === +userId);
   }
 
-  static async updateOne(userId: string | number, body: userInDB) {
+  static async updateOne(userId: string | number, body: UserInDB) {
     const foundUser = await User.findOne(userId);
     if (foundUser) {
       let updatedUser;
