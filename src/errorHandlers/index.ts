@@ -1,13 +1,14 @@
-import { NextFunction, Request, Response } from "express";
-import { ValidationError } from "yup";
+import { NextFunction, Request, Response } from 'express';
+import { HttpError } from 'http-errors';
+import { ValidationError } from 'yup';
 
-export const handleErrors = async (err: Error, req: Request, res: Response, next: NextFunction) => {
-  res.status(500).send({ message: err.message });
+export const handleErrors = async (err: HttpError, req: Request, res: Response, next: NextFunction) => {
+  res.status(err.status ?? 500).send(err.message ?? 'Server error');
 };
 
-export const handleValidationError = async (err: Error, req: Request, res: Response, next: NextFunction) => {
+export const handleValidationError = async (err: HttpError, req: Request, res: Response, next: NextFunction) => {
   if (err instanceof ValidationError) {
-    return res.status(400).send(err.message);
+    return res.status(err.status ?? 500).send(err.message ?? 'Server error');
   }
   next(err);
 };

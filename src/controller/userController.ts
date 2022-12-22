@@ -1,4 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
+import createError from 'http-errors';
+import NotFoundError from '../error/NotFoundError.js';
 import User from '../model/User.js';
 
 export const addUserToDB = async (req: Request, res: Response, next: NextFunction) => {
@@ -19,7 +21,8 @@ export const getUser = async (req: Request, res: Response, next: NextFunction) =
 
   const foundUser = await User.findOne(userId);
   if (!foundUser) {
-    next(new Error('User not found'));
+    next(createError(404, 'User not found'));
+    // next(createError(404, 'User not found', {test: true}));
   } else {
     res.status(200).send(foundUser);
   }
@@ -48,6 +51,6 @@ export const deleteUser = async (req: Request, res: Response, next: NextFunction
     const deletedUser = await User.deleteOne(userId);
     res.status(200).send(deletedUser);
   } catch (error: any) {
-    next(error);
+    next(new NotFoundError(error.message));
   }
 };
