@@ -2,7 +2,7 @@ import { User as UserSchema } from '../utils/validationSchema.js';
 
 export interface UserInDB extends UserSchema {
   id: number;
-};
+}
 
 export default class User {
   static DB: UserInDB[] = [
@@ -21,6 +21,7 @@ export default class User {
   static async create(userData: UserInDB) {
     const newUser = { ...userData, id: Date.now() };
     this.DB.push(newUser);
+    return newUser;
   }
 
   static async getAll() {
@@ -34,7 +35,7 @@ export default class User {
   static async updateOne(userId: string | number, body: UserInDB) {
     const foundUser = await User.findOne(userId);
     if (foundUser) {
-      let updatedUser;
+      let updatedUser!: UserInDB;
 
       this.DB = this.DB.map((user) => {
         if (user.id === +userId) {
