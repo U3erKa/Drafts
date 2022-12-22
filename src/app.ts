@@ -1,7 +1,8 @@
 import express from 'express';
-import router from "./routes/index.js";
+import rootRouter from './routes/index.js';
+// import pagesRouter from './routes/index.js';
 
 const app = express();
-app.use(router);
+app.use('/api', rootRouter);
 
 export default app;

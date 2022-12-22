@@ -1,11 +1,8 @@
 import { Router } from 'express';
-import { bodyParser, validateUser } from '../middleware/userMW.js';
-import { addUserToDB, deleteUser, getUser, getUsers, updateUser } from '../controller/userController.js';
-
+import userRouter from './userRouter.js';
 const router = Router();
 
-// app.use(bodyParser);
-router.use('/users', bodyParser);
+router.use('/users', userRouter);
 
 router.get('/', async (req, res) => {
   res.status(200).send('Hello world');
@@ -13,10 +10,6 @@ router.get('/', async (req, res) => {
 
 // app.route('/cars')
 // app.route('/cars/:carId')
-
-router.route('/users').get(getUsers).post(validateUser, addUserToDB);
-
-router.route('/users/:userId').get(getUser).put(validateUser, updateUser).delete(deleteUser);
 
 router.get('/test*', async (req, res) => {
   res.status(200).send(`${req.method} ${req.path}`);
