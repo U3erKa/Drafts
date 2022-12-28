@@ -1,13 +1,15 @@
+-- @block
 CREATE DATABASE my_db;
-/*
- CREATE DATABASE "MY DB";
- DROP DATABASE prod;
- */
 
-/*
- SELECT 'foo''bar'
- 'baz';
- */
+-- @block
+CREATE DATABASE "MY DB";
+-- @block
+-- DROP DATABASE prod;
+
+-- @block
+SELECT 'foo''bar'
+'baz';
+
 -- $$foobarbaz$$
 
 -- CAST ('string' as type)

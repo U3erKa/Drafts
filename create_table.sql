@@ -5,7 +5,8 @@
 -- NOT NULL UNIQUE is like PRIMARY KEY
 -- CHECK insile () boolean logic
 
-  -- TODO RegEx or sth
+-- TODO RegEx or sth
+-- @block
 CREATE TABLE IF NOT EXISTS cars(
   -- id UUID PRIMARY KEY DEFAULT gen_randon_uuid (),
   id SMALLSERIAL PRIMARY KEY,
@@ -22,5 +23,6 @@ CREATE TABLE IF NOT EXISTS cars(
   UNIQUE (model, year_of_production)
   -- PRIMARY KEY (model, year_of_production)
 );
--- 
+
+-- @block
 DROP TABLE IF EXISTS cars;
