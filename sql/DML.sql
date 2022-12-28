@@ -19,3 +19,6 @@ VALUES
 
 -- @block
 SELECT * FROM cars;
+
+-- @block
+UPDATE cars SET color = 'red';

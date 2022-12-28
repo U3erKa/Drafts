@@ -26,3 +26,61 @@ CREATE TABLE IF NOT EXISTS cars(
 
 -- @block
 DROP TABLE IF EXISTS cars;
+
+-- @block
+ALTER TABLE cars
+ADD COLUMN color VARCHAR (64),
+ADD COLUMN fuel_capacity NUMERIC (5,2) NOT NULL DEFAULT 2.0;
+
+-- @block
+ALTER TABLE cars
+ADD COLUMN fuel_capacity2 NUMERIC (5,2) NOT NULL DEFAULT 2.0;
+
+-- @block
+ALTER TABLE cars
+DROP COLUMN fuel_capacity1,
+DROP COLUMN fuel_capacity2;
+-- @block
+ALTER TABLE cars
+ADD UNIQUE (color);
+
+-- @block
+ALTER TABLE cars
+ADD CHECK (color != '');
+
+-- @block
+ALTER TABLE cars
+ALTER COLUMN color SET NOT NULL;
+
+-- @block
+ALTER TABLE cars
+ADD CONSTRAINT "red_sus" CHECK (color != 'red');
+
+-- @block
+ALTER TABLE cars
+DROP CONSTRAINT red_sus;
+
+-- @block
+ALTER TABLE cars
+ALTER COLUMN color DROP NOT NULL;
+
+-- @block
+ALTER TABLE cars
+ALTER COLUMN color SET DEFAULT 'green';
+
+-- @block
+ALTER TABLE cars
+ALTER COLUMN color DROP DEFAULT;
+
+-- @block
+ALTER TABLE cars
+-- can use USING
+ALTER COLUMN color TYPE VARCHAR (16);
+
+-- @block
+ALTER TABLE autos
+RENAME TO cars;
+
+-- @block
+ALTER TABLE cars
+RENAME COLUMN colour TO color;
