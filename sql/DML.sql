@@ -22,3 +22,28 @@ SELECT * FROM cars;
 
 -- @block
 UPDATE cars SET color = 'red';
+
+-- @block
+UPDATE users
+SET name = 'Anton Antonovich'
+WHERE name = 'test';
+
+-- @block
+UPDATE users
+SET height = 1.50;
+
+-- @block
+UPDATE users
+SET weigth = 75, birthday = '03-03-1994'
+WHERE id = 20;
+
+-- @block
+DELETE FROM users
+WHERE id > 3 AND id < 1000
+RETURNING id, name, email;
+
+-- @block
+DELETE FROM orders_to_products;
+
+-- @block
+TRUNCATE TABLE orders_to_products;

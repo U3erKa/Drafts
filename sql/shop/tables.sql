@@ -62,5 +62,11 @@ CREATE TABLE orders_to_products (
   PRIMARY KEY(order_id, product_id)
 );
 
+-- @block
+ALTER TABLE users
+ADD COLUMN birthday date,
+ADD COLUMN height numeric(3,2) CHECK (height > 0.2),
+ADD COLUMN weigth smallint CHECK (weigth < 1500);
+
 -- @block DROP
 DROP TABLE users CASCADE;
