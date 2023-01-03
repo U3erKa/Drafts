@@ -33,3 +33,30 @@ WHERE first_name IN('Victoria', 'Julia');
 SELECT *
 FROM users
 WHERE weight BETWEEN 50 AND 90;
+
+-- @block Nested select query
+SELECT *
+FROM (
+  SELECT *, extract (year from age(birthday)) AS age
+  FROM users
+) AS "subquery_with_age"
+WHERE age > 30;
+
+-- @block Pagination
+SELECT * FROM users
+LIMIT 10 OFFSET 0;
+-- LIMIT 10 OFFSET 10;
+
+-- @block
+SELECT
+avg (extract (year from age(birthday))) as "Average age"
+FROM users;
+
+-- @block
+SELECT min (salary) "Mininal salary"
+FROM workers;
+
+-- @block
+SELECT count (*) FROM users
+WHERE is_male;
+
