@@ -1,15 +1,17 @@
-import { JSONPLACEHOLDER_RESOURCES, TodoEntries } from 'api/fetch';
-import { useLoader } from 'hooks/useLoader';
+import { FC } from 'react';
 import { Link } from 'react-router-dom';
+import { JSONPLACEHOLDER_RESOURCES } from 'api/fetch';
+import { TodoEntry } from 'api/types';
+import { useLoader } from 'hooks/useLoader';
 
-export default function TodoList(props: {}) {
-  const data = useLoader(JSONPLACEHOLDER_RESOURCES.TODOS);
+const TodoList: FC = function () {
+  const data = useLoader<TodoEntry>(JSONPLACEHOLDER_RESOURCES.TODOS);
 
-  const mapList = data.map(({ userId, id, title, completed }: TodoEntries) => (
+  const mapList = data.map(({ userId, id, title, completed }) => (
     <li key={id}>
       <h1>{title}</h1>
       <p>userId: {userId}</p>
-      <p>State: {completed ? '' : 'not '}completed</p>
+      <p>State: {!completed && 'not '}completed</p>
     </li>
   ));
   return (
@@ -18,4 +20,5 @@ export default function TodoList(props: {}) {
       <ul>{mapList}</ul>
     </main>
   );
-}
+};
+export default TodoList;

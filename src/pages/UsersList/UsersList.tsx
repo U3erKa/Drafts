@@ -1,9 +1,11 @@
-import { JSONPLACEHOLDER_RESOURCES, UsersEntries } from 'api/fetch';
-import { useLoader } from 'hooks/useLoader';
+import { FC } from 'react';
 import { Link } from 'react-router-dom';
+import { JSONPLACEHOLDER_RESOURCES } from 'api/fetch';
+import { UserEntry } from 'api/types';
+import { useLoader } from 'hooks/useLoader';
 
-export default function TodoList(props: {}) {
-  const data = useLoader(JSONPLACEHOLDER_RESOURCES.USERS);
+const UsersList: FC = function () {
+  const data = useLoader<UserEntry>(JSONPLACEHOLDER_RESOURCES.USERS);
 
   const mapList = data.map(
     ({
@@ -15,7 +17,7 @@ export default function TodoList(props: {}) {
       phone,
       website,
       company: { name: companyName, catchPhrase, bs },
-    }: UsersEntries) => (
+    }) => (
       <li key={id} id={id as any}>
         <section>
           <h1>Name: {name}</h1>
@@ -53,4 +55,6 @@ export default function TodoList(props: {}) {
       <ul>{mapList}</ul>;
     </main>
   );
-}
+};
+
+export default UsersList;

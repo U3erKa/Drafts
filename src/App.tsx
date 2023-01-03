@@ -1,8 +1,8 @@
-import React from 'react';
+import { FC } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { AlbumsList, CommentsList, Home, PhotosList, PostsList, TodoList, UsersList } from 'pages';
 
-function App() {
+const App: FC = function () {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
@@ -14,6 +14,6 @@ function App() {
       <Route path="/users" element={<UsersList />} />
     </Routes>
   );
-}
+};
 
 export default App;

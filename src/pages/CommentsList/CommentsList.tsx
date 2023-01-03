@@ -1,12 +1,14 @@
-import { JSONPLACEHOLDER_RESOURCES, CommentsEntries } from 'api/fetch';
-import { useLoader } from 'hooks/useLoader';
+import { FC } from 'react';
 import { Link } from 'react-router-dom';
+import { JSONPLACEHOLDER_RESOURCES } from 'api/fetch';
+import { CommentEntry } from 'api/types';
+import { useLoader } from 'hooks/useLoader';
 import styles from './CommentsList.module.scss';
 
-export default function CommentsList(props: {}) {
-  const data = useLoader(JSONPLACEHOLDER_RESOURCES.COMMENTS);
+const CommentsList: FC = function () {
+  const data = useLoader<CommentEntry>(JSONPLACEHOLDER_RESOURCES.COMMENTS);
 
-  const mapList = data.map(({ postId, id, name, email, body }: CommentsEntries) => (
+  const mapList = data.map(({ postId, id, name, email, body }) => (
     <li className={styles.commentsListItem} key={id}>
       <h2 className={styles.commentsListName}>Name: {name}</h2>
       <a className={styles.commentsListEmail} href={`mailto:${email}`}>
@@ -21,4 +23,6 @@ export default function CommentsList(props: {}) {
       <ul className={styles.commentsList}>{mapList}</ul>
     </main>
   );
-}
+};
+
+export default CommentsList;

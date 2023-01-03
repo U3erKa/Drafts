@@ -1,11 +1,13 @@
-import { JSONPLACEHOLDER_RESOURCES, PostsEntries } from 'api/fetch';
-import { useLoader } from 'hooks/useLoader';
+import { FC } from 'react';
 import { Link } from 'react-router-dom';
+import { JSONPLACEHOLDER_RESOURCES } from 'api/fetch';
+import { PostEntry } from 'api/types';
+import { useLoader } from 'hooks/useLoader';
 
-export default function PostsList(props: {}) {
-  const data = useLoader(JSONPLACEHOLDER_RESOURCES.POSTS);
+const PostsList: FC = function () {
+  const data = useLoader<PostEntry>(JSONPLACEHOLDER_RESOURCES.POSTS);
 
-  const mapList = data.map(({ userId, id, title, body }: PostsEntries) => (
+  const mapList = data.map(({ userId, id, title, body }) => (
     <li key={id}>
       <h1>{title}</h1>
       <p>User ID: {userId}</p>
@@ -18,4 +20,6 @@ export default function PostsList(props: {}) {
       <ul>{mapList}</ul>
     </main>
   );
-}
+};
+
+export default PostsList;

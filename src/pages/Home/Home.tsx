@@ -1,7 +1,7 @@
-import React from 'react';
+import { FC } from 'react';
 import { Link } from 'react-router-dom';
 
-export default function Home() {
+const Home: FC = function () {
   return (
     <header>
       <nav>
@@ -31,4 +31,5 @@ export default function Home() {
       </nav>
     </header>
   );
-}
+};
+export default Home;

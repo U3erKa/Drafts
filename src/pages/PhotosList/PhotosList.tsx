@@ -1,11 +1,13 @@
-import { JSONPLACEHOLDER_RESOURCES, PhotosEntries } from 'api/fetch';
-import { useLoader } from 'hooks/useLoader';
+import { FC } from 'react';
 import { Link } from 'react-router-dom';
+import { JSONPLACEHOLDER_RESOURCES } from 'api/fetch';
+import { PhotoEntry } from 'api/types';
+import { useLoader } from 'hooks/useLoader';
 
-export default function PhotosList(props: {}) {
-  const data = useLoader(JSONPLACEHOLDER_RESOURCES.PHOTOS);
+const PhotosList: FC = function () {
+  const data = useLoader<PhotoEntry>(JSONPLACEHOLDER_RESOURCES.PHOTOS);
 
-  const mapList = data.map(({ albumId, id, title, url, thumbnailUrl }: PhotosEntries) => (
+  const mapList = data.map(({ albumId, id, title, url, thumbnailUrl }) => (
     <li key={id}>
       <h1>{title}</h1>
       <a href={url}>
@@ -20,4 +22,6 @@ export default function PhotosList(props: {}) {
       <ul>{mapList}</ul>
     </main>
   );
-}
+};
+
+export default PhotosList;
