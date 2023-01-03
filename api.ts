@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { RandomUserResponse } from './types';
+import type { RandomUserResponse } from './types';
 
 const httpClient = axios.create({
   baseURL: 'https://randomuser.me/api/',
