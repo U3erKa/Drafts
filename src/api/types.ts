@@ -1,42 +1,30 @@
-export interface PostEntry {
+export interface PostEntry extends WithId, WithTitle {
   userId: number;
-  id: number;
-  title: string;
   body: string;
 }
 
-export interface CommentEntry {
+export interface CommentEntry extends WithId, WithName {
   postId: number;
-  id: number;
-  name: string;
   email: string;
   body: string;
 }
 
-export interface AlbumEntry {
+export interface AlbumEntry extends WithId, WithTitle {
   userId: number;
-  id: number;
-  title: string;
 }
 
-export interface PhotoEntry {
+export interface PhotoEntry extends WithId, WithTitle {
   albumId: number;
-  id: number;
-  title: string;
   url: string;
   thumbnailUrl: string;
 }
 
-export interface TodoEntry {
+export interface TodoEntry extends WithId, WithTitle {
   userId: number;
-  id: number;
-  title: string;
   completed: boolean;
 }
 
-export interface UserEntry {
-  id: number;
-  name: string;
+export interface UserEntry extends WithId, WithName {
   username: string;
   email: string;
   address: Address;
@@ -56,4 +44,16 @@ export interface Company {
   name: string;
   catchPhrase: string;
   bs: string;
+}
+
+export interface WithId {
+  id: number;
+}
+
+export interface WithTitle {
+  title: string;
+}
+
+export interface WithName {
+  name: string;
 }
