@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { JSONPLACEHOLDER_RESOURCES } from 'api/fetch';
-import { AlbumEntry } from 'api/types';
 import { useLoader } from 'hooks/useLoader';
 import { Loading } from 'components';
+import type { AlbumEntry } from 'api/types';
 import styles from './AlbumsList.module.scss';
 
 const AlbumsListEntries: FC<{ albums: AlbumEntry[] }> = ({ albums }) => {

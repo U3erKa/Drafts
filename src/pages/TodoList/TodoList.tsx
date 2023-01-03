@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { JSONPLACEHOLDER_RESOURCES } from 'api/fetch';
-import { TodoEntry } from 'api/types';
 import { Loading } from 'components';
 import { useLoader } from 'hooks/useLoader';
+import type { TodoEntry } from 'api/types';
 
 const TodoListEntries: FC<{ todos: TodoEntry[] }> = ({ todos }) => {
   const todosList = todos.map(({ userId, id, title, completed }) => (

@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { JSONPLACEHOLDER_RESOURCES } from 'api/fetch';
-import { PhotoEntry } from 'api/types';
 import { Loading } from 'components';
 import { useLoader } from 'hooks/useLoader';
+import type { PhotoEntry } from 'api/types';
 
 const PhotosListEntries: FC<{ photos: PhotoEntry[] }> = ({ photos }) => {
   const mapList = photos.map(({ albumId, id, title, url, thumbnailUrl }) => (

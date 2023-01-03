@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { JSONPLACEHOLDER_RESOURCES } from 'api/fetch';
-import { PostEntry } from 'api/types';
 import { Loading } from 'components';
 import { useLoader } from 'hooks/useLoader';
+import type { PostEntry } from 'api/types';
 
 const PostsListEntries: FC<{ posts: PostEntry[] }> = ({ posts }) => {
   const postsList = posts.map(({ userId, id, title, body }) => (
