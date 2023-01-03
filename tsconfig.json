@@ -1,7 +1,8 @@
 {
   "ts-node": {
     "compilerOptions": {
-      "module": "CommonJS"
+      "module": "CommonJS",
+      "esModuleInterop": true
     }
   },
   "compilerOptions": {
@@ -16,6 +17,10 @@
     "noFallthroughCasesInSwitch": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "baseUrl": "src"
-  }
+    "allowSyntheticDefaultImports": true,
+    "outDir": "./dist"
+  },
+  // "include": [
+  //   "src"
+  // ]
 }
