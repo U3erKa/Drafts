@@ -3,7 +3,7 @@ import { getUsers } from './api.js';
 import { mapUsers } from './utils.js';
 const { Client } = pg;
 
-const config: pg.ConnectionConfig = {
+const config: pg.ClientConfig = {
   user: 'postgres',
   password: 'postgres',
   host: 'localhost',
