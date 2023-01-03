@@ -33,12 +33,12 @@ const sumOfThree = (num1: number, num2: number, num3: number) => num1 + num2 + n
 
 const curriedSum = (num1: number) => (num2: number) => (num3: number) => num1 + num2 + num3;
 
-function curry(func: { length: number; apply: (arg0: any, arg1: any[]) => any; }) {
-  return function curried(...args: any[]) {
+function curry(func: Function) {
+  return function curried(...args: unknown[]) {
     if (args.length >= func.length) {
       return func.apply(this, args);
     } else {
-      return function (...args2: any[]) {
+      return function (...args2: unknown[]) {
         return curried.apply(this, args.concat(args2));
       };
     }

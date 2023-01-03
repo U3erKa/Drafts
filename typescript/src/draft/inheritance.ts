@@ -1,4 +1,5 @@
 'use strict';
+
 function Phone(model: string, manufacturer: string) {
   this.model = model;
   this.manufacturer = manufacturer;
@@ -22,7 +23,7 @@ const deviceProto = {
 Phone.prototype = phoneProto;
 
 // @ts-expect-error
-const phone1 = new Phone('Pro', 'Android');
+const phone1: PhoneConstructor = new Phone('Pro', 'Android');
 // @ts-expect-error
 const phone2 = new Phone('Lite', 'Xiaomi');
 
