@@ -2,12 +2,10 @@ import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { JSONPLACEHOLDER_RESOURCES } from 'api/fetch';
 import { PostEntry } from 'api/types';
+import { Loading } from 'components';
 import { useLoader } from 'hooks/useLoader';
-import Loading from 'components/Loading/Loading';
 
-const PostsList: FC = function () {
-  const { data: posts, error, isLoading } = useLoader<PostEntry>(JSONPLACEHOLDER_RESOURCES.POSTS);
-
+const PostsListEntries: FC<{ posts: PostEntry[] }> = ({ posts }) => {
   const postsList = posts.map(({ userId, id, title, body }) => (
     <li key={id}>
       <h1>{title}</h1>
@@ -15,11 +13,18 @@ const PostsList: FC = function () {
       <p>{body}</p>
     </li>
   ));
+
+  return <ul>{postsList}</ul>;
+};
+
+const PostsList: FC = function () {
+  const { data: posts, error, isLoading } = useLoader<PostEntry>(JSONPLACEHOLDER_RESOURCES.POSTS);
+
   return (
     <main>
       <Link to="/">Home</Link>
       {isLoading && <Loading />}
-      {error?.message ?? <ul>{postsList}</ul>}
+      {error?.message ?? <PostsListEntries posts={posts} />}
     </main>
   );
 };

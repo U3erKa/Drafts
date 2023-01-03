@@ -2,12 +2,10 @@ import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { JSONPLACEHOLDER_RESOURCES } from 'api/fetch';
 import { UserEntry } from 'api/types';
+import { Loading } from 'components';
 import { useLoader } from 'hooks/useLoader';
-import Loading from 'components/Loading/Loading';
 
-const UsersList: FC = function () {
-  const { data: users, error, isLoading } = useLoader<UserEntry>(JSONPLACEHOLDER_RESOURCES.USERS);
-
+const UsersListEntries: FC<{ users: UserEntry[] }> = ({ users }) => {
   const usersList = users.map(
     ({
       id,
@@ -50,11 +48,18 @@ const UsersList: FC = function () {
       </li>
     )
   );
+
+  return <ul>{usersList}</ul>;
+};
+
+const UsersList: FC = function () {
+  const { data: users, error, isLoading } = useLoader<UserEntry>(JSONPLACEHOLDER_RESOURCES.USERS);
+
   return (
     <main>
       <Link to="/">Home</Link>
       {isLoading && <Loading />}
-      {error?.message ?? <ul>{usersList}</ul>}
+      {error?.message ?? <UsersListEntries users={users} />}
     </main>
   );
 };

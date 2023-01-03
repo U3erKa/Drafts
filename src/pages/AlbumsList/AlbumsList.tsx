@@ -3,12 +3,10 @@ import { Link } from 'react-router-dom';
 import { JSONPLACEHOLDER_RESOURCES } from 'api/fetch';
 import { AlbumEntry } from 'api/types';
 import { useLoader } from 'hooks/useLoader';
+import { Loading } from 'components';
 import styles from './AlbumsList.module.scss';
-import Loading from 'components/Loading/Loading';
 
-const AlbumsList: FC = function () {
-  const { data: albums, error, isLoading } = useLoader<AlbumEntry>(JSONPLACEHOLDER_RESOURCES.ALBUMS);
-
+const AlbumsListEntries: FC<{ albums: AlbumEntry[] }> = ({ albums }) => {
   const albumsList = albums.map(({ id, title, userId }) => (
     <li className={styles.albumsListItem} key={id}>
       <Link className={styles.albumsListLink} to="/users">
@@ -17,11 +15,17 @@ const AlbumsList: FC = function () {
     </li>
   ));
 
+  return <ul className={styles.albumsList}>{albumsList}</ul>;
+};
+
+const AlbumsList: FC = function () {
+  const { data: albums, error, isLoading } = useLoader<AlbumEntry>(JSONPLACEHOLDER_RESOURCES.ALBUMS);
+
   return (
     <main>
       <Link to="/">Home</Link>
       {isLoading && <Loading />}
-      {error?.message ?? <ul className={styles.albumsList}>{albumsList}</ul>}
+      {error?.message ?? <AlbumsListEntries albums={albums} />}
     </main>
   );
 };

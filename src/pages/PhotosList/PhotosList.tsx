@@ -2,12 +2,10 @@ import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { JSONPLACEHOLDER_RESOURCES } from 'api/fetch';
 import { PhotoEntry } from 'api/types';
+import { Loading } from 'components';
 import { useLoader } from 'hooks/useLoader';
-import Loading from 'components/Loading/Loading';
 
-const PhotosList: FC = function () {
-  const { data: photos, error, isLoading } = useLoader<PhotoEntry>(JSONPLACEHOLDER_RESOURCES.PHOTOS);
-
+const PhotosListEntries: FC<{ photos: PhotoEntry[] }> = ({ photos }) => {
   const mapList = photos.map(({ albumId, id, title, url, thumbnailUrl }) => (
     <li key={id}>
       <h1>{title}</h1>
@@ -17,11 +15,18 @@ const PhotosList: FC = function () {
       <p>Id: {albumId}</p>
     </li>
   ));
+
+  return <ul>{mapList}</ul>;
+};
+
+const PhotosList: FC = function () {
+  const { data: photos, error, isLoading } = useLoader<PhotoEntry>(JSONPLACEHOLDER_RESOURCES.PHOTOS);
+
   return (
     <main>
       <Link to="/">Home</Link>
       {isLoading && <Loading />}
-      {error?.message ?? <ul>{mapList}</ul>}
+      {error?.message ?? <PhotosListEntries photos={photos} />}
     </main>
   );
 };
