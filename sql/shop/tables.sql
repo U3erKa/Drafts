@@ -18,8 +18,8 @@ CREATE TABLE users (
   phone_num VARCHAR(20) NOT NULL CHECK(phone_num != ''),
   birthday DATE CHECK(birthday < current_date),
   is_male BOOLEAN,
-  height numeric(3,2) CHECK (height > 0.2),
-  weigth smallint CHECK (weigth < 1500),
+  height NUMERIC(3,2) CHECK (height > 0.2),
+  weight SMALLINT CHECK (weight < 1500),
   created_at TIMESTAMP NOT NULL DEFAULT current_timestamp,
   updated_at TIMESTAMP NOT NULL DEFAULT current_timestamp
 );

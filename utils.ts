@@ -1,19 +1,25 @@
-import { User } from './types';
+import _ from 'lodash';
+import type { User } from './types';
 
 function createUserQueryValues(user: User) {
   const {
     name: { first, last },
     email,
-    login : {
-      sha256 : password
-    },
-    phone
+    login: { sha256: password },
+    phone,
+    dob: { date: birthday },
+    gender,
   } = user;
   return `(
-    '${first} ${last}',
+    '${first}',
+    '${last}',
     '${email}',
     '${password}',
-    '${phone}'
+    '${phone}',
+    '${birthday}',
+    '${gender === 'male'}',
+    '${_.random(1, 2, true)}',
+    '${_.random(40, 150, false)}'
   )`;
 }
 

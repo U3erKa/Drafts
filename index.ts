@@ -1,30 +1,22 @@
+import fs from 'fs/promises';
 import pg from 'pg';
+import config from './configs/DB.json' assert { type: 'json' };
 import { getUsers } from './api.js';
-import { mapUsers } from './utils.js';
+import User from './model/User.js';
 const { Client } = pg;
 
-const config: pg.ClientConfig = {
-  user: 'postgres',
-  password: 'postgres',
-  host: 'localhost',
-  port: 5432,
-  database: 'shop',
-};
-
 const client = new Client(config);
+
+User._client = client;
 
 const users = await getUsers();
 
 await client.connect();
 
-const { rows } = await client.query(`
-INSERT INTO users
-(name, email, password, phone_num)
-VALUES
-${mapUsers(users)}
-RETURNING *;
-`);
-console.log(rows);
+const resetDB = await fs.readFile('./sql/shop/tables.sql', 'utf-8');
+await client.query(resetDB);
+
+const createdUsers = await User.bulkCreate(users);
 
 await client.end();
 
