@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom';
 import { JSONPLACEHOLDER_RESOURCES } from 'api/fetch';
 import { UserEntry } from 'api/types';
 import { useLoader } from 'hooks/useLoader';
+import Loading from 'components/Loading/Loading';
 
 const UsersList: FC = function () {
-  const data = useLoader<UserEntry>(JSONPLACEHOLDER_RESOURCES.USERS);
+  const { data: users, error, isLoading } = useLoader<UserEntry>(JSONPLACEHOLDER_RESOURCES.USERS);
 
-  const mapList = data.map(
+  const usersList = users.map(
     ({
       id,
       name,
@@ -52,7 +53,8 @@ const UsersList: FC = function () {
   return (
     <main>
       <Link to="/">Home</Link>
-      <ul>{mapList}</ul>;
+      {isLoading && <Loading />}
+      {error?.message ?? <ul>{usersList}</ul>}
     </main>
   );
 };

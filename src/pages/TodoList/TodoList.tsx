@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom';
 import { JSONPLACEHOLDER_RESOURCES } from 'api/fetch';
 import { TodoEntry } from 'api/types';
 import { useLoader } from 'hooks/useLoader';
+import Loading from 'components/Loading/Loading';
 
 const TodoList: FC = function () {
-  const data = useLoader<TodoEntry>(JSONPLACEHOLDER_RESOURCES.TODOS);
+  const { data: todos, error, isLoading } = useLoader<TodoEntry>(JSONPLACEHOLDER_RESOURCES.TODOS);
 
-  const mapList = data.map(({ userId, id, title, completed }) => (
+  const todosList = todos.map(({ userId, id, title, completed }) => (
     <li key={id}>
       <h1>{title}</h1>
       <p>userId: {userId}</p>
@@ -17,7 +18,8 @@ const TodoList: FC = function () {
   return (
     <main>
       <Link to="/">Home</Link>
-      <ul>{mapList}</ul>
+      {isLoading && <Loading />}
+      {error?.message ?? <ul>{todosList}</ul>}
     </main>
   );
 };

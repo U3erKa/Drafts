@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom';
 import { JSONPLACEHOLDER_RESOURCES } from 'api/fetch';
 import { PhotoEntry } from 'api/types';
 import { useLoader } from 'hooks/useLoader';
+import Loading from 'components/Loading/Loading';
 
 const PhotosList: FC = function () {
-  const data = useLoader<PhotoEntry>(JSONPLACEHOLDER_RESOURCES.PHOTOS);
+  const { data: photos, error, isLoading } = useLoader<PhotoEntry>(JSONPLACEHOLDER_RESOURCES.PHOTOS);
 
-  const mapList = data.map(({ albumId, id, title, url, thumbnailUrl }) => (
+  const mapList = photos.map(({ albumId, id, title, url, thumbnailUrl }) => (
     <li key={id}>
       <h1>{title}</h1>
       <a href={url}>
@@ -19,7 +20,8 @@ const PhotosList: FC = function () {
   return (
     <main>
       <Link to="/">Home</Link>
-      <ul>{mapList}</ul>
+      {isLoading && <Loading />}
+      {error?.message ?? <ul>{mapList}</ul>}
     </main>
   );
 };

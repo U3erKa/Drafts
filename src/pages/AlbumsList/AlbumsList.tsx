@@ -4,11 +4,12 @@ import { JSONPLACEHOLDER_RESOURCES } from 'api/fetch';
 import { AlbumEntry } from 'api/types';
 import { useLoader } from 'hooks/useLoader';
 import styles from './AlbumsList.module.scss';
+import Loading from 'components/Loading/Loading';
 
 const AlbumsList: FC = function () {
-  const data = useLoader<AlbumEntry>(JSONPLACEHOLDER_RESOURCES.ALBUMS);
+  const { data: albums, error, isLoading } = useLoader<AlbumEntry>(JSONPLACEHOLDER_RESOURCES.ALBUMS);
 
-  const mapList = data.map(({ id, title, userId }) => (
+  const albumsList = albums.map(({ id, title, userId }) => (
     <li className={styles.albumsListItem} key={id}>
       <Link className={styles.albumsListLink} to="/users">
         <h1 className={styles.albumsListTitle}>{title}</h1>
@@ -19,7 +20,8 @@ const AlbumsList: FC = function () {
   return (
     <main>
       <Link to="/">Home</Link>
-      <ul className={styles.albumsList}>{mapList}</ul>
+      {isLoading && <Loading />}
+      {error?.message ?? <ul className={styles.albumsList}>{albumsList}</ul>}
     </main>
   );
 };
