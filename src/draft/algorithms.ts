@@ -3,7 +3,7 @@ const arr = [10, 20, 30, 40];
 const res = arr[2];
 
 // O(n) - линейная сложность
-function linearSearch(arr: string | any[], searchItem: any): number {
+function linearSearch<T>(arr: T[], searchItem: T): number {
   for (let i = 0; i < arr.length; i++) {
     if (searchItem === arr[i]) {
       return i;
@@ -37,7 +37,7 @@ function binarySearch(arr: number[], searchItem: number) {
   let start = 0;
   let end = arr.length - 1;
   let middle = Math.round((start + end) / 2);
-  // debugger;
+
   while (start <= end) {
     if (searchItem === arr[middle]) {
       return middle;
@@ -53,4 +53,4 @@ function binarySearch(arr: number[], searchItem: number) {
   return -1;
 }
 
-export {};
+export { linearSearch, bubbleSort, binarySearch };

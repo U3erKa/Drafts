@@ -1,13 +1,25 @@
 'use strict';
+
+// class User {
+//   name: string;
+//   surname: string;
+//   age: number | undefined;
+//   constructor(name: string, surname: string, age: number | undefined) {
+//     this.name = name;
+//     this.surname = surname;
+//     this.age = age;
+//   }
+//   isAdult(adultAge = 18) {
+//     return this.age >= adultAge;
+//   }
+//   getFullName() {
+//     return `${this.name} ${this.surname}`;
+//   }
+// }
+
 class User {
-  name: string;
-  surname: string;
-  age: number | undefined;
-  constructor(name: string, surname: string, age: number | undefined) {
-    this.name = name;
-    this.surname = surname;
-    this.age = age;
-  }
+  constructor(public name: string, public surname: string, public age?: number) {}
+
   isAdult(adultAge = 18) {
     return this.age >= adultAge;
   }
@@ -16,23 +28,28 @@ class User {
   }
 }
 
-const user001 = new User('Vik', 'S', undefined);
+const user001 = new User('Vik', 'S');
 const user002 = new User('Viktor', 'Stepanov', 20);
 const user003 = new User('U3erKa', 'U3', 69420);
 const user004 = new User('U2erKa', 'U2', 17);
 const user005 = new User('U4erKa', 'U4', 0);
 
 class Worker {
-  #firstName: string;
-  private _lastName: string;
-  private _daysWorked: number;
-  private _paymentRate: number;
+  // constructor(firstName: string, lastName: string, daysWorked = 0, paymentRate = MIN_SALARY) {
+  //   this.firstName = firstName;
+  //   this.lastName = lastName;
+  //   this.paymentRate = paymentRate;
+  //   this.daysWorked = daysWorked;
+  // }
 
-  constructor(firstName: string, lastName: string, daysWorked = 0, paymentRate = MIN_SALARY) {
+  #firstName: string;
+  constructor(
+    firstName: string,
+    private _lastName: string,
+    private _daysWorked = 0,
+    private _paymentRate = MIN_SALARY
+  ) {
     this.firstName = firstName;
-    this.lastName = lastName;
-    this.paymentRate = paymentRate;
-    this.daysWorked = daysWorked;
   }
 
   get fullName() {
@@ -43,9 +60,6 @@ class Worker {
     return this._daysWorked * this._paymentRate;
   }
 
-  /**
-   * @param {string} newFirstName - can change worker's first name
-   */
   set firstName(newFirstName: string) {
     if (typeof newFirstName !== 'string' || newFirstName.trim() === '') {
       throw new TypeError('firstName must be not empty string');
@@ -89,7 +103,7 @@ class Worker {
   }
 
   // Worker.isWorker
-  static isWorker(obj: any) {
+  static isWorker(obj: Worker | object) {
     return obj instanceof Worker;
   }
 
@@ -116,16 +130,21 @@ for (let i = 0; i < employee.length; i++) {
 
 // inheritance
 class Animal {
-  #name: string;
-  species: string;
-  color: string;
-  diet: string;
+  // #name: string;
+  // species: string;
+  // color: string;
+  // diet: string;
 
-  constructor(species: string, name: string, color: string, diet: string) {
-    this.species = species;
+  // constructor(species: string, name: string, color: string, diet: string) {
+  //   this.name = name;
+  //   this.species = species;
+  //   this.color = color;
+  //   this.diet = diet;
+  // }
+
+  #name: string;
+  constructor(public species: string, name: string, public color: string, public diet: string) {
     this.name = name;
-    this.color = color;
-    this.diet = diet;
   }
 
   // методы обьекта
@@ -309,7 +328,7 @@ const triangle1 = new Triangle(10, 5, 3, 8);
 const rect1 = new Rectangle(5, 8);
 const rhombus1 = new Rhombus(5, 7);
 
-function getFigureArea(figure: { getArea: (arg0: any) => any }, mode: any) {
+function getFigureArea(figure: { getArea: (mode: string) => number }, mode: string) {
   if (figure instanceof Figure) {
     return figure.getArea(mode);
   }
@@ -318,7 +337,7 @@ function getFigureArea(figure: { getArea: (arg0: any) => any }, mode: any) {
 
 console.log(triangle1);
 
-function getFigureAreaAlt(figure: { area: any }) {
+function getFigureAreaAlt(figure: { area: number }) {
   return figure.area;
 }
 
@@ -350,7 +369,7 @@ class Animal {
 
 class Cat extends Animal {
   speech: string;
-  nickname: any;
+  nickname: string;
   constructor(nickname: string, speech = 'meow', diet = 'fish') {
     // @ts-ignore
     super('Cat', nickname);
@@ -370,7 +389,7 @@ class Cat extends Animal {
 const cat1 = new Cat('Pushok');
 
 const trainer = {
-  trainVoice: function (animal: { nickname: any; speak: () => any; speech: any }) {
+  trainVoice: function (animal: { nickname: string; speak: () => string; speech: string }) {
     // @ts-ignore
     if (!animal instanceof Animal) {
       throw new TypeError();

@@ -94,7 +94,7 @@ const translate = (stringToTranslate: string, vocabulary = myVocabulary) =>
   stringToTranslate
     .toLowerCase()
     .split(' ')
-    .map((word: any) => (vocabulary.has(word) ? vocabulary.get(word) : word))
+    .map((word: string) => (vocabulary.has(word) ? vocabulary.get(word) : word))
     .join(' ');
 
 const user1 = {

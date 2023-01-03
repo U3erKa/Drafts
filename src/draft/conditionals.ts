@@ -49,12 +49,10 @@ switch (input) {
 }
 
 // debugger;
-// @ts-ignore
-if (input > 5) {
+if (+input > 5) {
   const replyText = 'Big Shot';
   console.log(replyText);
-  // @ts-ignore
-} else if (input > 0) {
+} else if (+input > 0) {
   const replyText = 'Try harder';
   console.log(replyText);
 } else {
@@ -70,7 +68,7 @@ if (input > 5) {
 // }
 // console.log(var1);
 
-let userName = 'U3';
+const userName = 'U3';
 const isGreeting = true;
 
 let message = isGreeting ? 'Hello ' + userName : 'Bye-bye ' + userName;

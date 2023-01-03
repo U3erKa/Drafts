@@ -39,11 +39,13 @@ phone.color = 'red';
 // @ts-expect-error
 phone.battery = 4000;
 // DELETE
-// @ts-ignore
 delete phone.test;
 
 //constructor function, starts from capital letter
-const User = function (name: string, surname: string, age: number): void {
+type UserConstructor = new (name: string, surname: string, age?: number) => void;
+
+// @ts-expect-error
+const User: UserConstructor = function (name: string, surname: string, age: number): void {
   this.name = name;
   this.surname = surname;
   this.age = age;
@@ -54,15 +56,10 @@ const User = function (name: string, surname: string, age: number): void {
   // return NaN; // return can't work here
 };
 
-// @ts-expect-error
 const user001 = new User('Vik', 'S', undefined);
-// @ts-expect-error
 const user002 = new User('Viktor', 'U3', 69420);
-// @ts-expect-error
 const user003 = new User('U3erKa', 'Stepanov', 20);
-// @ts-expect-error
 const user004 = new User('U3erKa', 'U3', 69420);
-// @ts-expect-error
 const user005 = new User('U3erKa', 'U3', 69420);
 console.log(user004 === user005); // false
 const user006 = user005;

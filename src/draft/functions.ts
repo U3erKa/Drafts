@@ -12,7 +12,7 @@ const input2 = 3;
 // console.log(getSumOfTwo2(2, 5));
 
 // expression
-const getSumOfTwo = function (num1: number, num2: number) {
+const getSumOfTwo = function (num1: number | string, num2: number | string) {
   const result = +num1 + Number(num2);
   return result;
   // const message = num1 + ' + ' + num2 + ' = ' + result;
@@ -22,7 +22,7 @@ const getSumOfTwo = function (num1: number, num2: number) {
 };
 
 // declaration
-function getSumOfTwo2(num1: number, num2: number) {
+function getSumOfTwo2(num1: number | string, num2: number | string) {
   // this.alert = 10; // can break Window.alert >:)
   return +num1 + Number(num2);
 }
@@ -32,38 +32,46 @@ const result = getSumOfTwo(input1, input2);
 // console.log(result);
 
 // arrow function
-const getSumOfTwo3 = (num1: any, num2: any) => num1 + num2;
+const getSumOfTwo3 = (num1: number, num2: number) => num1 + num2;
 const square = (n: number) => n * n;
 const windowFunc = () => this;
+
+type Article = {
+  name: string;
+  author: string;
+  text: string;
+};
+
 const newspaper = {
   name: 'Show Time',
   articles: [
     { name: 'blah1', text: 'weather today', author: 'me' },
     { name: 'blah2', text: 'weather tomorrow', author: 'a-me' },
     { name: 'blah3', text: 'weather undefined', author: 'not-a me' },
-  ],
+  ] as Article[],
+
   showArticles: function () {
-    this.articles.forEach((article: { name: any; author: any; text: any }) => {
+    this.articles.forEach((article: Article) => {
       console.log(`Newspaper ${this.name} Article: ${article.name} Author ${article.author} Text ${article.text}`);
     });
   },
-  showArticles1: function () {
-    const that = this;
-    this.articles.forEach(function callback(article: { name: any; author: any; text: any }) {
-      console.log(`Newspaper ${that.name} Article: ${article.name} Author ${article.author} Text ${article.text}`);
-    });
-  },
-  showArticles2: function () {
-    const callback = function (article: { name: any; author: any; text: any }) {
-      console.log(`Newspaper ${this.name} Article: ${article.name} Author ${article.author} Text ${article.text}`);
-    };
-    this.articles.forEach(callback.bind(this));
-  },
+  // showArticles1: function () {
+  //   const that = this;
+  //   this.articles.forEach(function callback(article: Article) {
+  //     console.log(`Newspaper ${that.name} Article: ${article.name} Author ${article.author} Text ${article.text}`);
+  //   });
+  // },
+  // showArticles2: function () {
+  //   const callback = function (article: Article) {
+  //     console.log(`Newspaper ${this.name} Article: ${article.name} Author ${article.author} Text ${article.text}`);
+  //   };
+  //   this.articles.forEach(callback.bind(this));
+  // },
 };
 
 const testObj1 = () => {}; // undefined
 const testObj2 = () => ({}); // object
-const betterSum = (numbers: any[]) => numbers.reduce((sum: any, number: any) => sum + number);
+const betterSum = (numbers: number[]) => numbers.reduce((sum, number) => sum + number);
 
 // const betterSum = (numbers) => {
 //   const sum = numbers.reduce((sum, number, index, array) => {
@@ -93,19 +101,28 @@ function sum1(num1 = 3, num2 = 5) {
 
 // function with side effects (input, output)
 let sideEffect = 1;
-function sum2(num1: any, num2: any) {
+function sum2(num1: number, num2: number) {
   sideEffect++;
   // console.log('console.log() is also a side effect');
   return num1 + num2;
 }
 // worst kind of bad badness
-function sum3(num1: any, num2: any) {
+function sum3(num1: number, num2: number) {
   sideEffect++;
   // console.log('console.log() is also a side effect');
   return num1 + num2 + sideEffect + Math.random();
 }
 
-const User = function (firstName = '', lastName = '', email: string, age = 0, isLoggedIn = false) {
+type UserConstructor = new (
+  firstName: string,
+  lastName: string,
+  email: string,
+  age?: number,
+  isLoggedIn?: boolean
+) => void;
+
+// @ts-expect-error
+const User: UserConstructor = function (firstName = '', lastName = '', email: string, age = 0, isLoggedIn = false) {
   this.firstName = firstName;
   this.lastName = lastName;
   this.email = email;
@@ -114,15 +131,11 @@ const User = function (firstName = '', lastName = '', email: string, age = 0, is
 };
 
 const users = [
-  // @ts-expect-error
   new User('U1erKa', 'U1', 'email1@example.com', 18),
   // @ts-expect-error
   new User('U2erKa', 'U2', 'email2@example.com', 19, 'boo'),
-  // @ts-expect-error
   new User('U3erKa', 'U3', 'email3@example.com', 20, true),
-  // @ts-expect-error
   new User('U4erKa', 'U4', 'email4@example.com', 21),
-  // @ts-expect-error
   new User('U5erKa', 'U5', 'email5@example.com', 22),
 ];
 
@@ -184,7 +197,7 @@ const fullUser = {
   // age: user.age,
 };
 
-function someFunc(options: any) {
+function someFunc(options: object) {
   const defaultOptions = {
     amount: 10,
     data1: 'test',
@@ -243,7 +256,9 @@ function toPower(number: number, exp: number): number {
   return exp > 0 ? number * toPower(number, exp - 1) : 1 / (number * toPower(number, Math.abs(exp) - 1));
 }
 
-const tree = {
+type Tree = { value: number; left?: Tree; right?: Tree };
+
+const tree: Tree = {
   value: 8,
   left: {
     value: 3,
@@ -271,7 +286,7 @@ const tree = {
   },
 };
 
-const easyTree = {
+const easyTree: Tree = {
   value: 1,
   left: {
     value: 2,
@@ -284,7 +299,7 @@ const easyTree = {
   },
 };
 
-function reduceTree(tree: { value: any; left: any; right: any }) {
+function reduceTree(tree: Tree) {
   let result = tree.value;
 
   if (tree.left) {

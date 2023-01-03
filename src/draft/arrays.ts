@@ -31,11 +31,11 @@ arr[arr.length] = 'Loremium';
 arr.push('Loremium', 'Ipsumium'); // can add more than one value into array, returns arr.length
 arr1[5] = 'Crud.'; // bad idea
 
-const userNames = ['User', 'Loremium', 'Ipsumium', 'Copium', 'Gee'];
+const userNames: (string | string[])[] = ['User', 'Loremium', 'Ipsumium', 'Copium', 'Gee'];
 userNames.push('Vik', 'U3erKa');
-let newArrayLengthPush = userNames.push('Anonimus');
+const newArrayLengthPush = userNames.push('Anonimus');
 const lastDeletedFromEnd = userNames.pop();
-let newArrayLengthUnshift = userNames.unshift('Billy'); // adds value to array beginning
+const newArrayLengthUnshift = userNames.unshift('Billy'); // adds value to array beginning
 userNames.unshift('John', 'Olya');
 const lastDeletedFromStart = userNames.shift();
 const splisedEntries = userNames.splice(3, 2, 'Bepis');
@@ -47,7 +47,6 @@ const arr2 = [
 console.log(arr2[1][2]);
 
 // userNames.push('arrgh1', 'arrgh2', 'arrgh3');
-// @ts-ignore
 userNames.push(['arrgh1', 'arrgh2', 'arrgh3']);
 const surfaceCopy = userNames.slice();
 // surface copy, inside array is the same
@@ -59,7 +58,6 @@ const surfaceCopyPart3 = userNames.slice(4);
 
 console.log("userNames.includes('Vik') " + userNames.includes('Vik'));
 console.log("userNames.includes('U2erKa') " + userNames.includes('U2erKa'));
-// @ts-ignore
 console.log("userNames.includes(['arrgh1', 'arrgh2', 'arrgh3'] " + userNames.includes(['arrgh1', 'arrgh2', 'arrgh3'])); // false, though the object (array) exists
 
 console.log("userNames.indexOf('Vik') " + userNames.indexOf('Vik'));
@@ -135,8 +133,7 @@ const newArr2 = otherArr.map(function (elem, i) {
   //   data: elem.data,
   //   telephoneNumber: 911 + i,
   // }
-  const newObject = structuredClone(elem);
-  // @ts-expect-error
+  const newObject: any = structuredClone(elem);
   newObject.telephoneNumber = 911 + i;
   return newObject;
 });
@@ -159,6 +156,6 @@ const highOrderFunction2 = function () {
 const innerFunction = highOrderFunction2();
 innerFunction();
 
-const newArr = new Array(25).fill(undefined).map(() => Math.floor((Math.random() - 0.25) * 10));
+const newArr = (length: number) => new Array(length).fill(undefined).map(() => Math.floor((Math.random() - 0.25) * 10));
 
-export {};
+export { newArr };
