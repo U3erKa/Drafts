@@ -8,11 +8,9 @@ $colorBlue: #2244aa;
   &Item::marker {
     content: '';
   }
-  &Link {
+  &Title {
     color: $colorBlue;
     text-decoration: none;
-  }
-  &Title {
     margin: 10px 0;
     font-size: 2rem;
   }

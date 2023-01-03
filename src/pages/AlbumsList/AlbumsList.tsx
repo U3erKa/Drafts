@@ -9,9 +9,7 @@ import styles from './AlbumsList.module.scss';
 const AlbumsListEntries: FC<{ albums: AlbumEntry[] }> = ({ albums }) => {
   const albumsList = albums.map(({ id, title, userId }) => (
     <li className={styles.albumsListItem} key={id}>
-      <Link className={styles.albumsListLink} to="/users">
-        <h1 className={styles.albumsListTitle}>{title}</h1>
-      </Link>
+      <h1 className={styles.albumsListTitle}>{title}</h1>
     </li>
   ));
 
