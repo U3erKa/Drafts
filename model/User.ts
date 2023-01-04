@@ -1,6 +1,6 @@
 import pg from 'pg';
 import { mapUsers } from '../utils.js';
-import { TableNames } from '../constants';
+import { TableNames } from '../constants.js';
 import type { User as UserType } from '../types';
 
 export default class User {

@@ -15,6 +15,7 @@ const {
 const client = new Client(config);
 
 User._client = client;
+Product._client = client;
 
 const users = await getUsers();
 
