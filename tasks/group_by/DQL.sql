@@ -1,5 +1,5 @@
 -- @block количество товаров на складе
-SELECT category, sum(quantity) AS sum_of_product_category 
+SELECT category, sum(quantity) AS sum_of_product_category
 FROM products
 GROUP BY category;
 

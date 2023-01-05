@@ -7,7 +7,7 @@ export default class Product {
   private static _tableName = TableNames.PRODUCTS;
 
   static async bulkCreate(numberOfProducts?: number) {
-    const { rows } = await this._client.query(`
+    const { rows } = await this._client.query(`-- sql
     INSERT INTO ${this._tableName} (
       "name", "price", "quantity", "category", "manufacturer"
     )

@@ -1,4 +1,4 @@
--- @block
+-- @block 
 SELECT *
 FROM users;
 
@@ -116,3 +116,7 @@ WHERE NOT is_male;
 SELECT is_male, avg(weight) AS avg_weight, avg(height) AS avg_height
 FROM users
 GROUP BY is_male;
+
+-- @block
+SELECT *
+FROM users;

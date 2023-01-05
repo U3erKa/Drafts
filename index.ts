@@ -37,7 +37,7 @@ const ordersString = createdUsers
   )
   .join(',');
 
-const { rows: orders } = await client.query(`
+const { rows: orders } = await client.query(`-- sql
 INSERT INTO orders (
   user_id
 )
@@ -62,7 +62,7 @@ const ordersToProductsString = orders
   })
   .join(',');
 
-await client.query(`
+await client.query(`-- sql
 INSERT INTO orders_to_products (
   order_id,
   product_id,

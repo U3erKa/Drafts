@@ -7,23 +7,23 @@ VALUES
 ('test subject 3', 'test3@example.com', 'elrkhwr908u34riouh', '0657483901');
 
 -- @block Products
-INSERT INTO products 
+INSERT INTO products
 (name, price, quantity, manufacturer, min_age)
-VALUES 
+VALUES
 ('Cat', 999999, 1, 'best pets co.', NULL),
 ('Teapot', 100, 10, 'loremium', NULL),
 ('Wine', 1000, 100, 'wine company', 18);
 
 -- @block Orders
-INSERT INTO orders 
+INSERT INTO orders
 (user_id)
-VALUES 
+VALUES
 (1),
 (2),
 (3);
 
 -- @block Orders to Products
-INSERT INTO orders_to_products 
+INSERT INTO orders_to_products
 (order_id, product_id, quantity)
 VALUES
 (1, 1, 1),
@@ -33,7 +33,7 @@ VALUES
 (4, 3, 30);
 
 -- @block Reviews
-INSERT INTO reviews 
+INSERT INTO reviewws
 (user_id, product_id, description)
 VALUES
 (1, 4, 'good review 1'),
