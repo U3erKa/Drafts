@@ -29,3 +29,20 @@
 import './index.css';
 
 console.log('👋 This message is being logged by "renderer.js", included via webpack');
+
+const fizzBuzz: (string | number)[] = [];
+
+for (let i = 0; i < 100; i++) {
+  let result = '';
+
+  if (i % 3 === 0) {
+    result += 'fizz';
+  }
+  if (i % 5 === 0) {
+    result += 'buzz';
+  }
+
+  fizzBuzz.push(result || i);
+}
+
+console.log(fizzBuzz);
