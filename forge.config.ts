@@ -4,14 +4,25 @@ import { MakerZIP } from '@electron-forge/maker-zip';
 import { MakerDeb } from '@electron-forge/maker-deb';
 import { MakerRpm } from '@electron-forge/maker-rpm';
 import { WebpackPlugin } from '@electron-forge/plugin-webpack';
+import { PublisherGithub } from '@electron-forge/publisher-github';
+import { config as dotenv } from 'dotenv';
 
 import { mainConfig } from './webpack.main.config';
 import { rendererConfig } from './webpack.renderer.config';
+
+dotenv();
 
 const config: ForgeConfig = {
   packagerConfig: {},
   rebuildConfig: {},
   makers: [new MakerSquirrel({}), new MakerZIP({}), new MakerRpm({}), new MakerDeb({})],
+  publishers: [
+    new PublisherGithub({
+      repository: { name: 'Electron-App', owner: 'U3erKa' },
+      authToken: process.env.GITHUB_TOKEN,
+      prerelease: true,
+    }),
+  ],
   plugins: [
     new WebpackPlugin({
       mainConfig,
