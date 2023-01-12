@@ -61,3 +61,6 @@ const func = async () => {
 };
 
 func();
+
+// Should be at the end of file for some reason
+import './app';
