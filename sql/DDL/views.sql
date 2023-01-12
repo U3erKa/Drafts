@@ -17,3 +17,9 @@ WHERE total > (
 -- @block Refresh
 REFRESH MATERIALIZED VIEW mat_orders_with_total_price
 ;
+-- @block Drop view
+DROP VIEW orders_with_total_price
+;
+-- @block Drop materialized view
+DROP MATERIALIZED VIEW mat_orders_with_total_price
+;
