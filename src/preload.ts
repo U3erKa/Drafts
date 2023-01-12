@@ -1,6 +1,6 @@
 // See the Electron documentation for details on how to use preload scripts:
 // https://www.electronjs.org/docs/latest/tutorial/process-model#preload-scripts
-import { contextBridge } from 'electron';
+import { contextBridge, ipcRenderer } from 'electron';
 
 window.addEventListener('DOMContentLoaded', () => {
   const replaceText = (selector: string, text: string) => {
@@ -13,9 +13,13 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-contextBridge.exposeInMainWorld('versions', {
+export type Versions = typeof versions;
+const versions = {
   node: () => process.versions.node,
   chrome: () => process.versions.chrome,
   electron: () => process.versions.electron,
+  ping: () => ipcRenderer.invoke('ping'),
   // we can also expose variables, not just functions
-});
+}
+
+contextBridge.exposeInMainWorld('versions', versions);

@@ -26,13 +26,11 @@
  * ```
  */
 
+import type { Versions } from './preload';
 import './index.css';
 
-declare const versions: {
-  chrome: () => string;
-  node: () => string;
-  electron: () => string;
-};
+declare const window: Window & typeof globalThis & { versions: Versions };
+declare const versions: Versions;
 
 console.log('👋 This message is being logged by "renderer.js", included via webpack');
 
@@ -56,3 +54,10 @@ console.log(
 );
 
 console.log(fizzBuzz);
+
+const func = async () => {
+  const response = await window.versions.ping();
+  console.log(response); // prints out 'pong'
+};
+
+func();
