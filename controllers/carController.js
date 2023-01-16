@@ -40,3 +40,21 @@ module.exports.getCar = async (req, res, next) => {
 
   res.send({ data: car });
 };
+
+/** @type {import('express').RequestHandler} */
+module.exports.updateCar = async (req, res, next) => {
+  const {
+    body,
+    params: { carId },
+  } = req;
+
+  const [updatedRows, [updatedCar]] = await Car.update(body, {
+    where: { id: carId },
+    returning: true,
+  });
+
+  // const car = await Car.findByPk(carId);
+  // const updatedCar = await car.update(body, { returning: true });
+
+  res.send({ data: updatedCar });
+};
