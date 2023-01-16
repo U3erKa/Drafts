@@ -58,3 +58,21 @@ module.exports.updateCar = async (req, res, next) => {
 
   res.send({ data: updatedCar });
 };
+
+/** @type {import('express').RequestHandler} */
+module.exports.deleteCar = async (req, res, next) => {
+  const {
+    params: { carId },
+  } = req;
+
+  await Car.destroy({
+    where: { id: carId },
+    returning: true,
+  });
+
+  // const car = await Car.findByPk(carId);
+  // await car.destroy();
+
+  res.send({ data: carId });
+  // res.send({ data: car });
+};
