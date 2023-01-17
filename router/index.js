@@ -1,9 +1,8 @@
 const express = require('express');
-const { createCar, getCars, getCar, updateCar, deleteCar } = require('../controllers/carController');
+const carsRouter = require('./carsRouter')
 
 const router = express.Router();
 
-router.route('/').get(getCars).post(createCar);
-router.route('/:carId').get(getCar).put(updateCar).delete(deleteCar)
+router.use('/cars', carsRouter);
 
 module.exports = router;

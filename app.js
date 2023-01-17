@@ -1,9 +1,12 @@
 const express = require('express');
+const { handleError } = require('./errorHandlers');
+const { sequelizeErrorHandler } = require('./errorHandlers/sequelizeErrors');
 const router = require('./router');
 
 const app = express();
 
 app.use(express.json());
-app.use('/cars', router);
+app.use(router);
+app.use(sequelizeErrorHandler, handleError);
 
 module.exports = app;
