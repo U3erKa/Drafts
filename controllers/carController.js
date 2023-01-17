@@ -1,12 +1,17 @@
+const createHttpError = require('http-errors');
 const { Car } = require('../models');
 
 /** @type {import('express').RequestHandler} */
 module.exports.createCar = async (req, res, next) => {
-  const { body } = req;
+  try {
+    const { body } = req;
 
-  const newCar = await Car.create(body);
+    const newCar = await Car.create(body);
 
-  res.status(201).send({ data: newCar });
+    res.status(201).send({ data: newCar });
+  } catch (error) {
+    next(error);
+  }
 };
 
 /** @type {import('express').RequestHandler} */
@@ -38,41 +43,66 @@ module.exports.getCar = async (req, res, next) => {
   // });
   const car = await Car.findByPk(carId);
 
-  res.send({ data: car });
+  if (car) {
+    res.send({ data: car });
+  } else {
+    const error = createHttpError(404, 'No such car found');
+    next(error);
+  }
 };
 
 /** @type {import('express').RequestHandler} */
 module.exports.updateCar = async (req, res, next) => {
-  const {
-    body,
-    params: { carId },
-  } = req;
+  try {
+    const {
+      body,
+      params: { carId },
+    } = req;
 
-  const [updatedRows, [updatedCar]] = await Car.update(body, {
-    where: { id: carId },
-    returning: true,
-  });
+    const [updatedRows, [updatedCar]] = await Car.update(body, {
+      where: { id: carId },
+      returning: true,
+    });
 
-  // const car = await Car.findByPk(carId);
-  // const updatedCar = await car.update(body, { returning: true });
+    // const car = await Car.findByPk(carId);
+    // const updatedCar = await car.update(body, { returning: true });
+    // if (!car) {
+    //   throw createHttpError(404, 'No such car found');
+    // }
 
-  res.send({ data: updatedCar });
+    if (updatedRows === 0) {
+      const error = createHttpError(404, 'No such car found');
+      throw error;
+    } else if (updatedRows === 1) {
+      res.send({ data: updatedCar });
+    }
+  } catch (error) {
+    next(error);
+  }
 };
 
 /** @type {import('express').RequestHandler} */
 module.exports.deleteCar = async (req, res, next) => {
-  const {
-    params: { carId },
-  } = req;
+  try {
+    const {
+      params: { carId },
+    } = req;
 
-  await Car.destroy({
-    where: { id: carId },
-    returning: true,
-  });
+    const deletedRows = await Car.destroy({
+      where: { id: carId },
+      returning: true,
+    });
 
-  // const car = await Car.findByPk(carId);
-  // await car.destroy();
+    // const car = await Car.findByPk(carId);
 
-  res.send({ data: carId });
-  // res.send({ data: car });
+    if (deletedRows === 0) {
+      throw createHttpError(404, 'No such car found');
+    }
+    // await car.destroy();
+
+    res.send({ data: carId });
+    // res.send({ data: car });
+  } catch (error) {
+    next(error);
+  }
 };
