@@ -1,8 +1,16 @@
-export const ukrainian = `ЙйЦцУуКкЕеНнГгШшЩщЗзХхЇїФфІіВвАаПпРрОоЛлДдЖжЄєЯяЧчСсМмИиТтЬьБбЮю,."№;:?`;
-export const russian = `ЙйЦцУуКкЕеНнГгШшЩщЗзХхЪъФфЫыВвАаПпРрОоЛлДдЖжЄєЯяЧчСсМмИиТтЬьБбЮю,."№;:?`;
-export const english = `QqWwEeRrTtYyUuIiOoPp{[}]AaSsDdFfGgHhJjKkLl:;"'ZzXxCcVvBbNnMm<,>.?/@#$^&`;
+const languages: { [k: string]: string } = {
+  english: `QqWwEeRrTtYyUuIiOoPp{[}]AaSsDdFfGgHhJjKkLl:;"'ZzXxCcVvBbNnMm<,>.?/@#$^&`,
+  ukrainian: `ЙйЦцУуКкЕеНнГгШшЩщЗзХхЇїФфІіВвАаПпРрОоЛлДдЖжЄєЯяЧчСсМмИиТтЬьБбЮю,."№;:?`,
+  russian: `ЙйЦцУуКкЕеНнГгШшЩщЗзХхЪъФфЫыВвАаПпРрОоЛлДдЖжЄєЯяЧчСсМмИиТтЬьБбЮю,."№;:?`,
+};
 
-export default function fixGibberish(string: string, from = english, to = ukrainian) {
+type Language = 'english' | 'ukrainian' | 'russian';
+type Options = {
+  from: Language;
+  to: Language;
+};
+
+function translate(string: string, { from, to }: { from: string; to: string }) {
   let result = [];
   let searchValue: number;
   let replacedChar: string;
@@ -40,14 +48,17 @@ export default function fixGibberish(string: string, from = english, to = ukrain
   return result.join('');
 }
 
-const test = () => {
-  console.log(
-    fixGibberish(`qwerttyuiop[]asdfghjkl;'zxcvbnm,./ QWERTYUIOP{}ASDFGHJKL:"ZXCVBNM<>? /@#$^&`, english, ukrainian)
-  );
-  console.log(
-    fixGibberish(`йцукеенгшщзхїфівапролджєячсмитьбю. ЙЦУКЕНГШЩЗХЇФІВАПРОЛДЖЄЯЧСМИТЬБЮ, ."№;:?`, ukrainian, english)
-  );
-  console.log(
-    fixGibberish('cgjcj, gthtrk.xtybz hfcrkflrb rkfdbfnehs d jgthfwbjyyjq cbcntvt ,bkkfutqncf&', english, russian)
-  );
+export const createTranslator = ({ from, to }: Options) => {
+  return (string: string) => translate(string, { from: languages[from], to: languages[to] });
 };
+
+const test = () => {
+  const engToUkr = createTranslator({ from: 'english', to: 'ukrainian' });
+  const urkToEng = createTranslator({ from: 'ukrainian', to: 'english' });
+  const engToRus = createTranslator({ from: 'english', to: 'russian' });
+  console.log(engToUkr(`qwerttyuiop[]asdfghjkl;'zxcvbnm,./ QWERTYUIOP{}ASDFGHJKL:"ZXCVBNM<>? /@#$^&`));
+  console.log(urkToEng(`йцукеенгшщзхїфівапролджєячсмитьбю. ЙЦУКЕНГШЩЗХЇФІВАПРОЛДЖЄЯЧСМИТЬБЮ, ."№;:?`));
+  console.log(engToRus('cgjcj, gthtrk.xtybz hfcrkflrb rkfdbfnehs d jgthfwbjyyjq cbcntvt ,bkkfutqncf&'));
+};
+
+export default createTranslator;
