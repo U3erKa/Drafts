@@ -115,3 +115,25 @@ module.exports.deleteCar = async (req, res, next) => {
     next(error);
   }
 };
+
+/** @type {import('express').RequestHandler} */
+module.exports.addPicToCar = async (req, res, next) => {
+  const {
+    file,
+    params: { carId },
+  } = req;
+
+  try {
+    const [updatedCars, [car]] = await Car.update(
+      { picPath: file?.filename },
+      { where: { id: carId }, returning: true }
+    );
+
+    if (updatedCars !== 1) {
+      throw createHttpError(404, 'Car not found');
+    }
+    res.send({ data: car, file });
+  } catch (error) {
+    next(error);
+  }
+};
