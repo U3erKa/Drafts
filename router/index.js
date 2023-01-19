@@ -1,8 +1,8 @@
-const express = require('express');
-const carsRouter = require('./carsRouter')
-
-const router = express.Router();
+const router = require('express').Router();
+const carsRouter = require('./carsRouter');
+const sellerRouter = require('./sellerRouter');
 
 router.use('/cars', carsRouter);
+router.use('/sellers', sellerRouter);
 
 module.exports = router;
