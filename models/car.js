@@ -47,6 +47,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         validate: { notNull: true, isAlphanumeric: true, notEmpty: true },
       },
+      picPath: { type: DataTypes.STRING, field: 'pic_path', validate: { notEmpty: true } },
     },
     {
       sequelize,
