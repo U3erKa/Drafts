@@ -1,5 +1,5 @@
 const createHttpError = require('http-errors');
-const { Car } = require('../models');
+const { Car, Review, Seller } = require('../models');
 
 /** @type {import('express').RequestHandler} */
 module.exports.createCar = async (req, res, next) => {
@@ -24,6 +24,15 @@ module.exports.getCars = async (req, res, next) => {
     // where: {
     //   isUsed: false,
     // },
+    include: [
+      { model: Review, required: true, as: 'reviews' },
+      {
+        model: Seller,
+        as: 'sellers',
+        attributes: ['id', 'name', 'address'],
+        through: { attributes: [] },
+      },
+    ],
   });
 
   res.send({ data: cars });
