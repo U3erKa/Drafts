@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@types/express': ^4.17.15
   '@types/node': ^18.11.18
+  '@types/sequelize': ^4.28.14
   concurrently: ^7.6.0
   express: ^4.18.2
   http-errors: ^2.0.0
@@ -25,12 +26,17 @@ dependencies:
 devDependencies:
   '@types/express': 4.17.15
   '@types/node': 18.11.18
+  '@types/sequelize': 4.28.14
   concurrently: 7.6.0
   nodemon: 2.0.20
   sequelize-cli: 6.5.2
   typescript: 4.9.4
 
 packages:
+
+  /@types/bluebird/3.5.38:
+    resolution: {integrity: sha512-yR/Kxc0dd4FfwtEoLZMoqJbM/VE/W7hXn/MIjb+axcwag0iFmSPK7OBUZq1YWLynJUoWQkfUrI7T0HDqGApNSg==}
+    dev: true
 
   /@types/body-parser/1.19.2:
     resolution: {integrity: sha512-ALYone6pm6QmwZoAgeyNksccT9Q4AWZQ6PvfwR37GT6r6FWUPguq6sUmNGSMV2Wr761oQoBxwGGa6DR5o1DC9g==}
@@ -41,6 +47,12 @@ packages:
 
   /@types/connect/3.4.35:
     resolution: {integrity: sha512-cdeYyv4KWoEgpBISTxWvqYsVy444DOqehiF3fM3ne10AmJ62RSyNkUnxMJXHQWRQQX2eR94m5y1IZyDwBjV9FQ==}
+    dependencies:
+      '@types/node': 18.11.18
+    dev: true
+
+  /@types/continuation-local-storage/3.2.4:
+    resolution: {integrity: sha512-OT32vCVMymU1JMPKDeY0lX3cduAr0Pm/VwIbxygMeDS4lRcv57qYXn9bMwBRcRnEpXKBb/r4xYaZCARTZllP0A==}
     dependencies:
       '@types/node': 18.11.18
     dev: true
@@ -68,6 +80,10 @@ packages:
       '@types/serve-static': 1.15.0
     dev: true
 
+  /@types/lodash/4.14.191:
+    resolution: {integrity: sha512-BdZ5BCCvho3EIXw6wUCXHe7rS53AIDPLE+JzwgT+OsJk53oBfbSmZZ7CX4VaRoN78N+TJpFi9QPlfIVNmJYWxQ==}
+    dev: true
+
   /@types/mime/3.0.1:
     resolution: {integrity: sha512-Y4XFY5VJAuw0FgAqPNd6NNoV44jbq9Bz2L7Rh/J6jLTiHBSBJa9fxqQIvkIld4GsoDOcCbvzOUAbLPsSKKg+uA==}
     dev: true
@@ -87,6 +103,15 @@ packages:
     resolution: {integrity: sha512-EEhsLsD6UsDM1yFhAvy0Cjr6VwmpMWqFBCb9w07wVugF7w9nfajxLuVmngTIpgS6svCnm6Vaw+MZhoDCKnOfsw==}
     dev: true
 
+  /@types/sequelize/4.28.14:
+    resolution: {integrity: sha512-O8lTJ8YPVVaoY9xjduchDlo0MOS3w262pro2H1QMuFIo/kc/p1elP/UxLOTP2wcVO2cFd6Gvghg9ZSAiJi0GLA==}
+    dependencies:
+      '@types/bluebird': 3.5.38
+      '@types/continuation-local-storage': 3.2.4
+      '@types/lodash': 4.14.191
+      '@types/validator': 13.7.10
+    dev: true
+
   /@types/serve-static/1.15.0:
     resolution: {integrity: sha512-z5xyF6uh8CbjAu9760KDKsH2FcDxZ2tFCsA4HIMWE6IkiYMXfVoa+4f9KX+FN0ZLsaMw1WNG2ETLA6N+/YA+cg==}
     dependencies:
@@ -96,7 +121,6 @@ packages:
 
   /@types/validator/13.7.10:
     resolution: {integrity: sha512-t1yxFAR2n0+VO6hd/FJ9F2uezAZVWHLmpmlJzm1eX03+H7+HsuTAp7L8QJs+2pQCfWkP1+EXsGK9Z9v7o/qPVQ==}
-    dev: false
 
   /abbrev/1.1.1:
     resolution: {integrity: sha512-nne9/IiQ/hzIhY6pdDnbBtz7DjPTKrY00P/zvPSm5pOFkl6xuGrGnXn/VtTNNfNtAfZ9/1RtehkszU9qcTii0Q==}
@@ -613,14 +637,14 @@ packages:
       is-glob: 4.0.3
     dev: true
 
-  /glob/8.0.3:
-    resolution: {integrity: sha512-ull455NHSHI/Y1FqGaaYFaLGkNMMJbavMrEGFXG/PGrg6y7sutWHUHrz6gy6WEBH6akM1M414dWKCNs+IhKdiQ==}
+  /glob/8.1.0:
+    resolution: {integrity: sha512-r8hpEjiQEYlF2QU0df3dS+nxxSIreXQS1qRhMJM0Q5NDdR386C7jb7Hwwod8Fgiuex+k0GFjgft18yvxm5XoCQ==}
     engines: {node: '>=12'}
     dependencies:
       fs.realpath: 1.0.0
       inflight: 1.0.6
       inherits: 2.0.4
-      minimatch: 5.1.2
+      minimatch: 5.1.6
       once: 1.4.0
     dev: true
 
@@ -745,7 +769,7 @@ packages:
     dependencies:
       config-chain: 1.1.13
       editorconfig: 0.15.3
-      glob: 8.0.3
+      glob: 8.1.0
       nopt: 6.0.0
     dev: true
 
@@ -831,8 +855,8 @@ packages:
       brace-expansion: 1.1.11
     dev: true
 
-  /minimatch/5.1.2:
-    resolution: {integrity: sha512-bNH9mmM9qsJ2X4r2Nat1B//1dJVcn3+iBLa3IgqJ7EbGaDNepL9QSHOxN4ng33s52VMMhhIfgCYDk3C4ZmlDAg==}
+  /minimatch/5.1.6:
+    resolution: {integrity: sha512-lKwV/1brpG6mBUFHtb7NUmtABCb2WZZmm2wNiOA5hAb8VdCS4B3dtMWyvcoViccwAW/COERjXLt0zP1zXUN26g==}
     engines: {node: '>=10'}
     dependencies:
       brace-expansion: 2.0.1

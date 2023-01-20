@@ -15,6 +15,7 @@
   "devDependencies": {
     "@types/express": "^4.17.15",
     "@types/node": "^18.11.18",
+    "@types/sequelize": "^4.28.14",
     "concurrently": "^7.6.0",
     "nodemon": "^2.0.20",
     "sequelize-cli": "^6.5.2",
