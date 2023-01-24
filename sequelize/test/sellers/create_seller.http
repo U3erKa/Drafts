@@ -1,0 +1,8 @@
+POST http://localhost:5000/sellers HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "Fordium",
+  "address": "Kyiv",
+  "phone": "098-765-43-21"
+}
