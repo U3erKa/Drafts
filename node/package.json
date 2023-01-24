@@ -2,14 +2,15 @@
   "name": "node-js",
   "version": "1.0.0",
   "description": "My first package",
+  "exports": "./index.js",
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node ."
+    "start": "node ."
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/U3erKa/Node.git"
+    "url": "git+https://github.com/U3erKa/Drafts.git"
   },
   "keywords": [
     "node"
@@ -17,9 +18,9 @@
   "author": "U2erKa",
   "license": "ISC",
   "bugs": {
-    "url": "git+https://github.com/U3erKa/Node/issues"
+    "url": "git+https://github.com/U3erKa/Drafts/issues"
   },
-  "homepage": "git+https://github.com/U3erKa/Node#readme",
+  "homepage": "git+https://github.com/U3erKa/Drafts#readme",
   "dependencies": {
     "lodash": "^4.17.21"
   }
