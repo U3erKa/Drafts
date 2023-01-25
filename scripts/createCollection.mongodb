@@ -1,0 +1,50 @@
+db.createCollection('phones', {
+  validator: {
+    $jsonSchema: {
+      bsonType: 'object',
+      required: [ 'model', 'manufacturer', 'price', 'specs', ],
+      properties: {
+        model: {
+          bsonType: 'string',
+          description: '"model" is a required field',
+        },
+        manufacturer: {
+          bsonType: 'string',
+          description: '"manufacturer" is a required field',
+        },
+        isUsed: {
+          bsonType: 'bool',
+        },
+        price: {
+          // bsonType: 'decimal',
+          bsonType: 'number',
+          description: '"price" is a required field and must be positive',
+          minimum: 0,
+          maximum: 999999,
+        },
+        specs: {
+          bsonType: 'object',
+          required: [ 'ram', 'cpu', ],
+          properties: {
+            ram: {
+              bsonType: 'int',
+              description: '"ram" is a required field and must be positive',
+            },
+            cpu: {
+              bsonType: 'string',
+              description: '"cpu" is a required field',
+            }
+          }
+        }
+      },
+    }
+  }
+});
+
+// 
+db.phones.drop();
+
+db.phones.insertMany([
+  { model: 'IPhone X', manufacturer: 'Apple', price: 11999.99, isUsed: false, specs: { ram: 8, cpu: 'M1', } },
+  { model: 'IPhone XI', manufacturer: 'Apple', price: 14999.99, isUsed: false, specs: { ram: 12, cpu: 'M1', } },
+]);
