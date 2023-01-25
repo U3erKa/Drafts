@@ -11,6 +11,8 @@ db.phones.insertMany([
 ]);
 
 // read
+db.phones.find();
+
 db.phones.find({
   price: 69420,
   model: 'Pixel 69'
@@ -33,3 +35,12 @@ db.phones.updateMany(
   { brand: { $exists: false } },
   { $set: { brand: 'unknown' },
 });
+
+// delete
+db.phones.deleteMany({ price: { $exists: false } });
+
+// TRUNCATE
+db.inventory.deleteMany({});
+
+// DROP
+db.inventory.drop();
