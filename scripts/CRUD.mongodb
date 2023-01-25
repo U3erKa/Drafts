@@ -27,3 +27,9 @@ db.phones.find({ $or: [
 
 db.phones.find({ createdAt: { $exists: true } });
 // db.phones.find({ createdAt: { $exists: 1 } });
+
+// update
+db.phones.updateMany(
+  { brand: { $exists: false } },
+  { $set: { brand: 'unknown' },
+});

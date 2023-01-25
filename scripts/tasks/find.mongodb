@@ -17,3 +17,15 @@ db.inventory.find({ $or: [
   { manufacturer: { $exists: true } },
   { 'size.uom': 'cm' },
 ]});
+
+db.inventory.find();
+
+// update
+db.inventory.updateMany(
+  { status: 'A' },
+  { $set: { status: 'accepted' } },
+);
+db.inventory.updateMany(
+  { status: 'D' },
+  { $set: { status: 'delivered' } },
+);
