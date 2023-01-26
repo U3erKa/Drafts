@@ -1,0 +1,100 @@
+db.createCollection('filmMakers', {
+  validator: {
+    $jsonSchema: {
+      bsonType: 'object',
+      required: [ 'name', ],
+      properties: {
+        name: {
+          bsonType: 'string',
+        },
+        address: {
+          bsonType: 'object',
+          required: [ 'country', 'city', ],
+          properties: {
+            country: {
+              bsonType: 'string',
+            },
+            city: {
+              bsonType: 'string',
+            },
+          },
+        },
+        foundedIn: {
+          bsonType: 'int',
+        },
+      },
+    }
+  }
+});
+
+db.createCollection('films', {
+  validator: {
+    $jsonSchema: {
+      bsonType: 'object',
+      required: [ 'filmMakerId', 'title', 'duration', ],
+      properties: {
+        filmMakerId: {
+          bsonType: 'objectId',
+        },
+        title: {
+          bsonType: 'string',
+        },
+        releasedIn: {
+          bsonType: 'int',
+        },
+        duration: {
+          bsonType: 'number',
+        },
+      },
+    }
+  }
+});
+
+db.filmMakers.insertMany([
+  { name: 'Universal pictures', foundedIn: 1950, },
+  { name: 'Warner brothers', foundedIn: 1966, },
+  { name: '20 Century Fox', foundedIn: 1970, },
+  { name: 'Nintendo Pictures', foundedIn: 2022, },
+]);
+
+db.films.insertMany([
+  { title: 'Titanic', filmMakerId: new ObjectId('63d2b23f02be5d77e725a55d'), duration: 3.45 },
+  { title: 'Batman', filmMakerId: new ObjectId('63d2b23f02be5d77e725a55e'), duration: 1.45 },
+  { title: 'Avatar', filmMakerId: new ObjectId('63d2b23f02be5d77e725a55e'), duration: 3.15 },
+  { title: 'Justice League', filmMakerId: new ObjectId('63d2b23f02be5d77e725a55f'), duration: 2.30 },
+  { title: 'Super mario bros.', filmMakerId: new ObjectId('63d2b23f02be5d77e725a560'), duration: 3.15 },
+  { title: 'Mario and Luigi', filmMakerId: new ObjectId('63d2b23f02be5d77e725a560'), duration: 2.30 },
+  { title: "Bowser's inside story", filmMakerId: new ObjectId('63d2b23f02be5d77e725a560'), duration: 3.45 },
+]);
+
+// JOIN
+db.filmMakers.aggregate([
+  {
+    $lookup: {
+      from: 'films',
+      localField: '_id',
+      foreignField: 'filmMakerId',
+      as: 'filmsArray',
+    }
+  },
+]);
+
+db.filmMakers.aggregate([
+  {
+    $lookup: {
+      from: 'films',
+      localField: '_id',
+      foreignField: 'filmMakerId',
+      as: 'films',
+    }
+  },
+  {
+    $unwind: '$films',
+  },
+  {
+    $unset: [ 'films.filmMakerId', '_id', 'films._id', ],
+  },
+  {
+    $group: { _id: '$name', filmsCount: { $count: {} } }
+  }
+]);
