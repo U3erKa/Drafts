@@ -17,7 +17,7 @@ export const createUser: RequestHandler = async (req, res, next) => {
 
 export const getUsers: RequestHandler = async (req, res, next) => {
   try {
-    const users = await User.find();
+    const users = await User.find().select(['-password', '-__v']);
 
     res.status(200).send({ data: users });
   } catch (error) {
@@ -31,7 +31,7 @@ export const getUser: RequestHandler = async (req, res, next) => {
   } = req;
 
   try {
-    const user = await User.findById(userId);
+    const user = await User.findById(userId).select(['-password', '-__v']);
 
     if (!user) {
       throw createHttpError(404, `User not found: ${userId}`);
@@ -50,7 +50,8 @@ export const updateUser: RequestHandler = async (req, res, next) => {
   } = req;
 
   try {
-    const updatedUser = await User.findByIdAndUpdate(userId, body, { new: true });
+    const updatedUser = await User.findByIdAndUpdate(userId, body, { new: true })
+      .select(['-password', '-__v']);
 
     res.status(200).send({ data: updatedUser });
   } catch (error) {
@@ -64,7 +65,7 @@ export const deleteUser: RequestHandler = async (req, res, next) => {
   } = req;
 
   try {
-    const deletedUser = await User.findByIdAndDelete(userId);
+    const deletedUser = await User.findByIdAndDelete(userId).select(['-password', '-__v']);
 
     if (!deletedUser) {
       throw createHttpError(404, `User not found: ${userId}`);
