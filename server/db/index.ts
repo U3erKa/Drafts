@@ -1,8 +1,9 @@
 import mongoose from 'mongoose';
 
-const DB_STRING = process.env.DB_STRING || 'mongodb://127.0.0.1:27017/phonesDb';
+const DB_STRING = process.env.DB_STRING;
 
 async function connectToDb() {
+  // @ts-ignore
   await mongoose.connect(DB_STRING);
 }
 

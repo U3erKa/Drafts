@@ -1,3 +1,6 @@
+import { config as dotenv } from 'dotenv';
+dotenv();
+
 import http from 'http';
 import app from './app';
 
