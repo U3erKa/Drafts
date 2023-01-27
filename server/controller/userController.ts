@@ -16,8 +16,12 @@ export const createUser: RequestHandler = async (req, res, next) => {
 };
 
 export const getUsers: RequestHandler = async (req, res, next) => {
+  const {
+    query: { limit = 0, offset = 0 },
+  } = req;
+
   try {
-    const users = await User.find().select(['-password', '-__v']);
+    const users = await User.find().select(['-password', '-__v']).limit(+limit).skip(+offset);
 
     res.status(200).send({ data: users });
   } catch (error) {
@@ -50,8 +54,10 @@ export const updateUser: RequestHandler = async (req, res, next) => {
   } = req;
 
   try {
-    const updatedUser = await User.findByIdAndUpdate(userId, body, { new: true })
-      .select(['-password', '-__v']);
+    const updatedUser = await User.findByIdAndUpdate(userId, body, { new: true }).select([
+      '-password',
+      '-__v',
+    ]);
 
     res.status(200).send({ data: updatedUser });
   } catch (error) {
