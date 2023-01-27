@@ -1,9 +1,19 @@
 import { Schema, model } from '../';
+import * as yup from 'yup';
+
+const emailSchema = yup.string().email().required();
 
 const userSchema = new Schema({
   firstName: { type: String, required: true },
   lastName: String,
-  email: { type: String, required: true, unique: true },
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+    validate: {
+      validator: (value: string) => emailSchema.isValid(value),
+    },
+  },
   password: { type: String, required: true },
   isMale: Boolean,
   birthday: { type: Date },
