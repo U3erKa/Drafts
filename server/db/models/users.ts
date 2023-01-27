@@ -1,5 +1,6 @@
 import { Schema, model } from '../';
 import * as yup from 'yup';
+import bcrypt from 'bcrypt';
 
 const emailSchema = yup.string().email().required();
 
@@ -14,7 +15,14 @@ const userSchema = new Schema({
       validator: (value: string) => emailSchema.isValid(value),
     },
   },
-  password: { type: String, required: true },
+  password: {
+    type: String,
+    required: true,
+    set: (password: string) => {
+      const hash = bcrypt.hashSync(password, 10);
+      return hash;
+    },
+  },
   isMale: Boolean,
   birthday: { type: Date },
   contacts: {
