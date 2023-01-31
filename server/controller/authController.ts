@@ -9,8 +9,8 @@ export const register: RequestHandler = async (req, res, next) => {
   const { body } = req;
 
   try {
-    // const user = await User.create(body);
-    const { password, ...user } = await User.create(body);
+    const user = await User.create(body);
+
     const sessionData = await AuthService.createSession(user);
 
     res.status(201).send({ data: sessionData });
@@ -37,8 +37,6 @@ export const login: RequestHandler = async (req, res, next) => {
     const sessionData = await AuthService.createSession(foundUser);
 
     res.status(200).send({ data: sessionData });
-
-    res.status(201).send({ data: foundUser });
   } catch (error) {
     next(error);
   }
