@@ -1,10 +1,11 @@
-import { Header } from 'components';
+import { Header, LoginForm } from 'components';
 
 export default function Login() {
   return (
     <div>
       <Header />
-      Login
+      <h1>Login now</h1>
+      <LoginForm />
     </div>
   );
 }
