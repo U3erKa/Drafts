@@ -1,9 +1,7 @@
 import mongoose from 'mongoose';
-
-const DB_STRING = process.env.DB_STRING;
+import { DB_STRING } from '../constants';
 
 async function connectToDb() {
-  // @ts-ignore
   await mongoose.connect(DB_STRING);
 }
 
