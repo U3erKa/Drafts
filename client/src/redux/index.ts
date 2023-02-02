@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import userReducer from './user.slice';
+import messageReducer from './message.slice';
 
 // @ts-ignore
 import type { ThunkAction, Action } from '@reduxjs/toolkit';
@@ -7,6 +8,7 @@ import type { ThunkAction, Action } from '@reduxjs/toolkit';
 const store = configureStore({
   reducer: {
     user: userReducer,
+    message: messageReducer,
   },
 });
 
