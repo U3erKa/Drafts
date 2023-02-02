@@ -1,10 +1,10 @@
-import { Header } from 'components';
+import { Header, Chat } from 'components';
 
-export default function Chat() {
+export default function ChatPage() {
   return (
     <div>
       <Header />
-      Chat
+      <Chat />
     </div>
   );
 }
