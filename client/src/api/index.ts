@@ -15,6 +15,7 @@ httpClient.interceptors.request.use(requestInterceptorConfig, requestInterceptor
 export const login = (userData) => httpClient.post('/auth/login', userData);
 export const register = (userData) => httpClient.post('/auth/register', userData);
 export const refresh = (token) => httpClient.post('/auth/refresh', { token });
+export const getMessages = (options) => httpClient.get(`/messages`);
 
 function responseInterceptor(response: AxiosResponse) {
   if (response?.data?.data?.tokens) {
