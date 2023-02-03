@@ -1,0 +1,28 @@
+# optional
+version: '3'
+
+# containers
+services:
+  server-app:
+    # build: ./server
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    env_file:
+      - ./server/.env
+    volumes:
+      - ./server:/app:ro
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:latest
+    environment:
+      - MONGO_INITDB_DATABASE=dockerDb
+    ports:
+      - "27017:27017"
+    volumes:
+      - ~/backups/compose/mongo_db:/data/db
+    restart: always
