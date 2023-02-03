@@ -16,6 +16,9 @@ services:
       - ./server:/app:ro
     depends_on:
       - mongo
+    networks:
+      - frontend
+      - db
 
   mongo:
     image: mongo:latest
@@ -26,3 +29,11 @@ services:
     volumes:
       - ~/backups/compose/mongo_db:/data/db
     restart: always
+    networks:
+      - db
+
+networks:
+  db:
+    name: 'db'
+  front:
+    name: 'frontend'
