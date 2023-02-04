@@ -6,6 +6,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "scripts": {
+    "format": "prettier --write ."
+  },
   "workspaces": [
     "node",
     "react",
@@ -15,5 +18,8 @@
     "sql",
     "ts-react",
     "typescript"
-  ]
+  ],
+  "devDependencies": {
+    "prettier": "^2.8.3"
+  }
 }
