@@ -1,0 +1,46 @@
+use('phonesDb');
+
+// create
+db.phones.insertOne({ model: 'Pixel 69', price: 69420, createdAt: Date.now() });
+
+db.phones.insertMany([
+  { model: 'Pixel 68', price: 68420, createdAt: Date.now() },
+  { model: 'Pixel 67', price: 67420, createdAt: Date.now() },
+  { model: 'Pixel 66', price: 66420, createdAt: Date.now() },
+  { model: 'Pixel 65', price: 65420, createdAt: Date.now() },
+]);
+
+// read
+db.phones.find();
+
+db.phones.find({
+  price: 69420,
+  model: 'Pixel 69'
+});
+
+// $lt - less than
+// $gt - greater than
+db.phones.find({ price: { $lt: 66666, $gt: 60000 } });
+
+db.phones.find({ $or: [
+  { price: { $lt: 66666, $gt: 60000 } },
+  {model: 'Pixel 7'},
+]});
+
+db.phones.find({ createdAt: { $exists: true } });
+// db.phones.find({ createdAt: { $exists: 1 } });
+
+// update
+db.phones.updateMany(
+  { brand: { $exists: false } },
+  { $set: { brand: 'unknown' },
+});
+
+// delete
+db.phones.deleteMany({ price: { $exists: false } });
+
+// TRUNCATE
+db.inventory.deleteMany({});
+
+// DROP
+db.inventory.drop();

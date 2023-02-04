@@ -1,0 +1,72 @@
+// создать коллекцию для фирм и работников
+db.createCollection('companies', {
+  validator: {
+    $jsonSchema: {
+      bsonType: 'object',
+      required: [ 'name', 'stonks', ],
+      properties: {
+        name: {
+          bsonType: 'string',
+        },
+        stonks: {
+          bsonType: 'number',
+        },
+        foundedIn: {
+          bsonType: 'int',
+        },
+      },
+    }
+  }
+});
+
+db.createCollection('employee', {
+  validator: {
+    $jsonSchema: {
+      bsonType: 'object',
+      required: [ 'companyId', 'name', 'salary', ],
+      properties: {
+        companyId: {
+          bsonType: 'objectId',
+        },
+        fullName: {
+          bsonType: 'string',
+        },
+        salary: {
+          bsonType: 'number',
+        },
+      },
+    }
+  }
+});
+
+db.companies.insertMany([
+  { name: 'Apple', stonks: 15050.48 },
+  { name: 'Microsoft', stonks: 999999 },
+  { name: 'Loremium co.', stonks: 1488 },
+]);
+
+db.employee.insertMany([
+  { companyId: new ObjectId('63d2bf1645ad1041f249dfba'), name: 'User Userovich 1', salary: 40000 },
+  { companyId: new ObjectId('63d2bf1645ad1041f249dfba'), name: 'User Userovich 2', salary: 45000 },
+  { companyId: new ObjectId('63d2bf1645ad1041f249dfbb'), name: 'User Userovich 3', salary: 36000 },
+  { companyId: new ObjectId('63d2bf1645ad1041f249dfbb'), name: 'User Userovich 4', salary: 42000 },
+  { companyId: new ObjectId('63d2bf1645ad1041f249dfbb'), name: 'User Userovich 5', salary: 33000 },
+  { companyId: new ObjectId('63d2bf1645ad1041f249dfbc'), name: 'User Userovich 6', salary: 34000 },
+  { companyId: new ObjectId('63d2bf1645ad1041f249dfbc'), name: 'User Userovich 7', salary: 53000 },
+]);
+
+// показать конкретную фирму и всех её рабочих
+db.companies.aggregate([
+  { $match: { name: 'Apple' } },
+  {
+    $lookup: {
+      from: 'employee',
+      localField: '_id',
+      foreignField: 'companyId',
+      as: 'staff',
+    }
+  },
+  {
+    $unset: [ 'staff.companyId', '_id', 'staff._id', ],
+  },
+]);

@@ -1,0 +1,13 @@
+{
+  "name": "mongo",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "workspaces":[
+    "client",
+    "server"
+  ]
+}
