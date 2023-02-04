@@ -227,7 +227,9 @@ function phraseToAbbreviation(phrase: string) {
 function isPalindrom(phrase: string) {
   phrase = phrase.split(' ').join('');
   for (let i = 0; i < phrase.length / 2; i++) {
-    if (phrase[i].toLowerCase() !== phrase[phrase.length - i - 1].toLowerCase()) {
+    if (
+      phrase[i].toLowerCase() !== phrase[phrase.length - i - 1].toLowerCase()
+    ) {
       return false;
     }
   }

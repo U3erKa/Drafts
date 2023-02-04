@@ -40,7 +40,11 @@ const SomeArticle = (props: { product: JSON; theme: THEMES }) => {
 
 function withProduct(Component) {
   function NewComponent(props: any) {
-    return <ProductContext.Consumer>{(product) => <Component product={product} {...props} />}</ProductContext.Consumer>;
+    return (
+      <ProductContext.Consumer>
+        {(product) => <Component product={product} {...props} />}
+      </ProductContext.Consumer>
+    );
   }
 
   return NewComponent;
@@ -50,7 +54,9 @@ function withProduct(Component) {
 const withTheme = (Component) => (props: any) =>
   (
     <ThemeContext.Consumer>
-      {([theme, onClick]) => <Component theme={theme} onClick={onClick} {...props} />}
+      {([theme, onClick]) => (
+        <Component theme={theme} onClick={onClick} {...props} />
+      )}
     </ThemeContext.Consumer>
   );
 

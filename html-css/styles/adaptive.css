@@ -2,7 +2,6 @@
 /* @import url(./print-styles.css) print;
 @import url(./screen-styles.css) screen, speech; */
 @media screen {
-  
 }
 
 .header {
@@ -29,7 +28,7 @@
 }
 
 .logo {
-margin-right: 20px;
+  margin-right: 20px;
 }
 
 .container {

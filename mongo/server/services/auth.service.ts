@@ -31,7 +31,10 @@ export const refreshSession = async (tokenInstance) => {
   };
 
   const accessToken = await JWTServise.createAccessToken(tokenPayload);
-  await Token.findOneAndUpdate({ token: tokenInstance.token }, { token: accessToken });
+  await Token.findOneAndUpdate(
+    { token: tokenInstance.token },
+    { token: accessToken },
+  );
 
   return { user: foundUser, tokens: { access: accessToken } };
 };

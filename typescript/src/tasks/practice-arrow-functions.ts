@@ -1,7 +1,8 @@
 const strArray = ['str1', 'str2', 'str3', 'str4', 'str5', 'str6'];
 const numArray = [1, 3, 5, 7, 9, 11, 13, 14, 17, 19, 21, 23, 25];
 
-const numOfStrings = (arr: any[]) => arr.filter((element: any) => typeof element === 'string').length;
+const numOfStrings = (arr: any[]) =>
+  arr.filter((element: any) => typeof element === 'string').length;
 
 const calculator = (sign: string, ...numbers: number[]) => {
   switch (sign.trim()) {

@@ -115,7 +115,7 @@ const map3 = new Map([
   [user2, messages2],
 ]);
 
-const getMessages = (user: { id: number; name: string; }) => map3.get(user);
+const getMessages = (user: { id: number; name: string }) => map3.get(user);
 
 // map3.forEach((value, key, map) => {
 //   console.log(value);

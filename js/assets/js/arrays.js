@@ -11,7 +11,7 @@ const userEmailsArray = new Array(
   'email2@example.com',
   'email3@example.com',
   'email4@example.com',
-  'email5@example.com'
+  'email5@example.com',
 );
 
 const arr = [
@@ -59,7 +59,7 @@ console.log("userNames.includes('Vik') " + userNames.includes('Vik'));
 console.log("userNames.includes('U2erKa') " + userNames.includes('U2erKa'));
 console.log(
   "userNames.includes(['arrgh1', 'arrgh2', 'arrgh3'] " +
-    userNames.includes(['arrgh1', 'arrgh2', 'arrgh3'])
+    userNames.includes(['arrgh1', 'arrgh2', 'arrgh3']),
 ); // false, though the object (array) exists
 
 console.log("userNames.indexOf('Vik') " + userNames.indexOf('Vik'));
@@ -72,7 +72,7 @@ const concatedArray = userNames.concat(
   undefined,
   'Larry',
   [1, 2, 3, 4, 5],
-  [[1, 2, 3, 4, 5]]
+  [[1, 2, 3, 4, 5]],
 );
 console.log(userNames[8] === concatedArray[8]); // true, badness... maybe
 const flatArr2 = arr2.flat(1);
@@ -166,4 +166,6 @@ const highOrderFunction2 = function () {
 const innerFunction = highOrderFunction2();
 innerFunction();
 
-const arr = new Array(25).fill(undefined).map(() => Math.floor((Math.random() - 0.25) * 10));
+const arr = new Array(25)
+  .fill(undefined)
+  .map(() => Math.floor((Math.random() - 0.25) * 10));

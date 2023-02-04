@@ -9,35 +9,83 @@ import * as counterActionCreators from 'app/slices/counter';
 import styles from './Counter.module.scss';
 
 const translations = new Map([
-  [LANGUAGES.EN_US, { count: 'Count', step: 'Step', increment: 'Increment', decrement: 'Decrement' }],
-  [LANGUAGES.UA, { count: 'Рахунок', step: 'Крок', increment: 'Збільшити', decrement: 'Зменшити' }],
-  [LANGUAGES.PL, { count: 'PL_Count', step: 'PL_Step', increment: 'PL_Increment', decrement: 'PL_Decrement' }],
+  [
+    LANGUAGES.EN_US,
+    {
+      count: 'Count',
+      step: 'Step',
+      increment: 'Increment',
+      decrement: 'Decrement',
+    },
+  ],
+  [
+    LANGUAGES.UA,
+    {
+      count: 'Рахунок',
+      step: 'Крок',
+      increment: 'Збільшити',
+      decrement: 'Зменшити',
+    },
+  ],
+  [
+    LANGUAGES.PL,
+    {
+      count: 'PL_Count',
+      step: 'PL_Step',
+      increment: 'PL_Increment',
+      decrement: 'PL_Decrement',
+    },
+  ],
 ]);
 
 const Counter: FC = function () {
-  const lang = useSelector<RootState, LANGUAGES>((state) => state.lang as LANGUAGES);
+  const lang = useSelector<RootState, LANGUAGES>(
+    (state) => state.lang as LANGUAGES,
+  );
   const theme = useSelector<RootState, THEMES>((state) => state.theme);
-  const { count, step } = useSelector<RootState, { count: number; step: number }>((state) => state.counter);
+  const { count, step } = useSelector<
+    RootState,
+    { count: number; step: number }
+  >((state) => state.counter);
   const dispatch = useDispatch();
 
-  const { decrement, increment, setStep } = bindActionCreators({ ...counterActionCreators }, dispatch);
+  const { decrement, increment, setStep } = bindActionCreators(
+    { ...counterActionCreators },
+    dispatch,
+  );
   const langAct = bindActionCreators({ setLang }, dispatch);
 
   const tr = translations.get(lang);
-  const selectLang = languages.map((language) => <option key={language} value={language}>{`${language}`}</option>);
+  const selectLang = languages.map((language) => (
+    <option key={language} value={language}>{`${language}`}</option>
+  ));
 
   return (
-    <div className={cx({ [styles.lightTheme]: theme === THEMES.LIGHT, [styles.darkTheme]: theme === THEMES.DARK })}>
+    <div
+      className={cx({
+        [styles.lightTheme]: theme === THEMES.LIGHT,
+        [styles.darkTheme]: theme === THEMES.DARK,
+      })}
+    >
       <p>
         {tr?.count}: {count}
       </p>
       <label>
         {tr?.step}:
-        <input type="number" value={step} onChange={({ target: { value } }) => setStep(value)} />
+        <input
+          type="number"
+          value={step}
+          onChange={({ target: { value } }) => setStep(value)}
+        />
       </label>
       <button onClick={() => increment()}>{tr?.increment}</button>
       <button onClick={() => decrement()}>{tr?.decrement}</button>
-      <select value={lang} onChange={({ target: { value } }) => langAct.setLang(value as LANGUAGES)}>
+      <select
+        value={lang}
+        onChange={({ target: { value } }) =>
+          langAct.setLang(value as LANGUAGES)
+        }
+      >
         {selectLang}
       </select>
     </div>

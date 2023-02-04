@@ -33,7 +33,7 @@ const ordersString = createdUsers
     new Array(_.random(minOrders, maxOrders, false))
       .fill(undefined)
       .map(() => `(${user.id})`)
-      .join(',')
+      .join(','),
   )
   .join(',');
 
@@ -57,7 +57,10 @@ const ordersToProductsString = orders
     const filteredProducts = [...new Set(productsInOrder)];
     // вернуть строку типа (1, 4 , 18)
     return filteredProducts
-      .map((product) => `(${order.id}, ${product.id}, ${_.random(minQuantity, maxQuantity)})`)
+      .map(
+        (product) =>
+          `(${order.id}, ${product.id}, ${_.random(minQuantity, maxQuantity)})`,
+      )
       .join(',');
   })
   .join(',');

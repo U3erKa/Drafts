@@ -4,5 +4,4 @@ function handleImageError(e) {
 
   // img.alt = `${user.firstName[0]} ${user.lastName[0]}`
   e.target.remove();
-
 }

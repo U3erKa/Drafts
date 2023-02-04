@@ -6,12 +6,112 @@ const languages: { [k: string]: string } = {
 
 const wingdingsVoc = {
   en: [
-    'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
-    'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
+    'A',
+    'B',
+    'C',
+    'D',
+    'E',
+    'F',
+    'G',
+    'H',
+    'I',
+    'J',
+    'K',
+    'L',
+    'M',
+    'N',
+    'O',
+    'P',
+    'Q',
+    'R',
+    'S',
+    'T',
+    'U',
+    'V',
+    'W',
+    'X',
+    'Y',
+    'Z',
+    'a',
+    'b',
+    'c',
+    'd',
+    'e',
+    'f',
+    'g',
+    'h',
+    'i',
+    'j',
+    'k',
+    'l',
+    'm',
+    'n',
+    'o',
+    'p',
+    'q',
+    'r',
+    's',
+    't',
+    'u',
+    'v',
+    'w',
+    'x',
+    'y',
+    'z',
   ],
   wd: [
-    '✌', '👌', '👍', '👎', '☜', '☞', '☝', '☟', '🖐', '☺', '😐', '☹', '💣', '☠', '🏳', '🏱', '✈', '☼', '💧', '❄', '🕆', '✞', '🕈', '✠', '✡', '☪',
-    '♋', '♌', '♍', '♎', '♏', '♐', '♑', '♒', '♓', '🙰', '🙵', '●', '🔾', '■', '□', '🞐', '❑', '❒', '⬧', '⧫', '◆', '❖', '⬥', '⌧', '⮹', '⌘'
+    '✌',
+    '👌',
+    '👍',
+    '👎',
+    '☜',
+    '☞',
+    '☝',
+    '☟',
+    '🖐',
+    '☺',
+    '😐',
+    '☹',
+    '💣',
+    '☠',
+    '🏳',
+    '🏱',
+    '✈',
+    '☼',
+    '💧',
+    '❄',
+    '🕆',
+    '✞',
+    '🕈',
+    '✠',
+    '✡',
+    '☪',
+    '♋',
+    '♌',
+    '♍',
+    '♎',
+    '♏',
+    '♐',
+    '♑',
+    '♒',
+    '♓',
+    '🙰',
+    '🙵',
+    '●',
+    '🔾',
+    '■',
+    '□',
+    '🞐',
+    '❑',
+    '❒',
+    '⬧',
+    '⧫',
+    '◆',
+    '❖',
+    '⬥',
+    '⌧',
+    '⮹',
+    '⌘',
   ],
 };
 
@@ -55,7 +155,8 @@ function translate(string: string, { from, to }: { from: string; to: string }) {
       }
     }
 
-    result[i] = searchValue === -1 ? currentStr[i] : replacedChar ?? to[searchValue];
+    result[i] =
+      searchValue === -1 ? currentStr[i] : replacedChar ?? to[searchValue];
     replacedChar = null;
   }
   return result.join('');
@@ -87,9 +188,12 @@ export const createTranslator = ({ from, to }: Options) => {
     return (string: string) => translateWd(string, false);
   }
   if (from !== to) {
-    return (string: string) => translate(string, { from: languages[from], to: languages[to] });
+    return (string: string) =>
+      translate(string, { from: languages[from], to: languages[to] });
   }
-  throw new TypeError(`Current vocabularies combination is not supported: ${from} and ${to}`);
+  throw new TypeError(
+    `Current vocabularies combination is not supported: ${from} and ${to}`,
+  );
 };
 
 const test = () => {
@@ -100,9 +204,21 @@ const test = () => {
   const wdToEn = createTranslator({ from: 'wingdings', to: 'english' });
   // const broken = createTranslator({ from: 'wingdings', to: 'wingdings' });
 
-  console.log(engToUkr(`qwerttyuiop[]asdfghjkl;'zxcvbnm,./ QWERTYUIOP{}ASDFGHJKL:"ZXCVBNM<>? /@#$^&`));
-  console.log(urkToEng(`йцукеенгшщзхїфівапролджєячсмитьбю. ЙЦУКЕНГШЩЗХЇФІВАПРОЛДЖЄЯЧСМИТЬБЮ, ."№;:?`));
-  console.log(engToRus('cgjcj, gthtrk.xtybz hfcrkflrb rkfdbfnehs d jgthfwbjyyjq cbcntvt ,bkkfutqncf&'));
+  console.log(
+    engToUkr(
+      `qwerttyuiop[]asdfghjkl;'zxcvbnm,./ QWERTYUIOP{}ASDFGHJKL:"ZXCVBNM<>? /@#$^&`,
+    ),
+  );
+  console.log(
+    urkToEng(
+      `йцукеенгшщзхїфівапролджєячсмитьбю. ЙЦУКЕНГШЩЗХЇФІВАПРОЛДЖЄЯЧСМИТЬБЮ, ."№;:?`,
+    ),
+  );
+  console.log(
+    engToRus(
+      'cgjcj, gthtrk.xtybz hfcrkflrb rkfdbfnehs d jgthfwbjyyjq cbcntvt ,bkkfutqncf&',
+    ),
+  );
   // console.log(wdToEn('✌👌👍👎☜☞☝☟🖐☺😐☹💣☠🏳🏱✈☼💧❄🕆✞🕈✠✡☪☯ॐ☸♈♉♊♋♌♍♎♏♐♑♒♓🙰🙵●🔾■□🞐❑❒⬧⧫◆❖⬥⌧⮹⌘'));
   console.log(enToWd('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghigklmnopqrstuvwxyz'));
 };

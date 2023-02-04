@@ -83,7 +83,7 @@ loginRequest
     },
     (reject) => {
       // console.log(reject);
-    }
+    },
   )
   .then((user) => {
     // @ts-ignore
@@ -161,7 +161,7 @@ async function loadJson(url) {
 }
 
 const result = loadJson('https://javascript.info/no-such-user.json').catch(
-  console.log
+  console.log,
 );
 
 class HttpError extends Error {
@@ -230,7 +230,7 @@ function f() {
   wait().then(console.log);
 }
 
-f()
+f();
 
 /*
 setTimeout(() => {

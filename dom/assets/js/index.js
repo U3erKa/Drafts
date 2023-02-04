@@ -73,7 +73,7 @@ for (const btn of document.querySelectorAll('.style-btn')) {
 document
   .querySelector('#reset')
   .addEventListener('click', (e) =>
-    text.classList.remove(...colorsArr, ...stylesArr)
+    text.classList.remove(...colorsArr, ...stylesArr),
   );
 
 const colorsArr = ['red', 'green', 'blue'];

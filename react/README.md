@@ -70,4 +70,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
 ### Can't resolve 'prop-types' or similar while installed dependencies using `pnpm i`
-This is due to pnpm's non-flat structure. Workaround: delete existing `node_modules` if any, then run `pnpm i --shamefully-hoist` 
+
+This is due to pnpm's non-flat structure. Workaround: delete existing `node_modules` if any, then run `pnpm i --shamefully-hoist`

@@ -38,13 +38,13 @@
 
 .text::before {
   /* no content - no styles */
-  content: "<3";
+  content: '<3';
   /* content: open-quote; */
 }
 
 .text::after {
   /* content: close-quote; */
-  content: "???";
+  content: '???';
 }
 
 input::placeholder {

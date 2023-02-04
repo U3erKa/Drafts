@@ -316,4 +316,12 @@ const {
 } = serverResponse;
 const [, , user3, user4] = users;
 
-export { sumOfNums, studentInfo, logStudentInfo, Book, EBook, createBook, fizzBuzzNumbers };
+export {
+  sumOfNums,
+  studentInfo,
+  logStudentInfo,
+  Book,
+  EBook,
+  createBook,
+  fizzBuzzNumbers,
+};

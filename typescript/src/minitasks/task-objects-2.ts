@@ -1,6 +1,6 @@
 const promptVar = prompt(
   `Enter object's key:
-name, surname, age`
+name, surname, age`,
 );
 
 const user001 = {

@@ -80,7 +80,8 @@ let [letter1, letter2] = fullName;
 
 // const [shelves: [firstShelf,]] = table;
 // @ts-expect-error
-const [[firstShelf], [secondShelf], , [{ itemType, amount, currencyType }]] = table.shelves;
+const [[firstShelf], [secondShelf], , [{ itemType, amount, currencyType }]] =
+  table.shelves;
 
 // function parameters
 const user1 = {
@@ -99,7 +100,15 @@ const user3 = ['U4erKa', 'U4', 'maybe', true];
 // const users = [user1, user2, user3]
 const users = [user1, user2];
 
-function greet({ firstName, lastName, ...restOfUser }: { firstName: string; lastName: string; restOfUser: any[] }) {
+function greet({
+  firstName,
+  lastName,
+  ...restOfUser
+}: {
+  firstName: string;
+  lastName: string;
+  restOfUser: any[];
+}) {
   // const {firstName, lastName} = user
   console.log(restOfUser);
   return `Hello, ${firstName} ${lastName}`;

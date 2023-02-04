@@ -4,7 +4,9 @@ import { useSelector } from 'react-redux';
 import { AuthSliceState } from 'types/slices';
 
 export default function Register() {
-  const { isLoading, error } = useSelector<RootState, AuthSliceState>((state) => state.auth);
+  const { isLoading, error } = useSelector<RootState, AuthSliceState>(
+    (state) => state.auth,
+  );
 
   return (
     <>

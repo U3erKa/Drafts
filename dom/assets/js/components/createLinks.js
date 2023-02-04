@@ -1,11 +1,11 @@
 /**
  * Creates array of <li> elements
- * @param {string[]} contacts 
+ * @param {string[]} contacts
  * @returns {HTMLLIElement[]}
  */
 function createLinks(contacts) {
-  const links = new Map()
-  const linkItems = []
+  const links = new Map();
+  const linkItems = [];
 
   for (const href of contacts) {
     url = new URL(href).host.split('.');

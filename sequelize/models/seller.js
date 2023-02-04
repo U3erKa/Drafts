@@ -2,7 +2,7 @@
 const { Model } = require('sequelize');
 module.exports = (
   /** @type {import('sequelize').Sequelize} */ sequelize,
-  /** @type {import('sequelize').DataTypes} */ DataTypes
+  /** @type {import('sequelize').DataTypes} */ DataTypes,
 ) => {
   class Seller extends Model {
     /**
@@ -13,7 +13,10 @@ module.exports = (
      */
     static associate(models) {
       // define association here
-      Seller.belongsToMany(models.Car, { through: 'cars_to_sellers', foreignKey: 'sellerId' });
+      Seller.belongsToMany(models.Car, {
+        through: 'cars_to_sellers',
+        foreignKey: 'sellerId',
+      });
     }
   }
   Seller.init(
@@ -39,7 +42,7 @@ module.exports = (
       modelName: 'Seller',
       tableName: 'sellers',
       underscored: true,
-    }
+    },
   );
   return Seller;
 };

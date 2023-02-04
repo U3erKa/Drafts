@@ -1,6 +1,8 @@
 import { useState, useEffect, SetStateAction, MutableRefObject } from 'react';
 
-export function useData(getData: (...args: any[]) => Promise<SetStateAction<never[]>>) {
+export function useData(
+  getData: (...args: any[]) => Promise<SetStateAction<never[]>>,
+) {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -42,7 +44,9 @@ export function useClicker() {
   return [click, handleClick];
 }
 
-export function useClickerRef(elemRef: MutableRefObject<HTMLElement | undefined>) {
+export function useClickerRef(
+  elemRef: MutableRefObject<HTMLElement | undefined>,
+) {
   const [click, setClick] = useState(0);
 
   const handleClick = () => {

@@ -10,10 +10,14 @@ const httpClient = axios.create({
 const accessToken = sessionStorage.getItem(ACCESS_TOKEN);
 
 httpClient.interceptors.response.use(responseInterceptor, errorInterceptor);
-httpClient.interceptors.request.use(requestInterceptorConfig, requestInterceptorError);
+httpClient.interceptors.request.use(
+  requestInterceptorConfig,
+  requestInterceptorError,
+);
 
 export const login = (userData) => httpClient.post('/auth/login', userData);
-export const register = (userData) => httpClient.post('/auth/register', userData);
+export const register = (userData) =>
+  httpClient.post('/auth/register', userData);
 export const refresh = (token) => httpClient.post('/auth/refresh', { token });
 export const getMessages = (options) => httpClient.get(`/messages`);
 

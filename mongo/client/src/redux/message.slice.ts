@@ -11,17 +11,20 @@ const initialState = {
   error: null,
 };
 
-const getMessages = createAsyncThunk(`${SLICE_NAME}/getMessages`, async (options, thunkAPI) => {
-  try {
-    const {
-      data: { data: messages },
-    } = await API.getMessages(options);
+const getMessages = createAsyncThunk(
+  `${SLICE_NAME}/getMessages`,
+  async (options, thunkAPI) => {
+    try {
+      const {
+        data: { data: messages },
+      } = await API.getMessages(options);
 
-    return messages;
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error);
-  }
-});
+      return messages;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  },
+);
 
 const fulfilledReducer = (state, action) => {
   state.isLoading = false;

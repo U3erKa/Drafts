@@ -45,7 +45,7 @@ const newspaper = {
   showArticles: function () {
     this.articles.forEach((article) => {
       console.log(
-        `Newspaper ${this.name} Article: ${article.name} Author ${article.author} Text ${article.text}`
+        `Newspaper ${this.name} Article: ${article.name} Author ${article.author} Text ${article.text}`,
       );
     });
   },
@@ -53,14 +53,14 @@ const newspaper = {
     const that = this;
     this.articles.forEach(function callback(article) {
       console.log(
-        `Newspaper ${that.name} Article: ${article.name} Author ${article.author} Text ${article.text}`
+        `Newspaper ${that.name} Article: ${article.name} Author ${article.author} Text ${article.text}`,
       );
     });
   },
   showArticles2: function () {
     const callback = function (article) {
       console.log(
-        `Newspaper ${this.name} Article: ${article.name} Author ${article.author} Text ${article.text}`
+        `Newspaper ${this.name} Article: ${article.name} Author ${article.author} Text ${article.text}`,
       );
     };
     this.articles.forEach(callback.bind(this));
@@ -116,7 +116,7 @@ const User = function (
   lastName = '',
   email,
   age = 0,
-  isLoggedIn = false
+  isLoggedIn = false,
 ) {
   this.firstName = firstName;
   this.lastName = lastName;

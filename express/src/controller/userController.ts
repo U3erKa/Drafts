@@ -3,17 +3,29 @@ import createError from 'http-errors';
 import NotFoundError from '../error/NotFoundError.js';
 import User from '../model/User.js';
 
-export const addUserToDB = async (req: Request, res: Response, next: NextFunction) => {
+export const addUserToDB = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
   const userObj = await User.create(req.body);
   res.send(userObj);
 };
 
-export const getUsers = async (req: Request, res: Response, next: NextFunction) => {
+export const getUsers = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
   const users = await User.getAll();
   res.status(200).send(users);
 };
 
-export const getUser = async (req: Request, res: Response, next: NextFunction) => {
+export const getUser = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
   const {
     params: { userId },
     // query: {},
@@ -28,7 +40,11 @@ export const getUser = async (req: Request, res: Response, next: NextFunction) =
   }
 };
 
-export const updateUser = async (req: Request, res: Response, next: NextFunction) => {
+export const updateUser = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
   const {
     body,
     params: { userId },
@@ -42,7 +58,11 @@ export const updateUser = async (req: Request, res: Response, next: NextFunction
   }
 };
 
-export const deleteUser = async (req: Request, res: Response, next: NextFunction) => {
+export const deleteUser = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
   const {
     params: { userId },
   } = req;

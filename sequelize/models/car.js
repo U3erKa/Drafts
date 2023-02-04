@@ -2,7 +2,7 @@
 const { Model } = require('sequelize');
 module.exports = (
   /** @type {import('sequelize').Sequelize} */ sequelize,
-  /** @type {import('sequelize').DataTypes} */ DataTypes
+  /** @type {import('sequelize').DataTypes} */ DataTypes,
 ) => {
   class Car extends Model {
     /**
@@ -13,8 +13,17 @@ module.exports = (
      */
     static associate(models) {
       // define association here
-      Car.hasMany(models.Review, { foreignKey: 'carId', onDelete: 'CASCADE', onUpdate: 'CASCADE', as: 'reviews' });
-      Car.belongsToMany(models.Seller, { through: 'cars_to_sellers', foreignKey: 'carId', as: 'sellers' });
+      Car.hasMany(models.Review, {
+        foreignKey: 'carId',
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
+        as: 'reviews',
+      });
+      Car.belongsToMany(models.Seller, {
+        through: 'cars_to_sellers',
+        foreignKey: 'carId',
+        as: 'sellers',
+      });
     }
   }
   Car.init(
@@ -44,21 +53,29 @@ module.exports = (
           },
         },
       },
-      isUsed: { type: DataTypes.BOOLEAN, defaultValue: false, allowNull: false },
+      isUsed: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+        allowNull: false,
+      },
       serialNumber: {
         type: DataTypes.STRING,
         unique: true,
         allowNull: false,
         validate: { notNull: true, isAlphanumeric: true, notEmpty: true },
       },
-      picPath: { type: DataTypes.STRING, field: 'pic_path', validate: { notEmpty: true } },
+      picPath: {
+        type: DataTypes.STRING,
+        field: 'pic_path',
+        validate: { notEmpty: true },
+      },
     },
     {
       sequelize,
       modelName: 'Car',
       tableName: 'cars',
       underscored: true,
-    }
+    },
   );
   return Car;
 };

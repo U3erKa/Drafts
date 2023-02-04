@@ -126,7 +126,7 @@ module.exports.addPicToCar = async (req, res, next) => {
   try {
     const [updatedCars, [car]] = await Car.update(
       { picPath: file?.filename },
-      { where: { id: carId }, returning: true }
+      { where: { id: carId }, returning: true },
     );
 
     if (updatedCars !== 1) {

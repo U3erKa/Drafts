@@ -1,4 +1,10 @@
-import { ChangeEventHandler, Component, createRef, CSSProperties, MouseEventHandler } from 'react';
+import {
+  ChangeEventHandler,
+  Component,
+  createRef,
+  CSSProperties,
+  MouseEventHandler,
+} from 'react';
 
 type Position = {
   id: string;
@@ -81,7 +87,10 @@ export default class Form2 extends Component<{}, FormState> {
 
   render(): JSX.Element {
     const {
-      inputText, textareaText, selectText, showData: { name, text, position },
+      inputText,
+      textareaText,
+      selectText,
+      showData: { name, text, position },
     } = this.state;
 
     return (
@@ -89,13 +98,25 @@ export default class Form2 extends Component<{}, FormState> {
         <form>
           <label style={styles}>
             Name:
-            <input type="text" value={inputText} onChange={this.handleInputChange} />
+            <input
+              type="text"
+              value={inputText}
+              onChange={this.handleInputChange}
+            />
           </label>
           <label style={styles}>
             Text:
-            <textarea value={textareaText} onChange={this.handleTextareaChange} />
+            <textarea
+              value={textareaText}
+              onChange={this.handleTextareaChange}
+            />
           </label>
-          <select style={styles} value={selectText} onChange={this.handleSelectChange} ref={this.rootRef}>
+          <select
+            style={styles}
+            value={selectText}
+            onChange={this.handleSelectChange}
+            ref={this.rootRef}
+          >
             {POSITIONS.map(({ id, title, value }) => (
               <option key={id} value={value}>
                 {title}

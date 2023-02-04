@@ -38,7 +38,7 @@ function product(...array) {
 }
 
 function division(...array) {
-  let result = Math.pow(array[0],2);
+  let result = Math.pow(array[0], 2);
   for (const number of array) {
     result /= number;
   }

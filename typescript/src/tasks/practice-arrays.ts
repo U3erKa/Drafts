@@ -60,7 +60,9 @@ arr11.sort(function (a, b) {
 });
 
 arr12.forEach(function (user) {
-  console.log(`User ${user.firstName} ${user.lastName} is ${user.gender} and ${user.age} years old`);
+  console.log(
+    `User ${user.firstName} ${user.lastName} is ${user.gender} and ${user.age} years old`,
+  );
 });
 
 const mapArr = arr12.map(function (currentElement, index) {

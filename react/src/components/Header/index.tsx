@@ -13,7 +13,10 @@ import HeaderUserCard from './HeaderUserCard';
 
 class Header extends React.Component<{ name: string; profilePicSrc: string }> {
   static defaultProps: { profilePicSrc: string; alt: string };
-  static propTypes: { name: PropTypes.Validator<string>; profilePicSrc: PropTypes.Requireable<string> };
+  static propTypes: {
+    name: PropTypes.Validator<string>;
+    profilePicSrc: PropTypes.Requireable<string>;
+  };
 
   render() {
     // const { name = './null.png', profilePicSrc = 'null image', ...userProps } = this.props;

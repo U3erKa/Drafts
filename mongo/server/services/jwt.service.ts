@@ -20,6 +20,8 @@ const createToken = async (payload, options) =>
 // @ts-ignore
 const verifyToken = async (token, options) => jwtVerify(token, options.secret);
 
-export const createAccessToken = (payload) => createToken(payload, tokenConfig.access);
+export const createAccessToken = (payload) =>
+  createToken(payload, tokenConfig.access);
 
-export const verifyAccessToken = (token) => verifyToken(token, tokenConfig.access);
+export const verifyAccessToken = (token) =>
+  verifyToken(token, tokenConfig.access);

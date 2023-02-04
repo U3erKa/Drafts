@@ -42,7 +42,7 @@
   left: 0px;
   height: 3px;
   background-color: red;
-  transition: width 400ms ease-in 0s; 
+  transition: width 400ms ease-in 0s;
 }
 
 .nav-link:hover::before {

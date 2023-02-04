@@ -42,10 +42,18 @@ phone.battery = 4000;
 delete phone.test;
 
 //constructor function, starts from capital letter
-type UserConstructor = new (name: string, surname: string, age?: number) => void;
+type UserConstructor = new (
+  name: string,
+  surname: string,
+  age?: number,
+) => void;
 
 // @ts-expect-error
-const User: UserConstructor = function (name: string, surname: string, age: number): void {
+const User: UserConstructor = function (
+  name: string,
+  surname: string,
+  age: number,
+): void {
   this.name = name;
   this.surname = surname;
   this.age = age;
@@ -76,7 +84,9 @@ if (isNaN(number1 - number2)) {
   console.log('ERROR!');
 } else {
   console.log(`${number1} * ${number2} = ${number1 * number2}`);
-  console.log(`${number1} > ${number2} ? ${number1 > number2 ? 'true' : 'false'}`);
+  console.log(
+    `${number1} > ${number2} ? ${number1 > number2 ? 'true' : 'false'}`,
+  );
 }
 
 const key = 'age';

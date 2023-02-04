@@ -52,7 +52,10 @@ module.exports.updateSeller = async (req, res, next) => {
   } = req;
 
   try {
-    const [rowsUpdated, [seller]] = await Seller.update(body, { where: { id: sellerId }, returning: true });
+    const [rowsUpdated, [seller]] = await Seller.update(body, {
+      where: { id: sellerId },
+      returning: true,
+    });
 
     if (rowsUpdated === 0) {
       throw createHttpError(404, 'Review not found');

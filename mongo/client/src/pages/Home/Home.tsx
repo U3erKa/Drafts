@@ -9,7 +9,11 @@ export default function Home() {
     <div>
       <Header />
       Home
-      {user && <p>Hello {user.firstName} {user.lastName}</p>}
+      {user && (
+        <p>
+          Hello {user.firstName} {user.lastName}
+        </p>
+      )}
     </div>
   );
 }

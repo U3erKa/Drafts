@@ -8,5 +8,15 @@ const ChatMsg = function (author, text, likes, dislikes) {
   };
 };
 
-const msg001 = new ChatMsg('Viktor', 'Lorem ipsum dolor sit amet consectetur adipisicing.', 25, 4);
-const msg002 = new ChatMsg('U3erKa', 'Fugiat error quidem deleniti ab similique!', 999, 1);
+const msg001 = new ChatMsg(
+  'Viktor',
+  'Lorem ipsum dolor sit amet consectetur adipisicing.',
+  25,
+  4,
+);
+const msg002 = new ChatMsg(
+  'U3erKa',
+  'Fugiat error quidem deleniti ab similique!',
+  999,
+  1,
+);

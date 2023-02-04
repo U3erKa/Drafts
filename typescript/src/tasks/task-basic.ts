@@ -7,7 +7,13 @@ const isAdult = function (age: number) {
 };
 
 const checkMultiplicity = function (num: number, mul: number) {
-  if (typeof num === 'number' && !isNaN(num) && typeof mul === 'number' && !isNaN(mul) && mul !== 0) {
+  if (
+    typeof num === 'number' &&
+    !isNaN(num) &&
+    typeof mul === 'number' &&
+    !isNaN(mul) &&
+    mul !== 0
+  ) {
     return !(num % mul);
   }
   return null;

@@ -11,7 +11,10 @@ const FlexContainer = (props: {
 }) => {
   const { justify = 'flex-start', align = 'stretch', children } = props;
   return (
-    <ul className={styles.list} style={{ justifyContent: justify, alignItems: align }}>
+    <ul
+      className={styles.list}
+      style={{ justifyContent: justify, alignItems: align }}
+    >
       {children}
     </ul>
   );

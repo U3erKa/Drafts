@@ -1,4 +1,14 @@
-import { createContext, FC, useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState } from 'react';
+import {
+  createContext,
+  FC,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useReducer,
+  useRef,
+  useState,
+} from 'react';
 
 interface ITheme {
   backgroundColor: string;

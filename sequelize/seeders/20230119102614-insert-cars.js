@@ -40,7 +40,7 @@ module.exports = {
      * await queryInterface.bulkDelete('People', null, {});
      */
     await queryInterface.bulkDelete('cars', {
-      serial_number: {[Op.like]: 'XT24__'},
+      serial_number: { [Op.like]: 'XT24__' },
     });
   },
 };

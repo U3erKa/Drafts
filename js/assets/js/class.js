@@ -305,10 +305,10 @@ const rect1 = new Rectangle(5, 8);
 const rhombus1 = new Rhombus(5, 7);
 
 function getFigureArea(figure, mode) {
-  if(figure instanceof Figure) {
+  if (figure instanceof Figure) {
     return figure.getArea(mode);
   }
-  throw new TypeError('not figure')
+  throw new TypeError('not figure');
 }
 
 console.log(triangle1);
@@ -366,12 +366,11 @@ const trainer = {
     if (!animal instanceof Animal) {
       throw new TypeError();
     }
-    
+
     if (Math.random() > 0.5) {
       return `Trainer is training ${animal.nickname} voice
 ${animal.speak()}`;
     }
-    return `${animal.nickname} doesnt want to ${animal.speech}`
+    return `${animal.nickname} doesnt want to ${animal.speech}`;
   },
 };
-

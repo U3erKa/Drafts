@@ -13,7 +13,9 @@ import reportWebVitals from './reportWebVitals';
 // import Timer from './components/Timer';
 // import App from './components/App';
 
-const root = ReactDOM.createRoot(document.getElementById('root') as HTMLDivElement);
+const root = ReactDOM.createRoot(
+  document.getElementById('root') as HTMLDivElement,
+);
 // const name = 'U3erKa';
 // const user = {
 //   name: 'user',
@@ -36,7 +38,7 @@ root.render(
     {/* <Clicker /> */}
     {/* {isVisible && <Timer />}
     <button onClick={() => this.setState({isVisible: !isVisible})}>Toggle isVisible</button> */}
-  </React.StrictMode>
+  </React.StrictMode>,
 );
 
 // If you want to start measuring performance in your app, pass a function

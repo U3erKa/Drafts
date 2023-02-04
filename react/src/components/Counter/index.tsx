@@ -12,7 +12,10 @@ enum ACTION_TYPES {
   RESET = 'reset',
 }
 
-function reducer(state: { count: number; step: number }, action: { type: ACTION_TYPES; payload?: number }) {
+function reducer(
+  state: { count: number; step: number },
+  action: { type: ACTION_TYPES; payload?: number },
+) {
   switch (action.type) {
     case ACTION_TYPES.INCREMENT: {
       const newState = { ...state, count: state.count + state.step };
@@ -66,7 +69,9 @@ const Counter = (props: Record<string, never>) => {
       </label>
       <button onClick={handleIncrement}>Increment</button>
       <button onClick={handleDecrement}>Decrement</button>
-      <button onClick={() => dispatch({ type: ACTION_TYPES.RESET })}>Reset</button>
+      <button onClick={() => dispatch({ type: ACTION_TYPES.RESET })}>
+        Reset
+      </button>
     </div>
   );
 };

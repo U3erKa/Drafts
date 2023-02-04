@@ -9,7 +9,7 @@ services:
       context: ./server
       dockerfile: Dockerfile
     ports:
-      - "5000:5000"
+      - '5000:5000'
     env_file:
       - ./server/.env
     volumes:
@@ -25,7 +25,7 @@ services:
     environment:
       - MONGO_INITDB_DATABASE=dockerDb
     ports:
-      - "27017:27017"
+      - '27017:27017'
     volumes:
       - ~/backups/compose/mongo_db:/data/db
     restart: always

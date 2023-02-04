@@ -4,4 +4,4 @@ const numToPower = function (num, mul) {
     result *= num;
   }
   return result;
-}
+};

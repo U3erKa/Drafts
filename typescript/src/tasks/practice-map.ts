@@ -60,9 +60,13 @@ for (const [level, discount] of Object.entries(bank.clientLevels)) {
 
 for (const client of clients) {
   try {
-    console.log(`After transaction ${client.fullName} balance is: ${client.buy(1250)}`);
+    console.log(
+      `After transaction ${client.fullName} balance is: ${client.buy(1250)}`,
+    );
   } catch (error: any) {
-    console.log(`${client.fullName} needs ${error.message} more money to afford this`);
+    console.log(
+      `${client.fullName} needs ${error.message} more money to afford this`,
+    );
   }
 }
 

@@ -1,57 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/styles/reset.css" />
+    <link rel="stylesheet" href="assets/styles/style.css" />
+    <title>DOM</title>
+    <script defer src="assets/js/index.js"></script>
+    <script defer src="assets/js/doc.js"></script>
+    <!-- <script defer src="assets/js/task/task-event-listener.js"></script> -->
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="assets/styles/reset.css" />
-  <link rel="stylesheet" href="assets/styles/style.css" />
-  <title>DOM</title>
-  <script defer src="assets/js/index.js"></script>
-  <script defer src="assets/js/doc.js"></script>
-  <!-- <script defer src="assets/js/task/task-event-listener.js"></script> -->
-</head>
-
-<body id="test">
-  <button disabled="disabled">Button</button>
-  <p class="class">
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Non laboriosam
-    blanditiis architecto perspiciatis amet? Reiciendis quae ratione, iste
-    exercitationem beatae, nisi aspernatur delectus facere in amet maiores,
-    cumque tempore porro!
-  </p>
-  <form action="" method="get">
-    <div class="class">
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime a at
-      quae repudiandae eaque qui sint? Impedit a eum dolorum.
+  <body id="test">
+    <button disabled="disabled">Button</button>
+    <p class="class">
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Non laboriosam
+      blanditiis architecto perspiciatis amet? Reiciendis quae ratione, iste
+      exercitationem beatae, nisi aspernatur delectus facere in amet maiores,
+      cumque tempore porro!
+    </p>
+    <form action="" method="get">
+      <div class="class">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime a at
+        quae repudiandae eaque qui sint? Impedit a eum dolorum.
+      </div>
+      <input id="input" type="text" name="name" />
+      <div class="div">
+        <button id="submitBtn" type="button">Click-a me!</button>
+        <button id="submitBtn2" type="button">Click-a me!</button>
+      </div>
+    </form>
+    <img
+      id="img"
+      src="https://img.freepik.com/free-vector/hand-drawn-traditional-chinese-dragon_23-2147832507.jpg"
+      alt="no."
+    />
+    <button id="prevBtn" type="button">prev</button>
+    <button id="nextBtn" type="button">next</button>
+    <div>
+      <p class="text">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam optio at
+        accusantium rem aut nesciunt placeat inventore iusto id vero quas quod,
+        corrupti est officiis eligendi alias doloremque voluptatum dolorem.
+      </p>
+      <button data-text-color="red" id="red" class="color-btn" type="button">
+        Red
+      </button>
+      <button
+        data-text-color="green"
+        id="green"
+        class="color-btn"
+        type="button"
+      >
+        Green
+      </button>
+      <button data-text-color="blue" id="blue" class="color-btn" type="button">
+        Blue
+      </button>
+      <button data-text-style="normal" id="" class="style-btn" type="button">
+        normal
+      </button>
+      <button data-text-style="bold" id="" class="style-btn" type="button">
+        bold
+      </button>
+      <button data-text-style="italic" id="" class="style-btn" type="button">
+        italic
+      </button>
+      <button data-text-style="italic" id="reset" type="button">RESET</button>
     </div>
-    <input id="input" type="text" name="name">
-    <div class="div">
-      <button id="submitBtn" type="button">Click-a me!</button>
-      <button id="submitBtn2" type="button">Click-a me!</button>
-    </div>
-  </form>
-  <img id="img" src="https://img.freepik.com/free-vector/hand-drawn-traditional-chinese-dragon_23-2147832507.jpg"
-    alt="no.">
-  <button id="prevBtn" type="button">prev</button>
-  <button id="nextBtn" type="button">next</button>
-  <div>
-    <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam optio at accusantium rem aut
-      nesciunt placeat inventore iusto id vero quas quod, corrupti est officiis eligendi alias doloremque voluptatum
-      dolorem.</p>
-    <button data-text-color="red" id="red" class="color-btn" type="button">Red</button>
-    <button data-text-color="green" id="green" class="color-btn" type="button">Green</button>
-    <button data-text-color="blue" id="blue" class="color-btn" type="button">Blue</button>
-    <button data-text-style="normal" id="" class="style-btn" type="button">normal</button>
-    <button data-text-style="bold" id="" class="style-btn" type="button">bold</button>
-    <button data-text-style="italic" id="" class="style-btn" type="button">italic</button>
-    <button data-text-style="italic" id="reset" type="button">RESET</button>
-  </div>
-  <a href="assets/html/task-query-selectors.html">task-query-selectors.html</a>
-  <a href="assets/html/practice-dom-1.html">practice-dom-1.html</a>
-  <a href="assets/html/forms.html">forms.html</a>
-  <a href="assets/html/task-cards.html">task-cards.html</a>
-</body>
-
+    <a href="assets/html/task-query-selectors.html"
+      >task-query-selectors.html</a
+    >
+    <a href="assets/html/practice-dom-1.html">practice-dom-1.html</a>
+    <a href="assets/html/forms.html">forms.html</a>
+    <a href="assets/html/task-cards.html">task-cards.html</a>
+  </body>
 </html>

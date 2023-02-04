@@ -3,7 +3,9 @@
 runTest();
 
 function createNewArray(length: number, min: number, max: number) {
-  return new Array(length).fill(undefined).map(() => Math.floor(Math.random() * (max - min) + min));
+  return new Array(length)
+    .fill(undefined)
+    .map(() => Math.floor(Math.random() * (max - min) + min));
 }
 
 function arrayMinMax(arr: number[]) {
@@ -27,8 +29,11 @@ function showRepeatsInArray(array: any[]) {
 }
 
 function temperatureInfo(dailyTemperature: number[], threshold: number) {
-  const avg = dailyTemperature.reduce((acc, num) => acc + num) / dailyTemperature.length;
-  const daysBelowThreshold = dailyTemperature.filter((value) => value < threshold).length;
+  const avg =
+    dailyTemperature.reduce((acc, num) => acc + num) / dailyTemperature.length;
+  const daysBelowThreshold = dailyTemperature.filter(
+    (value) => value < threshold,
+  ).length;
 
   return { avg, daysBelowThreshold };
 }
@@ -60,7 +65,12 @@ function carCostInfo(prices: number[]) {
   return [mostExpensive, cheapest];
 }
 
-function getHouseStats(house: number[][][], entrance: number, floor: number, flat: number) {
+function getHouseStats(
+  house: number[][][],
+  entrance: number,
+  floor: number,
+  flat: number,
+) {
   const flats = house[entrance][floor];
   const owners = flats[flat];
   const neighbours = flats[1 - flat];
@@ -118,4 +128,11 @@ function runTest() {
   console.log(getHouseStats(house, 0, 0, 0));
 }
 
-export { createNewArray, arrayMinMax, showRepeatsInArray, temperatureInfo, concatArrays, carCostInfo };
+export {
+  createNewArray,
+  arrayMinMax,
+  showRepeatsInArray,
+  temperatureInfo,
+  concatArrays,
+  carCostInfo,
+};

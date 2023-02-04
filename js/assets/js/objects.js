@@ -72,7 +72,7 @@ if (isNaN(number1 - number2)) {
 } else {
   console.log(`${number1} * ${number2} = ${number1 * number2}`);
   console.log(
-    `${number1} > ${number2} ? ${number1 > number2 ? 'true' : 'false'}`
+    `${number1} > ${number2} ? ${number1 > number2 ? 'true' : 'false'}`,
   );
 }
 

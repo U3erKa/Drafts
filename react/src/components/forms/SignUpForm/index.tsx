@@ -19,9 +19,12 @@ export default function SignUpForm() {
   };
 
   return (
-    <Formik initialValues={initialState} onSubmit={handleSubmit} /* validationSchema={SIGNUP_SCHEMA} */>
+    <Formik
+      initialValues={initialState}
+      onSubmit={handleSubmit} /* validationSchema={SIGNUP_SCHEMA} */
+    >
       <Form className={styles.form}>
-        <CustomInput name='name' labelText='Enter name' />
+        <CustomInput name="name" labelText="Enter name" />
         <Field className={styles.input} type="text" name="email" />
         {/* <ErrorMessage name="email" component="div" /> */}
         <Field className={styles.input} type="password" name="password" />

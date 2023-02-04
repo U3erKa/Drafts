@@ -13,7 +13,7 @@ const initialState = {
 
 const decorateAsyncThunk = (
   thunkName: string,
-  APICall: <T>(arg0: T) => Promise<AxiosResponse<any, any>>
+  APICall: <T>(arg0: T) => Promise<AxiosResponse<any, any>>,
 ) =>
   createAsyncThunk(`${SLICE_NAME}/${thunkName}`, async (userData, thunkAPI) => {
     try {
@@ -29,9 +29,15 @@ const decorateAsyncThunk = (
     }
   });
 
-export const login = decorateAsyncThunk('login', (userData) => API.login(userData));
-export const register = decorateAsyncThunk('register', (userData) => API.register(userData));
-export const refresh = decorateAsyncThunk('refresh', (token) => API.refresh(token));
+export const login = decorateAsyncThunk('login', (userData) =>
+  API.login(userData),
+);
+export const register = decorateAsyncThunk('register', (userData) =>
+  API.register(userData),
+);
+export const refresh = decorateAsyncThunk('refresh', (token) =>
+  API.refresh(token),
+);
 
 const fulfilledReducer = (state, { payload }) => {
   state.isLoading = false;

@@ -33,4 +33,4 @@ try {
   console.log('Naughty!');
 }
 
-console.log('Hmm...')
+console.log('Hmm...');

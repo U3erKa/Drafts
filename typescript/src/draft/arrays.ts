@@ -11,7 +11,7 @@ const userEmailsArray = new Array(
   'email2@example.com',
   'email3@example.com',
   'email4@example.com',
-  'email5@example.com'
+  'email5@example.com',
 );
 
 const arr = [
@@ -31,7 +31,13 @@ arr[arr.length] = 'Loremium';
 arr.push('Loremium', 'Ipsumium'); // can add more than one value into array, returns arr.length
 arr1[5] = 'Crud.'; // bad idea
 
-const userNames: (string | string[])[] = ['User', 'Loremium', 'Ipsumium', 'Copium', 'Gee'];
+const userNames: (string | string[])[] = [
+  'User',
+  'Loremium',
+  'Ipsumium',
+  'Copium',
+  'Gee',
+];
 userNames.push('Vik', 'U3erKa');
 const newArrayLengthPush = userNames.push('Anonimus');
 const lastDeletedFromEnd = userNames.pop();
@@ -58,7 +64,10 @@ const surfaceCopyPart3 = userNames.slice(4);
 
 console.log("userNames.includes('Vik') " + userNames.includes('Vik'));
 console.log("userNames.includes('U2erKa') " + userNames.includes('U2erKa'));
-console.log("userNames.includes(['arrgh1', 'arrgh2', 'arrgh3'] " + userNames.includes(['arrgh1', 'arrgh2', 'arrgh3'])); // false, though the object (array) exists
+console.log(
+  "userNames.includes(['arrgh1', 'arrgh2', 'arrgh3'] " +
+    userNames.includes(['arrgh1', 'arrgh2', 'arrgh3']),
+); // false, though the object (array) exists
 
 console.log("userNames.indexOf('Vik') " + userNames.indexOf('Vik'));
 console.log("userNames.indexOf('Vik',6) " + userNames.indexOf('Vik', 6));
@@ -67,13 +76,20 @@ console.log("userNames.indexOf('U2erKa') " + userNames.indexOf('U2erKa'));
 
 // array [1,2,3,4,5] becomes numbers, but not [[1, 2, 3, 4, 5]]
 // @ts-ignore
-const concatedArray = userNames.concat(undefined, 'Larry', [1, 2, 3, 4, 5], [[1, 2, 3, 4, 5]]);
+const concatedArray = userNames.concat(
+  undefined,
+  'Larry',
+  [1, 2, 3, 4, 5],
+  [[1, 2, 3, 4, 5]],
+);
 console.log(userNames[8] === concatedArray[8]); // true, badness... maybe
 const flatArr2 = arr2.flat(1);
 const flatArr3 = arr2.flat(Infinity);
 const joinedArr2 = arr2.join(' or ');
 
-const numbersArray1 = [1, 2, 3, 4, 5, 6, 12, 13, 10, 11, 17, 14, 15, 16, 7, 8, 9, 18, 19, 20];
+const numbersArray1 = [
+  1, 2, 3, 4, 5, 6, 12, 13, 10, 11, 17, 14, 15, 16, 7, 8, 9, 18, 19, 20,
+];
 numbersArray1.sort();
 
 const sortFunc = function (currentValue: number, nextValue: number) {
@@ -96,7 +112,9 @@ const callback = function (currentElement: any, index: number, arr: any[]) {
 };
 userNames.forEach(callback);
 
-const numbersArray2 = [1, 2, 3, 4, 5, 6, 12, 13, 10, 11, 17, 14, 15, 16, 7, 8, 9, 18, 19, 20];
+const numbersArray2 = [
+  1, 2, 3, 4, 5, 6, 12, 13, 10, 11, 17, 14, 15, 16, 7, 8, 9, 18, 19, 20,
+];
 
 const newNumbers = numbersArray2.map(function (currentElement, index, arr) {
   // return currentElement * 2;
@@ -156,6 +174,9 @@ const highOrderFunction2 = function () {
 const innerFunction = highOrderFunction2();
 innerFunction();
 
-const newArr = (length: number) => new Array(length).fill(undefined).map(() => Math.floor((Math.random() - 0.25) * 10));
+const newArr = (length: number) =>
+  new Array(length)
+    .fill(undefined)
+    .map(() => Math.floor((Math.random() - 0.25) * 10));
 
 export { newArr };

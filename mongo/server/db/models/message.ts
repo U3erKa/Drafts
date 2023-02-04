@@ -12,7 +12,7 @@ const messageSchema = new Schema(
       ref: 'User',
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 const Message = model('Message', messageSchema);

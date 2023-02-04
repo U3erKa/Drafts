@@ -6,7 +6,12 @@ const input = prompt('Choose your skill:\n1 - Power\n2 - Health\n3 - Speed');
 
 const getSumOfTwo = function (num1: number, num2: number) {
   debugger;
-  if (typeof num1 === 'number' && typeof num2 === 'number' && !isNaN(num1) && !isNaN(num2)) {
+  if (
+    typeof num1 === 'number' &&
+    typeof num2 === 'number' &&
+    !isNaN(num1) &&
+    !isNaN(num2)
+  ) {
     const result = num1 + num2;
     return result;
   } else {
@@ -82,6 +87,8 @@ let message = isGreeting ? 'Hello ' + userName : 'Bye-bye ' + userName;
 //   : console.log('M-maybe..?');
 
 const verdict = false;
-verdict ? alert('Umm... Hello world..?') : console.log('NaN is actually a number');
+verdict
+  ? alert('Umm... Hello world..?')
+  : console.log('NaN is actually a number');
 
 export {};

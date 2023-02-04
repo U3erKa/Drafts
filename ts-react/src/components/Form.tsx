@@ -26,7 +26,12 @@ export default class Form extends Component<{}, {}> {
       <form onSubmit={this.handleSubmit}>
         <label>
           Sample text
-          <input onFocus={this.handleFocus} onCopy={this.handleCopy} type="text" name="text" />
+          <input
+            onFocus={this.handleFocus}
+            onCopy={this.handleCopy}
+            type="text"
+            name="text"
+          />
           <button type="submit">Submit</button>
         </label>
       </form>

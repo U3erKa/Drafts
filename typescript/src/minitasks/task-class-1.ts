@@ -3,7 +3,12 @@ class Worker {
   surname: string;
   salary: number;
   daysOfWork: number;
-  constructor(name: string, surname: string, salary: number, daysOfWork: number) {
+  constructor(
+    name: string,
+    surname: string,
+    salary: number,
+    daysOfWork: number,
+  ) {
     this.name = name;
     this.surname = surname;
     this.salary = salary;

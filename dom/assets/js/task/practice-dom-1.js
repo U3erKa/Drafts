@@ -1,7 +1,8 @@
 // const red = document.querySelector('#red');
 // const green = document.querySelector('#green');
 // const blue = document.querySelector('#blue');
-const [red, green, blue, normal, italic, bold, reset, bgReset] = document.querySelectorAll('.color-btn');
+const [red, green, blue, normal, italic, bold, reset, bgReset] =
+  document.querySelectorAll('.color-btn');
 const text = document.querySelector('.text');
 
 red.addEventListener('click', commonEventListener);
@@ -22,7 +23,7 @@ function commonEventListener(e) {
     text.classList.add(e.target.dataset.textColor);
   }
 
-  if(e.target.dataset.bgColor) {
+  if (e.target.dataset.bgColor) {
     text.classList.remove(...bgColorsArr);
     text.classList.add(e.target.dataset.bgColor);
   }

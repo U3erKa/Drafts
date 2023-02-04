@@ -10,7 +10,7 @@ This is a CSS comment
   /* font-size: 0;  */
 }
 html {
-  font-family: "Roboto";
+  font-family: 'Roboto';
 }
 p {
   color: orange;
@@ -34,7 +34,7 @@ h1 {
   line-height: 1.5;
   font-weight: bold;
   font-style: italic;
-  font-family: "sans-serif" "Times New Roman"; /* First one is preferred */
+  font-family: 'sans-serif' 'Times New Roman'; /* First one is preferred */
   text-align: justify;
   text-transform: capitalize;
   text-decoration: underline double blue;

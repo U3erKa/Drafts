@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 
 class DataLoader extends Component<
-  { loadData: () => Promise<JSON[]>; render: (...args: unknown[]) => JSX.Element },
+  {
+    loadData: () => Promise<JSON[]>;
+    render: (...args: unknown[]) => JSX.Element;
+  },
   { data: unknown[]; isLoading: boolean; error: string | null; page: number }
 > {
   constructor(props) {
@@ -17,7 +20,7 @@ class DataLoader extends Component<
   componentDidMount() {
     this.load();
   }
-  componentDidUpdate(_prevProps, prevState: { page: number; }) {
+  componentDidUpdate(_prevProps, prevState: { page: number }) {
     const { page } = this.state;
     if (page !== prevState.page) {
       this.load();

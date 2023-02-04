@@ -15,7 +15,10 @@ const initialValues: User = {
 
 export default function Register() {
   const dispatch = useDispatch();
-  const handleSubmit = (values: typeof initialValues, formikBag: FormikHelpers<typeof initialValues>) => {
+  const handleSubmit = (
+    values: typeof initialValues,
+    formikBag: FormikHelpers<typeof initialValues>,
+  ) => {
     dispatch(register(values) as unknown as AnyAction);
     formikBag.resetForm();
   };

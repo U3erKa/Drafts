@@ -18,7 +18,11 @@
 // }
 
 class User {
-  constructor(public name: string, public surname: string, public age?: number) {}
+  constructor(
+    public name: string,
+    public surname: string,
+    public age?: number,
+  ) {}
 
   isAdult(adultAge = 18) {
     return this.age >= adultAge;
@@ -47,7 +51,7 @@ class Worker {
     firstName: string,
     private _lastName: string,
     private _daysWorked = 0,
-    private _paymentRate = MIN_SALARY
+    private _paymentRate = MIN_SALARY,
   ) {
     this.firstName = firstName;
   }
@@ -143,7 +147,12 @@ class Animal {
   // }
 
   #name: string;
-  constructor(public species: string, name: string, public color: string, public diet: string) {
+  constructor(
+    public species: string,
+    name: string,
+    public color: string,
+    public diet: string,
+  ) {
     this.name = name;
   }
 
@@ -328,7 +337,10 @@ const triangle1 = new Triangle(10, 5, 3, 8);
 const rect1 = new Rectangle(5, 8);
 const rhombus1 = new Rhombus(5, 7);
 
-function getFigureArea(figure: { getArea: (mode: string) => number }, mode: string) {
+function getFigureArea(
+  figure: { getArea: (mode: string) => number },
+  mode: string,
+) {
   if (figure instanceof Figure) {
     return figure.getArea(mode);
   }
@@ -389,7 +401,11 @@ class Cat extends Animal {
 const cat1 = new Cat('Pushok');
 
 const trainer = {
-  trainVoice: function (animal: { nickname: string; speak: () => string; speech: string }) {
+  trainVoice: function (animal: {
+    nickname: string;
+    speak: () => string;
+    speech: string;
+  }) {
     // @ts-ignore
     if (!animal instanceof Animal) {
       throw new TypeError();

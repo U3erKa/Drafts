@@ -16,6 +16,6 @@ const map = new Map([
   [user2, messages2],
 ]);
 
-const getMessages = (user: { id: number; name: string; }) => map.get(user);
+const getMessages = (user: { id: number; name: string }) => map.get(user);
 
 export {};

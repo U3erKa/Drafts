@@ -25,19 +25,19 @@ td {
   border: 1px solid cyan;
 }
 
-[title*="test"] {
+[title*='test'] {
   color: purple;
 }
 
-[title^="start"] {
+[title^='start'] {
   background-color: purple;
 }
 
-[title$="end"] {
+[title$='end'] {
   background-color: lime;
 }
 
-[href="../index.html"] {
+[href='../index.html'] {
   background-color: lightblue;
   text-decoration: wavy;
 }
@@ -69,4 +69,3 @@ p + p {
 /* .article > .text + .text {
 
 } */
-

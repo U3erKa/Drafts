@@ -1,5 +1,11 @@
 import { useClickerRef } from 'hooks';
-import React, { MutableRefObject, useCallback, useEffect, useRef, useState } from 'react';
+import React, {
+  MutableRefObject,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 
 export const RefsClicker = (props) => {
   const elemRef = useRef();

@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import ClickerButton from './ClickerButton';
 import ClickerScore from './ClickerScore';
 
-export default class Clicker extends Component<Record<string, never>, { counter: number }> {
+export default class Clicker extends Component<
+  Record<string, never>,
+  { counter: number }
+> {
   state = {
     counter: 0,
   };

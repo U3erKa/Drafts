@@ -16,6 +16,6 @@
   column-gap: 20px;
   column-rule: 2px dotted dodgerblue;
   /* column-width: 250px; */
-  /* column-count: 3; */ 
+  /* column-count: 3; */
   columns: 250px 3;
 }

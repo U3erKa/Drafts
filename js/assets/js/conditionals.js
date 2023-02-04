@@ -86,4 +86,6 @@ let message = isGreeting ? 'Hello ' + userName : 'Bye-bye ' + userName;
 //   : console.log('M-maybe..?');
 
 const verdict = false;
-verdict ? alert('Umm... Hello world..?') : console.log('NaN is actually a number');
+verdict
+  ? alert('Umm... Hello world..?')
+  : console.log('NaN is actually a number');

@@ -59,7 +59,7 @@ const mathMax = Math.max(1, 4, 7, 4, 55, -10, -123);
 const mathPow1 = Math.pow(5, 3);
 const mathPow2 = Math.pow(-5, 3);
 const mathPow3 = Math.pow(-5, 2);
-const mathRandom = Math.random()
+const mathRandom = Math.random();
 
 function getRandomArbitrary(min, max) {
   return Math.round(Math.random() * (max - min) + min);

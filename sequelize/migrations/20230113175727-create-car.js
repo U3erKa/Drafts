@@ -23,7 +23,7 @@ module.exports = {
       },
       price: {
         allowNull: false,
-        type: Sequelize.DECIMAL(9,2),
+        type: Sequelize.DECIMAL(9, 2),
       },
       isUsed: {
         allowNull: false,

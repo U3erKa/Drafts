@@ -57,7 +57,11 @@ function specialCharAtKey(charCode: number) {
 
 function hasRepeatingNums(number: string) {
   number += '';
-  return number[0] === number[1] || number[0] === number[2] || number[1] === number[2];
+  return (
+    number[0] === number[1] ||
+    number[0] === number[2] ||
+    number[1] === number[2]
+  );
 }
 
 function isIntercalary(year: number) {

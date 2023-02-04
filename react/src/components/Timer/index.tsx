@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 // @ts-expect-error file exists
 import styles from './Timer.module.scss';
 
-export default class Timer extends Component<Record<string, never>, { number: number; isDouble: boolean }> {
+export default class Timer extends Component<
+  Record<string, never>,
+  { number: number; isDouble: boolean }
+> {
   intervalId!: NodeJS.Timer;
 
   constructor(props: Record<string, never>) {

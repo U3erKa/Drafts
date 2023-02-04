@@ -11,7 +11,12 @@
  */
 function createElement(tagName, options = {}, ...children) {
   const elem = document.createElement(tagName);
-  const { className = '', textContent, eventListeners = {}, attributes = {} } = options;
+  const {
+    className = '',
+    textContent,
+    eventListeners = {},
+    attributes = {},
+  } = options;
 
   elem.className = className;
   elem.textContent = textContent;

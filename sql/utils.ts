@@ -4,7 +4,15 @@ import type { User } from './types';
 
 const {
   users: { maxHeight, maxWeigth, minHeight, minWeigth },
-  products: { categories, manufacturers, maxPrice, maxQuantity, minPrice, minQuantity, amountProducts },
+  products: {
+    categories,
+    manufacturers,
+    maxPrice,
+    maxQuantity,
+    minPrice,
+    minQuantity,
+    amountProducts,
+  },
 } = generationConfig;
 
 function createUserQueryValues(user: User) {
@@ -45,6 +53,9 @@ export const mapUsers = (users: User[]) => {
 };
 
 export const mapProducts = (amountOfProducts = amountProducts) => {
-  const usersElems = new Array(amountOfProducts).fill(undefined).map(createProductQueryValues).join(',');
+  const usersElems = new Array(amountOfProducts)
+    .fill(undefined)
+    .map(createProductQueryValues)
+    .join(',');
   return usersElems;
 };

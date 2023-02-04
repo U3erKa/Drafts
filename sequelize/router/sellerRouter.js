@@ -10,7 +10,11 @@ const {
 const { getCar } = require('../middleware/carMW');
 
 sellerRouter.route('/').get(getSellers).post(createSeller);
-sellerRouter.route('/:sellerId').get(getSeller).put(updateSeller).delete(deleteSeller);
+sellerRouter
+  .route('/:sellerId')
+  .get(getSeller)
+  .put(updateSeller)
+  .delete(deleteSeller);
 sellerRouter.route('/:sellerId/cars/:carId').post(getCar, addCarToSeller);
 
 module.exports = sellerRouter;

@@ -16,7 +16,7 @@ function RegisterForm() {
   const dispatch = useDispatch();
   const submitHandler = (
     values: typeof initialValues,
-    formikBag: FormikHelpers<typeof initialValues>
+    formikBag: FormikHelpers<typeof initialValues>,
   ) => {
     // @ts-ignore
     dispatch(register(values));

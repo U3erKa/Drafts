@@ -4,7 +4,7 @@ export const API_CONSTANTS = {
   API_KEY: 'foobarbaz',
   NATIONALITY: 'ua',
   INCLUDES: ['gender', 'name', 'location', 'email', 'login'],
-  BASE_URL: 'https://randomuser.me/api/'
+  BASE_URL: 'https://randomuser.me/api/',
 };
 
 export enum THEMES {

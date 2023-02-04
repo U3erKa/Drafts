@@ -4,8 +4,7 @@
 //     return (num += a);
 //   };
 // }
-const createAdder = (state) => insideAdder = (number) => (state += number);
-
+const createAdder = (state) => (insideAdder = (number) => (state += number));
 
 const adder = createAdder(50);
 console.log(adder(100));

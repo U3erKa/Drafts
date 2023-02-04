@@ -2,7 +2,7 @@
 const { Model } = require('sequelize');
 module.exports = (
   /** @type {import('sequelize').Sequelize} */ sequelize,
-  /** @type {import('sequelize').DataTypes} */ DataTypes
+  /** @type {import('sequelize').DataTypes} */ DataTypes,
 ) => {
   class Review extends Model {
     /**
@@ -13,17 +13,35 @@ module.exports = (
      */
     static associate(models) {
       // define association here
-      Review.belongsTo(models.Car, { foreignKey: 'carId', onDelete: 'CASCADE', onUpdate: 'CASCADE' });
+      Review.belongsTo(models.Car, {
+        foreignKey: 'carId',
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
+      });
     }
   }
   Review.init(
     {
-      title: { allowNull: false, type: DataTypes.STRING, validate: { notNull: true, notEmpty: true } },
-      body: { allowNull: false, type: DataTypes.TEXT, validate: { notNull: true, notEmpty: true } },
+      title: {
+        allowNull: false,
+        type: DataTypes.STRING,
+        validate: { notNull: true, notEmpty: true },
+      },
+      body: {
+        allowNull: false,
+        type: DataTypes.TEXT,
+        validate: { notNull: true, notEmpty: true },
+      },
       rating: {
         allowNull: false,
         type: DataTypes.DECIMAL(3, 1),
-        validate: { notNull: true, notEmpty: true, isDecimal: true, min: 1, max: 10 },
+        validate: {
+          notNull: true,
+          notEmpty: true,
+          isDecimal: true,
+          min: 1,
+          max: 10,
+        },
       },
     },
     {
@@ -31,7 +49,7 @@ module.exports = (
       modelName: 'Review',
       tableName: 'reviews',
       underscored: true,
-    }
+    },
   );
   return Review;
 };

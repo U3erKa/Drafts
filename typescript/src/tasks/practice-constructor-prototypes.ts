@@ -1,4 +1,9 @@
-const User: any = function (firstName: string, lastName: string, email: string, age: string) {
+const User: any = function (
+  firstName: string,
+  lastName: string,
+  email: string,
+  age: string,
+) {
   this.firstName = firstName;
   this.lastName = lastName;
   this.email = email;
@@ -11,7 +16,7 @@ const userProto = {
     console.log(
       `Info about the user:
 First name: ${this.firstName}
-Last  name: ${this.lastName}`
+Last  name: ${this.lastName}`,
     );
     return `${this.firstName} ${this.lastName}`;
   },
