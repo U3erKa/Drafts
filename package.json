@@ -10,11 +10,12 @@
     "format": "prettier --write ."
   },
   "workspaces": [
+    "express",
+    "mongo",
     "node",
     "react",
     "redux",
     "sequelize",
-    "server",
     "sql",
     "ts-react",
     "typescript"
