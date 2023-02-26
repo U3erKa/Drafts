@@ -1,0 +1,7 @@
+{
+  "$schema": "./testSchema.json",
+  "foo": "qwe",
+  "bar": 0,
+  "baz": true,
+  "quux": ["asc"]
+}

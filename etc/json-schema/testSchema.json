@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "type": "object",
+  "properties": {
+    "foo": {
+      "type": "string",
+      "description": "This property 'foo' is of type string"
+    },
+    "bar": {
+      "type": "number",
+      "description": "This property 'bar' is of type number"
+    },
+    "baz": {
+      "type": "boolean",
+      "description": "This property 'baz' is of type boolean"
+    },
+    "quux": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "This property 'quux' is an optional array of strings"
+    }
+  },
+  "required": ["foo", "bar", "baz"]
+}
