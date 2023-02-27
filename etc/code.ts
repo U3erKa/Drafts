@@ -4,11 +4,16 @@ type Item = {
 };
 
 function getTotalPrice(items: Item[]) {
-  const totalQuantity = items.reduce((acc, item) => acc + item.quantity, 0);
-  const totalPrice = items.reduce((acc, item) => {
-    const price = item.price * item.quantity;
-    return acc + price;
-  }, 0);
+  const [totalQuantity, totalPrice] = items.reduce(
+    (acc, item) => {
+      const [accQuantity, accPrice] = acc;
+      const quantity = accQuantity + item.quantity;
+      const price = accPrice + item.price * item.quantity;
+
+      return [quantity, price];
+    },
+    [0, 0]
+  );
 
   const hasDiscount = totalQuantity >= 10;
   const priceWithDiscount = totalPrice * (hasDiscount ? 0.9 : 1);
