@@ -15,3 +15,17 @@ function getTotalPrice(items: Item[]) {
 
   return priceWithDiscount;
 }
+
+const items1: Item[] = [
+  { price: 10, quantity: 2 },
+  { price: 20, quantity: 3 },
+  { price: 30, quantity: 4 },
+];
+const items2: Item[] = [
+  { price: 10, quantity: 3 },
+  { price: 20, quantity: 3 },
+  { price: 30, quantity: 4 },
+];
+
+console.log(getTotalPrice(items1));
+console.log(getTotalPrice(items2));
