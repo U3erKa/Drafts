@@ -1,3 +1,5 @@
+import { config as dotenv } from 'dotenv';
+dotenv();
 import http from 'http';
 import path from 'path';
 import { fileURLToPath } from 'url';
