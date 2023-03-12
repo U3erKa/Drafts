@@ -1,11 +1,9 @@
 #!/usr/bin/env node
-// @ts-check
-'use strict';
 
-const commandLineArgs = require('command-line-args');
+import commandLineArgs from 'command-line-args';
+import type { OptionDefinition } from 'command-line-args';
 
-/** @type {commandLineArgs.OptionDefinition[]} */
-const optionDefinitions = [
+const optionDefinitions: OptionDefinition[] = [
   { name: 'echo', alias: 'e', type: String },
   { name: 'verbose', alias: 'v', type: Boolean },
   { name: 'src', type: String, multiple: true, defaultOption: true },
