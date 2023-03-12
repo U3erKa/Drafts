@@ -4,9 +4,20 @@
 
 const commandLineArgs = require('command-line-args');
 
+/** @type {commandLineArgs.OptionDefinition[]} */
 const optionDefinitions = [
-  { name: 'echo', alias: 'e', type: String, defaultOption: true },
+  { name: 'echo', alias: 'e', type: String },
+  { name: 'verbose', alias: 'v', type: Boolean },
+  { name: 'src', type: String, multiple: true, defaultOption: true },
+  { name: 'timeout', alias: 't', type: Number },
 ];
-const options = commandLineArgs(optionDefinitions);
+const options = commandLineArgs(optionDefinitions, { partial: true });
 
-console.log(options.echo ?? 'Hello world!');
+setTimeout(
+  () => console.log(options.echo ?? 'Hello world!'),
+  options.timeout ?? 0
+);
+
+if (options.verbose) {
+  console.log(options);
+}
