@@ -2,4 +2,11 @@
 // @ts-check
 'use strict';
 
-console.log('Hello world!');
+const commandLineArgs = require('command-line-args');
+
+const optionDefinitions = [
+  { name: 'echo', alias: 'e', type: String, defaultOption: true },
+];
+const options = commandLineArgs(optionDefinitions);
+
+console.log(options.echo ?? 'Hello world!');
