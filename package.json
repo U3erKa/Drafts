@@ -13,6 +13,7 @@
     "express",
     "mongo",
     "node",
+    "node-cli",
     "pwa",
     "react",
     "redux",

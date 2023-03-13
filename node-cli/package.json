@@ -1,0 +1,24 @@
+{
+  "name": "hello-cli",
+  "version": "0.3.5",
+  "description": "",
+  "main": "bin/index.js",
+  "scripts": {
+    "start": "npm i -g .",
+    "postinstall": "tsc"
+  },
+  "bin": {
+    "hello": "./bin/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "command-line-args": "^5.2.1"
+  },
+  "devDependencies": {
+    "@types/command-line-args": "^5.2.0",
+    "@types/node": "^18.15.0",
+    "typescript": "^4.9.5"
+  }
+}
