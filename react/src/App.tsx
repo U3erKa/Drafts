@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import UserPage from './pages/UserPage';
 import UsersPage from './pages/UsersPage';
@@ -27,7 +27,7 @@ class App extends React.Component {
   }
   render() {
     return (
-      <Switch>
+      <Routes>
         {/* <ThemeContext.Provider value={this.state.theme}>
           <Tree />
           <button
@@ -38,20 +38,20 @@ class App extends React.Component {
             Swap theme
           </button>
         </ThemeContext.Provider> */}
-        <Route path="/" exact component={HomePage} />
-        <Route path="/users" exact component={UsersPage} />
-        <Route path="/posts" exact component={PostsPage} />
-        <Route path="/user" exact component={UserPage} />
-        <Route path="/tree" exact component={Tree} />
-        <Route path="/timer" exact component={HookTimer} />
-        <Route path="/clickerhooks" exact component={Clicker} />
-        <Route path="/datahooks" exact component={DataLoader} />
-        <Route path="/clickerrefs" exact component={RefsClicker} />
-        <Route path="/login" exact component={LoginPage} />
-        <Route path="/signup" exact component={SignUpForm} />
-        <Route path="/counter" exact component={CounterPage} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/users" element={<UsersPage />} />
+        <Route path="/posts" element={<PostsPage />} />
+        <Route path="/user" element={<UserPage />} />
+        <Route path="/tree" element={<Tree />} />
+        <Route path="/timer" element={<HookTimer />} />
+        <Route path="/clickerhooks" element={<Clicker />} />
+        <Route path="/datahooks" element={<DataLoader />} />
+        <Route path="/clickerrefs" element={<RefsClicker />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignUpForm />} />
+        <Route path="/counter" element={<CounterPage />} />
         {/* <Route path="/about" render={(routeProps) => <AboutPage {...routeProps} />} /> */}
-      </Switch>
+      </Routes>
     );
   }
 }
