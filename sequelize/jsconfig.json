@@ -2,7 +2,7 @@
   "compilerOptions": {
     "checkJs": true,
     "module": "CommonJS",
-    "moduleResolution": "node",
+    "moduleResolution": "nodenext",
     "strict": true,
     "alwaysStrict": true,
     "noImplicitAny": false,
