@@ -6,7 +6,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "prestart": "tsc",
+    "postinstall": "tsc",
     "start": "node dist/server.js",
     "cleanup": "tsc --build --clean",
     "dev": "concurrently \"tsc --watch\" \"nodemon -q dist/server.js\""
