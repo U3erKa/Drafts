@@ -75,9 +75,9 @@ console.log("userNames.indexOf('Vik',7) " + userNames.indexOf('Vik', 7));
 console.log("userNames.indexOf('U2erKa') " + userNames.indexOf('U2erKa'));
 
 // array [1,2,3,4,5] becomes numbers, but not [[1, 2, 3, 4, 5]]
-// @ts-ignore
 const concatedArray = userNames.concat(
   undefined,
+  // @ts-ignore
   'Larry',
   [1, 2, 3, 4, 5],
   [[1, 2, 3, 4, 5]],

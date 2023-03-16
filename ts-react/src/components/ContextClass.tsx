@@ -17,13 +17,12 @@ const AuthContext = createContext<IContext>({
   toggleAuth: () => {},
 });
 
-export default class Login extends Component<{}, {}> {
-  context!: ContextType<typeof AuthContext>;
-  // declare context: ContextType<typeof AuthContext>;
+export default class Login extends Component {
   static contextType = AuthContext;
 
   render(): ReactElement {
-    const { isAuth, toggleAuth } = this.context;
+    // prettier-ignore
+    const { isAuth, toggleAuth } = this.context as ContextType<typeof AuthContext>;
     return <button onClick={toggleAuth}>{!isAuth ? 'Login' : 'Logout'}</button>;
   }
 }

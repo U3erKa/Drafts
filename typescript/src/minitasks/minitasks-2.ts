@@ -83,6 +83,7 @@ function getHouseStats(
     .flat(Infinity)
     .map((num, i) => {
       const result = [];
+      // @ts-ignore
       if (num > 5) {
         result.push(i);
       }

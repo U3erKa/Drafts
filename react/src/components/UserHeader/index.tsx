@@ -3,9 +3,9 @@ import { UserContext } from 'contexts';
 
 export default class UserHeader extends Component {
   render() {
-    // @ts-expect-error
     return (
       <UserContext.Consumer>
+        {/* @ts-expect-error */}
         {(userData) => <p>{userData.username}</p>}
       </UserContext.Consumer>
     );
