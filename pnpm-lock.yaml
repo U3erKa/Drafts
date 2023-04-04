@@ -8,6 +8,27 @@ importers:
 
   .:
     devDependencies:
+      '@tsconfig/create-react-app':
+        specifier: ^1.0.3
+        version: 1.0.3
+      '@tsconfig/docusaurus':
+        specifier: ^1.0.7
+        version: 1.0.7
+      '@tsconfig/esm':
+        specifier: ^1.0.2
+        version: 1.0.2
+      '@tsconfig/next':
+        specifier: ^1.0.5
+        version: 1.0.5
+      '@tsconfig/node-lts':
+        specifier: ^18.12.1
+        version: 18.12.1
+      '@tsconfig/recommended':
+        specifier: ^1.0.2
+        version: 1.0.2
+      '@tsconfig/strictest':
+        specifier: ^2.0.0
+        version: 2.0.0
       '@types/node':
         specifier: ^18.15.11
         version: 18.15.11
@@ -3505,6 +3526,26 @@ packages:
     engines: {node: '>=10.13.0'}
     dev: false
 
+  /@tsconfig/create-react-app@1.0.3:
+    resolution: {integrity: sha512-sAsKAmKzWJlLWpCTyaUHUhqkQEAGAIaNs90sVbZsBhqBTNTnLkcZUr7U5HLI9EUN8QppfkxfGjvaATSgZQhiGQ==}
+    dev: true
+
+  /@tsconfig/docusaurus@1.0.7:
+    resolution: {integrity: sha512-ffTXxGIP/IRMCjuzHd6M4/HdIrw1bMfC7Bv8hMkTadnePkpe0lG0oDSdbRpSDZb2rQMAgpbWiR10BvxvNYwYrg==}
+    dev: true
+
+  /@tsconfig/esm@1.0.2:
+    resolution: {integrity: sha512-awiISx+G4L+7k97nKnfA5QF6rukawiuycMPfASFHG/0fqjrUlYBuNISy3Yjl1SHIpVi57lYf7dc6L/FoQQCKcA==}
+    dev: true
+
+  /@tsconfig/next@1.0.5:
+    resolution: {integrity: sha512-ZpAlWqSGE3ZWFqKmI3FiQEu8WcBF3uii1z1ovedMcALflsRoJnExp3YzWQ/fU7lzGmYtfX1CWFpf1Gl8aEC6GQ==}
+    dev: true
+
+  /@tsconfig/node-lts@18.12.1:
+    resolution: {integrity: sha512-UkIaMWDwJ+qJX/os8lzYh7m47qQJY7sIp1WZiEStASrpzczp27+jA0fJES+IjnS2OlDDLeBghNrVkKw8iYIRdA==}
+    dev: true
+
   /@tsconfig/node10@1.0.9:
     resolution: {integrity: sha512-jNsYVVxU8v5g43Erja32laIDHXeoNvFEpX33OK4d6hljo3jDhCBDhx5dhCCTMWUojscpAagGiRkBKxpdl9fxqA==}
     dev: true
@@ -3519,6 +3560,14 @@ packages:
 
   /@tsconfig/node16@1.0.3:
     resolution: {integrity: sha512-yOlFc+7UtL/89t2ZhjPvvB/DeAr3r+Dq58IgzsFkOAvVC6NMJXmCGjbptdXdR9qsX7pKcTL+s87FtYREi2dEEQ==}
+    dev: true
+
+  /@tsconfig/recommended@1.0.2:
+    resolution: {integrity: sha512-dbHBtbWBOjq0/otpopAE02NT2Cm05Qe2JsEKeCf/wjSYbI2hz8nCqnpnOJWHATgjDz4fd3dchs3Wy1gQGjfN6w==}
+    dev: true
+
+  /@tsconfig/strictest@2.0.0:
+    resolution: {integrity: sha512-E0dpiZNdwO20c8d3seh7OmjAvDpwoRkTcU6M8cvggzB45Bd45tyTU2XJeA5Wfq+8NzVGhunvqOJ30AjSkywMXA==}
     dev: true
 
   /@types/aria-query@5.0.1:
