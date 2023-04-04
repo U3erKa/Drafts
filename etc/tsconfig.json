@@ -1,4 +1,13 @@
 {
+  // "extends": [],                                          /* Path to base configuration file to inherit from (requires TypeScript version 2.1 or later), or array of base files, with the rightmost files having the greater priority (requires TypeScript version 5.0 or later). */
+  "buildOptions": {
+    // "assumeChangesOnlyAffectDirectDependencies": false,   /* Have recompiles in projects that use incremental and watch mode assume that changes within a file will only affect files directly depending on it. */
+    // "dry": false,                                         /* ~ */
+    // "force": false,                                       /* Build all projects, including those that appear to be up to date */
+    // "incremental": false,                                 /* Save .tsbuildinfo files to allow for incremental compilation of projects. */
+    // "traceResolution": false,                             /* Log paths used during the `moduleResolution` process. */
+    // "verbose": false                                      /* Enable verbose logging */
+  },
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig to read more about this file */
 
@@ -135,7 +144,25 @@
     // "suppressExcessPropertyErrors": false,             /* Disable reporting of excess property errors during the creation of object literals. */
     // "suppressImplicitAnyIndexErrors": false,           /* Suppress `noImplicitAny` errors when indexing objects that lack index signatures. */
   },
+  "compileOnSave": true,                                  /* Enable Compile-on-Save for this project. */
+  // "files": [],                                         /* If no 'files' or 'include' property is present in a tsconfig.json, the compiler defaults to including all files in the containing directory and subdirectories except those specified by 'exclude'. When a 'files' property is specified, only those files and those specified by 'include' are included. */
+  "references": [],                                       /* Referenced projects. Requires TypeScript version 3.0 or later. */
+  "typeAcquisition": {
+    "enable": false,                                      /* Enable auto type acquisition */
+    // "exclude": [],                                     /* Specifies a list of type declarations to be excluded from auto type acquisition. Ex. ["jquery", "lodash"] */
+    // "include": []                                      /* Specifies a list of type declarations to be included in auto type acquisition. Ex. ["jquery", "lodash"] */
+  },
+  "watchOptions": {
+    "excludeDirectories": [],                             /* Remove a list of directories from the watch process. */
+    "excludeFiles": [],                                   /* Remove a list of files from the watch mode's processing. */
+    "fallbackPolling": "",                                /* Specify what approach the watcher should use if the system runs out of native file watchers. */
+    "force": "",                                          /* ~ */
+    "synchronousWatchDirectory": false,                   /* Synchronously call callbacks and update the state of directory watchers on platforms that don`t support recursive watching natively. */
+    "watchDirectory": "",                                 /* Specify how directories are watched on systems that lack recursive file-watching functionality. */
+    "watchFile": ""                                       /* Specify how the TypeScript watch mode works. */
+  },
+  // "include": [],                                       /* Specifies a list of glob patterns that match files to be included in compilation. If no 'files' or 'include' property is present in a tsconfig.json, the compiler defaults to including all files in the containing directory and subdirectories except those specified by 'exclude'. Requires TypeScript version 2.0 or later. */
   "exclude": [
     "dist"
-  ]
+  ]                                                       /* Specifies a list of files to be excluded from compilation. The 'exclude' property only affects the files included via the 'include' property and not the 'files' property. Glob patterns require TypeScript version 2.0 or later. */
 }
