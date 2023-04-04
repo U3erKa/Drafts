@@ -1,4 +1,5 @@
 import {
+  merge,
   swap,
 } from "./sortingUtils";
 
@@ -89,4 +90,17 @@ export function insertionSort(/** @type {number[]} */ arr) {
     arr[j + 1] = current;
   }
   return arr;
+}
+
+/** Works similarly to Array.prototype.sort, less memory efficient than quickSort\
+ * Complexity O(n * log n) */
+export function mergeSort(/** @type {number[]} */ arr) {
+  const mid = arr.length / 2;
+
+  if (arr.length < 2) {
+    return arr;
+  }
+
+  const left = arr.splice(0, mid);
+  return merge(mergeSort(left), mergeSort(arr));
 }
