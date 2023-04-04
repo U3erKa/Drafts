@@ -103,8 +103,37 @@
     // "allowUnreachableCode": true,                     /* Disable error reporting for unreachable code. */
 
     /* Completeness */
-    // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
-    "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
+    // "skipDefaultLibCheck": true,                       /* Skip type checking .d.ts files that are included with TypeScript. */
+    "skipLibCheck": true,                                 /* Skip type checking all .d.ts files. */
+
+    /* Watch Options */
+    // "assumeChangesOnlyAffectDirectDependencies": true, /* Have recompiles in '--incremental' and '--watch' assume that changes within a file will only affect files directly depending on it. Requires TypeScript version 3.8 or later. */
+    // "watchDirectory": "dynamicPriorityPolling",        /* Specify the strategy for watching directories under systems that lack recursive file-watching functionality. Requires TypeScript version 3.8 or later. */
+    // "watchFile": "dynamicPriorityPolling",             /* Specify the strategy for watching individual files. Requires TypeScript version 3.8 or later. */
+
+    /* Misc */
+    // "diagnostics": false,                              /* Output compiler performance information after building. */
+    // "disableSizeLimit": true,                          /* Remove the 20mb cap on total source code size for JavaScript files in the TypeScript language server. */
+    // "extendedDiagnostics": false,                      /* Output more detailed compiler performance information after building. */
+    // "fallbackPolling": "dynamicPriority",              /* Specify the polling strategy to use when the system runs out of or doesn't support native file watchers. Requires TypeScript version 3.8 or later. */
+    // "generateCpuProfile": "profile.cpuprofile",        /* Emit a v8 CPU profile of the compiler run for debugging. */
+    // "listEmittedFiles": false,                         /* Print the names of emitted files after a compilation. */
+    // "listFiles": false,                                /* Print all of the files read during the compilation. */
+    // "listFilesOnly": false,                            /* Print names of files that are part of the compilation and then stop processing. */
+    "noErrorTruncation": true,                            /* Disable truncating types in error messages. */
+    // "plugins": [],                                     /* Specify a list of language service plugins to include. */
+    // "preserveWatchOutput": true,                       /* Disable wiping the console in watch mode */
+    "pretty": true,                                       /* Enable color and formatting in output to make compiler errors easier to read */
+    // "traceResolution": false,                          /* Enable tracing of the name resolution process. Requires TypeScript version 2.0 or later. */
+    // "watch": false,                                    /* Watch input files. */
+
+    /* Backwards Compatibility */
+    // "charset": "utf8",                                 /* No longer supported. In early versions, manually set the text encoding for reading files. */
+    // "keyofStringsOnly": false,                         /* Make keyof only return strings instead of string, numbers or symbols. Legacy option. */
+    // "noImplicitUseStrict": false,                      /* Disable adding 'use strict' directives in emitted JavaScript files. */
+    // "noStrictGenericChecks": false,                    /* Disable strict checking of generic signatures in function types. */
+    // "suppressExcessPropertyErrors": false,             /* Disable reporting of excess property errors during the creation of object literals. */
+    // "suppressImplicitAnyIndexErrors": false,           /* Suppress `noImplicitAny` errors when indexing objects that lack index signatures. */
   },
   "exclude": [
     "dist"
