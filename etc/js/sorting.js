@@ -1,5 +1,7 @@
 import {
   merge,
+  getNumberOfDigits,
+  getDigit,
   swap,
 } from "./sortingUtils";
 
@@ -103,4 +105,27 @@ export function mergeSort(/** @type {number[]} */ arr) {
 
   const left = arr.splice(0, mid);
   return merge(mergeSort(left), mergeSort(arr));
+}
+
+/** Ancient sorting method, only works on ints
+ * Complexity O(n) */
+export function radixSort(/** @type {number[]} */ arr) {
+  let maxDigits = 0;
+
+  for (let i = 0; i < arr.length; i++) {
+    maxDigits = Math.max(maxDigits, getNumberOfDigits(arr[i]));
+  }
+
+  for (let i = 0; i < maxDigits; i++) {
+    let buckets = Array.from({ length: 10 }, () => []);
+
+    for (let j = 0; j < arr.length; j++) {
+      let digit = getDigit(arr[j], i);
+      buckets[digit].push(arr[j]);
+    }
+
+    arr = [].concat(...buckets);
+  }
+
+  return arr;
 }

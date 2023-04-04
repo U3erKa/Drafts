@@ -6,6 +6,14 @@ export function merge(/** @type {number[]} */ left, /** @type {number[]} */ righ
 
   return [...arr, ...left, ...right];
 }
+
+export function getDigit(/** @type {number} */ num, /** @type {number} */ place) {
+  return Math.floor(Math.abs(num) / Math.pow(10, place)) % 10;
+}
+
+export function getNumberOfDigits(/** @type {number} */ num) {
+  return Math.floor(Math.log10(Math.abs(num))) + 1;
+}
 export function swap(/** @type {number[]} */ arr, /** @type {number} */ i, /** @type {number} */ j) {
   // simple, creates temp variable
   const temp = arr[i];
