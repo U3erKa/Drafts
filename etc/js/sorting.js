@@ -6,6 +6,8 @@ import {
   swap,
   siftDown,
   partition,
+  isSorted,
+  shuffle,
 } from "./sortingUtils";
 
 /** Probably the easiest to implement. The slowest feasible sort\
@@ -207,4 +209,19 @@ export function _quickSort(/** @type {number[]} */ arr) {
   }
 
   return [..._quickSort(left), pivot, ..._quickSort(right)];
+}
+
+/** Best sorting ever */
+export function jsSort(/** @type {number[]} */ arr) {
+  return arr.sort((a, b) => a - b);
+}
+
+/** This is gonna NUKE your app\
+ * Relies on pure random */
+export function bogoSort(/** @type {number[]} */ arr) {
+  while (!isSorted(arr)) {
+    arr = shuffle(arr);
+  }
+
+  return arr;
 }

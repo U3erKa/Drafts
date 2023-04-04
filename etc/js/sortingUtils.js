@@ -69,3 +69,25 @@ export function partition(/** @type {number[]} */ arr, /** @type {number} */ lef
   swap(arr, right, partitionIndex);
   return partitionIndex;
 }
+
+export function shuffle(/** @type {number[]} */ arr) {
+  let m = arr.length;
+  let i;
+
+  while (m) {
+    i = Math.floor(Math.random() * m--);
+    swap(arr, m, i);
+  }
+
+  return arr;
+}
+
+export function isSorted(/** @type {number[]} */ arr) {
+  for (let i = 0; i < arr.length - 1; i++) {
+    if (arr[i + 1] < arr[i]) {
+      return false;
+    }
+  }
+
+  return true;
+}
