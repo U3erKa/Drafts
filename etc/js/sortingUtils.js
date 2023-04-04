@@ -54,3 +54,18 @@ export function swap(/** @type {number[]} */ arr, /** @type {number} */ i, /** @
   // advanced, seems slower
   // [arr[i], arr[j]] = [arr[j], arr[i]];
 }
+
+export function partition(/** @type {number[]} */ arr, /** @type {number} */ left, /** @type {number} */ right) {
+  let pivotValue = arr[right];
+  let partitionIndex = left;
+
+  for (let i = left; i < right; i++) {
+    if (arr[i] < pivotValue) {
+      swap(arr, i, partitionIndex);
+      partitionIndex++;
+    }
+  }
+
+  swap(arr, right, partitionIndex);
+  return partitionIndex;
+}

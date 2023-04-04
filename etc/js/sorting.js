@@ -5,6 +5,7 @@ import {
   heapify,
   swap,
   siftDown,
+  partition,
 } from "./sortingUtils";
 
 /** Probably the easiest to implement. The slowest feasible sort\
@@ -160,4 +161,50 @@ export function shellSort(/** @type {number[]} */ arr) {
     gap = Math.floor(gap / 2);
   }
   return arr;
+}
+
+/** Quick, memory efficient sorting method\
+ * Complexity O(n log n) */
+export function quickSort(/** @type {number[]} */ arr, left = 0, right = arr.length - 1) {
+  if (left >= right) {
+    return;
+  }
+
+  let pivotIndex = partition(arr, left, right);
+  quickSort(arr, left, pivotIndex - 1);
+  quickSort(arr, pivotIndex + 1, right);
+
+  return arr;
+}
+
+/** An easier to understand version of quick sort which defeats the reason why
+ * quickSort is the fastest sorting method\
+ * Complexity O(n log n) */
+export function quickSortCheatMode(/** @type {number[]} */ arr) {
+  if (arr.length <= 1) return arr;
+  let pivot = arr[0];
+  let left = arr.filter((x) => x < pivot);
+  let right = arr.filter((x) => x > pivot);
+  return [...quickSort(left), pivot, ...quickSort(right)];
+}
+
+/** @deprecated use `quickSort` instead */
+export function _quickSort(/** @type {number[]} */ arr) {
+  if (arr.length < 2) {
+    return arr;
+  }
+  const pivotIndex = Math.floor(arr.length / 2);
+  const pivot = arr.splice(pivotIndex, 1)[0];
+  const left = [];
+  const right = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] < pivot) {
+      left.push(arr[i]);
+    } else {
+      right.push(arr[i]);
+    }
+  }
+
+  return [..._quickSort(left), pivot, ..._quickSort(right)];
 }
