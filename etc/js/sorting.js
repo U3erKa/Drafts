@@ -2,7 +2,9 @@ import {
   merge,
   getNumberOfDigits,
   getDigit,
+  heapify,
   swap,
+  siftDown,
 } from "./sortingUtils";
 
 /** Probably the easiest to implement. The slowest feasible sort\
@@ -127,5 +129,16 @@ export function radixSort(/** @type {number[]} */ arr) {
     arr = [].concat(...buckets);
   }
 
+  return arr;
+}
+
+export function heapSort(/** @type {number[]} */ arr) {
+  let len = arr.length;
+  let end = len - 1;
+  heapify(arr, len);
+  while (end > 0) {
+    swap(arr, end--, 0);
+    siftDown(arr, 0, end);
+  }
   return arr;
 }
