@@ -57,3 +57,20 @@ export function gnomeSort(/** @type {number[]} */ arr) {
   }
   return arr;
 }
+
+/** Sorts array by finding minimum value in the array and puts it at the beginning\
+ * Complexity O(n^2) */
+export function selectionSort(/** @type {number[]} */ arr) {
+  for (let i = 0; i < arr.length; i++) {
+    let min = i;
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[j] < arr[min]) {
+        min = j;
+      }
+    }
+    if (min !== i) {
+      swap(arr, min, i);
+    }
+  }
+  return arr;
+}
