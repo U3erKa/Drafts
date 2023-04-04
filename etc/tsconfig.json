@@ -166,5 +166,32 @@
   // "include": [],                                           /* Specifies a list of glob patterns that match files to be included in compilation. If no 'files' or 'include' property is present in a tsconfig.json, the compiler defaults to including all files in the containing directory and subdirectories except those specified by 'exclude'. Requires TypeScript version 2.0 or later. */
   "exclude": [                                                /* Specifies a list of files to be excluded from compilation. The 'exclude' property only affects the files included via the 'include' property and not the 'files' property. Glob patterns require TypeScript version 2.0 or later. */
     "dist"
-  ]
+  ],
+  "ts-node": {
+    // "compiler": "typescript",                              /* Specify a custom TypeScript compiler. */
+    // "compilerHost": false,                                 /* Use TypeScript's compiler host API instead of the language service API. */
+    // "emit": false,                                         /* Emit output files into `.ts-node` directory. */
+    // "esm": false,                                          /* Enable native ESM support. */
+    // "experimentalReplAwait": false,                        /* Allows the usage of top level await in REPL. */
+    // "experimentalResolver": false,                         /* Enable experimental features that re-map imports and require calls */
+    // "experimentalSpecifierResolution": "explicit",         /* Like node's `--experimental-specifier-resolution`, but can also be set in your `tsconfig.json` for convenience. */
+    // "files": false,                                        /* Load "files" and "include" from `tsconfig.json` on startup. */
+    // "ignore": [                                            /* Paths which should not be compiled. */
+    //   "(?:^|/)node_modules/"
+    // ],
+    // "ignoreDiagnostics": [],                               /* Ignore TypeScript warnings by diagnostic code. */
+    // "logError": false,                                     /* Logs TypeScript errors to stderr instead of throwing exceptions. */
+    // "moduleTypes": {},                                     /* Override certain paths to be compiled and executed as CommonJS or ECMAScript modules. */
+    // "preferTsExts": false,                                 /* Re-order file extensions so that TypeScript imports are preferred. */
+    // "pretty": false,                                       /* Use pretty diagnostic formatter. */
+    // "require": [],                                         /* Modules to require, like node's `--require` flag. */
+    // "scope": false,                                        /* Scope compiler to files within `scopeDir`. */
+    // "scopeDir": "",                                        /* First of: `tsconfig.json` \"rootDir\" if specified, directory containing `tsconfig.json`, or cwd if no `tsconfig.json` is loaded. */
+    // "skipIgnore": false,                                   /* Skip ignore check, so that compilation will be attempted for all files with matching extensions. */
+    // "swc": false,                                          /* Transpile with swc instead of the TypeScript compiler, and skip typechecking. */
+    // "transpileOnly": false,                                /* Use TypeScript's faster `transpileModule`. */
+    // "transpiler": [],                                      /* Specify a custom transpiler for use with transpileOnly */
+    // "typeCheck": true,                                     /* **DEPRECATED** Specify type-check is enabled (e.g. `transpileOnly == false`). */
+    // "compilerOptions": {}                                  /* Instructs the TypeScript compiler how to compile .ts files. */
+  }
 }
