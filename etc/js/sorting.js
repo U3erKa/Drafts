@@ -100,7 +100,8 @@ export function insertionSort(/** @type {number[]} */ arr) {
 }
 
 /** Works similarly to Array.prototype.sort, less memory efficient than quickSort\
- * Complexity O(n * log n) */
+ * Complexity O(n * log n)
+ * @returns {number[]} */
 export function mergeSort(/** @type {number[]} */ arr) {
   const mid = arr.length / 2;
 
@@ -126,6 +127,7 @@ export function radixSort(/** @type {number[]} */ arr) {
 
     for (let j = 0; j < arr.length; j++) {
       let digit = getDigit(arr[j], i);
+      // @ts-expect-error
       buckets[digit].push(arr[j]);
     }
 
@@ -166,9 +168,11 @@ export function shellSort(/** @type {number[]} */ arr) {
 }
 
 /** Quick, memory efficient sorting method\
- * Complexity O(n log n) */
+ * Complexity O(n log n)
+ * @returns {number[]} */
 export function quickSort(/** @type {number[]} */ arr, left = 0, right = arr.length - 1) {
   if (left >= right) {
+    // @ts-expect-error
     return;
   }
 
@@ -190,7 +194,8 @@ export function quickSortCheatMode(/** @type {number[]} */ arr) {
   return [...quickSort(left), pivot, ...quickSort(right)];
 }
 
-/** @deprecated use `quickSort` instead */
+/** @deprecated use `quickSort` instead
+ * @returns {number[]} */
 export function _quickSort(/** @type {number[]} */ arr) {
   if (arr.length < 2) {
     return arr;

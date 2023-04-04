@@ -17,8 +17,8 @@ function printHello() {
   return memo0;
 }
 
-function increment(number) {
-  const action = (num) => num + 1;
+function increment(/** @type {number} */ number) {
+  const action = (/** @type {number} */ num) => num + 1;
   const calculated = memo1.get(number);
 
   if (calculated === undefined) {

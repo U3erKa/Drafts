@@ -1,6 +1,7 @@
 export function merge(/** @type {number[]} */ left, /** @type {number[]} */ right) {
   const arr = /** @type {number[]} */ ([]);
   while (left.length && right.length) {
+    // @ts-expect-error
     arr.push(left[0] < right[0] ? left.shift() : right.shift());
   }
 

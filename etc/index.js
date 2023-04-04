@@ -9,6 +9,7 @@ function reverseString(/** @type {string} */ str) {
 
 reverseString('hello');
 
+/** @returns {number} */
 function factorialize(/** @type {number} */ num) {
   if (num <= 1) {
     return 1;
@@ -77,13 +78,23 @@ function truncateString(/** @type {string} */ str, /** @type {number} */ num) {
 
 truncateString('A-tisket a-tasket A green and yellow basket', 8);
 
-function findElement(/** @type {unknown[]} */ arr, /** @type {(arg0: unknown) => boolean} */ func) {
+/**
+ * @template Element
+ * @param {Element[]} arr
+ * @param {(arg0: Element) => boolean} func
+ * @returns {Element}
+ */
+function findElement(arr, func) {
   const filtered = arr.filter(func);
   return filtered[0];
 }
 
 findElement([1, 2, 3, 4], (num) => num % 2 === 0);
 
+/**
+ * @param {any} bool
+ * @returns {bool is boolean}
+ */
 function booWho(bool) {
   return typeof bool === 'boolean';
 }
