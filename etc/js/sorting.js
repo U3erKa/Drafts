@@ -14,3 +14,27 @@ export function bubbleSort(/** @type {number[]} */ arr) {
   }
   return arr;
 }
+
+export function cocktailShakerSort(/** @type {number[]} */ arr) {
+  let isSorted = true;
+  while (isSorted) {
+    for (let i = 0; i < arr.length - 1; i++) {
+      if (arr[i] > arr[i + 1]) {
+        swap(arr, i, i + 1);
+        isSorted = true;
+      }
+    }
+
+    if (!isSorted) break;
+    isSorted = false;
+
+    for (let j = arr.length - 1; j > 0; j--) {
+      if (arr[j - 1] > arr[j]) {
+        swap(arr, j - 1, j);
+        isSorted = true;
+      }
+    }
+  }
+
+  return arr;
+}
