@@ -13,8 +13,10 @@
     "outDir": "./dist",
     "noErrorTruncation": true,
     "pretty": true,
+    "verbatimModuleSyntax": true,
+    "removeComments": true,
   },
   "exclude": [
-    "dist"
+    "dist",
   ],
 }
