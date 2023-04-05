@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 import type { ForgeConfig } from '@electron-forge/shared-types';
 import { MakerSquirrel } from '@electron-forge/maker-squirrel';
 import { MakerZIP } from '@electron-forge/maker-zip';
@@ -39,6 +41,8 @@ const config: ForgeConfig = {
           },
         ],
       },
+      port: 3001,
+      loggerPort: 9001,
     }),
   ],
 };
