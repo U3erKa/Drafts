@@ -1,22 +1,23 @@
-import React from 'react';
+import React, { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import UserPage from './pages/UserPage';
-import UsersPage from './pages/UsersPage';
-import PostsPage from './pages/PostsPage';
-import Tree from './components/Tree';
-import { DataLoader, Clicker } from './components/DataLoader/UserLoaderHooks';
-import './App.css';
-import HookTimer from './components/HookTimer';
+import Tree from 'components/Tree';
+import { DataLoader, Clicker } from 'components/DataLoader/UserLoaderHooks';
+import HookTimer from 'components/HookTimer';
 import RefsClicker from 'components/RefsClicker';
-import LoginPage from 'pages/LoginPage';
-import CounterPage from 'pages/CounterPage';
 import SignUpForm from 'components/forms/SignUpForm';
 import { THEMES } from 'configs';
-// import DataLoader from './components/DataLoader';
-// import FlexContainer from './components/FlexContainer';
-// import Header from './components/Header';
-// import SignUpForm from './components/SignUpForm';
+import 'App.css';
+// import DataLoader from 'components/DataLoader';
+// import FlexContainer from 'components/FlexContainer';
+// import Header from 'components/Header';
+// import SignUpForm from 'components/SignUpForm';
+
+const HomePage = lazy(() => import('pages/HomePage'));
+const UserPage = lazy(() => import('pages/UserPage'));
+const UsersPage = lazy(() => import('pages/UsersPage'));
+const PostsPage = lazy(() => import('pages/PostsPage'));
+const LoginPage = lazy(() => import('pages/LoginPage'));
+const CounterPage = lazy(() => import('pages/CounterPage'));
 
 class App extends React.Component {
   constructor(props) {
