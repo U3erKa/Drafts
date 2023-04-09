@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import ErrorBoundary from 'components/ErrorBoundary';
 // import Header from './components/Header';
 // import Greeting from './components/Greeting';
 // import Aloha from './components/Aloha';
@@ -25,9 +26,11 @@ const root = ReactDOM.createRoot(
 root.render(
   // const {isVisible} = this.state;
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <ErrorBoundary fallback={"Oops..."}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </ErrorBoundary>
     {/* <Header name={user.name} profilePicSrc={user.profilePicSrc} />
     <Greeting name={user.name} />
     <Greeting name={name} id={69} />

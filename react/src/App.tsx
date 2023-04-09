@@ -38,7 +38,7 @@ class App extends React.Component {
             Swap theme
           </button>
         </ThemeContext.Provider> */}
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<HomePage /* throws */ />} />
         <Route path="/users" element={<UsersPage />} />
         <Route path="/posts" element={<PostsPage />} />
         <Route path="/user" element={<UserPage />} />
