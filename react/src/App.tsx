@@ -18,6 +18,7 @@ const UsersPage = lazy(() => import('pages/UsersPage'));
 const PostsPage = lazy(() => import('pages/PostsPage'));
 const LoginPage = lazy(() => import('pages/LoginPage'));
 const CounterPage = lazy(() => import('pages/CounterPage'));
+const TabContainer = lazy(() => import('pages/TabContainer'));
 
 class App extends React.Component {
   constructor(props) {
@@ -51,6 +52,7 @@ class App extends React.Component {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpForm />} />
         <Route path="/counter" element={<CounterPage />} />
+        <Route path="/transition" element={<TabContainer />} />
         {/* <Route path="/about" render={(routeProps) => <AboutPage {...routeProps} />} /> */}
       </Routes>
     );
