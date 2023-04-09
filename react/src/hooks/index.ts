@@ -1,4 +1,10 @@
-import { useState, useEffect, SetStateAction, MutableRefObject } from 'react';
+import {
+  useState,
+  useEffect,
+  SetStateAction,
+  MutableRefObject,
+  useDebugValue,
+} from 'react';
 
 export function useData(
   getData: (...args: any[]) => Promise<SetStateAction<never[]>>,
@@ -6,6 +12,7 @@ export function useData(
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  useDebugValue({ isLoading, error });
 
   const load = async () => {
     try {
