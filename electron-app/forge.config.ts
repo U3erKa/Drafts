@@ -17,7 +17,12 @@ dotenv();
 const config: ForgeConfig = {
   packagerConfig: {},
   rebuildConfig: {},
-  makers: [new MakerSquirrel({}), new MakerZIP({}), new MakerRpm({}), new MakerDeb({})],
+  makers: [
+    new MakerSquirrel({}),
+    new MakerZIP({}),
+    new MakerRpm({}),
+    new MakerDeb({}),
+  ],
   publishers: [
     new PublisherGithub({
       repository: { name: 'Electron-App', owner: 'U3erKa' },

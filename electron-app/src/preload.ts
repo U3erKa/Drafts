@@ -20,6 +20,6 @@ const versions = {
   electron: () => process.versions.electron,
   ping: () => ipcRenderer.invoke('ping'),
   // we can also expose variables, not just functions
-}
+};
 
 contextBridge.exposeInMainWorld('versions', versions);

@@ -133,3 +133,4 @@ public/
 .*rc*
 *.json
 markdown.md
+pnpm-lock.yaml

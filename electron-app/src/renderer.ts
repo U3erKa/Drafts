@@ -32,7 +32,9 @@ import './index.css';
 declare const window: Window & typeof globalThis & { versions: Versions };
 declare const versions: Versions;
 
-console.log('👋 This message is being logged by "renderer.js", included via webpack');
+console.log(
+  '👋 This message is being logged by "renderer.js", included via webpack',
+);
 
 const fizzBuzz: (string | number)[] = [];
 
@@ -50,7 +52,7 @@ for (let i = 0; i < 100; i++) {
 }
 
 console.log(
-  `This app is using Chrome (v${versions.chrome()}), Node.js (v${versions.node()}), and Electron (v${versions.electron()})`
+  `This app is using Chrome (v${versions.chrome()}), Node.js (v${versions.node()}), and Electron (v${versions.electron()})`,
 );
 
 console.log(fizzBuzz);

@@ -26,7 +26,7 @@ const root = ReactDOM.createRoot(
 root.render(
   // const {isVisible} = this.state;
   <React.StrictMode>
-    <ErrorBoundary fallback={"Oops..."}>
+    <ErrorBoundary fallback={'Oops...'}>
       <BrowserRouter>
         <App />
       </BrowserRouter>
