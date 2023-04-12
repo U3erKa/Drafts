@@ -10,6 +10,8 @@ const fs = require("fs/promises");
   const logs = /** @type {{[key: string]: string[]}} */ ({});
 
   lines.forEach((line) => {
+    /** @type {[string, string]} */
+    // @ts-ignore
     const [timestamp, message] = line.split(/ \[5\] DHCP[CD]: /);
     timestamps.push(timestamp);
     messages.push(message);
@@ -19,6 +21,7 @@ const fs = require("fs/promises");
   uniqueMessages.forEach((message) => {
     const times = /** @type {string[]} */ ([]);
     messages.forEach((msg, i) => {
+      // @ts-ignore
       if (msg === message) times.push(timestamps[i]);
     });
 
