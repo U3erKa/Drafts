@@ -25,4 +25,4 @@ console.log(clusterize(array, 1)) // [ [ 1 ], [ 2 ], [ 3 ], [ 4 ], [ 5 ] ]
 console.log(clusterize(array, 2)) // [ [ 1, 2 ], [ 3, 4 ], [ 5 ] ]
 console.log(clusterize(array, 3)) // [ [ 1, 2, 3 ], [ 4, 5 ] ]
 
-export { clusterize }
+export = { clusterize }

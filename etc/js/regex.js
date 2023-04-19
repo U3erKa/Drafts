@@ -16,7 +16,6 @@
 
 // | - OR
 ;/(?:10|ten)\$/ // 10$ or ten$
-
 ;/java(?:script)?/gm // java or javascript
 
 // Java, JavaScript, C, C++ or C#

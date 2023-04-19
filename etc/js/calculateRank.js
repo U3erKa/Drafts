@@ -5,7 +5,7 @@
  *
  * @see https://stackoverflow.com/a/5263759/10629172
  *
- * @param {string} mean The mean of the normal distribution.
+ * @param {number} mean The mean of the normal distribution.
  * @param {number} sigma The standard deviation of the normal distribution.
  * @param {number} to The value to calculate the probability for.
  * @returns {number} Probability.
@@ -27,16 +27,21 @@ const normalcdf = (mean, sigma, to) => {
 }
 
 /**
- * Calculates the users rank.
- *
- * @param {object} totalRepos Total number of repos.
- * @param {number} totalCommits Total number of commits.
- * @param {number} contributions The number of contributions.
- * @param {number} followers The number of followers.
- * @param {number} prs The number of pull requests.
- * @param {number} issues The number of issues.
- * @param {number} stargazers The number of stars.
- * @returns {{level: string, score: number}}} The users rank.
+ * @typedef {object} Options
+ * @property {number} totalRepos Total number of repos
+ * @property {number} totalCommits Total number of commits
+ * @property {number} contributions The number of contributions
+ * @property {number} followers The number of followers
+ * @property {number} prs The number of pull requests
+ * @property {number} issues The number of issues
+ * @property {number} stargazers The number of stars
+ * @returns {{level: string, score: number}} The users rank
+ */
+
+/**
+ * Calculates the users rank
+ * @type {(options: Options) => {level: string, score: number}}
+ * @returns The users rank
  */
 const calculateRank = ({ totalRepos, totalCommits, contributions, followers, prs, issues, stargazers }) => {
   const COMMITS_OFFSET = 1.65
