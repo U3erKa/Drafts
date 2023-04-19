@@ -9,8 +9,8 @@
  */
 function foo(bar, baz) {
   if (baz) {
-    console.log(baz.length);
+    console.log(baz.length)
   }
 
-  return bar.toLowerCase();
+  return bar.toLowerCase()
 }
