@@ -1,8 +1,17 @@
 const fs = require("fs")
 
+const VALIDATE = false
+
 const isPrime = (/** @type {number} */ num) => {
-  if (num === 2) return true
-  if (num < 2 || num % 2 === 0) return false
+  switch (true) {
+    case num === 2:
+    case num === 3:
+      return true
+    case num < 2:
+    case num % 2 === 0:
+    case [0, 3, 6].includes(num % 9):
+      return false
+  }
 
   for (let i = 3; i < num; i += 2) {
     if (num % i === 0) return false
@@ -16,8 +25,9 @@ const validateArray = (/** @type {any[]} */ arr) => {
   })
 }
 
-const nextPrime = (/** @type {number} */ num) => {
+const nextPrime = (/** @type {number | null | undefined} */ num) => {
   while (true) {
+    if (!num) return 2
     if (num === 2) return 3
     num += 2
     if (isPrime(num)) return num
@@ -25,9 +35,8 @@ const nextPrime = (/** @type {number} */ num) => {
 }
 
 const appendPrime = (/** @type {number[]} */ arr) => {
-  validateArray(arr)
-  // @ts-expect-error
-  arr.push(arr.length ? nextPrime(arr.at(-1)) : 2)
+  if (VALIDATE) validateArray(arr)
+  arr.push(nextPrime(arr.at(-1)))
 }
 
 // const cacheFile = "primes.txt";
@@ -65,7 +74,6 @@ setTimeout(() => {
 }, 1000 * 60)
 
 primes.forEach((prime) => {
-  // @ts-expect-error
-  console.assert(isPrime(prime), true)
+  console.assert(isPrime(prime), `Non-prime number detected: ${prime}`)
   // console.log(nextPrime(prime));
 })
