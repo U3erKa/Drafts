@@ -7,6 +7,13 @@ settings:
 importers:
 
   .:
+    dependencies:
+      iconv:
+        specifier: ^3.0.1
+        version: 3.0.1
+      json5:
+        specifier: ^2.2.3
+        version: 2.2.3
     devDependencies:
       '@tsconfig/create-react-app':
         specifier: ^1.0.3
@@ -29,6 +36,9 @@ importers:
       '@tsconfig/strictest':
         specifier: ^2.0.1
         version: 2.0.1
+      '@types/iconv':
+        specifier: ^3.0.1
+        version: 3.0.1
       '@types/node':
         specifier: ^18.16.0
         version: 18.16.0
@@ -4083,6 +4093,12 @@ packages:
     resolution: {integrity: sha512-Qs5aULi+zV1bwKAg5z1PWnDXWmsn+LxIvUGv6E2+OOMYhclZMO+OXd9pYVf2gLykf2I7IV2u7oTHwChPNsvJ7g==}
     dependencies:
       '@types/node': 18.17.5
+
+  /@types/iconv@3.0.1:
+    resolution: {integrity: sha512-VHYt1HZZCAJq/Odxut9eIKfRY8qQpDhNVhWJdk3sJXgvxeAeoUse0uIeZBlcC5O0tT2NBuqlW/4jd7e5wiAfKA==}
+    dependencies:
+      '@types/node': 18.17.5
+    dev: true
 
   /@types/istanbul-lib-coverage@2.0.4:
     resolution: {integrity: sha512-z/QT1XN4K4KYuslS23k62yDIDLwLFkzxOuMplDtObz0+y7VqJCaO2o+SPwHCvLFZh7xazvvoor2tA/hPz9ee7g==}
@@ -8682,6 +8698,12 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       safer-buffer: 2.1.2
+
+  /iconv@3.0.1:
+    resolution: {integrity: sha512-lJnFLxVc0d82R7GfU7a9RujKVUQ3Eee19tPKWZWBJtAEGRHVEyFzCtbNl3GPKuDnHBBRT4/nDS4Ru9AIDT72qA==}
+    engines: {node: '>=10.0.0'}
+    requiresBuild: true
+    dev: false
 
   /icss-utils@5.1.0(postcss@8.4.21):
     resolution: {integrity: sha512-soFhflCVWLfRNOPU3iv5Z9VUdT44xFRbzjLsEzSr5AQmgqPMTHdU3PMT1Cf1ssx8fLNJDA1juftYl+PUcv3MqA==}
