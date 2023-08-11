@@ -30,3 +30,30 @@ person.on("ageChanged", (newAge) => {
     console.warn("warning! negative age")
   }
 })
+
+// Best enum ever
+const LOG_LEVEL = {
+  DEBUG: "DEBUG",
+  WARNING: "WARNING",
+  ERROR: "ERROR",
+} as const
+
+type ObjectKeys<T> = (keyof T)[]
+type ObjectValues<TObj extends object> = TObj[keyof TObj]
+// type ObjectEntries<TObj extends object> = [ObjectKeys<TObj>, ObjectValues<TObj>][]
+type LogLevel = ObjectValues<typeof LOG_LEVEL>
+
+function log(_message: string, _level: LogLevel) {}
+
+log("Hey", "DEBUG")
+
+type Empty = Record<PropertyKey, never>
+type Unknown = {} | null | undefined // {} means any non-nullish value
+
+function getValue<TObj, TKey extends keyof TObj>(obj: TObj, key: TKey): TObj[TKey] {
+  return obj[key]
+}
+
+const obj = { lorem: "ipsum", universe: 42, isBool: true }
+const result = getValue(obj, "isBool")
+const keys = Object.keys(obj) as ObjectKeys<typeof obj>
