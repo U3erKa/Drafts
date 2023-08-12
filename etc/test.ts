@@ -49,6 +49,8 @@ log("Hey", "DEBUG")
 
 type Empty = Record<PropertyKey, never>
 type Unknown = {} | null | undefined // {} means any non-nullish value
+// Infer is used to extract type
+type TSReturnType<T extends (...args: any) => any> = T extends (...args: any) => infer R ? R : never
 
 function getValue<TObj, TKey extends keyof TObj>(obj: TObj, key: TKey): TObj[TKey] {
   return obj[key]
