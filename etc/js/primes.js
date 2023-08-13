@@ -2,43 +2,6 @@ const fs = require("fs")
 
 const VALIDATE = false
 
-const isPrime = (/** @type {number} */ num) => {
-  switch (true) {
-    case num === 2:
-    case num === 3:
-      return true
-    case num < 2:
-    case num % 2 === 0:
-    case [0, 3, 6].includes(num % 9):
-      return false
-  }
-
-  for (let i = 3; i < num; i += 2) {
-    if (num % i === 0) return false
-  }
-  return true
-}
-
-const validateArray = (/** @type {any[]} */ arr) => {
-  arr.forEach((prime) => {
-    if (!isPrime(prime)) throw new TypeError("Received array is not an array of primes: found " + prime)
-  })
-}
-
-const nextPrime = (/** @type {number | null | undefined} */ num) => {
-  while (true) {
-    if (!num) return 2
-    if (num === 2) return 3
-    num += 2
-    if (isPrime(num)) return num
-  }
-}
-
-const appendPrime = (/** @type {number[]} */ arr) => {
-  if (VALIDATE) validateArray(arr)
-  arr.push(nextPrime(arr.at(-1)))
-}
-
 // const cacheFile = "primes.txt";
 const cacheFile = "primes.json"
 
@@ -77,3 +40,40 @@ primes.forEach((prime) => {
   console.assert(isPrime(prime), `Non-prime number detected: ${prime}`)
   // console.log(nextPrime(prime));
 })
+
+function isPrime(/** @type {number} */ num) {
+  switch (true) {
+    case num === 2:
+    case num === 3:
+      return true
+    case num < 2:
+    case num % 2 === 0:
+    case [0, 3, 6].includes(num % 9):
+      return false
+  }
+
+  for (let i = 3; i < num; i += 2) {
+    if (num % i === 0) return false
+  }
+  return true
+}
+
+function validateArray(/** @type {any[]} */ arr) {
+  arr.forEach((prime) => {
+    if (!isPrime(prime)) throw new TypeError("Received array is not an array of primes: found " + prime)
+  })
+}
+
+function nextPrime(/** @type {number | null | undefined} */ num) {
+  while (true) {
+    if (!num) return 2
+    if (num === 2) return 3
+    num += 2
+    if (isPrime(num)) return num
+  }
+}
+
+function appendPrime(/** @type {number[]} */ arr) {
+  if (VALIDATE) validateArray(arr)
+  arr.push(nextPrime(arr.at(-1)))
+}
