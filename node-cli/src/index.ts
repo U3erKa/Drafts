@@ -1,6 +1,5 @@
 #!/usr/bin/env node
-import commandLineArgs from 'command-line-args';
-import type { OptionDefinition } from 'command-line-args';
+import commandLineArgs, { type OptionDefinition } from 'command-line-args';
 
 const optionDefinitions: OptionDefinition[] = [
   { name: 'echo', alias: 'e', type: String, defaultValue: 'Hello world!' },
