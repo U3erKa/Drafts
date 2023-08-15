@@ -24,20 +24,6 @@
     "typescript"
   ],
   "devDependencies": {
-    "@tsconfig/create-react-app": "^2.0.1",
-    "@tsconfig/docusaurus": "^2.0.0",
-    "@tsconfig/esm": "^1.0.4",
-    "@tsconfig/next": "^2.0.0",
-    "@tsconfig/node-lts": "^18.12.3",
-    "@tsconfig/recommended": "^1.0.2",
-    "@tsconfig/strictest": "^2.0.1",
-    "@types/iconv": "^3.0.1",
-    "@types/node": "^20.5.0",
-    "prettier": "^3.0.1",
-    "typescript": "^5.1.6"
-  },
-  "dependencies": {
-    "iconv": "^3.0.1",
-    "json5": "^2.2.3"
+    "prettier": "^3.0.1"
   }
 }
