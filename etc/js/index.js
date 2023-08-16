@@ -162,3 +162,9 @@ function chunkArrayInGroups(/** @type {unknown[]} */ arr, /** @type {number} */ 
 }
 
 chunkArrayInGroups(["a", "b", "c", "d"], 2)
+
+let _uniqueIdNum = 0
+/** Generates a unique ID. If `prefix` is given, the ID is appended to it */
+function uniqueId(/** @type {string | null | undefined} */ prefix) {
+  return `${prefix?.toString() ?? ""}${++_uniqueIdNum}`
+}
