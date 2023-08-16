@@ -1,11 +1,11 @@
-const fs = require('fs');
+const fs = require("fs")
 
-const data = fs.readFileSync('./sources.json', { encoding: 'utf8' });
+const data = fs.readFileSync("./sources.json", { encoding: "utf8" })
 /** @type {object} */
-const obj = JSON.parse(data);
+const obj = JSON.parse(data)
 // const res = new Set();
-const res = new Set();
-const getter = (obj) => obj.song;
+const res = new Set()
+const getter = (obj) => obj.song
 
 // obj.forEach((arr) => {
 //   res.push(arr.filter(Boolean));
@@ -31,13 +31,13 @@ const getter = (obj) => obj.song;
 // });
 
 obj.forEach((o) => {
-  res.add(getter(o));
-});
+  res.add(getter(o))
+})
 
-const result = [...res].filter(Boolean).sort();
-const links = result.map((song) => `https://invertedfate.com/music/${song}`);
+const result = [...res].filter(Boolean).sort()
+const links = result.map((song) => `https://invertedfate.com/music/${song}`)
 const m3u = `#EXTM3U
-${links.join('\n')}
-`;
+${links.join("\n")}
+`
 
-fs.writeFileSync('../Downloads/songs.m3u8', m3u, { encoding: 'utf8' });
+fs.writeFileSync("../Downloads/songs.m3u8", m3u, { encoding: "utf8" })

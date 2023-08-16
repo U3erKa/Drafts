@@ -51,14 +51,13 @@ function withProduct(Component) {
 }
 
 // eslint-disable-next-line react/display-name
-const withTheme = (Component) => (props: any) =>
-  (
-    <ThemeContext.Consumer>
-      {([theme, onClick]) => (
-        <Component theme={theme} onClick={onClick} {...props} />
-      )}
-    </ThemeContext.Consumer>
-  );
+const withTheme = (Component) => (props: any) => (
+  <ThemeContext.Consumer>
+    {([theme, onClick]) => (
+      <Component theme={theme} onClick={onClick} {...props} />
+    )}
+  </ThemeContext.Consumer>
+);
 
 // const SomeArticleWithProduct = withProduct(SomeArticle);
 // const SomeArticleWithAll = withTheme(SomeArticleWithProduct);
