@@ -84,7 +84,19 @@ type AdminRole = Extract<RoleAttribute, { role: "administrator" }>
 type GetValueParams = Parameters<typeof getValue<{ test?: boolean }, "test">>
 
 const obj1: Record<string, string[]> & { bar: string[] } = { bar: [] }
-
+// @ts-expect-error
 obj1.foo?.push("lorem")
 obj1["foo"]?.push("lorem")
 obj1.bar.push("qar")
+
+type ActionCreator = { type: "LOGIN"; payload: string } | { type: "LOGOUT" } | { type: "REGISTER"; payload: string }
+
+const dispatch = <Type extends ActionCreator["type"]>(
+  ...args: Extract<ActionCreator, { type: Type }> extends { payload: infer TPayload }
+    ? [type: Type, payload: TPayload]
+    : [type: Type]
+) => {}
+
+dispatch("LOGIN", "fgnebtn")
+dispatch("LOGOUT")
+dispatch("REGISTER", "sdvsdnmvsldvnsdcjkl")
