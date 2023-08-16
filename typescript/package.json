@@ -15,9 +15,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "^18.15.11",
-    "concurrently": "^8.0.1",
+    "@types/node": "^18.17.5",
+    "concurrently": "^8.2.0",
     "nodemon": "^2.0.22",
-    "typescript": "^5.0.4"
+    "typescript": "^5.1.6"
   }
 }

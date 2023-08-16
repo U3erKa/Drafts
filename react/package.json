@@ -5,29 +5,29 @@
   "private": true,
   "dependencies": {
     "classnames": "^2.3.2",
-    "formik": "^2.2.9",
+    "formik": "^2.4.3",
     "query-string": "^8.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.10.0",
+    "react-router-dom": "^6.15.0",
     "react-scripts": "^5.0.1",
-    "web-vitals": "^3.3.1"
+    "web-vitals": "^3.4.0"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
-    "@types/jest": "^29.5.0",
-    "@types/node": "^18.15.11",
+    "@types/jest": "^29.5.3",
+    "@types/node": "^18.17.5",
     "@types/prop-types": "^15.7.5",
-    "@types/react": "^18.0.33",
-    "@types/react-dom": "^18.0.11",
+    "@types/react": "^18.2.20",
+    "@types/react-dom": "^18.2.7",
     "@types/react-router-dom": "^5.3.3",
-    "eslint": "^8.38.0",
-    "eslint-plugin-react": "^7.32.2",
-    "sass": "^1.61.0",
-    "turbo": "^1.8.8",
-    "typescript": "^5.0.4"
+    "eslint": "^8.47.0",
+    "eslint-plugin-react": "^7.33.2",
+    "sass": "^1.65.1",
+    "turbo": "^1.10.12",
+    "typescript": "^5.1.6"
   },
   "scripts": {
     "start": "react-scripts start",
