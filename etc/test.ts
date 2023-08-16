@@ -59,3 +59,26 @@ function getValue<TObj, TKey extends keyof TObj>(obj: TObj, key: TKey): TObj[TKe
 const obj = { lorem: "ipsum", universe: 42, isBool: true }
 const result = getValue(obj, "isBool")
 const keys = Object.keys(obj) as ObjectKeys<typeof obj>
+
+type OptionalValue = number | null | undefined
+
+type User = {
+  id: number
+  name: string
+  age: number
+}
+
+type Mutable<T> = { -readonly [K in keyof T]: T[K] }
+
+type ReadOnlyUser = Readonly<User>
+type MutableUser = Mutable<ReadOnlyUser>
+type RequiredUser = NonNullable<OptionalValue>
+
+type Role = "user" | "moderator" | "administrator"
+type ElevatedRole = Exclude<Role, "user">
+type LesserRole = Exclude<Role, "moderator" | "administrator">
+
+type RoleAttribute = { role: "user" } | { role: "moderator" } | { role: "administrator"; isAdmin: true }
+type AdminRole = Extract<RoleAttribute, { role: "administrator" }>
+
+type GetValueParams = Parameters<typeof getValue<{ test?: boolean }, "test">>
