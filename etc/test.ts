@@ -82,3 +82,9 @@ type RoleAttribute = { role: "user" } | { role: "moderator" } | { role: "adminis
 type AdminRole = Extract<RoleAttribute, { role: "administrator" }>
 
 type GetValueParams = Parameters<typeof getValue<{ test?: boolean }, "test">>
+
+const obj1: Record<string, string[]> & { bar: string[] } = { bar: [] }
+
+obj1.foo?.push("lorem")
+obj1["foo"]?.push("lorem")
+obj1.bar.push("qar")
