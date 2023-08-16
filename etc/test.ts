@@ -115,3 +115,12 @@ class SDK {
     }
   }
 }
+
+type AObj = {
+  a: "asd"
+  b: "ssdf"
+  aa: "qasasfc"
+}
+
+type ValuesOfKeysStartingWithA<T, _ExtractedKeys extends keyof T = Extract<keyof T, `a${string}`>> = T[_ExtractedKeys]
+type NewUnion = ValuesOfKeysStartingWithA<AObj>
