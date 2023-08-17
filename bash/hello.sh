@@ -7,6 +7,7 @@ echo ''
 
 myname="Viktor"
 echo "My name is $myname."
+echo "My username is $USER"
 echo ''
 
 mood="awesome"
