@@ -13,3 +13,12 @@ mood="awesome"
 echo "Linux is $mood"
 echo "JavaScript is $mood"
 echo "Typescript is $mood"
+echo ''
+
+files=$(ls)
+echo "Contents of this directory:"
+echo $files
+
+now=$(date)
+echo "Current date & time:"
+echo $now
