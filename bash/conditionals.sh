@@ -15,3 +15,9 @@ if [ ! $mynum -eq 200 ]; then
 elif [ $mynum -ne 300 ]; then
   echo "The other negative condition is true"
 fi
+
+if [ -f ./hello.sh ]; then
+  echo "File ./hello.sh exists"
+else
+  echo "File ./hello.sh does not exist"
+fi
