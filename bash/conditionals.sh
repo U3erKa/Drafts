@@ -21,3 +21,18 @@ if [ -f ./hello.sh ]; then
 else
   echo "File ./hello.sh does not exist"
 fi
+
+command=/usr/bin/htop
+
+if [ -f $command ]; then
+  echo "$command is found, running..."
+elif [ -f $(which htop) ]; then
+  echo "$command found elsewhere, running..."
+  command=$(which htop)
+else
+  echo "$command not found, installing..."
+  sudo apt update && sudo apt install -y htop
+  command=$(which htop)
+fi
+
+$command
