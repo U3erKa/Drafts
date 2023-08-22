@@ -15,3 +15,9 @@ while [ -f $testfile ]; do
   sleep 1
 done
 echo "Temp file is gone"
+
+# for i in 10 9 8 7 6 5 4 3 2 1 0; do
+for i in {10..0}; do
+  echo $i
+  sleep 0.1
+done
