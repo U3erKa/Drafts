@@ -21,3 +21,7 @@ for i in {10..0}; do
   echo $i
   sleep 0.1
 done
+
+for file in logfiles/*.log; do
+  tar -czvf $file.tar.gz $file
+done
