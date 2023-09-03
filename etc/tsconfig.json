@@ -17,6 +17,7 @@
     "removeComments": true,
     "noUncheckedIndexedAccess": true,
     "lib": ["ESNext"],
+    "importHelpers": true,
   },
   "exclude": [
     "dist",

@@ -25,6 +25,7 @@
   "dependencies": {
     "csv-stringify": "^6.4.0",
     "iconv": "^3.0.1",
-    "json5": "^2.2.3"
+    "json5": "^2.2.3",
+    "tslib": "^2.6.2"
   }
 }
