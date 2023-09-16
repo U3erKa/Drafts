@@ -2,6 +2,7 @@
   "name": "my-app-redux",
   "version": "1.8.0",
   "private": true,
+  "type": "module",
   "packageManager": "pnpm@7.26.0",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
