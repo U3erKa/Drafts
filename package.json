@@ -10,6 +10,7 @@
     "format": "prettier --write ."
   },
   "workspaces": [
+    "cra-eject",
     "electron-app",
     "etc",
     "express",
