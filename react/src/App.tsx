@@ -1,4 +1,4 @@
-import React, { lazy } from 'react';
+import React, { lazy /*, useState */ } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Tree from 'components/Tree';
 import { DataLoader, Clicker } from 'components/DataLoader/UserLoaderHooks';
@@ -6,7 +6,10 @@ import HookTimer from 'components/HookTimer';
 import RefsClicker from 'components/RefsClicker';
 import SignUpForm from 'components/forms/SignUpForm';
 import { THEMES } from 'configs';
+// import reactLogo from './assets/react.svg'
+// import viteLogo from '/vite.svg'
 import 'App.css';
+
 // import DataLoader from 'components/DataLoader';
 // import FlexContainer from 'components/FlexContainer';
 // import Header from 'components/Header';
@@ -60,6 +63,35 @@ class App extends React.Component {
 }
 
 export default App;
+
+// function App() {
+//   const [count, setCount] = useState(0)
+
+//   return (
+//     <>
+//       <div>
+//         <a href="https://vitejs.dev" target="_blank">
+//           <img src={viteLogo} className="logo" alt="Vite logo" />
+//         </a>
+//         <a href="https://react.dev" target="_blank">
+//           <img src={reactLogo} className="logo react" alt="React logo" />
+//         </a>
+//       </div>
+//       <h1>Vite + React</h1>
+//       <div className="card">
+//         <button onClick={() => setCount((count) => count + 1)}>
+//           count is {count}
+//         </button>
+//         <p>
+//           Edit <code>src/App.tsx</code> and save to test HMR
+//         </p>
+//       </div>
+//       <p className="read-the-docs">
+//         Click on the Vite and React logos to learn more
+//       </p>
+//     </>
+//   )
+// }
 
 // class App extends React.Component {
 //   /**
