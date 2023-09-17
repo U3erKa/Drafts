@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Toggle light/dark theme using JS & bit of CSS</title>
+  </head>
+  <body>
+    <button onClick="toggleDarkMode()">Toggle</button>
+    <input type="text" placeholder="Example of element that uses 'color-scheme' CSS property" style="width: 350px" />
+    <script>
+      const { classList } = document.documentElement
+      const THEME = Object.freeze({ LIGHT: "light", DARK: "dark" })
+      const THEME_KEY = "theme"
+      /** @type {THEME[keyof THEME] | null} */
+      const theme = localStorage.getItem(THEME_KEY)
+      // Set class for either light of dark theme
+      if (theme == null) {
+        classList.add(window.matchMedia("(prefers-color-scheme: dark)").matches ? THEME.DARK : THEME.LIGHT)
+      } else {
+        classList.add(theme === THEME.DARK ? THEME.DARK : THEME.LIGHT)
+      }
+      /** toggle to switch classes between .light and .dark */
+      function toggleDarkMode() {
+        classList.toggle(THEME.LIGHT)
+        classList.toggle(THEME.DARK)
+
+        localStorage.setItem(THEME_KEY, classList.contains(THEME.DARK) ? THEME.DARK : THEME.LIGHT)
+      }
+    </script>
+    <style>
+      :root,
+      :root.light {
+        --some-value: black;
+        --some-other-value: white;
+        color-scheme: light;
+      }
+
+      :root.dark {
+        --some-value: white;
+        --some-other-value: black;
+        color-scheme: dark;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --some-value: white;
+          --some-other-value: black;
+          color-scheme: dark;
+        }
+      }
+
+      body {
+        color: var(--some-value);
+        background-color: var(--some-other-value);
+      }
+    </style>
+  </body>
+</html>
