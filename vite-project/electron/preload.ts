@@ -107,6 +107,7 @@ function useLoading() {
 
 // ----------------------------------------------------------------------
 
+// eslint-disable-next-line react-hooks/rules-of-hooks
 const { appendLoading, removeLoading } = useLoading()
 domReady().then(appendLoading)
 
@@ -115,3 +116,24 @@ window.onmessage = ev => {
 }
 
 setTimeout(removeLoading, 4999)
+
+window.addEventListener('DOMContentLoaded', () => {
+  const replaceText = (selector: string, text: string) => {
+    const element = document.getElementById(selector);
+    if (element) element.innerText = text;
+  };
+
+  for (const dependency of ['chrome', 'node', 'electron']) {
+    replaceText(`${dependency}-version`, process.versions[dependency] as string);
+  }
+});
+
+export type Versions = typeof versions;
+const versions = {
+  node: () => process.versions.node,
+  chrome: () => process.versions.chrome,
+  electron: () => process.versions.electron,
+  // we can also expose variables, not just functions
+};
+
+contextBridge.exposeInMainWorld('versions', versions);
