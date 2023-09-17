@@ -20,4 +20,5 @@ window.ipcRenderer.on('main-process-message', (_event, message) => {
 })
 
 console.log(versions);
+console.log(await window.ping());
 // console.log(window.versions);

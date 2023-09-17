@@ -136,4 +136,8 @@ const versions = {
   // we can also expose variables, not just functions
 };
 
+export type Ping = typeof ping;
+const ping = () => ipcRenderer.invoke('ping')
+
 contextBridge.exposeInMainWorld('versions', versions);
+contextBridge.exposeInMainWorld('ping', ping);

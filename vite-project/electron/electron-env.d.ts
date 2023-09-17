@@ -25,4 +25,5 @@ declare namespace NodeJS {
 interface Window {
   ipcRenderer: import('electron').IpcRenderer
   versions: import('./preload').Versions
+  ping: import('./preload').Ping
 }
