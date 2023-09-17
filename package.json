@@ -1,5 +1,6 @@
 {
   "name": "drafts",
+  "packageManager": "pnpm@7.26.0",
   "version": "1.0.0",
   "description": "",
   "private": true,
