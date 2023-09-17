@@ -290,6 +290,58 @@ importers:
         specifier: ^5.88.2
         version: 5.88.2
 
+  electron-app-vite:
+    dependencies:
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.2.0(react@18.2.0)
+    devDependencies:
+      '@types/react':
+        specifier: ^18.2.21
+        version: 18.2.21
+      '@types/react-dom':
+        specifier: ^18.2.7
+        version: 18.2.7
+      '@typescript-eslint/eslint-plugin':
+        specifier: ^6.6.0
+        version: 6.7.0(@typescript-eslint/parser@6.7.0)(eslint@8.49.0)(typescript@5.2.2)
+      '@typescript-eslint/parser':
+        specifier: ^6.6.0
+        version: 6.7.0(eslint@8.49.0)(typescript@5.2.2)
+      '@vitejs/plugin-react':
+        specifier: ^4.0.4
+        version: 4.0.4(vite@4.4.9)
+      electron:
+        specifier: ^26.1.0
+        version: 26.2.1
+      electron-builder:
+        specifier: ^24.6.4
+        version: 24.6.4
+      eslint:
+        specifier: ^8.48.0
+        version: 8.49.0
+      eslint-plugin-react-hooks:
+        specifier: ^4.6.0
+        version: 4.6.0(eslint@8.49.0)
+      eslint-plugin-react-refresh:
+        specifier: ^0.4.3
+        version: 0.4.3(eslint@8.49.0)
+      typescript:
+        specifier: ^5.2.2
+        version: 5.2.2
+      vite:
+        specifier: ^4.4.9
+        version: 4.4.9(@types/node@18.17.5)(sass@1.65.1)
+      vite-plugin-electron:
+        specifier: ^0.14.0
+        version: 0.14.1(vite-plugin-electron-renderer@0.14.5)
+      vite-plugin-electron-renderer:
+        specifier: ^0.14.5
+        version: 0.14.5
+
   etc:
     dependencies:
       csv-stringify:
@@ -908,58 +960,6 @@ importers:
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
-
-  vite-project:
-    dependencies:
-      react:
-        specifier: ^18.2.0
-        version: 18.2.0
-      react-dom:
-        specifier: ^18.2.0
-        version: 18.2.0(react@18.2.0)
-    devDependencies:
-      '@types/react':
-        specifier: ^18.2.21
-        version: 18.2.21
-      '@types/react-dom':
-        specifier: ^18.2.7
-        version: 18.2.7
-      '@typescript-eslint/eslint-plugin':
-        specifier: ^6.6.0
-        version: 6.7.0(@typescript-eslint/parser@6.7.0)(eslint@8.49.0)(typescript@5.2.2)
-      '@typescript-eslint/parser':
-        specifier: ^6.6.0
-        version: 6.7.0(eslint@8.49.0)(typescript@5.2.2)
-      '@vitejs/plugin-react':
-        specifier: ^4.0.4
-        version: 4.0.4(vite@4.4.9)
-      electron:
-        specifier: ^26.1.0
-        version: 26.2.1
-      electron-builder:
-        specifier: ^24.6.4
-        version: 24.6.4
-      eslint:
-        specifier: ^8.48.0
-        version: 8.49.0
-      eslint-plugin-react-hooks:
-        specifier: ^4.6.0
-        version: 4.6.0(eslint@8.49.0)
-      eslint-plugin-react-refresh:
-        specifier: ^0.4.3
-        version: 0.4.3(eslint@8.49.0)
-      typescript:
-        specifier: ^5.2.2
-        version: 5.2.2
-      vite:
-        specifier: ^4.4.9
-        version: 4.4.9(@types/node@18.17.5)(sass@1.65.1)
-      vite-plugin-electron:
-        specifier: ^0.14.0
-        version: 0.14.1(vite-plugin-electron-renderer@0.14.5)
-      vite-plugin-electron-renderer:
-        specifier: ^0.14.5
-        version: 0.14.5
 
 packages:
 
@@ -5121,13 +5121,13 @@ packages:
   /@types/react-dom@18.2.7:
     resolution: {integrity: sha512-GRaAEriuT4zp9N4p1i8BDBYmEyfo+xQ3yHjJU4eiK5NDa1RmUZG+unZABUTK4/Ox/M+GaHwb6Ow8rUITrtjszA==}
     dependencies:
-      '@types/react': 18.2.20
+      '@types/react': 18.2.21
 
   /@types/react-router-dom@5.3.3:
     resolution: {integrity: sha512-kpqnYK4wcdm5UaWI3fLcELopqLrHgLqNsdpHauzlQktfkHL3npOSwtj1Uz9oKBAzs7lFtVkV8j83voAz2D8fhw==}
     dependencies:
       '@types/history': 4.7.11
-      '@types/react': 18.2.20
+      '@types/react': 18.2.21
       '@types/react-router': 5.1.20
     dev: true
 
@@ -5314,7 +5314,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@eslint-community/regexpp': 4.6.2
+      '@eslint-community/regexpp': 4.8.1
       '@typescript-eslint/parser': 5.62.0(eslint@8.49.0)(typescript@5.2.2)
       '@typescript-eslint/scope-manager': 5.62.0
       '@typescript-eslint/type-utils': 5.62.0(eslint@8.49.0)(typescript@5.2.2)
