@@ -136,3 +136,4 @@ markdown.md
 pnpm-lock.yaml
 tsconfig.json
 package*.json
+*.json5
