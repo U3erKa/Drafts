@@ -12,6 +12,7 @@
   "workspaces": [
     "cra-eject",
     "electron-app",
+    "electron-app-vite",
     "etc",
     "express",
     "mongo",
