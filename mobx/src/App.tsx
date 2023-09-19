@@ -1,35 +1,55 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import './App.css';
 
-function App() {
-  const [count, setCount] = useState(0)
+type Todo = {
+  task: string;
+  completed: boolean;
+  assignee: string | null;
+};
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+class TodoStore {
+  todos: Todo[] = [];
+
+  get completedTodosCount() {
+    return this.todos.filter((todo) => todo.completed === true).length;
+  }
+
+  report() {
+    if (this.todos.length === 0) return '<none>';
+    const nextTodo = this.todos.find((todo) => todo.completed === false);
+    return (
+      `Next todo: "${nextTodo ? nextTodo.task : '<none>'}". ` +
+      `Progress: ${this.completedTodosCount}/${this.todos.length}`
+    );
+  }
+
+  addTodo(task: Todo['task']) {
+    this.todos.push({
+      task: task,
+      completed: false,
+      assignee: null,
+    });
+  }
 }
 
-export default App
+const todoStore = new TodoStore();
+
+todoStore.addTodo('read MobX tutorial');
+console.log(todoStore.report());
+
+todoStore.addTodo('try MobX');
+console.log(todoStore.report());
+
+todoStore.todos[0].completed = true;
+console.log(todoStore.report());
+
+todoStore.todos[1].task = 'try MobX in own project';
+console.log(todoStore.report());
+
+todoStore.todos[0].task = 'grok MobX tutorial';
+console.log(todoStore.report());
+
+function App() {
+  return <div>App</div>;
+}
+
+export default App;
