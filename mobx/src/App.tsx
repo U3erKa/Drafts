@@ -1,3 +1,4 @@
+import { action, autorun, computed, makeObservable, observable } from 'mobx';
 import './App.css';
 
 type Todo = {
@@ -6,14 +7,27 @@ type Todo = {
   assignee: string | null;
 };
 
-class TodoStore {
+class ObservableTodoStore {
   todos: Todo[] = [];
+  pendingRequests = 0;
+
+  constructor() {
+    // describes the shape of `ObservableTodoStore` object
+    makeObservable(this, {
+      todos: observable,
+      pendingRequests: observable,
+      completedTodosCount: computed,
+      report: computed,
+      addTodo: action,
+    });
+    autorun(() => console.log(this.report));
+  }
 
   get completedTodosCount() {
     return this.todos.filter((todo) => todo.completed === true).length;
   }
 
-  report() {
+  get report() {
     if (this.todos.length === 0) return '<none>';
     const nextTodo = this.todos.find((todo) => todo.completed === false);
     return (
@@ -31,22 +45,9 @@ class TodoStore {
   }
 }
 
-const todoStore = new TodoStore();
+const observableTodoStore = new ObservableTodoStore();
 
-todoStore.addTodo('read MobX tutorial');
-console.log(todoStore.report());
-
-todoStore.addTodo('try MobX');
-console.log(todoStore.report());
-
-todoStore.todos[0].completed = true;
-console.log(todoStore.report());
-
-todoStore.todos[1].task = 'try MobX in own project';
-console.log(todoStore.report());
-
-todoStore.todos[0].task = 'grok MobX tutorial';
-console.log(todoStore.report());
+console.log(observableTodoStore);
 
 function App() {
   return <div>App</div>;
