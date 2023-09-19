@@ -72,6 +72,26 @@ messWithTodos();
 messWithTodos();
 messWithTodos();
 
+const peopleStore = observable([{ name: 'Michel' }, { name: 'Me' }]);
+store.todos[0].assignee = peopleStore[0];
+store.todos[1].assignee = peopleStore[1];
+peopleStore[0].name = 'Michel Weststrate';
+
+addRandomTodo();
+addRandomTodo();
+addRandomTodo();
+
+function addRandomTodo() {
+  store.pendingRequests++;
+  setTimeout(
+    action(() => {
+      store.addTodo('Random Todo ' + Math.random());
+      store.pendingRequests--;
+    }),
+    2000,
+  );
+}
+
 function RenderCounter() {
   return <div>{store.completedTodosCount}</div>;
 }
@@ -94,6 +114,10 @@ const TodoList = observer(({ store }: { store: ObservableTodoStore }) => {
       {/* @ts-expect-error `marquee` tag */}
       {store.pendingRequests > 0 ? <marquee>Loading...</marquee> : null}
       <button onClick={onNewTodo}>New Todo</button>
+      <input
+        value={peopleStore[1].name}
+        onChange={(event) => (peopleStore[1].name = event.target.value)}
+      />
       <small> (double-click a todo to edit)</small>
       <RenderCounter />
     </div>
