@@ -21,8 +21,9 @@ export const TodoList = observer(function TodoList({ store }: TodoListProps) {
           <TodoView todo={todo} key={idx} />
         ))}
       </ul>
-      {/* @ts-expect-error `marquee` tag */}
-      {store.pendingRequests > 0 ? <marquee>Loading...</marquee> : null}
+      {store.pendingRequests > 0 ? (
+        <div className="marquee">Loading...</div>
+      ) : null}
       <button onClick={onNewTodo}>New Todo</button>
       <input
         value={peopleStore[1].name}
