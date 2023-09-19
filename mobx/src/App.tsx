@@ -49,12 +49,31 @@ class ObservableTodoStore {
   }
 }
 
-const observableTodoStore = new ObservableTodoStore();
+const store = new ObservableTodoStore();
 
-console.log(observableTodoStore);
+console.log(store);
+
+function messWithTodos() {
+  store.todos.push({
+    task: 'Find a fine cheese',
+    completed: true,
+    assignee: null,
+  });
+  store.todos.push({
+    task: 'Find a finer cheese',
+    completed: true,
+    assignee: null,
+  });
+  store.todos[0].completed = !store.todos[0].completed;
+  store.todos[1].task = 'Random todo ' + Math.random();
+}
+
+messWithTodos();
+messWithTodos();
+messWithTodos();
 
 function RenderCounter() {
-  return <div>{observableTodoStore.completedTodosCount}</div>;
+  return <div>{store.completedTodosCount}</div>;
 }
 
 // `observer` wrapper adds store to the component props
@@ -106,7 +125,7 @@ const TodoView = observer(({ todo }: { todo: Todo }) => {
 });
 
 function App() {
-  return <TodoList store={observableTodoStore} />;
+  return <TodoList store={store} />;
 }
 
 export default App;
