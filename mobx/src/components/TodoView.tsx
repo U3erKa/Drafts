@@ -2,7 +2,11 @@ import { observer } from 'mobx-react-lite';
 import { type Todo } from 'store';
 import { RenderCounter } from '.';
 
-export const TodoView = observer(({ todo }: { todo: Todo }) => {
+type TodoViewProps = {
+  todo: Todo;
+};
+
+export const TodoView = observer(function TodoView({ todo }: TodoViewProps) {
   const onToggleCompleted = () => {
     todo.completed = !todo.completed;
   };
