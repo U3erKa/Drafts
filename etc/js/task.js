@@ -4,7 +4,7 @@ class Window {
     this.tabs = tabs // We keep a record of the array inside the object
   }
   // When you join two windows into one window
-  join(/** @type {string[]} */ otherWindow) {
+  join(/** @type {Window} */ otherWindow) {
     this.tabs = this.tabs.concat(otherWindow.tabs)
     return this
   }
@@ -36,6 +36,7 @@ const finalTabs = socialWindow
   .join(workWindow.tabClose(1).tabOpen())
 console.log(finalTabs.tabs)
 
+// @ts-expect-error
 Array.prototype.myMap = function (/** @type {(item: unknown, i: number, array: unknown[]) => unknown} */ callback) {
   const newArray = []
   for (let i = 0; i < this.length; i++) {
@@ -44,10 +45,11 @@ Array.prototype.myMap = function (/** @type {(item: unknown, i: number, array: u
   return newArray
 }
 
+// @ts-expect-error
 Array.prototype.myFilter = function (/** @type {(item: unknown, i: number, array: unknown[]) => unknown} */ callback) {
   const newArray = []
   for (let i = 0; i < this.length; i++) {
-    if (!!callback(this[i], i, this)) {
+    if (callback(this[i], i, this)) {
       newArray.push(this[i])
     }
   }

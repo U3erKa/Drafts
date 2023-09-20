@@ -1,11 +1,11 @@
 const fs = require("fs")
 
 const data = fs.readFileSync("./sources.json", { encoding: "utf8" })
-/** @type {object} */
+/** @type {object[]} */
 const obj = JSON.parse(data)
 // const res = new Set();
 const res = new Set()
-const getter = (obj) => obj.song
+const getter = (/** @type {{ song: any; }} */ obj) => obj.song
 
 // obj.forEach((arr) => {
 //   res.push(arr.filter(Boolean));
@@ -30,7 +30,7 @@ const getter = (obj) => obj.song
 //   res.add(...songs);
 // });
 
-obj.forEach((o) => {
+obj.forEach((/** @type {any} */ o) => {
   res.add(getter(o))
 })
 

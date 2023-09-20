@@ -1,3 +1,4 @@
+// @ts-nocheck
 import supertest from "supertest"
 import server from "../../app"
 /** We will use this function to mock HTTP requests */

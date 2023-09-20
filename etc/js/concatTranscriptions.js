@@ -3,7 +3,7 @@ const fs = require("fs")
 const files = fs.readdirSync(".").filter((file) => file.endsWith(".txt"))
 
 const resFile = "transcriptions.md"
-const fsOpts = { encoding: "utf8" }
+const fsOpts = Object.freeze({ encoding: "utf8" })
 
 fs.writeFileSync(resFile, `# EAK\n\n`, fsOpts)
 files.forEach((file) => {

@@ -15,6 +15,7 @@ import {
 export function bubbleSort(/** @type {number[]} */ arr) {
   for (let i = 0; i < arr.length; i++) {
     for (let j = 0; j < arr.length - i - 1; j++) {
+      // @ts-expect-error
       if (arr[j] > arr[j + 1]) {
         swap(arr, j, j + 1)
       }
@@ -27,6 +28,7 @@ export function cocktailShakerSort(/** @type {number[]} */ arr) {
   let isSorted = true
   while (isSorted) {
     for (let i = 0; i < arr.length - 1; i++) {
+      // @ts-expect-error
       if (arr[i] > arr[i + 1]) {
         swap(arr, i, i + 1)
         isSorted = true
@@ -37,6 +39,7 @@ export function cocktailShakerSort(/** @type {number[]} */ arr) {
     isSorted = false
 
     for (let j = arr.length - 1; j > 0; j--) {
+      // @ts-expect-error
       if (arr[j - 1] > arr[j]) {
         swap(arr, j - 1, j)
         isSorted = true
@@ -51,6 +54,7 @@ export function gnomeSort(/** @type {number[]} */ arr) {
   let i = 1 // start at 1 because we're comparing i-1 to i
   let j = 2 // start at 2 because we're comparing i-1 to i
   while (i < arr.length) {
+    // @ts-expect-error
     if (arr[i - 1] <= arr[i]) {
       i = j
       j++
@@ -72,6 +76,7 @@ export function selectionSort(/** @type {number[]} */ arr) {
   for (let i = 0; i < arr.length; i++) {
     let min = i
     for (let j = i + 1; j < arr.length; j++) {
+      // @ts-expect-error
       if (arr[j] < arr[min]) {
         min = j
       }
@@ -90,10 +95,13 @@ export function insertionSort(/** @type {number[]} */ arr) {
     let current = arr[i]
     let j = i - 1
 
+    // @ts-expect-error
     while (j > -1 && current < arr[j]) {
+      // @ts-expect-error
       arr[j + 1] = arr[j]
       j--
     }
+    // @ts-expect-error
     arr[j + 1] = current
   }
   return arr
@@ -119,6 +127,7 @@ export function radixSort(/** @type {number[]} */ arr) {
   let maxDigits = 0
 
   for (let i = 0; i < arr.length; i++) {
+    // @ts-expect-error
     maxDigits = Math.max(maxDigits, getNumberOfDigits(arr[i]))
   }
 
@@ -126,6 +135,7 @@ export function radixSort(/** @type {number[]} */ arr) {
     let buckets = Array.from({ length: 10 }, () => [])
 
     for (let j = 0; j < arr.length; j++) {
+      // @ts-expect-error
       let digit = getDigit(arr[j], i)
       // @ts-expect-error
       buckets[digit].push(arr[j])
@@ -156,10 +166,13 @@ export function shellSort(/** @type {number[]} */ arr) {
     for (let i = gap; i < len; i++) {
       let j = i
       let current = arr[i]
+      // @ts-expect-error
       while (j - gap >= 0 && current < arr[j - gap]) {
+        // @ts-expect-error
         arr[j] = arr[j - gap]
         j = j - gap
       }
+      // @ts-expect-error
       arr[j] = current
     }
     gap = Math.floor(gap / 2)
@@ -189,7 +202,9 @@ export function quickSort(/** @type {number[]} */ arr, left = 0, right = arr.len
 export function quickSortCheatMode(/** @type {number[]} */ arr) {
   if (arr.length <= 1) return arr
   let pivot = arr[0]
+  // @ts-expect-error
   let left = arr.filter((x) => x < pivot)
+  // @ts-expect-error
   let right = arr.filter((x) => x > pivot)
   return [...quickSort(left), pivot, ...quickSort(right)]
 }
@@ -206,6 +221,7 @@ export function _quickSort(/** @type {number[]} */ arr) {
   const right = []
 
   for (let i = 0; i < arr.length; i++) {
+    // @ts-expect-error
     if (arr[i] < pivot) {
       left.push(arr[i])
     } else {
@@ -213,6 +229,7 @@ export function _quickSort(/** @type {number[]} */ arr) {
     }
   }
 
+  // @ts-expect-error
   return [..._quickSort(left), pivot, ..._quickSort(right)]
 }
 

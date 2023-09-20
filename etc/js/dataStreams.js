@@ -1,7 +1,10 @@
 import { stringify } from "csv-stringify"
 // ...
 
-const processCurrentRecord = async (record, writable) => {
+const processCurrentRecord = async (
+  /** @type {any} */ record,
+  /** @type {import("csv-stringify").Stringifier} */ writable,
+) => {
   const dataToWrite = prepareRecord(record)
   const bufferNotFull = writable.write(dataToWrite)
   if (!bufferNotFull) {
@@ -15,6 +18,7 @@ const generateFile = async () => {
   const stringifier = stringify()
   const uploadPromise = uploadToS3("dest/path/fileName.csv", stringifier)
   stringifier.write(["Column 1", "Column2 " /* ... */]) // add column names
+  // @ts-expect-error
   const recordsStream = FileRecord.query()
     .where({
       /* ... */
@@ -27,4 +31,19 @@ const generateFile = async () => {
   }
   stringifier.end()
   await uploadPromise
+}
+
+/**
+ * @param {any} record
+ */
+function prepareRecord(record) {
+  throw new Error("Function not implemented.")
+}
+
+/**
+ * @param {string} arg0
+ * @param {import("csv-stringify").Stringifier} stringifier
+ */
+function uploadToS3(arg0, stringifier) {
+  throw new Error("Function not implemented.")
 }

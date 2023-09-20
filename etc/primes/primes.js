@@ -65,7 +65,6 @@ setTimeout(() => {
 }, 1000 * 60)
 
 primes.forEach((prime) => {
-  // @ts-expect-error
   console.assert(isPrime(prime), true)
   // console.log(nextPrime(prime));
 })

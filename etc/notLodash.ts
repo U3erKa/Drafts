@@ -1,3 +1,4 @@
+// @ts-nocheck
 /** Used to map characters to HTML entities. */
 const htmlEscapes = {
   "&": "&amp;",

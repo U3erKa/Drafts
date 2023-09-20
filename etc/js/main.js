@@ -1,4 +1,4 @@
-// @ts-check
+// @ts-expect-error
 import { productDetails } from "./products.js"
 
 // Example of JSDoc, multiline comment
@@ -72,9 +72,7 @@ for (let i = 0; i < box.length; i++) {
     // @ts-expect-error
     totalItem.innerText = ++totalCounter
 
-    // @ts-expect-error
     itemName.innerText = productDetails[i].name
-    // @ts-expect-error
     itemPrice.innerText = productDetails[i].price
     // @ts-expect-error
     itemQty.innerText = counterNumber

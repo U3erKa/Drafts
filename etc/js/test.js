@@ -1,5 +1,5 @@
 const fs = require("fs")
-const fsOptions = { encoding: "utf8" }
+const fsOptions = Object.freeze({ encoding: "utf8" })
 
 const title = "Intensive Language Course English"
 const files = fs.readdirSync(".", fsOptions).filter((file) => file.includes(title))

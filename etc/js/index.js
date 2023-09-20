@@ -8,7 +8,7 @@ function reverseString(/** @type {string} */ str) {
 }
 
 reverseString("hello")
-
+/** @returns {number} */
 function factorialize(/** @type {number} */ num) {
   if (num <= 1) {
     return 1
@@ -82,8 +82,13 @@ function findElement(/** @type {unknown[]} */ arr, /** @type {(arg0: unknown) =>
   return filtered[0]
 }
 
+// @ts-expect-error
 findElement([1, 2, 3, 4], (num) => num % 2 === 0)
 
+/**
+ * @param {unknown} bool
+ * @returns {bool is boolean}
+ */
 function booWho(bool) {
   return typeof bool === "boolean"
 }
@@ -96,6 +101,7 @@ function titleCase(/** @type {string} */ str) {
 
   for (const word of words) {
     const letters = word.split("")
+    // @ts-expect-error
     letters[0] = letters[0].toUpperCase()
     result.push(letters.join(""))
   }
@@ -122,10 +128,10 @@ bouncer([7, "ate", "", false, 9])
 
 function getIndexToIns(/** @type {number[]} */ arr, /** @type {number} */ num) {
   const sortedArr = arr.slice().sort((a, b) => a - b)
-  let result = 0
 
   for (let i = 0; i < sortedArr.length; i++) {
     const element = sortedArr[i]
+    // @ts-expect-error
     if (element >= num) {
       return i
     }
@@ -137,11 +143,14 @@ getIndexToIns([40, 60], 50)
 
 function mutation(/** @type {string[]} */ arr) {
   const [_string, _includedLetters] = arr
+  // @ts-expect-error
   const string = _string.toLowerCase()
+  // @ts-expect-error
   const includedLetters = _includedLetters.toLowerCase()
 
   for (let i = 0; i < includedLetters.length; i++) {
     const letter = includedLetters[i]
+    // @ts-expect-error
     if (!string.includes(letter)) {
       return false
     }
@@ -165,6 +174,6 @@ chunkArrayInGroups(["a", "b", "c", "d"], 2)
 
 let _uniqueIdNum = 0
 /** Generates a unique ID. If `prefix` is given, the ID is appended to it */
-function uniqueId(/** @type {string | null | undefined} */ prefix) {
+function uniqueId(/** @type {unknown} */ prefix) {
   return `${prefix?.toString() ?? ""}${++_uniqueIdNum}`
 }

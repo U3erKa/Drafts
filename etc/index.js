@@ -82,7 +82,7 @@ truncateString("A-tisket a-tasket A green and yellow basket", 8)
  * @template Element
  * @param {Element[]} arr
  * @param {(arg0: Element) => boolean} func
- * @returns {Element}
+ * @returns {Element | undefined}
  */
 function findElement(arr, func) {
   const filtered = arr.filter(func)
@@ -107,6 +107,7 @@ function titleCase(/** @type {string} */ str) {
 
   for (const word of words) {
     const letters = word.split("")
+    // @ts-expect-error
     letters[0] = letters[0].toUpperCase()
     result.push(letters.join(""))
   }
@@ -133,9 +134,10 @@ bouncer([7, "ate", "", false, 9])
 
 function getIndexToIns(/** @type {number[]} */ arr, /** @type {number} */ num) {
   const sortedArr = arr.slice().sort((a, b) => a - b)
-  let result = 0
 
   for (let i = 0; i < sortedArr.length; i++) {
+    /** @type {typeof sortedArr[number]} */
+    // @ts-expect-error
     const element = sortedArr[i]
     if (element >= num) {
       return i
@@ -148,11 +150,14 @@ getIndexToIns([40, 60], 50)
 
 function mutation(/** @type {string[]} */ arr) {
   const [_string, _includedLetters] = arr
+  // @ts-expect-error
   const string = _string.toLowerCase()
+  // @ts-expect-error
   const includedLetters = _includedLetters.toLowerCase()
 
   for (let i = 0; i < includedLetters.length; i++) {
     const letter = includedLetters[i]
+    // @ts-expect-error
     if (!string.includes(letter)) {
       return false
     }
