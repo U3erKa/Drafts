@@ -5,7 +5,9 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "postinstall": "pnpm tsc"
+    "postinstall": "pnpm tsc",
+    "test": "node --experimental-test-coverage --test tests/*",
+    "test:watch": "node --experimental-test-coverage --test --watch tests/*"
   },
   "keywords": [],
   "author": "",
