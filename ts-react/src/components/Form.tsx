@@ -3,8 +3,6 @@ import {
   Component,
   FocusEventHandler,
   FormEventHandler,
-  MouseEvent,
-  SyntheticEvent,
 } from 'react';
 
 export default class Form extends Component<{}, {}> {
@@ -17,7 +15,7 @@ export default class Form extends Component<{}, {}> {
     e.preventDefault();
     console.log('Submitted!');
   };
-  handleCopy: ClipboardEventHandler<HTMLInputElement> = (e) => {
+  handleCopy: ClipboardEventHandler<HTMLInputElement> = (_e) => {
     console.log('Copied!');
   };
 

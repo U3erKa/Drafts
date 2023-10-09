@@ -145,5 +145,3 @@ test("a test that creates asynchronous activity", (t) => {
 
   // The test finishes after this line.
 })
-
-

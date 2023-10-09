@@ -5,7 +5,6 @@ import CONSTANTS from 'constants';
 const { THEMES } = CONSTANTS;
 
 const SomeArticle = (props) => {
-  // eslint-disable-next-line react/prop-types
   const { theme, onClick } = props;
 
   const product = useContext(ProductContext);

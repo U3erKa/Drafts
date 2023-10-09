@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component, type JSX } from 'react';
 
 class DataLoader extends Component<
   {
