@@ -1,3 +1,4 @@
+import { getNumberOfDigits } from "./sortingUtils.js"
 /** globalThis: DedicatedWorkerGlobalScope */
 self.addEventListener(
   "message",
@@ -7,7 +8,7 @@ self.addEventListener(
       /* empty */
     }
 
-    self.postMessage({ ...e.data, time: performance.now() - time })
+    self.postMessage({ ...e.data, time: performance.now() - time, digits: getNumberOfDigits(e.data.i) })
     self.close()
   },
   { once: true },

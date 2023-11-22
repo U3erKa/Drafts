@@ -24,6 +24,6 @@ function launchWorker(workerPath, options) {
 }
 
 const tasks = Array.from({ length: navigator.hardwareConcurrency }).map((_, i) =>
-  launchWorker("web-worker.js", { workerData: { hello: "world", i } }),
+  launchWorker("web-worker.js", { type: "module", workerData: { hello: "world", i } }),
 )
 Promise.all(tasks).then(console.log)
