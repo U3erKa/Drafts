@@ -9,7 +9,7 @@ self.addEventListener(
     }
 
     self.postMessage({ ...e.data, time: performance.now() - time, digits: getNumberOfDigits(e.data.i) })
-    self.close()
+    // self.close()
   },
-  { once: true },
+  // { once: true },
 )
