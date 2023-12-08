@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      a {
+        display: block;
+        min-width: 100px;
+        min-height: 30px;
+        border: 2px solid black;
+      }
+    </style>
+    <script defer>
+      function downloadBase64File(contentBase64, fileName, contentType = "image/png") {
+        const linkSource = `data:${contentType};base64,${contentBase64}`
+        const downloadLink = document.createElement("a")
+        document.body.appendChild(downloadLink)
+
+        downloadLink.href = linkSource
+        downloadLink.target = "_self"
+        downloadLink.download = fileName
+        downloadLink.innerText = fileName
+        // downloadLink.click()
+      }
+      function batchDownload(data) {
+        data.forEach(({ filename, contentType, contents }) => {
+          downloadBase64File(contents, filename, contentType)
+        })
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
