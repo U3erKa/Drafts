@@ -19,11 +19,21 @@ const htmlUnescapes = {
 
 const reUnescapedHtml = /[&<>"']/g
 const reEscapedHtml = /&(?:amp|lt|gt|quot|#39);/g
-const reRegExpChar = /[\\^$.*+?()[\]{}|\/]/g
+const reRegExpChar = /[\\^$.*+?()[\]{}|/]/g
+const PATH_DELIMITER = /[.\][]/
 
 const hasUnescapedHtml = RegExp(reUnescapedHtml.source).test
 const hasEscapedHtml = RegExp(reEscapedHtml.source).test
 const hasRegExpChar = RegExp(reRegExpChar.source).test
+
+/**
+ * Gets the value at `path` of `object`. If the resolved value is
+ * `undefined`, the `defaultValue` is returned in its place.
+ */
+function get(object: Record<string, any>, path: string | string[], defaultValue) {
+  if (typeof path === "string") path = path.split(PATH_DELIMITER)
+  return path.reduce((obj, key) => (obj?.[key] ? obj[key] : defaultValue), object)
+}
 
 /**
  * Converts the characters "&", "<", ">", '"', and "'" in string to their
@@ -63,7 +73,7 @@ function basePropertyOf(object: Record<PropertyKey, any>) {
 }
 
 function baseClone(value, bitmask, customizer, key, object, stack) {
-  var result,
+  let result,
     isDeep = bitmask & CLONE_DEEP_FLAG,
     isFlat = bitmask & CLONE_FLAT_FLAG,
     isFull = bitmask & CLONE_SYMBOLS_FLAG
@@ -77,14 +87,14 @@ function baseClone(value, bitmask, customizer, key, object, stack) {
   if (!isObject(value)) {
     return value
   }
-  var isArr = isArray(value)
+  const isArr = isArray(value)
   if (isArr) {
     result = initCloneArray(value)
     if (!isDeep) {
       return copyArray(value, result)
     }
   } else {
-    var tag = getTag(value),
+    const tag = getTag(value),
       isFunc = tag == funcTag || tag == genTag
 
     if (isBuffer(value)) {
@@ -106,7 +116,7 @@ function baseClone(value, bitmask, customizer, key, object, stack) {
   }
   // Check for circular references and return its corresponding clone.
   stack || (stack = new Stack())
-  var stacked = stack.get(value)
+  const stacked = stack.get(value)
   if (stacked) {
     return stacked
   }
@@ -123,4 +133,4 @@ function baseClone(value, bitmask, customizer, key, object, stack) {
   }
 }
 
-export = { escapeHtml, unescapeHtml, escapeRegExp, basePropertyOf }
+export = { get, escapeHtml, unescapeHtml, escapeRegExp, basePropertyOf }
