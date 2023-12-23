@@ -10,13 +10,13 @@ type TodoViewProps = {
 export const TodoView = observer(function TodoView({ todo }: TodoViewProps) {
   const onToggleCompleted = () => {
     runInAction(() => {
-    todo.completed = !todo.completed;
+      todo.completed = !todo.completed;
     });
   };
 
   const onRename = () => {
     runInAction(() => {
-    todo.task = prompt('Task name', todo.task) || todo.task;
+      todo.task = prompt('Task name', todo.task) || todo.task;
     });
   };
 
@@ -29,7 +29,6 @@ export const TodoView = observer(function TodoView({ todo }: TodoViewProps) {
       />
       {todo.task}
       {todo.assignee ? <small>{todo.assignee.name}</small> : null}
-      {/* this counter goes all over the place, only when TodoView rerenders */}
       <RenderCounter />
     </li>
   );
