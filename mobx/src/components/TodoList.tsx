@@ -1,6 +1,7 @@
 import { observer } from 'mobx-react-lite';
 import { peopleStore, type ObservableTodoStore } from 'store';
 import { TodoView, RenderCounter } from '.';
+import { runInAction } from 'mobx';
 
 type TodoListProps = {
   store: ObservableTodoStore;
@@ -27,7 +28,9 @@ export const TodoList = observer(function TodoList({ store }: TodoListProps) {
       <button onClick={onNewTodo}>New Todo</button>
       <input
         value={peopleStore[1].name}
-        onChange={(event) => (peopleStore[1].name = event.target.value)}
+        onChange={(event) =>
+          runInAction(() => (peopleStore[1].name = event.target.value))
+        }
       />
       <small> (double-click a todo to edit)</small>
       <RenderCounter />
