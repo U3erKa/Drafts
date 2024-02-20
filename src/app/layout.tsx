@@ -1,8 +1,11 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import TemporalProvider from '@/components/custom/TemporalProvider'
+import 'temporal-polyfill/global'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
+console.log(Temporal.Now.zonedDateTimeISO().toString())
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -15,8 +18,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
+    <TemporalProvider>
+      <html lang="en">
+        <body className={inter.className}>{children}</body>
+      </html>
+    </TemporalProvider>
   )
 }
