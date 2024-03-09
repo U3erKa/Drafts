@@ -8,6 +8,7 @@ import {
   type ServerActionFormProps,
 } from '@/components/custom/ServerActionForm';
 import { RegistrationForm } from '@/components/custom/RegistrationForm';
+import { ArbitraryActionButton } from '@/components/custom/ArbitraryActionButton';
 import { onDataAction, onFormAction } from '@/serverActions';
 
 export default function Home() {
@@ -16,6 +17,15 @@ export default function Home() {
   ) => {
     'use server';
     console.log(Object.fromEntries(formData));
+  };
+
+  const arbitraryAction = async <T extends { [key: PropertyKey]: any }>(
+    state: T,
+    data: T,
+  ) => {
+    'use server';
+    console.log(state, data);
+    return data;
   };
 
   return (
@@ -35,6 +45,9 @@ export default function Home() {
           onFormAction={onFormAction}
         />
       </div>
+      <ArbitraryActionButton arbitraryAction={arbitraryAction}>
+        Arbitrary server action
+      </ArbitraryActionButton>
       <Button variant={'default'} asChild size={'default'}>
         <Link href="/login">Login</Link>
       </Button>
