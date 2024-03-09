@@ -26,6 +26,20 @@ const FormFieldContext = React.createContext<FormFieldContextValue>(
   {} as FormFieldContextValue
 )
 
+const FormFieldProvider = <
+  TFieldValues extends FieldValues = FieldValues,
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
+>({
+  name,
+  children
+}: React.PropsWithChildren<FormFieldContextValue<TFieldValues, TName>>) => {
+  return (
+    <FormFieldContext.Provider value={{ name }}>
+      {children}
+    </FormFieldContext.Provider>
+  )
+}
+
 const FormField = <
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
@@ -46,7 +60,7 @@ const useFormField = () => {
 
   const fieldState = getFieldState(fieldContext.name, formState)
 
-  if (!fieldContext) {
+  if (!fieldContext.name) {
     throw new Error("useFormField should be used within <FormField>")
   }
 
@@ -173,4 +187,5 @@ export {
   FormDescription,
   FormMessage,
   FormField,
+  FormFieldProvider,
 }
