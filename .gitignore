@@ -149,3 +149,4 @@ server/public/
 bin
 *.txt
 primes.json
+next-env.d.ts
