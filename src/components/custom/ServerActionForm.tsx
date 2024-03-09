@@ -4,35 +4,28 @@ import { Button } from '@/components/ui/button';
 import { submitForm } from '@/serverActions';
 import { SubmitButton } from '@/components/custom/SubmitButton';
 import { Input } from '@/components/ui/input';
-import { defaultValues } from '@/constants';
 
-export function ServerActionForm() {
-  const [state, dispatch] = useFormState(
-    (state: typeof defaultValues, payload: Partial<typeof defaultValues>) => {
-      return { ...state, ...payload };
-    },
-    defaultValues,
-  );
-  const { firstName } = state;
+export type ServerActionFormProps = {
+  serverAction: (formData: FormData) => void;
+};
 
-  const formAction = async (formData: FormData) => {
-    if (!formData.get('firstName')) return;
-    const success = await submitForm(formData);
-    if (success) dispatch(defaultValues);
-  };
+export function ServerActionForm({ serverAction }: ServerActionFormProps) {
+  const [state, action] = useFormState(submitForm, undefined);
 
-  const buttonAction = (formData: FormData): void =>
+  const clientAction = (formData: FormData) =>
     console.log(Object.fromEntries(formData));
 
   return (
-    <form action={formAction}>
-      <Input
-        name="firstName"
-        value={firstName}
-        onChange={(e) => dispatch({ firstName: e.target.value })}
-      />
-      <Button formAction={buttonAction}>Log values</Button>
-      <SubmitButton />
+    <form action={action}>
+      <Input name="firstName" />
+      <Button formAction={clientAction}>Client action</Button>
+      <Button formAction={serverAction}>Server action</Button>
+      <SubmitButton className="min-w-[120px]" />
+      <p className="text-secondary">
+        {state === undefined
+          ? 'No submits yet'
+          : `Last submit ${state ? 'was successful' : 'has failed'}`}
+      </p>
     </form>
   );
 }

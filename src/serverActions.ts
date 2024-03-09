@@ -1,10 +1,12 @@
 'use server';
 
-export async function submitForm(formData: FormData) {
+export async function submitForm(_state: any, formData: FormData) {
   try {
-    console.log(Object.fromEntries(formData));
-    return true;
-  } catch (error) {
+    const data = Object.fromEntries(formData);
+    console.log(data);
+    return !!data.firstName;
+  } catch (error: any) {
+    console.log(error?.message);
     return false;
   }
 }
