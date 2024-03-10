@@ -6,7 +6,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "workspaces":[
+  "workspaces": [
     "client",
     "server"
   ]

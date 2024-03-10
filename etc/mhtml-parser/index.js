@@ -100,7 +100,7 @@ function getExtension(mimeType) {
 
 async function appendStyles(/** @type {string} */ folder) {
   const files = (await fs.readdir(`./out/${folder}`)).filter(
-    (file) => file.endsWith("css") && !file.endsWith("style.css")
+    (file) => file.endsWith("css") && !file.endsWith("style.css"),
   )
 
   const filenames = new Set(files.map((file) => file.substring(2)))

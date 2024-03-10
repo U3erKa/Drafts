@@ -15,7 +15,7 @@ export function messWithTodos() {
     });
     store.todos[0].completed = !store.todos[0].completed;
     store.todos[1].task = 'Random todo ' + Math.random();
-  })
+  });
 }
 
 export function addRandomTodo() {

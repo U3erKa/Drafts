@@ -53,5 +53,5 @@ export default function Home() {
       </Button>
       <SkeletonDemo />
     </main>
-  )
+  );
 }
