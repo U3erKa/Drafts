@@ -22,17 +22,17 @@
   "devDependencies": {
     "@types/react": "^18.2.64",
     "@types/react-dom": "^18.2.21",
-    "@typescript-eslint/eslint-plugin": "^6.21.0",
-    "@typescript-eslint/parser": "^6.21.0",
+    "@typescript-eslint/eslint-plugin": "^7.1.1",
+    "@typescript-eslint/parser": "^7.1.1",
     "@vitejs/plugin-react": "^4.2.1",
-    "electron": "^26.6.10",
+    "electron": "^28.2.6",
     "electron-builder": "^24.13.3",
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
     "typescript": "^5.4.2",
-    "vite": "^4.5.2",
-    "vite-plugin-electron": "^0.14.1",
+    "vite": "^5.1.5",
+    "vite-plugin-electron": "^0.28.2",
     "vite-plugin-electron-renderer": "^0.14.5"
   }
 }
