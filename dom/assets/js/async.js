@@ -42,7 +42,7 @@ const countFor = () => {
 // countInterval();
 // countTimeout();
 
-const btn = document.querySelector('#btn');
+const button = document.querySelector('#btn');
 const arr = [];
 
 const loginRequest = new Promise((resolve, reject) => {
@@ -124,10 +124,10 @@ const unjson = JSON.parse(json); // desiarization
 // structuredClone(user);
 // JSON.parse(JSON.stringify(user));
 
-// fetch('http://localhost:5500/data.json')
+// fetch('http://localhost:5500/assets/data.json')
 //   .then((response) => response.json())
 //   .then((data) => console.log(data));
-const response = fetch('http://localhost:5500/data.json');
+const response = fetch('http://localhost:5500/assets/data.json');
 response.then((response) => response.json()).then((data) => console.log(data));
 
 const random = () => Promise.resolve(Math.random());
@@ -160,7 +160,7 @@ async function loadJson(url) {
   throw new Error(response.status);
 }
 
-const result = loadJson('https://javascript.info/no-such-user.json').catch(
+const parsedData = loadJson('https://javascript.info/no-such-user.json').catch(
   console.log,
 );
 
