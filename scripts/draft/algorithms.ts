@@ -1,8 +1,8 @@
-// O(1) - константная сложность
+// O(1) - константна складність
 const arr = [10, 20, 30, 40];
 const res = arr[2];
 
-// O(n) - линейная сложность
+// O(n) - лінійна складність
 function linearSearch<T>(arr: T[], searchItem: T): number {
   for (let i = 0; i < arr.length; i++) {
     if (searchItem === arr[i]) {
@@ -14,13 +14,13 @@ function linearSearch<T>(arr: T[], searchItem: T): number {
 }
 
 const arr2 = [7, 2, 8, 0, 1, 3, 5, 6, 9];
-// O(n^2) - квадратичная сложность
+// O(n^2) - квадратична складність
 function bubbleSort(arr: number[]) {
   for (let j = 0; j < arr.length; j++) {
-    // цикл который передвигает большее число в конец
+    // цикл що передвигає більше число в кінець
     for (let i = 0; i < arr.length; i++) {
       if (arr[i] > arr[i + 1]) {
-        // меняем два значения местами в массиве
+        // меняем два значення місцями в масиві
         const swap = arr[i];
         arr[i] = arr[i + 1];
         arr[i + 1] = swap;
@@ -32,7 +32,7 @@ function bubbleSort(arr: number[]) {
 }
 
 const arr4 = [10, 20, 25, 37, 42, 60, 78, 99, 5000, 9999];
-// O(log (n)) - логарифмическая сложность
+// O(log (n)) - лагарифмічна складність
 function binarySearch(arr: number[], searchItem: number) {
   let start = 0;
   let end = arr.length - 1;

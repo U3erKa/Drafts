@@ -146,7 +146,7 @@ class Animal {
   //   this.diet = diet;
   // }
 
-  #name: string;
+  #name!: string;
   constructor(
     public species: string,
     name: string,
@@ -156,9 +156,9 @@ class Animal {
     this.name = name;
   }
 
-  // методы обьекта
+  // методи об'єкта
   get name() {
-    // возвращает значение
+    // повертає приватне значення
     return this.#name;
   }
 
@@ -167,7 +167,7 @@ class Animal {
       throw new TypeError('Must be string');
     }
 
-    // задает значение для свойства
+    // задає значення для приватного значення
     this.#name = value;
   }
 
@@ -236,7 +236,7 @@ class Triangle extends Figure {
   c: number;
   constructor(a: number, h: number, b: number, c: number) {
     super('triangle');
-    this.#a = a; // инкапсуляция параметров
+    this.#a = a; // інкапсуляція параметрів
     this.#h = h;
     this.b = b;
     this.c = c;
@@ -261,7 +261,7 @@ class Triangle extends Figure {
   getArea(mode = 'height') {
     switch (mode) {
       case 'height': {
-        return 0.5 * this.#a * this.#h; // скрыли вычислительную сложность
+        return 0.5 * this.#a * this.#h; // приховали складні обчислення
       }
       case 'geron': {
         const p = (this.#a + this.b + this.c) / 2;

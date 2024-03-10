@@ -1,4 +1,4 @@
-// создать коллекцию для фирм и работников
+// створити колекцію для фірм і робітників
 db.createCollection('companies', {
   validator: {
     $jsonSchema: {
@@ -55,7 +55,7 @@ db.employee.insertMany([
   { companyId: new ObjectId('63d2bf1645ad1041f249dfbc'), name: 'User Userovich 7', salary: 53000 },
 ]);
 
-// показать конкретную фирму и всех её рабочих
+// показати конкретну фірму и всіх її робочих
 db.companies.aggregate([
   { $match: { name: 'Apple' } },
   {

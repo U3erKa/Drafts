@@ -1,4 +1,4 @@
--- @block посчитайте стоимость каждого заказа
+-- @block вартість кожного замовлення
 SELECT o.id, sum(price * otp.quantity)
 FROM orders o
 JOIN orders_to_products otp ON o.id = order_id
@@ -6,7 +6,7 @@ JOIN products p ON p.id = product_id
 GROUP BY o.id
 ORDER BY o.id ASC
 ;
--- @block количество категорий в конкретном заказе
+-- @block кількість категорій в конкретному замовленні
 SELECT order_id, count(DISTINCT category)
 FROM products p
 JOIN orders_to_products otp ON p.id = product_id
@@ -14,7 +14,7 @@ JOIN orders o ON o.id = order_id
 GROUP BY order_id
 ORDER BY order_id ASC
 ;
--- @block количество категорий в конкретном заказе (sub-query)
+-- @block кількість категорій в конкретному замовленні (sub-query)
 SELECT order_id, count(*)
 FROM (
   SELECT order_id, category
@@ -26,7 +26,7 @@ FROM (
 ) AS with_unique_categories
 GROUP BY order_id
 ;
--- @block данные о товаре и в скольких заказах он есть
+-- @block дані про товар і в скількох замовлення він є
 SELECT p.*, count(o.id)
 FROM products p
 JOIN orders_to_products otp ON p.id = product_id

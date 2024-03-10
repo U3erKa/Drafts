@@ -14,7 +14,9 @@ const bread = {
   one: "паляниця",
   few: "паляниці",
   many: "паляниць",
-  // other: "",
+  get other() {
+    return this.one
+  },
 }
 
 const breadTest = ["Паляниця", "Полуниця", "Попільниця"]
@@ -25,4 +27,5 @@ for (let i = 0; i < 10; i++) {
   console.log(numberFormat.format(i), bread[pluralRule])
 }
 
+console.log(pluralRules.resolvedOptions())
 console.log(listFormat.format(breadTest))

@@ -27,7 +27,7 @@ await client.query(resetDB);
 const createdUsers = await User.bulkCreate(users);
 const products = await Product.bulkCreate();
 
-// создаем заказы
+// створюємо замовлення
 const ordersString = createdUsers
   .map((user) =>
     new Array(_.random(minOrders, maxOrders, false))
@@ -45,17 +45,17 @@ VALUES ${ordersString}
 RETURNING id;
 `);
 
-// наполнить заказы
+// наповнюємо замовлення
 const ordersToProductsString = orders
   .map((order) => {
-    // отбор продуктов
+    // відбір продуктів
     const productsInOrder = new Array(_.random(1, 5))
       .fill(undefined)
       .map(() => products[_.random(0, products.length - 1)]);
 
-    // отсортировать повторяющиеся продукты
+    // відфільтрувати повторювані продукти
     const filteredProducts = [...new Set(productsInOrder)];
-    // вернуть строку типа (1, 4 , 18)
+    // повернути строку строку типу (1, 4 , 18)
     return filteredProducts
       .map(
         (product) =>

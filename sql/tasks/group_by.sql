@@ -1,35 +1,35 @@
--- @block количество товаров на складе
+-- @block кількість товарів на складі
 SELECT category, sum(quantity) AS sum_of_product_category
 FROM products
 GROUP BY category;
 
--- @block количество проданных товаров
+-- @block кількість проданих товарів
 SELECT product_id, sum(quantity) AS sold_products_quantity
 FROM orders_to_products
 GROUP BY product_id
 ORDER BY product_id ASC;
 
--- @block средняя цена товаров
+-- @block середня ціна товарів
 SELECT category, avg(price) AS avg_price
 FROM products
 GROUP BY category;
 
--- @block Цена самого дешевого повербанка
+-- @block ціна самого дешевого повербанка
 SELECT min(price) AS lowest_powerstation_price
 FROM products
 WHERE category = 'powerstations';
 
--- @block Максимальная цена для каждого производителя
+-- @block максимальна ціна для кожного виробника
 SELECT manufacturer, max(price) AS highest_product_price
 FROM products
 GROUP BY manufacturer
 ORDER BY highest_product_price DESC;
 
--- @block Общая стоимость выкупа всего склада товаров
+-- @block загальна вартість викупу всього склада товарів
 SELECT sum(price * quantity) AS total_products_price
 FROM products;
 
--- @block пользователь и количество заказов которое он совершил
+-- @block користувач і кількість замовлень, що він створив
 SELECT user_id, count(*)
 FROM orders
 GROUP BY user_id

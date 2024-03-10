@@ -6,13 +6,13 @@ db.inventory.insertMany([
   { item: "postcard", qty: 45, size: { h: 10, w: 15.25, uom: "cm" }, status: "A" }
 ]);
 
-// все документы со статусом "D"
+// всі документи зі статусом "D"
 db.inventory.find({ status: 'D' });
 
-// все документы c количеством между 60 и 150
+// всі документи з кількістю між 60 і 150
 db.inventory.find({ qty: { $gt: 60, $lt: 150 } });
 
-// все документы у которых либо есть производитель, либо uom это cm
+// всі документи в яких або є виробник, або uom це cm
 db.inventory.find({ $or: [
   { manufacturer: { $exists: true } },
   { 'size.uom': 'cm' },

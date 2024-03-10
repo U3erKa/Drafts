@@ -51,7 +51,7 @@ function listener(e) {
 function deleteListener(e) {
   e.target.parentElement.remove();
 
-  // удаляем форму просто так
+  // видаляємо форму просто так
   // e.target.parentElement.parentElement.parentElement.children[1].remove();
 }
 
