@@ -35,7 +35,7 @@ export const getSeller = async (req, res, next) => {
     if (!seller) {
       throw createHttpError(404, 'Seller not found');
     }
-
+    // @ts-expect-error
     const cars = await seller.getCars();
 
     res.status(201).send({ data: { ...seller.toJSON(), cars } });
@@ -98,6 +98,7 @@ export const addCarToSeller = async (req, res, next) => {
       throw createHttpError(404, 'Seller not found');
     }
 
+    // @ts-expect-error
     await seller.addCar(car);
 
     res.send({ data: 'Car added' });

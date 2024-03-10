@@ -99,6 +99,7 @@ export const deleteCar = async (req, res, next) => {
 
     const deletedRows = await Car.destroy({
       where: { id: carId },
+      // @ts-expect-error
       returning: true,
     });
 

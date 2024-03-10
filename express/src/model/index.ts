@@ -22,7 +22,6 @@ export const sequelize = new Sequelize(process.env.POSTGRES_DB_STRING!, {
 });
 
 for (const createModel of [_Car, _Review, _Seller]) {
-  // @ts-expect-error
   const model = createModel(sequelize);
   db[model.name as keyof DB] = model;
 }
