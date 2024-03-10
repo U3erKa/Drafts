@@ -9,7 +9,7 @@
     "hello": "./bin/index.js"
   },
   "scripts": {
-    "postinstall": "tsc",
+    "prepare": "tsc",
     "start": "node dist/index.js",
     "build": "pnpm tsc -w --pretty",
     "cleanup": "tsc --build --clean",

@@ -6,7 +6,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "postinstall": "pnpm tsc",
+    "prepare": "pnpm tsc",
     "test": "node --experimental-test-coverage --test tests/*",
     "test:watch": "node --experimental-test-coverage --test --watch tests/*"
   },
