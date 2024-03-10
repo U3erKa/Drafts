@@ -8,7 +8,7 @@ import {
   partition,
   isSorted,
   shuffle,
-} from "./sortingUtils"
+} from "./sortingUtils.js"
 
 /** Probably the easiest to implement. The slowest feasible sort\
  * Complexity O(n^2) */

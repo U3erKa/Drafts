@@ -1,4 +1,5 @@
-import { parseMhtml } from "mhtml-stream/bundle/mhtml.esm.min.js"
+// @ts-nocheck
+// import { parseMhtml } from "mhtml-stream/bundle/mhtml.esm.min.js"
 import { promises as fs, createReadStream, existsSync, mkdirSync } from "fs"
 import { StringDecoder } from "string_decoder"
 

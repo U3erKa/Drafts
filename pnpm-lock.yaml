@@ -690,14 +690,6 @@ importers:
         specifier: ^5.4.2
         version: 5.4.2
 
-  node:
-    dependencies:
-      lodash:
-        specifier: ^4.17.21
-        version: 4.17.21
-
-  node-esm: {}
-
   pwa:
     dependencies:
       react:

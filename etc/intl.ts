@@ -1,9 +1,9 @@
-type _DIVISORS = {
+export type _DIVISORS = {
   readonly amount: number
   readonly name: Intl.RelativeTimeFormatUnit
 }[]
 
-const DIVISORS: _DIVISORS = [
+export const DIVISORS: _DIVISORS = [
   { amount: 60, name: "seconds" },
   { amount: 60, name: "minutes" },
   { amount: 24, name: "hours" },
@@ -20,7 +20,7 @@ const DIVISORS: _DIVISORS = [
  *
  * console.log(formatTimeAgo(pastDate)) // "5 months ago"
  */
-function formatTimeAgo(date: Date | number, { lang, ...options }: Intl.RelativeTimeFormatOptions & { lang?: string }) {
+export function formatTimeAgo(date: Date | number, { lang, ...options }: Intl.RelativeTimeFormatOptions & { lang?: string }) {
   const defaults: Intl.RelativeTimeFormatOptions = { numeric: "auto" }
   options ? Object.assign(defaults, options) : defaults
 
@@ -35,5 +35,3 @@ function formatTimeAgo(date: Date | number, { lang, ...options }: Intl.RelativeT
   }
   throw new RangeError() // never reaches, for TS
 }
-
-export = { DIVISORS, formatTimeAgo }
