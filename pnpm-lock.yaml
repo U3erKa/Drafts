@@ -342,49 +342,6 @@ importers:
         specifier: ^0.14.5
         version: 0.14.5
 
-  etc:
-    dependencies:
-      csv-stringify:
-        specifier: ^6.4.2
-        version: 6.4.2
-      iconv:
-        specifier: ^3.0.1
-        version: 3.0.1
-      json5:
-        specifier: ^2.2.3
-        version: 2.2.3
-      tslib:
-        specifier: ^2.6.2
-        version: 2.6.2
-    devDependencies:
-      '@tsconfig/create-react-app':
-        specifier: ^2.0.1
-        version: 2.0.1
-      '@tsconfig/docusaurus':
-        specifier: ^2.0.1
-        version: 2.0.1
-      '@tsconfig/next':
-        specifier: ^2.0.0
-        version: 2.0.0
-      '@tsconfig/node-lts':
-        specifier: ^18.12.5
-        version: 18.12.5
-      '@tsconfig/recommended':
-        specifier: ^1.0.3
-        version: 1.0.3
-      '@tsconfig/strictest':
-        specifier: ^2.0.2
-        version: 2.0.2
-      '@types/iconv':
-        specifier: ^3.0.1
-        version: 3.0.1
-      '@types/node':
-        specifier: ^20.6.2
-        version: 20.6.2
-      typescript:
-        specifier: ^5.2.2
-        version: 5.2.2
-
   express:
     dependencies:
       axios:
@@ -699,6 +656,40 @@ importers:
         version: 3.4.1
       typescript:
         specifier: ^5.4.2
+        version: 5.4.2
+
+  nodejs:
+    dependencies:
+      command-line-args:
+        specifier: ^5.2.1
+        version: 5.2.1
+      csv-stringify:
+        specifier: ^6.4.2
+        version: 6.4.2
+      iconv:
+        specifier: ^3.0.1
+        version: 3.0.1
+      tslib:
+        specifier: ^2.6.2
+        version: 2.6.2
+    devDependencies:
+      '@types/command-line-args':
+        specifier: ^5.2.3
+        version: 5.2.3
+      '@types/iconv':
+        specifier: ^3.0.1
+        version: 3.0.1
+      '@types/node':
+        specifier: ^20.6.2
+        version: 20.11.25
+      concurrently:
+        specifier: ^8.2.1
+        version: 8.2.1
+      nodemon:
+        specifier: ^3.0.1
+        version: 3.0.1
+      typescript:
+        specifier: ^5.2.2
         version: 5.4.2
 
   pwa:
@@ -1026,28 +1017,6 @@ importers:
       vite-tsconfig-paths:
         specifier: ^4.2.1
         version: 4.2.1(typescript@5.2.2)(vite@4.4.9)
-
-  typescript:
-    dependencies:
-      command-line-args:
-        specifier: ^5.2.1
-        version: 5.2.1
-    devDependencies:
-      '@types/command-line-args':
-        specifier: ^5.2.3
-        version: 5.2.3
-      '@types/node':
-        specifier: ^20.6.2
-        version: 20.6.2
-      concurrently:
-        specifier: ^8.2.1
-        version: 8.2.1
-      nodemon:
-        specifier: ^3.0.1
-        version: 3.0.1
-      typescript:
-        specifier: ^5.2.2
-        version: 5.2.2
 
 packages:
 
@@ -4864,22 +4833,6 @@ packages:
     engines: {node: '>=10.13.0'}
     dev: true
 
-  /@tsconfig/create-react-app@2.0.1:
-    resolution: {integrity: sha512-M/wUfGIifMUNqDO5APZmlHTmHXiO5kUPQehxi3Jz6VdaUJqQehuvAB0oNzGHevbl9od/9fS41KvQChgjVgg2tw==}
-    dev: true
-
-  /@tsconfig/docusaurus@2.0.1:
-    resolution: {integrity: sha512-7JrI61bTZ37DWrHx1qhOW+kPxSG95+/q+EiDCMIahh8Aqbk03+nVu+Z6YGOj3O5e6lXHJuf/LHJ/lc6j8IEQyA==}
-    dev: true
-
-  /@tsconfig/next@2.0.0:
-    resolution: {integrity: sha512-ip/XpFLWuUrhDkbI8ixpWxPlmWvUhQCLS5rB7nibcZUavA1Ru34Q7a5CniBM7BdHw1YlAXu40HXUn66h/A4EBQ==}
-    dev: true
-
-  /@tsconfig/node-lts@18.12.5:
-    resolution: {integrity: sha512-KJZX0kQ5FBv77WDVzmQ9y1dUjaJCNXAAz3LSsg5cMwH0AUijVdDQtII+IVprEXdb13U9GjVOBxBzyRvr/ozPxw==}
-    dev: true
-
   /@tsconfig/node10@1.0.9:
     resolution: {integrity: sha512-jNsYVVxU8v5g43Erja32laIDHXeoNvFEpX33OK4d6hljo3jDhCBDhx5dhCCTMWUojscpAagGiRkBKxpdl9fxqA==}
     dev: true
@@ -4894,14 +4847,6 @@ packages:
 
   /@tsconfig/node16@1.0.4:
     resolution: {integrity: sha512-vxhUy4J8lyeyinH7Azl1pdd43GJhZH/tP2weN8TntQblOY+A0XbT8DJk1/oCPuOOyg/Ja757rG0CgHcWC8OfMA==}
-    dev: true
-
-  /@tsconfig/recommended@1.0.3:
-    resolution: {integrity: sha512-+jby/Guq9H8O7NWgCv6X8VAiQE8Dr/nccsCtL74xyHKhu2Knu5EAKmOZj3nLCnLm1KooUzKY+5DsnGVqhM8/wQ==}
-    dev: true
-
-  /@tsconfig/strictest@2.0.2:
-    resolution: {integrity: sha512-jt4jIsWKvUvuY6adJnQJlb/UR7DdjC8CjHI/OaSQruj2yX9/K6+KOvDt/vD6udqos/FUk5Op66CvYT7TBLYO5Q==}
     dev: true
 
   /@types/aria-query@5.0.1:
@@ -5115,7 +5060,7 @@ packages:
   /@types/iconv@3.0.1:
     resolution: {integrity: sha512-VHYt1HZZCAJq/Odxut9eIKfRY8qQpDhNVhWJdk3sJXgvxeAeoUse0uIeZBlcC5O0tT2NBuqlW/4jd7e5wiAfKA==}
     dependencies:
-      '@types/node': 20.6.2
+      '@types/node': 20.11.25
     dev: true
 
   /@types/istanbul-lib-coverage@2.0.4:
@@ -11672,6 +11617,7 @@ packages:
     resolution: {integrity: sha512-XmOWe7eyHYH14cLdVPoyg+GOH3rYX++KpzrylJwSW98t3Nk+U8XOl8FWKOgwtzdb8lXGf6zYwDUzeHMWfxasyg==}
     engines: {node: '>=6'}
     hasBin: true
+    dev: true
 
   /jsonfile@4.0.0:
     resolution: {integrity: sha512-m6F1R3z8jjlf2imQHS2Qez5sjKWQzbuuhuJ/FKYFRZvPE3PuHcSMVZzfsLhGVOkfd20obL5SWEBew5ShlquNxg==}
