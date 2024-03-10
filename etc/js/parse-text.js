@@ -1,4 +1,4 @@
-const fs = require("fs")
+import fs from "fs"
 
 const lines = fs
   .readFileSync("text.txt", { encoding: "utf8" })

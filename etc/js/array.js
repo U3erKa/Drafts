@@ -8,6 +8,7 @@ function reverseString(/** @type {string} */ str) {
 }
 
 reverseString("hello")
+
 /** @returns {number} */
 function factorialize(/** @type {number} */ num) {
   if (num <= 1) {
@@ -77,16 +78,21 @@ function truncateString(/** @type {string} */ str, /** @type {number} */ num) {
 
 truncateString("A-tisket a-tasket A green and yellow basket", 8)
 
-function findElement(/** @type {unknown[]} */ arr, /** @type {(arg0: unknown) => boolean} */ func) {
+/**
+ * @template Element
+ * @param {Element[]} arr
+ * @param {(arg0: Element) => boolean} func
+ * @returns {Element | undefined}
+ */
+function findElement(arr, func) {
   const filtered = arr.filter(func)
   return filtered[0]
 }
 
-// @ts-expect-error
 findElement([1, 2, 3, 4], (num) => num % 2 === 0)
 
 /**
- * @param {unknown} bool
+ * @param {any} bool
  * @returns {bool is boolean}
  */
 function booWho(bool) {
@@ -130,8 +136,9 @@ function getIndexToIns(/** @type {number[]} */ arr, /** @type {number} */ num) {
   const sortedArr = arr.slice().sort((a, b) => a - b)
 
   for (let i = 0; i < sortedArr.length; i++) {
-    const element = sortedArr[i]
+    /** @type {typeof sortedArr[number]} */
     // @ts-expect-error
+    const element = sortedArr[i]
     if (element >= num) {
       return i
     }

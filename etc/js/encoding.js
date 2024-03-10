@@ -1,8 +1,8 @@
-const { readdirSync, promises: fs } = require("fs")
-const { TextDecoder } = require("util")
+import { readdirSync, promises as fs } from "fs"
+import { TextDecoder } from "util"
 // const Buffer = require('buffer').Buffer;
-const Iconv = require("iconv").Iconv
-const assert = require("assert")
+import { Iconv } from "iconv"
+import assert from "assert"
 
 const files = readdirSync("aaaa").filter((file) => file.indexOf(".") !== -1)
 

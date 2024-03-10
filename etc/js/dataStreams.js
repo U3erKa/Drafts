@@ -1,5 +1,6 @@
 import { stringify } from "csv-stringify"
-// ...
+/** @type {*} */
+const FileRecord = {}
 
 const processCurrentRecord = async (
   /** @type {any} */ record,
@@ -18,7 +19,6 @@ const generateFile = async () => {
   const stringifier = stringify()
   const uploadPromise = uploadToS3("dest/path/fileName.csv", stringifier)
   stringifier.write(["Column 1", "Column2 " /* ... */]) // add column names
-  // @ts-expect-error
   const recordsStream = FileRecord.query()
     .where({
       /* ... */

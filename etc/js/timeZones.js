@@ -349,4 +349,4 @@ const WORLD_TIMEZONES = [
   "Africa/Johannesburg",
 ]
 
-exports = WORLD_TIMEZONES
+export default WORLD_TIMEZONES

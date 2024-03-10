@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const fs = require("fs")
+import fs from "fs"
 /** @type {{encoding: "utf8"}} */
 const fsOptions = { encoding: "utf8" }
 

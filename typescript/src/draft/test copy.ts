@@ -1,7 +1,7 @@
 type NumberStr = `${number}`
 type Email = `${string}@${string}.${string}`
 
-let t2: NumberStr = "123123"
+const t2: NumberStr = "123123"
 
 const string = "Lorem Ipsum Dolor Sit Amet"
 const uppercase = string.toUpperCase() as Uppercase<typeof string>
@@ -48,6 +48,7 @@ function log(_message: string, _level: LogLevel) {}
 log("Hey", "DEBUG")
 
 type Empty = Record<PropertyKey, never>
+// eslint-disable-next-line @typescript-eslint/ban-types
 type Unknown = {} | null | undefined // {} means any non-nullish value
 // Infer is used to extract type
 type TSReturnType<T extends (...args: any) => any> = T extends (...args: any) => infer R ? R : never
@@ -84,7 +85,6 @@ type AdminRole = Extract<RoleAttribute, { role: "administrator" }>
 type GetValueParams = Parameters<typeof getValue<{ test?: boolean }, "test">>
 
 const obj1: Record<string, string[]> & { bar: string[] } = { bar: [] }
-// @ts-expect-error
 obj1.foo?.push("lorem")
 obj1["foo"]?.push("lorem")
 obj1.bar.push("qar")

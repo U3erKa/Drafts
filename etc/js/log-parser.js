@@ -1,8 +1,6 @@
-// @ts-check
-const fs = require("fs/promises")
-
+import promises from "fs/promises"
 ;(async function () {
-  const file = await fs.readFile("log.txt", { encoding: "utf8" })
+  const file = await promises.readFile("log.txt", { encoding: "utf8" })
   const lines = file.split("\r\n").filter(Boolean)
 
   const timestamps = /** @type {string[]} */ ([])
@@ -29,7 +27,7 @@ const fs = require("fs/promises")
   })
 
   Object.entries(logs).forEach(async ([message, timestamps]) => {
-    await fs.appendFile(
+    await promises.appendFile(
       "log-out.txt",
       `
 ${message}

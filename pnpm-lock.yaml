@@ -385,16 +385,6 @@ importers:
         specifier: ^5.2.2
         version: 5.2.2
 
-  etc/mhtml-parser:
-    dependencies:
-      mhtml-stream:
-        specifier: ^1.0.4
-        version: 1.0.4
-    devDependencies:
-      '@types/node':
-        specifier: ^20.5.7
-        version: 20.11.25
-
   express:
     dependencies:
       axios:
@@ -6713,6 +6703,7 @@ packages:
 
   /base64-js@1.5.1:
     resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
+    dev: true
 
   /base64id@2.0.0:
     resolution: {integrity: sha512-lGe34o6EHj9y3Kts9R4ZYs/Gr+6N7MCaMlIFA3F1R2O5/m7K06AxfSeO5530PEERE6/WyEg3lsuyw4GHlPZHog==}
@@ -12202,12 +12193,6 @@ packages:
   /methods@1.1.2:
     resolution: {integrity: sha512-iclAHeNqNm68zFtnZ0e+1L2yUIdvzNoauKU4WBA3VvH/vPFieF7qfRlwUZU+DA9P9bPXIS90ulxoUoCH23sV2w==}
     engines: {node: '>= 0.6'}
-
-  /mhtml-stream@1.0.4:
-    resolution: {integrity: sha512-ZuN2hImcASI8lvaT2c7BTXYxCUKyeEc/Cc/YYHK0bLv3VUJVDdXl6/HdzZxexecAQQ29zn6cpMkscYEok8LBzg==}
-    dependencies:
-      base64-js: 1.5.1
-    dev: false
 
   /micromatch@4.0.5:
     resolution: {integrity: sha512-DMy+ERcEW2q8Z2Po+WNXuw3c5YaUSFjAO5GsJqfEl7UjvtIuFKO6ZrKvcItdy98dwFI2N1tg3zNIdKaQT+aNdA==}

@@ -1,4 +1,4 @@
-const fs = require("fs")
+import fs from "fs"
 const fsOptions = Object.freeze({ encoding: "utf8" })
 
 const title = "Intensive Language Course English"

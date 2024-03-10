@@ -1,4 +1,4 @@
-const fs = require("fs")
+import fs from "fs"
 
 const files = fs.readdirSync(".").filter((file) => file.endsWith(".txt"))
 

@@ -1,6 +1,6 @@
-const childProcess = require("child_process")
+import { exec } from "child_process"
 
-const command = childProcess.exec("git log --oneline")
+const command = exec("git log --oneline")
 let logs = ""
 
 // @ts-expect-error

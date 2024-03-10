@@ -1,20 +1,31 @@
 {
-  // "extends": "@tsconfig/recommended/tsconfig.json",
+  "compileOnSave": true,
   "compilerOptions": {
     "baseUrl": "src",
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "node",
     "outDir": "./dist",
-    "lib": ["ESNext", "DOM"],
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "noImplicitAny": true,
     "removeComments": true,
     "preserveConstEnums": true,
     "sourceMap": true,
     "strict": false,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "noErrorTruncation": true,
+    "pretty": true,
+    "verbatimModuleSyntax": false,
+    "noUncheckedIndexedAccess": true,
+    "importHelpers": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
   },
   "include": [
     "src"
-  ]
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+  ],
 }
