@@ -19,16 +19,16 @@
   "license": "ISC",
   "dependencies": {
     "command-line-args": "^5.2.1",
-    "csv-stringify": "^6.4.2",
+    "csv-stringify": "^6.4.6",
     "iconv": "^3.0.1",
     "tslib": "^2.6.2"
   },
   "devDependencies": {
     "@types/command-line-args": "^5.2.3",
-    "@types/iconv": "^3.0.1",
-    "@types/node": "^20.6.2",
-    "concurrently": "^8.2.1",
-    "nodemon": "^3.0.1",
-    "typescript": "^5.2.2"
+    "@types/iconv": "^3.0.4",
+    "@types/node": "^20.11.25",
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.1.0",
+    "typescript": "^5.4.2"
   }
 }
