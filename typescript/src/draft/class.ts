@@ -406,8 +406,7 @@ const trainer = {
     speak: () => string;
     speech: string;
   }) {
-    // @ts-ignore
-    if (!animal instanceof Animal) {
+    if (!(animal instanceof Animal)) {
       throw new TypeError();
     }
 

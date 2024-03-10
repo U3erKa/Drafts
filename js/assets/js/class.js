@@ -363,7 +363,7 @@ const cat1 = new Cat('Pushok');
 
 const trainer = {
   trainVoice: function (animal) {
-    if (!animal instanceof Animal) {
+    if (!(animal instanceof Animal)) {
       throw new TypeError();
     }
 
