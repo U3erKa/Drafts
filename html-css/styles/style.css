@@ -120,7 +120,7 @@ div {
   object-position: bottom;
 }
 .image-wide {
-  object-position: right;
+  object-position: left;
 }
 .outer {
   background-color: aqua;
