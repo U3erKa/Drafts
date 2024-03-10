@@ -696,22 +696,6 @@ importers:
         specifier: ^4.17.21
         version: 4.17.21
 
-  node-cli:
-    dependencies:
-      command-line-args:
-        specifier: ^5.2.1
-        version: 5.2.1
-    devDependencies:
-      '@types/command-line-args':
-        specifier: ^5.2.1
-        version: 5.2.1
-      '@types/node':
-        specifier: ^20.6.2
-        version: 20.6.2
-      typescript:
-        specifier: ^5.2.2
-        version: 5.2.2
-
   node-esm: {}
 
   pwa:
@@ -1087,7 +1071,14 @@ importers:
         version: 4.2.1(typescript@5.2.2)(vite@4.4.9)
 
   typescript:
+    dependencies:
+      command-line-args:
+        specifier: ^5.2.1
+        version: 5.2.1
     devDependencies:
+      '@types/command-line-args':
+        specifier: ^5.2.3
+        version: 5.2.3
       '@types/node':
         specifier: ^20.6.2
         version: 20.6.2
@@ -5021,8 +5012,8 @@ packages:
       '@types/responselike': 1.0.0
     dev: true
 
-  /@types/command-line-args@5.2.1:
-    resolution: {integrity: sha512-U2OcmS2tj36Yceu+mRuPyUV0ILfau/h5onStcSCzqTENsq0sBiAp2TmaXu1k8fY4McLcPKSYl9FRzn2hx5bI+w==}
+  /@types/command-line-args@5.2.3:
+    resolution: {integrity: sha512-uv0aG6R0Y8WHZLTamZwtfsDLVRnOa+n+n5rEvFWL5Na5gZ8V2Teab/duDPFzIIIhs9qizDpcavCusCLJZu62Kw==}
     dev: true
 
   /@types/connect-history-api-fallback@1.5.1:
