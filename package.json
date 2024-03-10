@@ -33,7 +33,6 @@
     "react",
     "redux",
     "sequelize",
-    "sql",
     "ts-react",
     "typescript"
   ],

@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import createError from 'http-errors';
 import NotFoundError from '../error/NotFoundError.js';
-import User from '../model/User.js';
+import User from '../model/User.mock.js';
 
 export const addUserToDB = async (
   req: Request,
