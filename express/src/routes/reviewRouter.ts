@@ -1,11 +1,13 @@
-const reviewRouter = require('express').Router();
-const {
+import { Router } from 'express';
+import {
   getReviews,
   createReview,
   getReview,
   updateReview,
   deleteReview,
-} = require('../controllers/reviewController');
+} from '../controller/reviewController.js';
+
+const reviewRouter = Router();
 
 reviewRouter.route('/').get(getReviews).post(createReview);
 reviewRouter
@@ -14,4 +16,4 @@ reviewRouter
   .put(updateReview)
   .delete(deleteReview);
 
-module.exports = reviewRouter;
+export default reviewRouter;

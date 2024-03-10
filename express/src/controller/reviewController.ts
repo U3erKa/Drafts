@@ -1,9 +1,9 @@
-const createHttpError = require('http-errors');
-const { Review } = require('../models');
-const car = require('../models/car');
+import createHttpError from 'http-errors';
+import { Review } from '../model/index.js';
+import car from '../model/car.js';
 
 /** @type {import('express').RequestHandler} */
-module.exports.createReview = async (req, res, next) => {
+export const createReview = async (req, res, next) => {
   const { body, car } = req;
   try {
     const review = await car.createReview(body);
@@ -14,7 +14,7 @@ module.exports.createReview = async (req, res, next) => {
 };
 
 /** @type {import('express').RequestHandler} */
-module.exports.getReviews = async (req, res, next) => {
+export const getReviews = async (req, res, next) => {
   const { car } = req;
   try {
     const reviews = await car.getReviews();
@@ -25,7 +25,7 @@ module.exports.getReviews = async (req, res, next) => {
 };
 
 /** @type {import('express').RequestHandler} */
-module.exports.getReview = async (req, res, next) => {
+export const getReview = async (req, res, next) => {
   const {
     params: { reviewId },
   } = req;
@@ -44,7 +44,7 @@ module.exports.getReview = async (req, res, next) => {
 };
 
 /** @type {import('express').RequestHandler} */
-module.exports.updateReview = async (req, res, next) => {
+export const updateReview = async (req, res, next) => {
   const {
     body,
     params: { reviewId },
@@ -66,7 +66,7 @@ module.exports.updateReview = async (req, res, next) => {
 };
 
 /** @type {import('express').RequestHandler} */
-module.exports.deleteReview = async (req, res, next) => {
+export const deleteReview = async (req, res, next) => {
   const {
     params: { reviewId },
   } = req;

@@ -1,8 +1,8 @@
-const createHttpError = require('http-errors');
-const { Seller } = require('../models');
+import createHttpError from 'http-errors';
+import { Seller } from '../model/index.js';
 
 /** @type {import('express').RequestHandler} */
-module.exports.createSeller = async (req, res, next) => {
+export const createSeller = async (req, res, next) => {
   const { body } = req;
 
   try {
@@ -14,7 +14,7 @@ module.exports.createSeller = async (req, res, next) => {
 };
 
 /** @type {import('express').RequestHandler} */
-module.exports.getSellers = async (req, res, next) => {
+export const getSellers = async (req, res, next) => {
   try {
     const sellers = await Seller.findAll();
     res.status(201).send({ data: sellers });
@@ -24,7 +24,7 @@ module.exports.getSellers = async (req, res, next) => {
 };
 
 /** @type {import('express').RequestHandler} */
-module.exports.getSeller = async (req, res, next) => {
+export const getSeller = async (req, res, next) => {
   const {
     params: { sellerId },
   } = req;
@@ -45,7 +45,7 @@ module.exports.getSeller = async (req, res, next) => {
 };
 
 /** @type {import('express').RequestHandler} */
-module.exports.updateSeller = async (req, res, next) => {
+export const updateSeller = async (req, res, next) => {
   const {
     body,
     params: { sellerId },
@@ -67,7 +67,7 @@ module.exports.updateSeller = async (req, res, next) => {
 };
 
 /** @type {import('express').RequestHandler} */
-module.exports.deleteSeller = async (req, res, next) => {
+export const deleteSeller = async (req, res, next) => {
   const {
     params: { sellerId },
   } = req;
@@ -85,7 +85,7 @@ module.exports.deleteSeller = async (req, res, next) => {
 };
 
 /** @type {import('express').RequestHandler} */
-module.exports.addCarToSeller = async (req, res, next) => {
+export const addCarToSeller = async (req, res, next) => {
   const {
     params: { sellerId },
     car,

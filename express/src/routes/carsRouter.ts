@@ -1,17 +1,18 @@
-const carsRouter = require('express').Router();
-const multer = require('multer');
-const path = require('path');
-const reviewRouter = require('./reviewRouter');
-const { getCar: getCarMW } = require('../middleware/carMW');
-const {
+import { Router } from 'express';
+import multer from 'multer';
+import path from 'path';
+import reviewRouter from './reviewRouter.js';
+import { getCar as getCarMW } from '../middleware/carMW.js';
+import {
   createCar,
   getCars,
   getCar,
   updateCar,
   deleteCar,
   addPicToCar,
-} = require('../controllers/carController');
+} from '../controller/carController.js';
 
+const carsRouter = Router();
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, path.resolve(__dirname, '../public/images'));
@@ -32,4 +33,4 @@ carsRouter
 
 carsRouter.use('/:carId/reviews', getCarMW, reviewRouter);
 
-module.exports = carsRouter;
+export default carsRouter;

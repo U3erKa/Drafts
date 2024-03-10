@@ -1,8 +1,8 @@
-const createHttpError = require('http-errors');
-const { Car, Review, Seller } = require('../models');
+import createHttpError from 'http-errors';
+import { Car, Review, Seller } from '../model/index.js';
 
 /** @type {import('express').RequestHandler} */
-module.exports.createCar = async (req, res, next) => {
+export const createCar = async (req, res, next) => {
   try {
     const { body } = req;
 
@@ -15,7 +15,7 @@ module.exports.createCar = async (req, res, next) => {
 };
 
 /** @type {import('express').RequestHandler} */
-module.exports.getCars = async (req, res, next) => {
+export const getCars = async (req, res, next) => {
   const cars = await Car.findAll({
     // attributes: ['model', 'manufacturer', 'isUsed', 'price'],
     // attribures: {
@@ -39,7 +39,7 @@ module.exports.getCars = async (req, res, next) => {
 };
 
 /** @type {import('express').RequestHandler} */
-module.exports.getCar = async (req, res, next) => {
+export const getCar = async (req, res, next) => {
   const {
     params: { carId },
   } = req;
@@ -61,7 +61,7 @@ module.exports.getCar = async (req, res, next) => {
 };
 
 /** @type {import('express').RequestHandler} */
-module.exports.updateCar = async (req, res, next) => {
+export const updateCar = async (req, res, next) => {
   try {
     const {
       body,
@@ -91,7 +91,7 @@ module.exports.updateCar = async (req, res, next) => {
 };
 
 /** @type {import('express').RequestHandler} */
-module.exports.deleteCar = async (req, res, next) => {
+export const deleteCar = async (req, res, next) => {
   try {
     const {
       params: { carId },
@@ -117,7 +117,7 @@ module.exports.deleteCar = async (req, res, next) => {
 };
 
 /** @type {import('express').RequestHandler} */
-module.exports.addPicToCar = async (req, res, next) => {
+export const addPicToCar = async (req, res, next) => {
   const {
     file,
     params: { carId },

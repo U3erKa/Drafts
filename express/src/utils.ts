@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import generationConfig from './configs/generation.json' assert { type: 'json' };
-import type { User } from './types';
+import type { User } from './types.js';
 
 const {
   users: { maxHeight, maxWeigth, minHeight, minWeigth },

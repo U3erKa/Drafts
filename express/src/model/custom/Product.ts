@@ -1,6 +1,6 @@
 import pg from 'pg';
-import { TableNames } from '../constants.js';
-import { mapProducts } from '../utils.js';
+import { TableNames } from '../../constants.js';
+import { mapProducts } from '../../utils.js';
 
 export default class Product {
   public static _client: pg.Client;

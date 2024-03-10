@@ -1,5 +1,5 @@
 {
-  "name": "http-server",
+  "name": "express",
   "version": "0.1.0",
   "description": "",
   "main": "src/server.ts",
@@ -12,7 +12,7 @@
     "dev": "concurrently \"tsc --watch\" \"nodemon -q dist/server.js\"",
     "prepare": "tsc",
     "seed": "node dist/index.js",
-    "start": "node dist/server.js",
+    "start": "nodemon dist/server.js",
     "test": "sql-lint -d postgres ."
   },
   "keywords": [],
@@ -22,10 +22,13 @@
     "axios": "^1.5.0",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
-    "express": "^4.18.2",
+    "express": "^4.18.3",
     "http-errors": "^2.0.0",
     "lodash": "^4.17.21",
+    "multer": "1.4.5-lts.1",
     "pg": "^8.11.3",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.33.0",
     "yup": "^1.2.0"
   },
   "devDependencies": {
@@ -35,8 +38,10 @@
     "@types/lodash": "^4.14.198",
     "@types/node": "^20.6.2",
     "@types/pg": "^8.10.2",
+    "@types/sequelize": "^4.28.15",
     "concurrently": "^8.2.1",
     "nodemon": "^3.0.1",
+    "sequelize-cli": "^6.6.1",
     "ts-node": "^10.9.1",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.2.2"

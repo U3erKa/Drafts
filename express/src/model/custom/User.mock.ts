@@ -1,4 +1,4 @@
-import { User as UserSchema } from '../utils/validationSchema.js';
+import { User as UserSchema } from '../../utils/validationSchema.js';
 
 export interface UserInDB extends UserSchema {
   id: number;

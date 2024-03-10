@@ -1,7 +1,7 @@
 import pg from 'pg';
-import { mapUsers } from '../utils.js';
-import { TableNames } from '../constants.js';
-import type { User as UserType } from '../types.js';
+import { mapUsers } from '../../utils.js';
+import { TableNames } from '../../constants.js';
+import type { User as UserType } from '../../types.js';
 
 export default class User {
   public static _client: pg.Client;

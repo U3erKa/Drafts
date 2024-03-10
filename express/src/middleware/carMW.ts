@@ -1,8 +1,8 @@
-const createHttpError = require('http-errors');
-const { Car } = require('../models');
+import createHttpError from 'http-errors';
+import { Car } from '../model/index.js';
 
 /** @type {import('express').RequestHandler} */
-module.exports.getCar = async (req, res, next) => {
+export const getCar = async (req, res, next) => {
   const {
     params: { carId },
   } = req;

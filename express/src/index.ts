@@ -4,8 +4,8 @@ import _ from 'lodash';
 import config from './configs/DB.json' assert { type: 'json' };
 import generationConfig from './configs/generation.json' assert { type: 'json' };
 import { getUsers } from './api.js';
-import User from './model/User.js';
-import Product from './model/Product.js';
+import User from './model/custom/User.js';
+import Product from './model/custom/Product.js';
 
 const { Client } = pg;
 const {
