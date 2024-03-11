@@ -1,43 +1,15 @@
-import React, { lazy /*, useState */ } from 'react';
-import { Route, Routes, type RouteProps } from 'react-router-dom';
-import Tree from 'components/Tree';
-import { DataLoader, Clicker } from 'components/DataLoader/UserLoaderHooks';
-import HookTimer from 'components/HookTimer';
-import RefsClicker from 'components/RefsClicker';
-import SignUpForm from 'components/forms/SignUpForm';
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
 import { THEMES } from 'configs';
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 import 'App.css';
+import { PAGES } from 'routes';
 
 // import DataLoader from 'components/DataLoader';
 // import FlexContainer from 'components/FlexContainer';
 // import Header from 'components/Header';
 // import SignUpForm from 'components/SignUpForm';
-
-const HomePage = lazy(() => import('pages/HomePage'));
-const UserPage = lazy(() => import('pages/UserPage'));
-const UsersPage = lazy(() => import('pages/UsersPage'));
-const PostsPage = lazy(() => import('pages/PostsPage'));
-const LoginPage = lazy(() => import('pages/LoginPage'));
-const CounterPage = lazy(() => import('pages/CounterPage'));
-const TabContainer = lazy(() => import('pages/TabContainer'));
-
-export const PAGES = [
-  { path: '/', element: <HomePage /* throws */ /> },
-  { path: '/users', element: <UsersPage /> },
-  { path: '/posts', element: <PostsPage /> },
-  { path: '/user', element: <UserPage /> },
-  { path: '/tree', element: <Tree /> },
-  { path: '/timer', element: <HookTimer /> },
-  { path: '/clickerhooks', element: <Clicker /> },
-  { path: '/datahooks', element: <DataLoader /> },
-  { path: '/clickerrefs', element: <RefsClicker /> },
-  { path: '/login', element: <LoginPage /> },
-  { path: '/signup', element: <SignUpForm /> },
-  { path: '/counter', element: <CounterPage /> },
-  { path: '/transition', element: <TabContainer /> },
-] satisfies RouteProps[];
 
 class App extends React.Component<unknown, { theme: THEMES }> {
   constructor(props) {
