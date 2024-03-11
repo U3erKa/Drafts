@@ -1,5 +1,5 @@
 import React, { lazy /*, useState */ } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, type RouteProps } from 'react-router-dom';
 import Tree from 'components/Tree';
 import { DataLoader, Clicker } from 'components/DataLoader/UserLoaderHooks';
 import HookTimer from 'components/HookTimer';
@@ -23,7 +23,23 @@ const LoginPage = lazy(() => import('pages/LoginPage'));
 const CounterPage = lazy(() => import('pages/CounterPage'));
 const TabContainer = lazy(() => import('pages/TabContainer'));
 
-class App extends React.Component {
+export const PAGES = [
+  { path: '/', element: <HomePage /* throws */ /> },
+  { path: '/users', element: <UsersPage /> },
+  { path: '/posts', element: <PostsPage /> },
+  { path: '/user', element: <UserPage /> },
+  { path: '/tree', element: <Tree /> },
+  { path: '/timer', element: <HookTimer /> },
+  { path: '/clickerhooks', element: <Clicker /> },
+  { path: '/datahooks', element: <DataLoader /> },
+  { path: '/clickerrefs', element: <RefsClicker /> },
+  { path: '/login', element: <LoginPage /> },
+  { path: '/signup', element: <SignUpForm /> },
+  { path: '/counter', element: <CounterPage /> },
+  { path: '/transition', element: <TabContainer /> },
+] satisfies RouteProps[];
+
+class App extends React.Component<unknown, { theme: THEMES }> {
   constructor(props) {
     super(props);
     this.state = {
@@ -43,19 +59,9 @@ class App extends React.Component {
             Swap theme
           </button>
         </ThemeContext.Provider> */}
-        <Route path="/" element={<HomePage /* throws */ />} />
-        <Route path="/users" element={<UsersPage />} />
-        <Route path="/posts" element={<PostsPage />} />
-        <Route path="/user" element={<UserPage />} />
-        <Route path="/tree" element={<Tree />} />
-        <Route path="/timer" element={<HookTimer />} />
-        <Route path="/clickerhooks" element={<Clicker />} />
-        <Route path="/datahooks" element={<DataLoader />} />
-        <Route path="/clickerrefs" element={<RefsClicker />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignUpForm />} />
-        <Route path="/counter" element={<CounterPage />} />
-        <Route path="/transition" element={<TabContainer />} />
+        {PAGES.map((props) => (
+          <Route key={props.path} {...props} />
+        ))}
         {/* <Route path="/about" render={(routeProps) => <AboutPage {...routeProps} />} /> */}
       </Routes>
     );
