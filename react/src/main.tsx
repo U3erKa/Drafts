@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 // import './reset.css';
@@ -27,9 +27,11 @@ root.render(
   // const {isVisible} = this.state;
   <React.StrictMode>
     <ErrorBoundary fallback={'Oops...'}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <Suspense fallback={null}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </Suspense>
     </ErrorBoundary>
     {/* <Header name={user.name} profilePicSrc={user.profilePicSrc} />
     <Greeting name={user.name} />
