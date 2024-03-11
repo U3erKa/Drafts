@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import UserHeader from '../../components/UserHeader';
+import UserHeader from '../../components/function/UserHeader';
 import UserProfile from '../../components/class/UserProfile';
 import { UserContext } from '../../contexts';
 

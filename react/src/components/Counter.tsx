@@ -1,79 +1,72 @@
-import { useReducer } from 'react';
+import { Component, MouseEventHandler } from 'react';
 
-const initialState = {
-  count: 0,
-  step: 1,
+export type CounterProps = {};
+
+export type CounterState = {
+  readonly count: number;
 };
 
-enum ACTION_TYPES {
-  INCREMENT = 'increment',
-  DECREMENT = 'decrement',
-  CHANGE_STEP = 'changeStep',
-  RESET = 'reset',
-}
+export default class Counter extends Component<CounterProps, CounterState> {
+  constructor(props: CounterProps) {
+    super(props);
+    this.state = {
+      count: 0,
+    };
+  }
 
-function reducer(
-  state: { count: number; step: number },
-  action: { type: ACTION_TYPES; payload?: number },
-) {
-  switch (action.type) {
-    case ACTION_TYPES.INCREMENT: {
-      const newState = { ...state, count: state.count + state.step };
-      return newState;
-    }
-    case ACTION_TYPES.DECREMENT: {
-      const newCount = state.count - state.step;
+  static defaultProps: CounterProps = {};
+  static getDerivedStateFromProps(
+    nextProps: CounterProps,
+    prevState: CounterState,
+  ): CounterState | null {
+    return false ? { count: 2 } : null;
+  }
 
-      if (newCount > 0) {
-        const newState = { ...state, count: newCount };
-        return newState;
-      }
-      return state;
-    }
-    case ACTION_TYPES.CHANGE_STEP: {
-      const newState = { ...state, step: Math.abs(action.payload as number) };
-      return newState;
-    }
-    case ACTION_TYPES.RESET: {
-      const newState = { ...initialState };
-      return newState;
-    }
-    default:
-      return state;
+  componentDidMount(): void {
+    this.setState({});
+  }
+
+  shouldComponentUpdate(
+    nextProps: CounterProps,
+    nextState: CounterState,
+    nextContext: any,
+  ): boolean {
+    // if (nextProps.count !== nextContext.) {}
+    return true;
+  }
+
+  componentDidUpdate(
+    prevProps: CounterProps,
+    prevState: CounterState,
+    snapshot?: any,
+  ): void {
+    // if (prevProps.count !== this.) {}
+  }
+
+  componentWillUnmount(): void {}
+
+  handleClick: MouseEventHandler<HTMLButtonElement | HTMLAnchorElement> = (
+    e,
+  ) => {
+    console.log(`${e.clientX}, ${e.clientY}`);
+    this.setState(({ count }) => ({
+      count: ++count,
+    }));
+    // this.setState({
+    //   count: this.state.count + 1,
+    // });
+  };
+
+  render(): JSX.Element {
+    return (
+      <div>
+        <h1>{this.state.count}</h1>
+        <button onClick={this.handleClick}>Increment</button>
+        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+        <a href="#" onClick={this.handleClick}>
+          [ HYPERLINK BLOCKED ]
+        </a>
+      </div>
+    );
   }
 }
-
-function increment() {
-  const action = { type: ACTION_TYPES.INCREMENT };
-  return action;
-}
-
-function changeStep(step: string | number) {
-  return { type: ACTION_TYPES.CHANGE_STEP, payload: +step };
-}
-
-const Counter = (props: Record<string, never>) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
-
-  const handleStep = ({ target: { value } }) => dispatch(changeStep(value));
-
-  const handleIncrement = () => dispatch(increment());
-  const handleDecrement = () => dispatch({ type: ACTION_TYPES.DECREMENT });
-
-  return (
-    <div>
-      <p>Count: {state.count}</p>
-      <label>
-        Step:
-        <input type="number" value={state.step} onChange={handleStep} />
-      </label>
-      <button onClick={handleIncrement}>Increment</button>
-      <button onClick={handleDecrement}>Decrement</button>
-      <button onClick={() => dispatch({ type: ACTION_TYPES.RESET })}>
-        Reset
-      </button>
-    </div>
-  );
-};
-
-export default Counter;

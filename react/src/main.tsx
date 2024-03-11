@@ -6,6 +6,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import ErrorBoundary from 'components/ErrorBoundary';
+import { Provider } from 'react-redux';
+import { store } from 'app/store';
 // import Header from './components/Header';
 // import Greeting from './components/Greeting';
 // import Aloha from './components/Aloha';
@@ -29,7 +31,9 @@ root.render(
     <ErrorBoundary fallback={'Oops...'}>
       <Suspense fallback={null}>
         <BrowserRouter>
-          <App />
+          <Provider store={store}>
+            <App />
+          </Provider>
         </BrowserRouter>
       </Suspense>
     </ErrorBoundary>

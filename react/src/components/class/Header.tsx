@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
-import HeaderUserCard from '../HeaderUserCard';
+import HeaderUserCard from '../function/HeaderUserCard';
 
 // function Header(props) {
 //   return (

@@ -1,8 +1,8 @@
 import { type RouteProps } from 'react-router-dom';
 import Tree from 'components/Tree/Tree';
-import { DataLoader, Clicker } from 'components/UserLoaderHooks';
-import HookTimer from 'components/HookTimer';
-import RefsClicker from 'components/RefsClicker';
+import { DataLoader, Clicker } from 'components/function/UserLoaderHooks';
+import HookTimer from 'components/function/HookTimer';
+import RefsClicker from 'components/function/RefsClicker';
 import SignUpForm from 'components/forms/SignUpForm';
 import { lazy } from 'react';
 
@@ -13,6 +13,7 @@ export const PostsPage = lazy(() => import('pages/PostsPage'));
 export const LoginPage = lazy(() => import('pages/LoginPage'));
 export const CounterPage = lazy(() => import('pages/CounterPage'));
 export const TabContainer = lazy(() => import('pages/TabContainer'));
+export const MoreCounters = lazy(() => import('pages/MoreCounters'));
 
 export const PAGES = [
   { path: '/', element: <HomePage /* throws */ /> },
@@ -28,4 +29,5 @@ export const PAGES = [
   { path: '/signup', element: <SignUpForm /> },
   { path: '/counter', element: <CounterPage /> },
   { path: '/transition', element: <TabContainer /> },
+  { path: '/more-counters', element: <MoreCounters /> },
 ] satisfies RouteProps[];

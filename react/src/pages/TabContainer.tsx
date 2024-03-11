@@ -1,5 +1,5 @@
 import { memo, useState, useTransition } from 'react';
-import PostsTab from '../components/PostsTab';
+import PostsTab from '../components/function/PostsTab';
 
 export function TabButton({ children, isActive, onClick }) {
   if (isActive) {
