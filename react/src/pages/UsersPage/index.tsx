@@ -1,4 +1,4 @@
-import React, { Component, Key } from 'react';
+import { Component, Key } from 'react';
 import { getUsers } from 'api';
 
 class UsersPage extends Component<
@@ -45,8 +45,7 @@ class UsersPage extends Component<
 
       const users = await getUsers({ page, results, seed, nat, inc });
       this.setState({ users });
-    } catch (error) {
-      // @ts-expect-error error has message
+    } catch (error: any) {
       this.setState({ error: error.message });
     } finally {
       this.setState({ isLoading: false });

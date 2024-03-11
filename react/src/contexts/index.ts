@@ -1,9 +1,6 @@
 import { THEMES } from 'configs';
 import { createContext } from 'react';
 
-// @ts-expect-error
-export const UserContext = createContext();
-// @ts-expect-error
-export const ProductContext = createContext();
-
+export const UserContext = createContext<{ username; age; gender }>({} as any);
+export const ProductContext = createContext(null);
 export const ThemeContext = createContext(THEMES.LIGHT);

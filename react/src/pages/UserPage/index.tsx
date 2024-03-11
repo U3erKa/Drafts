@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import UserHeader from '../../components/UserHeader';
-import UserProfile from '../../components/UserProfile';
+import UserProfile from '../../components/class/UserProfile';
 import { UserContext } from '../../contexts';
 
 const userData = {

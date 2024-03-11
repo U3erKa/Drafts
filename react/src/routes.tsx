@@ -1,6 +1,6 @@
 import { type RouteProps } from 'react-router-dom';
-import Tree from 'components/Tree';
-import { DataLoader, Clicker } from 'components/DataLoader/UserLoaderHooks';
+import Tree from 'components/Tree/Tree';
+import { DataLoader, Clicker } from 'components/UserLoaderHooks';
 import HookTimer from 'components/HookTimer';
 import RefsClicker from 'components/RefsClicker';
 import SignUpForm from 'components/forms/SignUpForm';

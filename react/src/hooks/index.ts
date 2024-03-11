@@ -48,7 +48,7 @@ export function useClicker() {
     };
   }, []);
 
-  return [click, handleClick];
+  return [click, handleClick] as const;
 }
 
 export function useClickerRef(
@@ -72,5 +72,5 @@ export function useClickerRef(
     };
   }, [elemRef]);
 
-  return [click, handleClick];
+  return [click, handleClick] as const;
 }

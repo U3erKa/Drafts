@@ -1,7 +1,6 @@
 import Counter from 'components/Counter';
-import React from 'react';
 
-const CounterPage = (props) => {
+const CounterPage = (_props) => {
   return (
     <div>
       <Counter />

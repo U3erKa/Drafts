@@ -1,13 +1,12 @@
-import React from 'react';
 import { getData, getUsers } from 'api';
-import DataLoader from 'components/DataLoader';
+import DataLoader from 'components/class/DataLoader';
 
 const PostsPage = () => {
   const renderPosts = (loaderState) => {
     return (
       <ul>
         <li>
-          <code>{JSON.stringify(loaderState.data, undefined, 4)}</code>
+          <pre>{JSON.stringify(loaderState.data, undefined, 4)}</pre>
         </li>
       </ul>
     );

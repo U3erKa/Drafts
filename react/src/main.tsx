@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import { StrictMode, Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 // import './reset.css';
@@ -25,7 +25,7 @@ const root = ReactDOM.createRoot(
 
 root.render(
   // const {isVisible} = this.state;
-  <React.StrictMode>
+  <StrictMode>
     <ErrorBoundary fallback={'Oops...'}>
       <Suspense fallback={null}>
         <BrowserRouter>
@@ -43,7 +43,7 @@ root.render(
     {/* <Clicker /> */}
     {/* {isVisible && <Timer />}
     <button onClick={() => this.setState({isVisible: !isVisible})}>Toggle isVisible</button> */}
-  </React.StrictMode>,
+  </StrictMode>,
 );
 
 // If you want to start measuring performance in your app, pass a function
