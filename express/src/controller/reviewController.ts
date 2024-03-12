@@ -1,10 +1,10 @@
 import createHttpError from 'http-errors';
+import type { RequestHandler } from 'express';
 import { Review } from '../model/index.js';
 import car from '../model/car.js';
 
-/** @type {import('express').RequestHandler} */
-export const createReview = async (req, res, next) => {
-  const { body, car } = req;
+export const createReview: RequestHandler = async (req, res, next) => {
+  const { body, car } = req as typeof req & { car };
   try {
     const review = await car.createReview(body);
     res.status(201).send({ data: review });
@@ -13,9 +13,8 @@ export const createReview = async (req, res, next) => {
   }
 };
 
-/** @type {import('express').RequestHandler} */
-export const getReviews = async (req, res, next) => {
-  const { car } = req;
+export const getReviews: RequestHandler = async (req, res, next) => {
+  const { car } = req as typeof req & { car };
   try {
     const reviews = await car.getReviews();
     res.status(200).send({ data: reviews });
@@ -24,8 +23,7 @@ export const getReviews = async (req, res, next) => {
   }
 };
 
-/** @type {import('express').RequestHandler} */
-export const getReview = async (req, res, next) => {
+export const getReview: RequestHandler = async (req, res, next) => {
   const {
     params: { reviewId },
   } = req;
@@ -43,8 +41,7 @@ export const getReview = async (req, res, next) => {
   }
 };
 
-/** @type {import('express').RequestHandler} */
-export const updateReview = async (req, res, next) => {
+export const updateReview: RequestHandler = async (req, res, next) => {
   const {
     body,
     params: { reviewId },
@@ -65,8 +62,7 @@ export const updateReview = async (req, res, next) => {
   }
 };
 
-/** @type {import('express').RequestHandler} */
-export const deleteReview = async (req, res, next) => {
+export const deleteReview: RequestHandler = async (req, res, next) => {
   const {
     params: { reviewId },
   } = req;

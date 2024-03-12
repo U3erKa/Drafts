@@ -1,8 +1,8 @@
 import createHttpError from 'http-errors';
 import { Car, Review, Seller } from '../model/index.js';
+import type { RequestHandler } from 'express';
 
-/** @type {import('express').RequestHandler} */
-export const createCar = async (req, res, next) => {
+export const createCar: RequestHandler = async (req, res, next) => {
   try {
     const { body } = req;
 
@@ -14,8 +14,7 @@ export const createCar = async (req, res, next) => {
   }
 };
 
-/** @type {import('express').RequestHandler} */
-export const getCars = async (req, res, next) => {
+export const getCars: RequestHandler = async (req, res, next) => {
   const cars = await Car.findAll({
     // attributes: ['model', 'manufacturer', 'isUsed', 'price'],
     // attribures: {
@@ -38,8 +37,7 @@ export const getCars = async (req, res, next) => {
   res.send({ data: cars });
 };
 
-/** @type {import('express').RequestHandler} */
-export const getCar = async (req, res, next) => {
+export const getCar: RequestHandler = async (req, res, next) => {
   const {
     params: { carId },
   } = req;
@@ -60,8 +58,7 @@ export const getCar = async (req, res, next) => {
   }
 };
 
-/** @type {import('express').RequestHandler} */
-export const updateCar = async (req, res, next) => {
+export const updateCar: RequestHandler = async (req, res, next) => {
   try {
     const {
       body,
@@ -90,8 +87,7 @@ export const updateCar = async (req, res, next) => {
   }
 };
 
-/** @type {import('express').RequestHandler} */
-export const deleteCar = async (req, res, next) => {
+export const deleteCar: RequestHandler = async (req, res, next) => {
   try {
     const {
       params: { carId },
@@ -117,12 +113,11 @@ export const deleteCar = async (req, res, next) => {
   }
 };
 
-/** @type {import('express').RequestHandler} */
-export const addPicToCar = async (req, res, next) => {
+export const addPicToCar: RequestHandler = async (req, res, next) => {
   const {
     file,
     params: { carId },
-  } = req;
+  } = req as typeof req & { file };
 
   try {
     const [updatedCars, [car]] = await Car.update(

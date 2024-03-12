@@ -1,8 +1,8 @@
 import createHttpError from 'http-errors';
 import { Seller } from '../model/index.js';
+import type { RequestHandler } from 'express';
 
-/** @type {import('express').RequestHandler} */
-export const createSeller = async (req, res, next) => {
+export const createSeller: RequestHandler = async (req, res, next) => {
   const { body } = req;
 
   try {
@@ -13,8 +13,7 @@ export const createSeller = async (req, res, next) => {
   }
 };
 
-/** @type {import('express').RequestHandler} */
-export const getSellers = async (req, res, next) => {
+export const getSellers: RequestHandler = async (req, res, next) => {
   try {
     const sellers = await Seller.findAll();
     res.status(201).send({ data: sellers });
@@ -23,8 +22,7 @@ export const getSellers = async (req, res, next) => {
   }
 };
 
-/** @type {import('express').RequestHandler} */
-export const getSeller = async (req, res, next) => {
+export const getSeller: RequestHandler = async (req, res, next) => {
   const {
     params: { sellerId },
   } = req;
@@ -44,8 +42,7 @@ export const getSeller = async (req, res, next) => {
   }
 };
 
-/** @type {import('express').RequestHandler} */
-export const updateSeller = async (req, res, next) => {
+export const updateSeller: RequestHandler = async (req, res, next) => {
   const {
     body,
     params: { sellerId },
@@ -66,8 +63,7 @@ export const updateSeller = async (req, res, next) => {
   }
 };
 
-/** @type {import('express').RequestHandler} */
-export const deleteSeller = async (req, res, next) => {
+export const deleteSeller: RequestHandler = async (req, res, next) => {
   const {
     params: { sellerId },
   } = req;
@@ -84,12 +80,11 @@ export const deleteSeller = async (req, res, next) => {
   }
 };
 
-/** @type {import('express').RequestHandler} */
-export const addCarToSeller = async (req, res, next) => {
+export const addCarToSeller: RequestHandler = async (req, res, next) => {
   const {
     params: { sellerId },
     car,
-  } = req;
+  } = req as typeof req & { car };
 
   try {
     const seller = await Seller.findByPk(sellerId);
