@@ -10,7 +10,7 @@ export function useLoader<T>(resource: JSONPLACEHOLDER_RESOURCES) {
     (async () => {
       try {
         setIsLoading(true);
-        const data = await getFromJsonPlaceholder(resource);
+        const data: any = await getFromJsonPlaceholder(resource);
         setData(data);
       } catch (error) {
         setError(error);
@@ -18,7 +18,6 @@ export function useLoader<T>(resource: JSONPLACEHOLDER_RESOURCES) {
         setIsLoading(false);
       }
     })();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [resource]);
   return { data, error, isLoading };
 }
