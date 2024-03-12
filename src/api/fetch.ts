@@ -7,8 +7,7 @@ export enum JSONPLACEHOLDER_RESOURCES {
   USERS = 'users',
 }
 
-export async function getFromJsonPlaceholder(resource: JSONPLACEHOLDER_RESOURCES) {
+export async function getFromJsonPlaceholder<T>(resource: JSONPLACEHOLDER_RESOURCES): Promise<T> {
   const res = await fetch(`https://jsonplaceholder.typicode.com/${resource}`);
-  const data = await res.json();
-  return data;
+  return await res.json();
 }

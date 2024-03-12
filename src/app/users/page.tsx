@@ -1,12 +1,16 @@
-'use client';
-import { FC } from 'react';
+import { FC, Suspense, use } from 'react';
 import Link from 'next/link';
-import { JSONPLACEHOLDER_RESOURCES } from 'api/fetch';
+import { JSONPLACEHOLDER_RESOURCES, getFromJsonPlaceholder } from 'api/fetch';
 import { Loading } from 'components';
-import { useLoader } from 'hooks/useLoader';
 import type { Address, Company, UserEntry, UserInfoProps } from 'api/types';
 
-const UserInfo: FC<UserInfoProps> = ({ name, username, email, phone, website }) => (
+const UserInfo: FC<UserInfoProps> = ({
+  name,
+  username,
+  email,
+  phone,
+  website,
+}) => (
   <section>
     <h1>Name: {name}</h1>
     <p>Username: {username}</p>
@@ -42,26 +46,32 @@ const CompanyInfo: FC<Company> = ({ name: companyName, catchPhrase, bs }) => (
   </section>
 );
 
-const UsersListEntries: FC<{ users: UserEntry[] }> = ({ users }) => {
-  const usersList = users.map(({ id, address, company, ...userProps }) => (
-    <li key={id} id={id as any}>
-      <UserInfo {...userProps} />
-      <AddressInfo {...address} />
-      <CompanyInfo {...company} />
-    </li>
-  ));
-
-  return <ul className='flex flex-col gap-4'>{usersList}</ul>;
+const UsersListEntries: FC<{ users: Promise<UserEntry[]> }> = ({ users }) => {
+  const usableUsers = use(users);
+  return (
+    <ul className="flex flex-col gap-4">
+      {usableUsers.map(({ id, address, company, ...userProps }) => (
+        <li key={id} id={id as unknown as string}>
+          <UserInfo {...userProps} />
+          <AddressInfo {...address} />
+          <CompanyInfo {...company} />
+        </li>
+      ))}
+    </ul>
+  );
 };
 
-const UsersList: FC = function () {
-  const { data: users, error, isLoading } = useLoader<UserEntry>(JSONPLACEHOLDER_RESOURCES.USERS);
+const UsersList = function () {
+  const users = getFromJsonPlaceholder<UserEntry[]>(
+    JSONPLACEHOLDER_RESOURCES.USERS,
+  );
 
   return (
     <main>
       <Link href="/">Home</Link>
-      {isLoading && <Loading />}
-      {error?.message ?? <UsersListEntries users={users} />}
+      <Suspense fallback={<Loading />}>
+        <UsersListEntries users={users} />
+      </Suspense>
     </main>
   );
 };

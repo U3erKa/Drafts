@@ -1,30 +1,36 @@
-'use client';
-import { FC } from 'react';
-import { JSONPLACEHOLDER_RESOURCES } from 'api/fetch';
-import { useLoader } from 'hooks/useLoader';
+import { FC, Suspense, use } from 'react';
+import Link from 'next/link';
+import { JSONPLACEHOLDER_RESOURCES, getFromJsonPlaceholder } from 'api/fetch';
 import { Loading } from 'components';
 import type { AlbumEntry } from 'api/types';
-import styles from './AlbumsList.module.scss';
-import Link from 'next/link';
+import styles from './page.module.scss';
 
-const AlbumsListEntries: FC<{ albums: AlbumEntry[] }> = ({ albums }) => {
-  const albumsList = albums.map(({ id, title, userId }) => (
-    <li className={styles.albumsListItem} key={id}>
-      <h1 className={styles.albumsListTitle}>{title}</h1>
-    </li>
-  ));
-
-  return <ul className={styles.albumsList}>{albumsList}</ul>;
+const AlbumsListEntries: FC<{ albums: Promise<AlbumEntry[]> }> = ({
+  albums,
+}) => {
+  const usableAlbums = use(albums);
+  return (
+    <ul className={styles.albumsList}>
+      {usableAlbums.map(({ id, title, userId }) => (
+        <li className={styles.albumsListItem} key={id}>
+          <h1 className={styles.albumsListTitle}>{title}</h1>
+        </li>
+      ))}
+    </ul>
+  );
 };
 
-const AlbumsList: FC = function () {
-  const { data: albums, error, isLoading } = useLoader<AlbumEntry>(JSONPLACEHOLDER_RESOURCES.ALBUMS);
+const AlbumsList = function () {
+  const albums = getFromJsonPlaceholder<AlbumEntry[]>(
+    JSONPLACEHOLDER_RESOURCES.ALBUMS,
+  );
 
   return (
     <main>
       <Link href="/">Home</Link>
-      {isLoading && <Loading />}
-      {error?.message ?? <AlbumsListEntries albums={albums} />}
+      <Suspense fallback={<Loading />}>
+        <AlbumsListEntries albums={albums} />
+      </Suspense>
     </main>
   );
 };
