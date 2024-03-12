@@ -1,5 +1,6 @@
+'use client';
 import { FC } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { JSONPLACEHOLDER_RESOURCES } from 'api/fetch';
 import { Loading } from 'components';
 import { useLoader } from 'hooks/useLoader';
@@ -50,7 +51,7 @@ const UsersListEntries: FC<{ users: UserEntry[] }> = ({ users }) => {
     </li>
   ));
 
-  return <ul>{usersList}</ul>;
+  return <ul className='flex flex-col gap-4'>{usersList}</ul>;
 };
 
 const UsersList: FC = function () {
@@ -58,7 +59,7 @@ const UsersList: FC = function () {
 
   return (
     <main>
-      <Link to="/">Home</Link>
+      <Link href="/">Home</Link>
       {isLoading && <Loading />}
       {error?.message ?? <UsersListEntries users={users} />}
     </main>

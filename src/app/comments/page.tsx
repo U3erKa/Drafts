@@ -1,5 +1,6 @@
+'use client';
 import { FC } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { JSONPLACEHOLDER_RESOURCES } from 'api/fetch';
 import { useLoader } from 'hooks/useLoader';
 import { Loading } from 'components';
@@ -25,7 +26,7 @@ const CommentsList: FC = function () {
 
   return (
     <main>
-      <Link to="/">Home</Link>
+      <Link href="/">Home</Link>
       {isLoading && <Loading />}
       {error?.message ?? <CommentsListEntries comments={comments} />}
     </main>
