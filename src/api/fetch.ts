@@ -1,3 +1,5 @@
+import { cache } from 'react';
+
 export enum JSONPLACEHOLDER_RESOURCES {
   POSTS = 'posts',
   COMMENTS = 'comments',
@@ -7,7 +9,11 @@ export enum JSONPLACEHOLDER_RESOURCES {
   USERS = 'users',
 }
 
-export async function getFromJsonPlaceholder<T>(resource: JSONPLACEHOLDER_RESOURCES): Promise<T> {
+export const getFromJsonPlaceholder = cache(_getFromJsonPlaceholder);
+
+export async function _getFromJsonPlaceholder<T>(
+  resource: JSONPLACEHOLDER_RESOURCES,
+): Promise<T> {
   const res = await fetch(`https://jsonplaceholder.typicode.com/${resource}`);
   return await res.json();
 }
