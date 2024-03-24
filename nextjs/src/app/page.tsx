@@ -11,6 +11,16 @@ import { RegistrationForm } from '@/components/custom/RegistrationForm';
 import { ArbitraryActionButton } from '@/components/custom/ArbitraryActionButton';
 import { onDataAction, onFormAction } from '@/serverActions';
 
+export const routes = [
+  { path: '/', name: 'Home' },
+  { path: '/posts', name: 'Posts' },
+  { path: '/comments', name: 'Comments' },
+  { path: '/albums', name: 'Albums' },
+  { path: '/photos', name: 'Photos' },
+  { path: '/todo', name: 'Todo' },
+  { path: '/users', name: 'Users' },
+];
+
 export default function Home() {
   const serverAction: ServerActionFormProps['serverAction'] = async (
     formData,
@@ -30,6 +40,15 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-slate-800">
+      <nav>
+        <ul>
+          {routes.map(({ name, path }) => (
+            <li key={path}>
+              <Link href={path} className="text-secondary">{name}</Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
       <div>
         <h2 className="text-secondary">Hook form</h2>
         <HookForm />

@@ -1,0 +1,17 @@
+$colorBlue: #2244aa;
+
+.albumsList {
+  display: flex;
+  flex-direction: column;
+  padding-inline-start: 20px;
+
+  &Item::marker {
+    content: '';
+  }
+  &Title {
+    color: $colorBlue;
+    text-decoration: none;
+    margin: 10px 0;
+    font-size: 2rem;
+  }
+}
