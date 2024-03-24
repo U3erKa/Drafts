@@ -44,7 +44,9 @@ export default function Home() {
         <ul>
           {routes.map(({ name, path }) => (
             <li key={path}>
-              <Link href={path} className="text-secondary">{name}</Link>
+              <Link href={path} className="text-secondary">
+                {name}
+              </Link>
             </li>
           ))}
         </ul>
