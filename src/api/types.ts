@@ -24,14 +24,11 @@ export interface TodoEntry extends WithId, WithTitle {
   completed: boolean;
 }
 
-export interface UserInfoProps extends WithName {
+export interface UserEntry extends WithId, WithName {
   username: string;
   email: string;
   phone: string;
   website: string;
-}
-
-export interface UserEntry extends WithId, UserInfoProps {
   address: Address;
   company: Company;
 }
