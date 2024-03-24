@@ -1,12 +1,12 @@
-import { useEffect } from 'react';
+import { useEffect, FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AnyAction } from '@reduxjs/toolkit';
-import { RootState } from 'app/store';
-import { getUsers } from 'app/slices/users';
+import { RootState } from 'store';
+import { getUsers } from 'slices/users';
 import { UserEntry } from 'types/api/getFromJsonPlaceholder';
 import { UserSliceState } from 'types/slices';
 
-export default function UserList() {
+const Users: FC = function () {
   const { users, isLoading, error } = useSelector<RootState, UserSliceState>(
     (state) => state.users,
   );
@@ -18,13 +18,18 @@ export default function UserList() {
   }, []);
 
   return (
-    <section>
-      {isLoading && <div>Loading...</div>}
-      {error}
-      {users.length > 0 &&
-        users.map((user: UserEntry) => (
-          <article key={user.id}>{JSON.stringify(user)}</article>
-        ))}
-    </section>
+    <>
+      <h1>Our clients</h1>
+      <section>
+        {isLoading && <div>Loading...</div>}
+        {error}
+        {users.length > 0 &&
+          users.map((user: UserEntry) => (
+            <article key={user.id}>{JSON.stringify(user)}</article>
+          ))}
+      </section>
+    </>
   );
-}
+};
+
+export default Users;

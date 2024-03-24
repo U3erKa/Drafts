@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { User } from 'types/api/getFromOwnDB';
-import { JSONPLACEHOLDER_RESOURCES } from './constants';
+import { JSONPLACEHOLDER_RESOURCES } from './const';
 
 export const getFromJsonPlaceholder = async (
   resource: JSONPLACEHOLDER_RESOURCES,

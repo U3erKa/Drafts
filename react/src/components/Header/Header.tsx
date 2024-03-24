@@ -5,7 +5,7 @@ import cx from 'classnames';
 import styles from './Header.module.scss';
 import { THEMES } from 'app/constants';
 import { RootState } from 'app/store';
-import { setTheme } from 'app/slices/theme';
+import { setTheme } from 'slices/theme';
 
 const Header: FC = function () {
   const theme = useSelector<RootState, THEMES>(({ theme }: RootState) => theme);

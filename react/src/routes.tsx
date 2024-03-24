@@ -14,6 +14,9 @@ export const LoginPage = lazy(() => import('pages/LoginPage'));
 export const CounterPage = lazy(() => import('pages/CounterPage'));
 export const TabContainer = lazy(() => import('pages/TabContainer'));
 export const MoreCounters = lazy(() => import('pages/MoreCounters'));
+export const Register = lazy(() => import('pages/Register'));
+export const ReduxCounter = lazy(() => import('pages/ReduxCounter'));
+export const ReduxUsers = lazy(() => import('pages/ReduxUsers'));
 
 export const PAGES = [
   { path: '/', element: <HomePage /* throws */ /> },
@@ -30,4 +33,7 @@ export const PAGES = [
   { path: '/counter', element: <CounterPage /> },
   { path: '/transition', element: <TabContainer /> },
   { path: '/more-counters', element: <MoreCounters /> },
+  { path: '/register', element: <Register /> },
+  { path: '/redux/counter', element: <ReduxCounter /> },
+  { path: '/redux/users', element: <ReduxUsers /> },
 ] satisfies RouteProps[];

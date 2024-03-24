@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { LANGUAGES } from 'app/constants';
+import { LANGUAGES } from 'const';
 
 const languages: LANGUAGES[] = Object.values(LANGUAGES);
 const initialState: LANGUAGES = languages.includes(

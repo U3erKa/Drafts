@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import * as API from 'app/api';
+import * as API from 'api';
 import { UserEntry } from 'types/api/getFromJsonPlaceholder';
 import { UserSliceState } from 'types/slices';
 

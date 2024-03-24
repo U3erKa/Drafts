@@ -2,11 +2,11 @@ import { FC } from 'react';
 import { bindActionCreators } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import cx from 'classnames';
-import { LANGUAGES, THEMES } from 'app/constants';
-import { RootState } from 'app/store';
-import { setLang, languages } from 'app/slices/lang';
-import * as counterActionCreators from 'app/slices/counter';
-import styles from './Counter.module.scss';
+import { LANGUAGES, THEMES } from 'const';
+import { RootState } from 'store';
+import { setLang, languages } from 'slices/lang';
+import * as counterActionCreators from 'slices/counter';
+import styles from './ReduxCounter.module.scss';
 
 const translations = new Map([
   [
@@ -46,7 +46,7 @@ const Counter: FC = function () {
   const { count, step } = useSelector<
     RootState,
     { count: number; step: number }
-  >((state) => state.counter);
+  >((state) => state.otherCounter);
   const dispatch = useDispatch();
 
   const { decrement, increment, setStep } = bindActionCreators(

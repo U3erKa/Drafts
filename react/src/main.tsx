@@ -1,32 +1,17 @@
-import { StrictMode, Suspense } from 'react';
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
-// import './reset.css';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import ErrorBoundary from 'components/ErrorBoundary';
+import { StrictMode, Suspense } from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { store } from 'app/store';
-// import Header from './components/Header';
-// import Greeting from './components/Greeting';
-// import Aloha from './components/Aloha';
-// import AlohaList from './components/AlohaList';
-// import Clicker from './components/Clicker';
-// import Timer from './components/Timer';
-// import App from './components/App';
+import { store } from 'store';
+import App from 'App';
+import ErrorBoundary from 'components/ErrorBoundary';
+// import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLDivElement,
-);
-// const name = 'U3erKa';
-// const user = {
-//   name: 'user',
-//   profilePicSrc: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png',
-// };
+const container = document.getElementById('root')!;
+const root = createRoot(container);
 
 root.render(
-  // const {isVisible} = this.state;
   <StrictMode>
     <ErrorBoundary fallback={'Oops...'}>
       <Suspense fallback={null}>
@@ -37,16 +22,6 @@ root.render(
         </BrowserRouter>
       </Suspense>
     </ErrorBoundary>
-    {/* <Header name={user.name} profilePicSrc={user.profilePicSrc} />
-    <Greeting name={user.name} />
-    <Greeting name={name} id={69} />
-    <Aloha name={'U2'} isGreeting={true} />
-    <Aloha name={'U3'} isGreeting={false} /> */}
-    {/* <input disabled={user.name !== user} /> */}
-    {/* <AlohaList /> */}
-    {/* <Clicker /> */}
-    {/* {isVisible && <Timer />}
-    <button onClick={() => this.setState({isVisible: !isVisible})}>Toggle isVisible</button> */}
   </StrictMode>,
 );
 
