@@ -37,12 +37,14 @@ const sumOfThree = (num1: number, num2: number, num3: number) =>
 const curriedSum = (num1: number) => (num2: number) => (num3: number) =>
   num1 + num2 + num3;
 
-function curry(func: Function) {
+function curry(func: (...args: unknown[]) => unknown) {
   return function curried(...args: unknown[]) {
     if (args.length >= func.length) {
+      // @ts-expect-error
       return func.apply(this, args);
     } else {
       return function (...args2: unknown[]) {
+        // @ts-expect-error
         return curried.apply(this, args.concat(args2));
       };
     }

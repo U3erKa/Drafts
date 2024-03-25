@@ -19,7 +19,7 @@
   "homepage": "git+https://github.com/U3erKa/Drafts#readme",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "format": "prettier --write ."
+    "format": "prettier --write --list-different **/src/**/*"
   },
   "workspaces": [
     "cra-eject",

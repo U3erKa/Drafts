@@ -1,5 +1,5 @@
 'use strict';
-
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const { Op } = require('sequelize');
 
 const cars = [];
