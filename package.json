@@ -29,10 +29,7 @@
     "mongo",
     "nextjs",
     "nodejs",
-    "pwa",
-    "react",
-    "ts-react",
-    "typescript"
+    "react"
   ],
   "devDependencies": {
     "prettier": "^3.2.5"
