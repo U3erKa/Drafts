@@ -1,7 +1,8 @@
 import { observer } from 'mobx-react-lite';
-import { peopleStore, type ObservableTodoStore } from 'store';
-import { TodoView, RenderCounter } from '.';
+import { peopleStore, type ObservableTodoStore } from 'mobxStore';
 import { runInAction } from 'mobx';
+import { TodoView } from 'components/mobx/TodoView';
+import { RenderCounter } from 'components/mobx/RenderCounter';
 
 type TodoListProps = {
   store: ObservableTodoStore;

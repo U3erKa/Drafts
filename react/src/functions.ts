@@ -1,5 +1,5 @@
 import { action, runInAction } from 'mobx';
-import { store } from 'store';
+import { store } from 'mobxStore';
 
 export function messWithTodos() {
   runInAction(() => {

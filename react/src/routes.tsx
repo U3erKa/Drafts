@@ -17,6 +17,7 @@ export const MoreCounters = lazy(() => import('pages/MoreCounters'));
 export const Register = lazy(() => import('pages/Register'));
 export const ReduxCounter = lazy(() => import('pages/ReduxCounter'));
 export const ReduxUsers = lazy(() => import('pages/ReduxUsers'));
+export const MobxPage = lazy(() => import('pages/MobxPage'));
 
 export const PAGES = [
   { path: '/', element: <HomePage /* throws */ /> },
@@ -36,4 +37,5 @@ export const PAGES = [
   { path: '/register', element: <Register /> },
   { path: '/redux/counter', element: <ReduxCounter /> },
   { path: '/redux/users', element: <ReduxUsers /> },
+  { path: '/mobx', element: <MobxPage /> },
 ] satisfies RouteProps[];

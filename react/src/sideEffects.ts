@@ -1,5 +1,5 @@
 import { messWithTodos, addRandomTodo } from 'functions';
-import { store, peopleStore } from 'store';
+import { store, peopleStore } from 'mobxStore';
 
 console.log(store);
 

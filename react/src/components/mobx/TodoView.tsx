@@ -1,7 +1,7 @@
 import { runInAction } from 'mobx';
 import { observer } from 'mobx-react-lite';
-import { type Todo } from 'store';
-import { RenderCounter } from '.';
+import { type Todo } from 'mobxStore';
+import { RenderCounter } from 'components/mobx/RenderCounter';
 
 type TodoViewProps = {
   todo: Todo;

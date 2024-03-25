@@ -126,6 +126,14 @@ meter {
   animation-delay: 1 * 100ms;
 }
 
+.animated {
+  animation: card-fade-in 700ms ease-out backwards;
+}
+
+.marquee {
+  animation: marquee 10s linear infinite;
+}
+
 @keyframes card-fade-in {
   from {
     opacity: 0;
@@ -139,8 +147,13 @@ meter {
   }
 }
 
-.animated {
-  animation: card-fade-in 700ms ease-out backwards;
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
 /*

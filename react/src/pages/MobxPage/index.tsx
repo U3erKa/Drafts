@@ -1,7 +1,6 @@
-import { store } from 'store';
-import { TodoList } from 'components';
+import { store } from 'mobxStore';
 import 'sideEffects';
-import './App.css';
+import { TodoList } from 'components/mobx/TodoList';
 
 function App() {
   return <TodoList store={store} />;
