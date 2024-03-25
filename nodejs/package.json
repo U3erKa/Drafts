@@ -18,7 +18,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^1.6.7",
+    "axios": "^1.6.8",
     "command-line-args": "^5.2.1",
     "csv-stringify": "^6.4.6",
     "iconv": "^3.0.1",
@@ -27,9 +27,9 @@
   "devDependencies": {
     "@types/command-line-args": "^5.2.3",
     "@types/iconv": "^3.0.4",
-    "@types/node": "^20.11.25",
+    "@types/node": "^20.11.30",
     "concurrently": "^8.2.2",
     "nodemon": "^3.1.0",
-    "typescript": "^5.4.2"
+    "typescript": "^5.4.3"
   }
 }
