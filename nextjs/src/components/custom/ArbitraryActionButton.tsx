@@ -12,37 +12,29 @@ type ArbitraryActionButtonProps = ButtonProps & {
   ) => typeof defaultValues | Promise<typeof defaultValues>;
 };
 
-export const ArbitraryActionButton = forwardRef<
-  HTMLButtonElement,
-  ArbitraryActionButtonProps
->(({ arbitraryAction, onClick, ...props }, ref) => {
-  const [state, action] = useFormState<
-    typeof defaultValues,
-    typeof defaultValues
-  >(arbitraryAction, defaultValues);
-  const [firstName, setFirstName] = useState('');
+export const ArbitraryActionButton = forwardRef<HTMLButtonElement, ArbitraryActionButtonProps>(
+  ({ arbitraryAction, onClick, ...props }, ref) => {
+    const [state, action] = useFormState<typeof defaultValues, typeof defaultValues>(arbitraryAction, defaultValues);
+    const [firstName, setFirstName] = useState('');
 
-  useEffect(() => {
-    console.log(state);
-  }, [state]);
+    useEffect(() => {
+      console.log(state);
+    }, [state]);
 
-  return (
-    <div>
-      <Input
-        name="firstName"
-        value={firstName}
-        onChange={(e) => setFirstName(e.target.value)}
-      />
-      <Button
-        ref={ref}
-        onClick={(e) => {
-          onClick?.(e);
-          action({ firstName });
-        }}
-        {...props}
-      />
-    </div>
-  );
-});
+    return (
+      <div>
+        <Input name="firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+        <Button
+          ref={ref}
+          onClick={(e) => {
+            onClick?.(e);
+            action({ firstName });
+          }}
+          {...props}
+        />
+      </div>
+    );
+  },
+);
 
 ArbitraryActionButton.displayName = 'ArbitraryActionButton';

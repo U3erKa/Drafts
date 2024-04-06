@@ -3,11 +3,7 @@ import { USER_SCHEMA } from '../utils/validationSchema.js';
 
 export const bodyParser = json();
 
-export const validateUser = async (
-  req: Request,
-  res: Response,
-  next: NextFunction,
-) => {
+export const validateUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
     await USER_SCHEMA.validate(req.body);
     next();

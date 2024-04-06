@@ -36,18 +36,12 @@ export default class AlohaList extends Component {
     const { users } = this.state;
     const alohas = users.map((user) => (
       <li key={user.id}>
-        <Aloha
-          id={user.id}
-          name={user.name}
-          makeFavourite={this.makeFavourite}
-        />
+        <Aloha id={user.id} name={user.name} makeFavourite={this.makeFavourite} />
         {/* <Aloha name={user.name} func={this.sortUsers} /> */}
       </li>
     ));
     const favUsers = users.filter((user) => user.isFavourite);
-    const favourites = favUsers.map((user) => (
-      <li key={user.id}>{user.name}</li>
-    ));
+    const favourites = favUsers.map((user) => <li key={user.id}>{user.name}</li>);
 
     return (
       <ul>

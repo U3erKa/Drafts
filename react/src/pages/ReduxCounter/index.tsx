@@ -39,26 +39,16 @@ const translations = new Map([
 ]);
 
 const Counter: FC = function () {
-  const lang = useSelector<RootState, LANGUAGES>(
-    (state) => state.lang as LANGUAGES,
-  );
+  const lang = useSelector<RootState, LANGUAGES>((state) => state.lang as LANGUAGES);
   const theme = useSelector<RootState, THEMES>((state) => state.theme);
-  const { count, step } = useSelector<
-    RootState,
-    { count: number; step: number }
-  >((state) => state.otherCounter);
+  const { count, step } = useSelector<RootState, { count: number; step: number }>((state) => state.otherCounter);
   const dispatch = useDispatch();
 
-  const { decrement, increment, setStep } = bindActionCreators(
-    { ...counterActionCreators },
-    dispatch,
-  );
+  const { decrement, increment, setStep } = bindActionCreators({ ...counterActionCreators }, dispatch);
   const langAct = bindActionCreators({ setLang }, dispatch);
 
   const tr = translations.get(lang);
-  const selectLang = languages.map((language) => (
-    <option key={language} value={language}>{`${language}`}</option>
-  ));
+  const selectLang = languages.map((language) => <option key={language} value={language}>{`${language}`}</option>);
 
   return (
     <div
@@ -72,20 +62,11 @@ const Counter: FC = function () {
       </p>
       <label>
         {tr?.step}:
-        <input
-          type="number"
-          value={step}
-          onChange={({ target: { value } }) => setStep(value)}
-        />
+        <input type="number" value={step} onChange={({ target: { value } }) => setStep(value)} />
       </label>
       <button onClick={() => increment()}>{tr?.increment}</button>
       <button onClick={() => decrement()}>{tr?.decrement}</button>
-      <select
-        value={lang}
-        onChange={({ target: { value } }) =>
-          langAct.setLang(value as LANGUAGES)
-        }
-      >
+      <select value={lang} onChange={({ target: { value } }) => langAct.setLang(value as LANGUAGES)}>
         {selectLang}
       </select>
     </div>

@@ -22,11 +22,7 @@ export const TodoView = observer(function TodoView({ todo }: TodoViewProps) {
 
   return (
     <li onDoubleClick={onRename}>
-      <input
-        type="checkbox"
-        checked={todo.completed}
-        onChange={onToggleCompleted}
-      />
+      <input type="checkbox" checked={todo.completed} onChange={onToggleCompleted} />
       {todo.task}
       {todo.assignee ? <small>{todo.assignee.name}</small> : null}
       <RenderCounter />

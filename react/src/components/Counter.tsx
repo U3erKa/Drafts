@@ -15,10 +15,7 @@ export default class Counter extends Component<CounterProps, CounterState> {
   }
 
   static defaultProps: CounterProps = {};
-  static getDerivedStateFromProps(
-    nextProps: CounterProps,
-    prevState: CounterState,
-  ): CounterState | null {
+  static getDerivedStateFromProps(nextProps: CounterProps, prevState: CounterState): CounterState | null {
     return false ? { count: 2 } : null;
   }
 
@@ -26,28 +23,18 @@ export default class Counter extends Component<CounterProps, CounterState> {
     this.setState({});
   }
 
-  shouldComponentUpdate(
-    nextProps: CounterProps,
-    nextState: CounterState,
-    nextContext: any,
-  ): boolean {
+  shouldComponentUpdate(nextProps: CounterProps, nextState: CounterState, nextContext: any): boolean {
     // if (nextProps.count !== nextContext.) {}
     return true;
   }
 
-  componentDidUpdate(
-    prevProps: CounterProps,
-    prevState: CounterState,
-    snapshot?: any,
-  ): void {
+  componentDidUpdate(prevProps: CounterProps, prevState: CounterState, snapshot?: any): void {
     // if (prevProps.count !== this.) {}
   }
 
   componentWillUnmount(): void {}
 
-  handleClick: MouseEventHandler<HTMLButtonElement | HTMLAnchorElement> = (
-    e,
-  ) => {
+  handleClick: MouseEventHandler<HTMLButtonElement | HTMLAnchorElement> = (e) => {
     console.log(`${e.clientX}, ${e.clientY}`);
     this.setState(({ count }) => ({
       count: ++count,

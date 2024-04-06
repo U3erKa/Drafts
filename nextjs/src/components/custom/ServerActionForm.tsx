@@ -12,8 +12,7 @@ export type ServerActionFormProps = {
 export function ServerActionForm({ serverAction }: ServerActionFormProps) {
   const [state, action] = useFormState(submitForm, undefined);
 
-  const clientAction = (formData: FormData) =>
-    console.log(Object.fromEntries(formData));
+  const clientAction = (formData: FormData) => console.log(Object.fromEntries(formData));
 
   return (
     <form action={action}>
@@ -22,9 +21,7 @@ export function ServerActionForm({ serverAction }: ServerActionFormProps) {
       <Button formAction={serverAction}>Server action</Button>
       <SubmitButton className="min-w-[120px]" />
       <p className="text-secondary">
-        {state === undefined
-          ? 'No submits yet'
-          : `Last submit ${state ? 'was successful' : 'has failed'}`}
+        {state === undefined ? 'No submits yet' : `Last submit ${state ? 'was successful' : 'has failed'}`}
       </p>
     </form>
   );

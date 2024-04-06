@@ -12,10 +12,7 @@ const HeaderUserCard = (props: {
     <div>
       {user && <img alt={user.name} src={user.src} />}
 
-      <button
-        style={{ padding: '20px', backgroundColor: 'lightblue' }}
-        onClick={logout}
-      >
+      <button style={{ padding: '20px', backgroundColor: 'lightblue' }} onClick={logout}>
         Logout
       </button>
     </div>

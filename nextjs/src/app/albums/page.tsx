@@ -5,9 +5,7 @@ import { Loading } from '@/components';
 import type { AlbumEntry } from '@/api/types';
 import styles from './page.module.scss';
 
-const AlbumsListEntries: FC<{ albums: Promise<AlbumEntry[]> }> = ({
-  albums,
-}) => {
+const AlbumsListEntries: FC<{ albums: Promise<AlbumEntry[]> }> = ({ albums }) => {
   const usableAlbums = use(albums);
   return (
     <ul className={styles.albumsList}>
@@ -21,9 +19,7 @@ const AlbumsListEntries: FC<{ albums: Promise<AlbumEntry[]> }> = ({
 };
 
 const AlbumsList = function () {
-  const albums = getFromJsonPlaceholder<AlbumEntry[]>(
-    JSONPLACEHOLDER_RESOURCES.ALBUMS,
-  );
+  const albums = getFromJsonPlaceholder<AlbumEntry[]>(JSONPLACEHOLDER_RESOURCES.ALBUMS);
 
   return (
     <main>

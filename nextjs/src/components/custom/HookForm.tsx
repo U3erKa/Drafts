@@ -15,10 +15,7 @@ export function HookForm() {
   return (
     <FormProvider {...methods}>
       <form onSubmit={methods.handleSubmit(console.log)}>
-        <FormField
-          name="firstName"
-          render={({ field }) => <Input {...field} />}
-        />
+        <FormField name="firstName" render={({ field }) => <Input {...field} />} />
         <FormFieldProvider name="lastName">
           <Input {...methods.register('lastName')} />
         </FormFieldProvider>

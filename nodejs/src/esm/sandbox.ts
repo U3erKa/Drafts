@@ -21,9 +21,7 @@ console.log('index.ts');
 async function readdir() {
   try {
     const filesArr = await fs.readdir(__dirname);
-    const hiddenFiles = filesArr.filter(
-      (filename: string) => filename[0] === '.',
-    );
+    const hiddenFiles = filesArr.filter((filename: string) => filename[0] === '.');
     console.log(hiddenFiles);
   } catch (error) {
     console.log(error);
@@ -31,11 +29,9 @@ async function readdir() {
 }
 // readdir();
 
-const sumOfThree = (num1: number, num2: number, num3: number) =>
-  num1 + num2 + num3;
+const sumOfThree = (num1: number, num2: number, num3: number) => num1 + num2 + num3;
 
-const curriedSum = (num1: number) => (num2: number) => (num3: number) =>
-  num1 + num2 + num3;
+const curriedSum = (num1: number) => (num2: number) => (num3: number) => num1 + num2 + num3;
 
 function curry(func: (...args: unknown[]) => unknown) {
   return function curried(...args: unknown[]) {

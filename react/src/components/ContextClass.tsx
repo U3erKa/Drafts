@@ -1,11 +1,4 @@
-import {
-  Component,
-  ContextType,
-  createContext,
-  FC,
-  ReactElement,
-  useContext,
-} from 'react';
+import { Component, ContextType, createContext, FC, ReactElement, useContext } from 'react';
 
 interface IContext {
   isAuth: boolean;

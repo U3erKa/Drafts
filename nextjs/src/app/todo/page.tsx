@@ -20,9 +20,7 @@ const TodoListEntries: FC<{ todos: Promise<TodoEntry[]> }> = ({ todos }) => {
 };
 
 const TodoList = function () {
-  const todos = getFromJsonPlaceholder<TodoEntry[]>(
-    JSONPLACEHOLDER_RESOURCES.TODOS,
-  );
+  const todos = getFromJsonPlaceholder<TodoEntry[]>(JSONPLACEHOLDER_RESOURCES.TODOS);
 
   return (
     <main>

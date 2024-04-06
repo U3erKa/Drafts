@@ -28,19 +28,11 @@ export type RegistrationData = {
 };
 
 export type RegistrationFormProps = {
-  onDataAction: (
-    data: z.infer<typeof registrationSchema>,
-  ) => Promise<RegistrationData>;
-  onFormAction: (
-    prevState: RegistrationData,
-    data: FormData,
-  ) => Promise<RegistrationData>;
+  onDataAction: (data: z.infer<typeof registrationSchema>) => Promise<RegistrationData>;
+  onFormAction: (prevState: RegistrationData, data: FormData) => Promise<RegistrationData>;
 };
 
-export const RegistrationForm = ({
-  onDataAction,
-  onFormAction,
-}: RegistrationFormProps) => {
+export const RegistrationForm = ({ onDataAction, onFormAction }: RegistrationFormProps) => {
   const [state, formAction] = useFormState(onFormAction, {
     message: '',
   });

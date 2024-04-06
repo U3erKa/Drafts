@@ -1,9 +1,4 @@
-import {
-  ClipboardEventHandler,
-  Component,
-  FocusEventHandler,
-  FormEventHandler,
-} from 'react';
+import { ClipboardEventHandler, Component, FocusEventHandler, FormEventHandler } from 'react';
 
 export default class Form extends Component<{}, {}> {
   // [x: string]: FormEventHandler<HTMLFormElement> | undefined;
@@ -24,12 +19,7 @@ export default class Form extends Component<{}, {}> {
       <form onSubmit={this.handleSubmit}>
         <label>
           Sample text
-          <input
-            onFocus={this.handleFocus}
-            onCopy={this.handleCopy}
-            type="text"
-            name="text"
-          />
+          <input onFocus={this.handleFocus} onCopy={this.handleCopy} type="text" name="text" />
           <button type="submit">Submit</button>
         </label>
       </form>

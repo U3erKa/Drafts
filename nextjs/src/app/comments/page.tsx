@@ -5,9 +5,7 @@ import { Loading } from '@/components';
 import type { CommentEntry } from '@/api/types';
 import styles from './page.module.scss';
 
-const CommentsListEntries: FC<{ comments: Promise<CommentEntry[]> }> = ({
-  comments,
-}) => {
+const CommentsListEntries: FC<{ comments: Promise<CommentEntry[]> }> = ({ comments }) => {
   const usableComments = use(comments);
   return (
     <ul className={styles.commentsList}>
@@ -25,9 +23,7 @@ const CommentsListEntries: FC<{ comments: Promise<CommentEntry[]> }> = ({
 };
 
 const CommentsList = function () {
-  const comments = getFromJsonPlaceholder<CommentEntry[]>(
-    JSONPLACEHOLDER_RESOURCES.COMMENTS,
-  );
+  const comments = getFromJsonPlaceholder<CommentEntry[]>(JSONPLACEHOLDER_RESOURCES.COMMENTS);
 
   return (
     <main>

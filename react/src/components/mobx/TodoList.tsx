@@ -23,15 +23,11 @@ export const TodoList = observer(function TodoList({ store }: TodoListProps) {
           <TodoView todo={todo} key={idx} />
         ))}
       </ul>
-      {store.pendingRequests > 0 ? (
-        <div className="marquee">Loading...</div>
-      ) : null}
+      {store.pendingRequests > 0 ? <div className="marquee">Loading...</div> : null}
       <button onClick={onNewTodo}>New Todo</button>
       <input
         value={peopleStore[1].name}
-        onChange={(event) =>
-          runInAction(() => (peopleStore[1].name = event.target.value))
-        }
+        onChange={(event) => runInAction(() => (peopleStore[1].name = event.target.value))}
       />
       <small> (double-click a todo to edit)</small>
       <RenderCounter />

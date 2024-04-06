@@ -7,9 +7,7 @@ import { UserEntry } from 'types/api/getFromJsonPlaceholder';
 import { UserSliceState } from 'types/slices';
 
 const Users: FC = function () {
-  const { users, isLoading, error } = useSelector<RootState, UserSliceState>(
-    (state) => state.users,
-  );
+  const { users, isLoading, error } = useSelector<RootState, UserSliceState>((state) => state.users);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -23,10 +21,7 @@ const Users: FC = function () {
       <section>
         {isLoading && <div>Loading...</div>}
         {error}
-        {users.length > 0 &&
-          users.map((user: UserEntry) => (
-            <article key={user.id}>{JSON.stringify(user)}</article>
-          ))}
+        {users.length > 0 && users.map((user: UserEntry) => <article key={user.id}>{JSON.stringify(user)}</article>)}
       </section>
     </>
   );

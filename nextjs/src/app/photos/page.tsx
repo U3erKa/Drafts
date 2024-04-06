@@ -4,9 +4,7 @@ import { JSONPLACEHOLDER_RESOURCES, getFromJsonPlaceholder } from '@/api/fetch';
 import { Loading } from '@/components';
 import type { PhotoEntry } from '@/api/types';
 
-const PhotosListEntries: FC<{ photos: Promise<PhotoEntry[]> }> = ({
-  photos,
-}) => {
+const PhotosListEntries: FC<{ photos: Promise<PhotoEntry[]> }> = ({ photos }) => {
   const usablePhotos = use(photos);
   return (
     <ul>
@@ -25,9 +23,7 @@ const PhotosListEntries: FC<{ photos: Promise<PhotoEntry[]> }> = ({
 };
 
 const PhotosList = function () {
-  const photos = getFromJsonPlaceholder<PhotoEntry[]>(
-    JSONPLACEHOLDER_RESOURCES.PHOTOS,
-  );
+  const photos = getFromJsonPlaceholder<PhotoEntry[]>(JSONPLACEHOLDER_RESOURCES.PHOTOS);
 
   return (
     <main>

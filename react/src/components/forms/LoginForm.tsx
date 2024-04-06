@@ -24,25 +24,10 @@ export default function LoginForm() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        name="email"
-        value={state.email}
-        onChange={handleChange}
-      />
-      <input
-        type="password"
-        name="password"
-        value={state.password}
-        onChange={handleChange}
-      />
+      <input type="text" name="email" value={state.email} onChange={handleChange} />
+      <input type="password" name="password" value={state.password} onChange={handleChange} />
       <label>
-        <input
-          type="checkbox"
-          name="isRemembering"
-          checked={state.isRemembering}
-          onChange={handleChange}
-        />
+        <input type="checkbox" name="isRemembering" checked={state.isRemembering} onChange={handleChange} />
         Remember me
       </label>
       <button>Login</button>

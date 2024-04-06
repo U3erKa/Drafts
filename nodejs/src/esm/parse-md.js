@@ -1,28 +1,28 @@
 #!/usr/bin/env node
 
-import fs from "fs"
+import fs from 'fs';
 /** @type {{encoding: "utf8"}} */
-const fsOptions = { encoding: "utf8" }
+const fsOptions = { encoding: 'utf8' };
 
-const title = "Electrician"
-const files = fs.readdirSync(".", fsOptions).filter((file) => file.includes(".m4a"))
+const title = 'Electrician';
+const files = fs.readdirSync('.', fsOptions).filter((file) => file.includes('.m4a'));
 
-const resultFile = "result.md"
-fs.writeFileSync(resultFile, `# ${title}\n`, fsOptions)
+const resultFile = 'result.md';
+fs.writeFileSync(resultFile, `# ${title}\n`, fsOptions);
 
-let chapterChar = ""
-let chapter = 0
+let chapterChar = '';
+let chapter = 0;
 
 files.forEach((file) => {
-  const contents = fs.readFileSync(file, fsOptions)
-  const heading = file.substring(0, file.lastIndexOf(".txt"))
+  const contents = fs.readFileSync(file, fsOptions);
+  const heading = file.substring(0, file.lastIndexOf('.txt'));
 
-  const [char] = file
+  const [char] = file;
   if (chapterChar !== char) {
     // @ts-expect-error
-    chapterChar = char
-    chapter++
-    fs.appendFileSync(resultFile, `## Part ${chapter}\n`)
+    chapterChar = char;
+    chapter++;
+    fs.appendFileSync(resultFile, `## Part ${chapter}\n`);
   }
 
   fs.appendFileSync(
@@ -31,5 +31,5 @@ files.forEach((file) => {
 
 ${contents}
 `,
-  )
-})
+  );
+});

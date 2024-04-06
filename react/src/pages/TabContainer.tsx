@@ -24,10 +24,7 @@ const TabContainer = memo(function TabContainer() {
       <TabButton isActive={tab === 'about'} onClick={() => selectTab('about')}>
         about
       </TabButton>
-      <TabButton
-        isActive={tab === 'loremium'}
-        onClick={() => selectTab('loremium')}
-      >
+      <TabButton isActive={tab === 'loremium'} onClick={() => selectTab('loremium')}>
         loremium
       </TabButton>
       <TabButton isActive={tab === 'slow'} onClick={() => selectTab('slow')}>

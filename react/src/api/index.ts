@@ -9,10 +9,7 @@ export async function getUsers(options): Promise<any> {
     nat: API_CONSTANTS.NATIONALITY,
     inc: API_CONSTANTS.INCLUDES,
   };
-  const queryParams = queryString.stringify(
-    { ...defaultOptions, ...options },
-    { arrayFormat: 'comma' },
-  );
+  const queryParams = queryString.stringify({ ...defaultOptions, ...options }, { arrayFormat: 'comma' });
 
   const data = await fetch(`${API_CONSTANTS.BASE_URL}?${queryParams}`);
   const result = await data.json();

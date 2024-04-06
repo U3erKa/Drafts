@@ -16,15 +16,10 @@ const initialValues: User = {
 };
 
 export default function Register() {
-  const { isLoading, error } = useSelector<RootState, AuthSliceState>(
-    (state) => state.auth,
-  );
+  const { isLoading, error } = useSelector<RootState, AuthSliceState>((state) => state.auth);
 
   const dispatch = useDispatch();
-  const handleSubmit = (
-    values: typeof initialValues,
-    formikBag: FormikHelpers<typeof initialValues>,
-  ) => {
+  const handleSubmit = (values: typeof initialValues, formikBag: FormikHelpers<typeof initialValues>) => {
     dispatch(register(values) as unknown as AnyAction);
     formikBag.resetForm();
   };

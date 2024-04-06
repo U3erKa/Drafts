@@ -20,9 +20,7 @@ const PostsListEntries: FC<{ posts: Promise<PostEntry[]> }> = ({ posts }) => {
 };
 
 const PostsList: FC = function () {
-  const posts = getFromJsonPlaceholder<PostEntry[]>(
-    JSONPLACEHOLDER_RESOURCES.POSTS,
-  );
+  const posts = getFromJsonPlaceholder<PostEntry[]>(JSONPLACEHOLDER_RESOURCES.POSTS);
 
   return (
     <main>

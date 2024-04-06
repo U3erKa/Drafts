@@ -11,19 +11,16 @@ const initialState: AuthSliceState = {
   error: null as any,
 };
 
-const register = createAsyncThunk(
-  `${SLICE_NAME}/register`,
-  async (arg: User, thunkAPI) => {
-    try {
-      const {
-        data: { data: user },
-      } = await API.registerUser(arg);
-      return user as User;
-    } catch (error: any) {
-      return thunkAPI.rejectWithValue(error.response.data.error as string);
-    }
-  },
-);
+const register = createAsyncThunk(`${SLICE_NAME}/register`, async (arg: User, thunkAPI) => {
+  try {
+    const {
+      data: { data: user },
+    } = await API.registerUser(arg);
+    return user as User;
+  } catch (error: any) {
+    return thunkAPI.rejectWithValue(error.response.data.error as string);
+  }
+});
 
 const authSlice = createSlice({
   name: SLICE_NAME,
