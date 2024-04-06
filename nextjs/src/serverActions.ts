@@ -14,6 +14,10 @@ export async function submitForm(_state: any, formData: FormData) {
   }
 }
 
+export async function logValues(formData: FormData) {
+  console.log(Object.fromEntries(formData));
+}
+
 export async function validateZipcode(zipcode: string): Promise<boolean> {
   console.log('validateZipcode on SERVER', zipcode);
   return /^\d{5}$/.test(zipcode) && zipcode.startsWith('9');

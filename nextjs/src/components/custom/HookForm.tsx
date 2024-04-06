@@ -1,7 +1,7 @@
 'use client';
 
 import { useForm } from 'react-hook-form';
-import { Form, FormField, FormFieldProvider } from '@/components/ui/form';
+import { FormProvider, FormField, FormFieldProvider } from '@/components/ui/form';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useState } from 'react';
@@ -13,7 +13,7 @@ export function HookForm() {
   const [age, setAge] = useState(0);
 
   return (
-    <Form {...methods}>
+    <FormProvider {...methods}>
       <form onSubmit={methods.handleSubmit(console.log)}>
         <FormField
           name="firstName"
@@ -36,6 +36,6 @@ export function HookForm() {
         </FormFieldProvider>
         <Button type="submit">Submit</Button>
       </form>
-    </Form>
+    </FormProvider>
   );
 }

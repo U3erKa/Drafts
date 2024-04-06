@@ -10,8 +10,9 @@ import {
 import { RegistrationForm } from '@/components/custom/RegistrationForm';
 import { ArbitraryActionButton } from '@/components/custom/ArbitraryActionButton';
 import { onDataAction, onFormAction } from '@/serverActions';
+import { HookFormComponent } from '@/components/custom/HookFormComponent';
 
-export const routes = [
+const routes = [
   { path: '/', name: 'Home' },
   { path: '/posts', name: 'Posts' },
   { path: '/comments', name: 'Comments' },
@@ -29,7 +30,7 @@ export default function Home() {
     console.log(Object.fromEntries(formData));
   };
 
-  const arbitraryAction = async <T extends { [key: PropertyKey]: any }>(
+  const arbitraryAction = async <T extends { [key: PropertyKey]: unknown }>(
     state: T,
     data: T,
   ) => {
@@ -54,6 +55,10 @@ export default function Home() {
       <div>
         <h2 className="text-secondary">Hook form</h2>
         <HookForm />
+      </div>
+      <div>
+        <h2 className="text-secondary">Progressive hook form</h2>
+        <HookFormComponent />
       </div>
       <div>
         <h2 className="text-secondary">Server action form</h2>

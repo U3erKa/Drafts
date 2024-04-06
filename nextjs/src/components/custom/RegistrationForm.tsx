@@ -5,7 +5,7 @@ import { useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import {
-  Form,
+  FormProvider,
   FormControl,
   FormDescription,
   FormField,
@@ -85,7 +85,7 @@ export const RegistrationForm = ({
   };
 
   return (
-    <Form {...form}>
+    <FormProvider {...form}>
       <div>{state?.message}</div>
       <form
         ref={formRef}
@@ -154,6 +154,6 @@ export const RegistrationForm = ({
         />
         <Button type="submit">Submit</Button>
       </form>
-    </Form>
+    </FormProvider>
   );
 };
