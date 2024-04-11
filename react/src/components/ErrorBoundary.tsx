@@ -1,6 +1,10 @@
-import { Component, type ReactNode } from 'react';
+import { Component, type ErrorInfo, type PropsWithChildren, type ReactNode } from 'react';
 
-export type Props = { fallback: ReactNode; children: ReactNode };
+export type Props = PropsWithChildren<{
+  fallback: ReactNode;
+  onError?: (error: unknown, info: ErrorInfo) => void;
+}>;
+
 export type State = {
   hasError: boolean;
   error: State['hasError'] extends true ? unknown : null;
@@ -12,9 +16,10 @@ export default class ErrorBoundary extends Component<Props, State> {
     return { hasError: true, error };
   }
 
-  componentDidCatch(error: unknown, info: { componentStack: string }) {
+  componentDidCatch(error: unknown, errorInfo: ErrorInfo) {
     console.error(error);
-    console.warn(info);
+    console.warn(errorInfo);
+    this.props.onError?.(error, errorInfo);
   }
   render() {
     if (this.state.hasError) return this.props.fallback;
