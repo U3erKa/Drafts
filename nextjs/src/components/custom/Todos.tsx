@@ -8,18 +8,24 @@ export function AddTodo() {
   const [todos, setTodos] = useLocalStorage<string[]>('todos');
   const inputRef = useRef<HTMLInputElement>(null);
 
+  function addTodo() {
+    inputRef.current?.focus();
+    if (!inputRef.current?.value) return;
+    setTodos([...(todos ?? []), inputRef.current.value]);
+    inputRef.current.value = '';
+  }
+
+  function clearTodos() {
+    inputRef.current?.focus();
+    setTodos();
+  }
+
   return (
     <>
-      <Button
-        onClick={() => {
-          if (!inputRef.current?.value) return;
-          setTodos([...(todos ?? []), inputRef.current.value]);
-          inputRef.current.value = '';
-        }}
-      >
-        Add todo
-      </Button>
-      <Button onClick={() => setTodos()}>Clear todos</Button>
+      <div className="flex gap-4">
+        <Button onClick={addTodo}>Add todo</Button>
+        <Button onClick={clearTodos}>Clear todos</Button>
+      </div>
       <Input ref={inputRef} className="text-primary" />
     </>
   );
