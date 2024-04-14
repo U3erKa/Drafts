@@ -8,16 +8,12 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export const promisify = function promisify(func: (...args: any[]) => void) {
-  return function (...args: any) {
-    return new Promise((resolve, reject) => {
-      function callback(err: unknown, result: any) {
-        err != null ? reject(err) : resolve(result);
-      }
-      // @ts-expect-error
-      func.call(this, ...args, callback);
+export const promisify = function (func: (...args: any[]) => void) {
+  return (...args: any[]) =>
+    new Promise((resolve, reject) => {
+      const callback = (err: unknown, result: any) => (err != null ? reject(err) : resolve(result));
+      func(...args, callback);
     });
-  };
 } as typeof promisifyUtil;
 
 export const registrationSchema = z.object({
