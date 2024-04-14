@@ -8,6 +8,7 @@ import { RegistrationForm } from '@/components/custom/RegistrationForm';
 import { ArbitraryActionButton } from '@/components/custom/ArbitraryActionButton';
 import { onDataAction, onFormAction } from '@/serverActions';
 import { HookFormComponent } from '@/components/custom/HookFormComponent';
+import { AddTodo, TodoList } from '@/components/custom/Todos';
 
 const routes = [
   { path: '/', name: 'Home' },
@@ -33,6 +34,10 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-slate-800">
+      <div className="w-fit">
+        <AddTodo />
+        <TodoList />
+      </div>
       <nav>
         <ul>
           {routes.map(({ name, path }) => (
