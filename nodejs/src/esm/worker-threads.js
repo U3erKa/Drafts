@@ -17,7 +17,8 @@ function launchWorker(workerPath, options) {
       .once('error', reject)
       .once('messageerror', reject)
       .once('exit', (code) => {
-        if (code !== 0) reject(new Error(`Worker stopped with exit code ${code}`));
+        if (code === 0) return resolve();
+        reject(new Error(`Worker stopped with exit code ${code}`));
       });
     // worker.terminate()
   });
@@ -39,7 +40,8 @@ export function createWorker(workerPath, options) {
         .once('message', resolve)
         .once('messageerror', reject)
         .once('close', (/** @type {*} */ code) => {
-          if (code !== 0) reject(new Error(`Worker stopped with exit code ${code}`));
+          if (code === 0) return resolve();
+          reject(new Error(`Worker stopped with exit code ${code}`));
         });
     });
   }
