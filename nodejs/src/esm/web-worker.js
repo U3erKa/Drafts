@@ -3,13 +3,21 @@ import { getNumberOfDigits } from './sortingUtils.js';
 self.addEventListener(
   'message',
   (e) => {
-    const time = performance.now();
-    for (let i = 0; i < 1_000_000_000; i++) {
-      /* empty */
-    }
+    try {
+      const time = performance.now();
+      for (let i = 0; i < 1_000_000_000; i++) {
+        /* empty */
+      }
 
-    self.postMessage({ ...e.data, time: performance.now() - time, digits: getNumberOfDigits(e.data.i) });
-    // self.close()
+      if (e.data.i === undefined) throw new Error("'i' is not defined");
+      self.postMessage({ ...e.data, time: performance.now() - time, digits: getNumberOfDigits(e.data.i || 1) });
+      // self.close()
+    } catch (error) {
+      throw JSON.stringify({
+        ...e.data,
+        error: { ...error, name: error?.name, message: error?.message, stack: error?.stack },
+      });
+    }
   },
   // { once: true },
 );

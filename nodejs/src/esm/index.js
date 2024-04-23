@@ -24,7 +24,7 @@ export function launchWorker(workerPath, options) {
 }
 
 /**
- * @template T
+ * @template {{ [key: PropertyKey]: any }} T
  * @template R
  * @param {string | URL} workerPath
  * @param {WorkerOptions | undefined} [options]
@@ -32,34 +32,42 @@ export function launchWorker(workerPath, options) {
  */
 export function createWorker(workerPath, options) {
   const worker = new Worker(workerPath, options)
-  function invokeWorker(/** @type {*} */ workerData) {
-    worker.postMessage(workerData)
+  function invokeWorker(/** @type {T} */ workerData) {
+    const id = crypto.randomUUID();
+    worker.postMessage({ ...workerData, id });
     return new Promise((resolve, reject) => {
       const handleMessage = (/** @type {MessageEvent} */ e) => {
-        resolve(e.data)
-      }
-      const handleError = (/** @type {ErrorEvent | MessageEvent} */ e) => {
-        reject(e instanceof MessageEvent ? e.data : e.error ?? e.message)
+        if (e.data.id === id) resolve(e.data);
+      };
+      const handleError = (/** @type {ErrorEvent} */ e) => {
+        const message = JSON.parse(e.message.replace(/Uncaught [^\{]*/, ''));
+        if (message.id === id) reject(message);
+      };
+      const handleMessageError = (/** @type {MessageEvent} */ e) => {
+        reject(e.data)
       }
       worker.addEventListener("message", handleMessage, { once: true })
       worker.addEventListener("error", handleError, { once: true })
-      worker.addEventListener("messageerror", handleError, { once: true })
+      worker.addEventListener("messageerror", handleMessageError, { once: true })
     })
   }
-  return [invokeWorker, () => worker.terminate()]
+  return [invokeWorker, () => worker.terminate()];
 }
 
 const workers = Array.from({ length: navigator.hardwareConcurrency }).map(() =>
   createWorker("web-worker.js", { type: "module" }),
 )
-function runWorkers() {
-  const messages = workers.map(([invokeWorker, terminateWorker], i) => invokeWorker({ hello: "world", i }))
-  return Promise.all(messages).then(console.log)
+async function runWorkers() {
+  const messages = workers.map(([invokeWorker, terminateWorker], i) => invokeWorker({ hello: 'world', i }));
+  const data = await Promise.all(messages);
+  return console.log(data);
 }
 const interval = setInterval(runWorkers, 5000)
 setTimeout(() => {
   clearInterval(interval)
-  workers.map(([invokeWorker, terminateWorker]) => terminateWorker())
+  for (const [invokeWorker, terminateWorker] of workers) {
+    terminateWorker();
+  }
 }, 60 * 1000)
 
 /*
