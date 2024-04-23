@@ -37,17 +37,23 @@ export function createWorker(workerPath, options) {
     worker.postMessage({ ...workerData, id });
     return new Promise((resolve, reject) => {
       const handleMessage = (/** @type {MessageEvent} */ e) => {
-        if (e.data.id === id) resolve(e.data);
+        if (e.data.id === id) {
+          resolve(e.data);
+          worker.removeEventListener('message', handleMessage);
+        }
       };
       const handleError = (/** @type {ErrorEvent} */ e) => {
         const message = JSON.parse(e.message.replace(/Uncaught [^\{]*/, ''));
-        if (message.id === id) reject(message);
+        if (message.id === id) {
+          reject(message);
+          worker.removeEventListener('error', handleError);
+        }
       };
       const handleMessageError = (/** @type {MessageEvent} */ e) => {
         reject(e.data);
       };
-      worker.addEventListener('message', handleMessage, { once: true });
-      worker.addEventListener('error', handleError, { once: true });
+      worker.addEventListener('message', handleMessage);
+      worker.addEventListener('error', handleError);
       worker.addEventListener('messageerror', handleMessageError, { once: true });
     });
   }
