@@ -1,6 +1,7 @@
 import { setMaxListeners } from 'events';
 import { availableParallelism } from 'os';
 import { Worker, isMainThread, parentPort, workerData } from 'worker_threads';
+import { randomUUID } from 'crypto';
 
 /**
  * @template T
@@ -25,7 +26,7 @@ function launchWorker(workerPath, options) {
 }
 
 /**
- * @template T
+ * @template {{ [key: PropertyKey]: any }} T
  * @template R
  * @param {string | URL} workerPath
  * @param {import("worker_threads").WorkerOptions | undefined} [options]
@@ -33,13 +34,25 @@ function launchWorker(workerPath, options) {
  */
 export function createWorker(workerPath, options) {
   const worker = new Worker(workerPath, options);
-  function invokeWorker(/** @type {*} */ workerData) {
-    worker.postMessage(workerData);
+  const id = randomUUID();
+  function invokeWorker(/** @type {T} */ workerData) {
+    worker.postMessage({ ...workerData, id });
     return new Promise((resolve, reject) => {
+      const handleMessage = (/** @type {*} */ data) => {
+        if (data.id !== id) return;
+        resolve(data);
+        worker.off('message', handleMessage);
+      };
+      const handleError = (/** @type {*} */ data) => {
+        if (data.id !== id) return;
+        reject(data);
+        worker.off('error', handleError);
+      };
       worker
-        .once('message', resolve)
-        .once('messageerror', reject)
-        .once('close', (/** @type {*} */ code) => {
+        .on('message', handleMessage)
+        .on('error', handleError)
+        .on('messageerror', reject)
+        .once('exit', (code) => {
           if (code === 0) return resolve();
           reject(new Error(`Worker stopped with exit code ${code}`));
         });
@@ -53,9 +66,10 @@ if (isMainThread) {
   const workers = Array.from({ length: availableParallelism() }).map(() => createWorker(__filename));
   setMaxListeners(0);
   // eslint-disable-next-line no-inner-declarations
-  function runWorkers() {
+  async function runWorkers() {
     const messages = workers.map(([invokeWorker, terminateWorker], i) => invokeWorker({ hello: 'world', i }));
-    return Promise.all(messages).then(console.log);
+    const data = await Promise.all(messages);
+    return console.log(data);
   }
   // runWorkers()
   const interval = setInterval(runWorkers, 5000);
@@ -73,13 +87,20 @@ if (isMainThread) {
   */
 } else {
   parentPort?.on('message', (data) => {
-    const time = performance.now();
-    for (let i = 0; i < 1_000_000_000; i++) {
-      /* empty */
+    try {
+      const time = performance.now();
+      for (let i = 0; i < 1_000_000_000; i++) {
+        /* empty */
+      }
+      // setTimeout(() => {
+      parentPort?.postMessage({ ...workerData, ...data, time: performance.now() - time });
+      // process.exit(0)
+      // }, 1000)
+    } catch (error) {
+      throw {
+        ...data,
+        error: { ...error, name: error?.name, message: error?.message, stack: error?.stack },
+      };
     }
-    // setTimeout(() => {
-    parentPort?.postMessage({ ...workerData, ...data, time: performance.now() - time });
-    // process.exit(0)
-    // }, 1000)
   });
 }
