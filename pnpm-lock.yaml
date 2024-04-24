@@ -630,9 +630,6 @@ importers:
 
   nodejs:
     dependencies:
-      axios:
-        specifier: ^1.6.8
-        version: 1.6.8
       command-line-args:
         specifier: ^5.2.1
         version: 5.2.1
@@ -13384,6 +13381,7 @@ snapshots:
   debug@4.3.4(supports-color@5.5.0):
     dependencies:
       ms: 2.1.2
+    optionalDependencies:
       supports-color: 5.5.0
 
   decode-uri-component@0.4.1: {}
