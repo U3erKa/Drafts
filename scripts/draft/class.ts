@@ -21,7 +21,7 @@ class User {
   constructor(
     public name: string,
     public surname: string,
-    public age?: number,
+    public age: number = 0,
   ) {}
 
   isAdult(adultAge = 18) {
@@ -46,7 +46,7 @@ class Worker {
   //   this.daysWorked = daysWorked;
   // }
 
-  #firstName: string;
+  #firstName?: string;
   constructor(
     firstName: string,
     private _lastName: string,
@@ -150,8 +150,8 @@ class Animal {
   constructor(
     public species: string,
     name: string,
-    public color: string,
-    public diet: string,
+    public color?: string,
+    public diet?: string,
   ) {
     this.name = name;
   }
@@ -273,8 +273,8 @@ class Triangle extends Figure {
 }
 
 class Rectangle extends Figure {
-  #sideA: number;
-  #sideB: number;
+  #sideA!: number;
+  #sideB!: number;
   constructor(a: number, b: number) {
     super('rectangle');
     this.sideA = a;
@@ -337,10 +337,7 @@ const triangle1 = new Triangle(10, 5, 3, 8);
 const rect1 = new Rectangle(5, 8);
 const rhombus1 = new Rhombus(5, 7);
 
-function getFigureArea(
-  figure: { getArea: (mode: string) => number },
-  mode: string,
-) {
+function getFigureArea(figure: { getArea: (mode: string) => number }, mode: string) {
   if (figure instanceof Figure) {
     return figure.getArea(mode);
   }
@@ -381,9 +378,8 @@ class Animal {
 
 class Cat extends Animal {
   speech: string;
-  nickname: string;
+  nickname?: string;
   constructor(nickname: string, speech = 'meow', diet = 'fish') {
-    // @ts-ignore
     super('Cat', nickname);
     this.speech = speech;
     this.diet = diet;
@@ -401,11 +397,7 @@ class Cat extends Animal {
 const cat1 = new Cat('Pushok');
 
 const trainer = {
-  trainVoice: function (animal: {
-    nickname: string;
-    speak: () => string;
-    speech: string;
-  }) {
+  trainVoice: function (animal: { nickname: string; speak: () => string; speech: string }) {
     if (!(animal instanceof Animal)) {
       throw new TypeError();
     }

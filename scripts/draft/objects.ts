@@ -17,7 +17,7 @@ const phone = {
     frequency: 4,
     frequencyUnit: 'GHz',
   },
-  test: 'test',
+  test: 'test' as string | undefined,
 };
 
 // CRUD!!!
@@ -42,18 +42,9 @@ phone.battery = 4000;
 delete phone.test;
 
 //constructor function, starts from capital letter
-type UserConstructor = new (
-  name: string,
-  surname: string,
-  age?: number,
-) => void;
+type UserConstructor = new (name: string, surname: string, age?: number) => void;
 
-// @ts-expect-error
-const User: UserConstructor = function (
-  name: string,
-  surname: string,
-  age: number,
-): void {
+const User = function (this: any, name: string, surname: string, age: number): void {
   this.name = name;
   this.surname = surname;
   this.age = age;
@@ -62,7 +53,7 @@ const User: UserConstructor = function (
     console.log('In progress...');
   };
   // return NaN; // return can't work here
-};
+} as unknown as UserConstructor;
 
 const user001 = new User('Vik', 'S', undefined);
 const user002 = new User('Viktor', 'U3', 69420);
@@ -84,9 +75,7 @@ if (isNaN(number1 - number2)) {
   console.log('ERROR!');
 } else {
   console.log(`${number1} * ${number2} = ${number1 * number2}`);
-  console.log(
-    `${number1} > ${number2} ? ${number1 > number2 ? 'true' : 'false'}`,
-  );
+  console.log(`${number1} > ${number2} ? ${number1 > number2 ? 'true' : 'false'}`);
 }
 
 const key = 'age';
@@ -94,15 +83,13 @@ const key = 'age';
 const user101 = {
   name: 'Vik',
   100: 'S.',
-  // @ts-expect-error
-  [key]: undefined,
+  [key]: undefined as number | undefined,
   'brush teeth': function () {
     console.log('Done!');
   },
 };
 
 console.log(user101['brush teeth']);
-// @ts-expect-error
 console.log(user101[10 * 10]);
 console.log(key);
 console.log(user101[key]);

@@ -1,4 +1,4 @@
-let value = 500;
+const value = 500;
 function log() {
   console.log(`log ${value}`);
 }
@@ -6,7 +6,7 @@ function wrapper() {
   // function log() {
   //   console.log(value)
   // }
-  let value = 100000;
+  const value = 100000;
   console.log(`wrapper ${value}`);
   log();
 }

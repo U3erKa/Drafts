@@ -1,15 +1,15 @@
 const result = 2 + 2 * 2;
 let num = 5;
 let num2 = 10;
-let negativeNum = -9;
-let verdict = true;
-let val = NaN;
+const negativeNum = -9;
+const verdict = true;
+const val = NaN;
 const number = 100;
-let t1 = 40,
+const t1 = 40,
   t2 = 30,
   t3 = 20,
   t4 = 10;
-let x = 10;
+const x = 10;
 
 // some possible operations + - * / % **
 

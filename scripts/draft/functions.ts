@@ -52,9 +52,7 @@ const newspaper = {
 
   showArticles: function () {
     this.articles.forEach((article: Article) => {
-      console.log(
-        `Newspaper ${this.name} Article: ${article.name} Author ${article.author} Text ${article.text}`,
-      );
+      console.log(`Newspaper ${this.name} Article: ${article.name} Author ${article.author} Text ${article.text}`);
     });
   },
   // showArticles1: function () {
@@ -73,8 +71,7 @@ const newspaper = {
 
 const testObj1 = () => {}; // undefined
 const testObj2 = () => ({}); // object
-const betterSum = (numbers: number[]) =>
-  numbers.reduce((sum, number) => sum + number);
+const betterSum = (numbers: number[]) => numbers.reduce((sum, number) => sum + number);
 
 // const betterSum = (numbers) => {
 //   const sum = numbers.reduce((sum, number, index, array) => {
@@ -124,20 +121,13 @@ type UserConstructor = new (
   isLoggedIn?: boolean,
 ) => void;
 
-// @ts-expect-error
-const User: UserConstructor = function (
-  firstName = '',
-  lastName = '',
-  email: string,
-  age = 0,
-  isLoggedIn = false,
-) {
+const User = function (this: any, firstName = '', lastName = '', email: string, age = 0, isLoggedIn = false) {
   this.firstName = firstName;
   this.lastName = lastName;
   this.email = email;
   this.age = age;
   this.isLoggedIn = isLoggedIn;
-};
+} as unknown as UserConstructor;
 
 const users = [
   new User('U1erKa', 'U1', 'email1@example.com', 18),
@@ -150,15 +140,11 @@ const users = [
 
 const DISALLOWED_WORDS = ['', '+', '-', '*', '/'];
 function filter(string: string) {
-  return string
-    .split(' ')
-    .filter((word: string) => !DISALLOWED_WORDS.includes(word));
+  return string.split(' ').filter((word: string) => !DISALLOWED_WORDS.includes(word));
 }
 
 const biggestWord = (string: string) =>
-  string
-    .split(' ')
-    .reduce((a: string, b: string) => (b.length > a.length ? b : a)).length;
+  string.split(' ').reduce((a: string, b: string) => (b.length > a.length ? b : a)).length;
 
 const lengthOfBiggestWord = (string: string) => {
   let longestWord = '';
@@ -266,9 +252,7 @@ function toPower(number: number, exp: number): number {
   } else if (exp === 0) {
     return 1;
   }
-  return exp > 0
-    ? number * toPower(number, exp - 1)
-    : 1 / (number * toPower(number, Math.abs(exp) - 1));
+  return exp > 0 ? number * toPower(number, exp - 1) : 1 / (number * toPower(number, Math.abs(exp) - 1));
 }
 
 type Tree = { value: number; left?: Tree; right?: Tree };
@@ -334,16 +318,15 @@ function factorial(number: number): number {
   }
   if (number === 0 || number === 1) {
     return 1;
-  } else if (number > 1) {
-    return number * factorial(number - 1);
   }
+  return number * factorial(number - 1);
 }
 
 try {
   // factorial(-10)
   // @ts-expect-error
   factorial('100');
-} catch (error) {
+} catch (error: any) {
   console.log(error);
   console.log(error.message);
   if (error instanceof TypeError) {

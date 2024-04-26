@@ -8,7 +8,6 @@ const obj = {
 };
 
 for (const key in obj) {
-  // @ts-ignore
   console.log(`${key}: ${obj[key]}`);
 }
 
@@ -18,9 +17,7 @@ console.log(`${symbol1.description}: ${obj[symbol1]}`);
 
 const arr = [1, 2, 3, 4, 5];
 const iterator = arr[Symbol.iterator]();
-const phones = [
-  145624567435, 3453464574567, 34545772456, 356724565452635, 23456345674526,
-];
+const phones = [145624567435, 3453464574567, 34545772456, 356724565452635, 23456345674526];
 const str3 = '12qasdsdfgwedf';
 
 // for (const iterator of phones) {

@@ -2,16 +2,12 @@ const friendName = 'Vik';
 const bigBadBossGuy = 'Vik';
 const bigShot = 'Viktor';
 const notMe = 'U2erKa';
-const input = prompt('Choose your skill:\n1 - Power\n2 - Health\n3 - Speed');
+const input = prompt('Choose your skill:\n1 - Power\n2 - Health\n3 - Speed')!;
 
 const getSumOfTwo = function (num1: number, num2: number) {
+  // eslint-disable-next-line no-debugger
   debugger;
-  if (
-    typeof num1 === 'number' &&
-    typeof num2 === 'number' &&
-    !isNaN(num1) &&
-    !isNaN(num2)
-  ) {
+  if (typeof num1 === 'number' && typeof num2 === 'number' && !isNaN(num1) && !isNaN(num2)) {
     const result = num1 + num2;
     return result;
   } else {
@@ -30,21 +26,21 @@ if (friendName === bigBadBossGuy) {
 }
 
 switch (input) {
-  case '1':
-  // @ts-ignore
-  case 1: {
+  // @ts-expect-error
+  case 1:
+  case '1': {
     console.log('You are strong');
     break;
   }
-  case '2':
-  // @ts-ignore
-  case 2: {
+  // @ts-expect-error
+  case 2:
+  case '2': {
     console.log('You are vigorous');
     break;
   }
-  case '3':
-  // @ts-ignore
-  case 3: {
+  // @ts-expect-error
+  case 3:
+  case '3': {
     console.log('You are fast');
     break;
   }
@@ -76,7 +72,7 @@ if (+input > 5) {
 const userName = 'U3';
 const isGreeting = true;
 
-let message = isGreeting ? 'Hello ' + userName : 'Bye-bye ' + userName;
+const message = isGreeting ? 'Hello ' + userName : 'Bye-bye ' + userName;
 
 // Big Bad code
 // too bad to use
@@ -87,8 +83,6 @@ let message = isGreeting ? 'Hello ' + userName : 'Bye-bye ' + userName;
 //   : console.log('M-maybe..?');
 
 const verdict = false;
-verdict
-  ? alert('Umm... Hello world..?')
-  : console.log('NaN is actually a number');
+verdict ? alert('Umm... Hello world..?') : console.log('NaN is actually a number');
 
 export {};

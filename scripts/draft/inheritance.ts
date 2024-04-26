@@ -1,6 +1,6 @@
 'use strict';
 
-function Phone(model: string, manufacturer: string) {
+function Phone(this: any, model: string, manufacturer: string) {
   this.model = model;
   this.manufacturer = manufacturer;
 }
@@ -8,7 +8,7 @@ function Phone(model: string, manufacturer: string) {
 // phone1.call === phone2.call is true
 const phoneProto = {
   isOn: false,
-  call: function (number: number | string) {
+  call: function (this: any, number: number | string) {
     console.log(`${this.manufacturer} ${this.model} is caling ${number}`);
   },
   // __proto__: deviceProto,
@@ -22,9 +22,7 @@ const deviceProto = {
 
 Phone.prototype = phoneProto;
 
-// @ts-expect-error
-const phone1: PhoneConstructor = new Phone('Pro', 'Android');
-// @ts-expect-error
+const phone1 = new Phone('Pro', 'Android');
 const phone2 = new Phone('Lite', 'Xiaomi');
 
 // const phone1 = {
