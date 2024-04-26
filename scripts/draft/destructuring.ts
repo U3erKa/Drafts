@@ -69,7 +69,7 @@ shelflessTable.dimentions = restDimentions;
 // arrays
 const arr = [1, 2, 4, [5, 8, 9, 88, 77, 56], 6, 7, 3, 23];
 const arr0 = arr[0];
-// @ts-ignore
+// @ts-expect-error
 const [first, second, third, [firstIn, secondIn], , , last] = arr;
 const [, ...newArr] = arr;
 

@@ -9,7 +9,6 @@ const user001 = {
   age: -1,
 };
 
-// @ts-ignore
-alert(`${promptVar} = ${user001[promptVar]}`);
+if (promptVar) alert(`${promptVar} = ${user001[promptVar]}`);
 
 export {};

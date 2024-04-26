@@ -23,7 +23,7 @@ function App() {
     const token = localStorage.getItem(REFRESH_TOKEN);
 
     if (token) {
-      // @ts-ignore
+      // @ts-expect-error
       dispatch(refresh(token));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

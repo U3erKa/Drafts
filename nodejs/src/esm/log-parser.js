@@ -9,7 +9,6 @@ import promises from 'fs/promises';
 
   lines.forEach((line) => {
     /** @type {[string, string]} */
-    // @ts-ignore
     const [timestamp, message] = line.split(/ \[5\] DHCP[CD]: /);
     timestamps.push(timestamp);
     messages.push(message);
@@ -19,7 +18,6 @@ import promises from 'fs/promises';
   uniqueMessages.forEach((message) => {
     const times = /** @type {string[]} */ ([]);
     messages.forEach((msg, i) => {
-      // @ts-ignore
       if (msg === message) times.push(timestamps[i]);
     });
 

@@ -6,7 +6,7 @@ import { createExtraReducers } from 'utils';
 const SLICE_NAME = 'messages';
 
 const initialState = {
-  messages: [],
+  messages: [] as string[],
   isLoading: false,
   error: null,
 };
@@ -36,7 +36,6 @@ const messageSlice = createSlice({
   initialState,
   reducers: {
     addMessage: (state, action) => {
-      // @ts-ignore
       state.messages.push(action.payload);
     },
     addMessageError: (state, action) => {

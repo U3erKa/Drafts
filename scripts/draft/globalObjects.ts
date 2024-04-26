@@ -7,7 +7,6 @@ const newStr1 = str1.concat('Ipsumius', 'DD');
 const isInString = newStr1.includes('ius');
 const firstCoincidence = newStr1.indexOf('ium');
 const replaceStr1 = newStr1.replace('i', '80086');
-// @ts-ignore
 const replaceAllStr1 = newStr1.replaceAll('i', '80086');
 const sliceStr = newStr1.slice(2, 6);
 const subStr = newStr1.substring(1, 7);

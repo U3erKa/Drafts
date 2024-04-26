@@ -70,22 +70,22 @@ const mapArr = arr12.map(function (currentElement, index) {
 
   switch (index) {
     case 0: {
-      // @ts-ignore
+      // @ts-expect-error
       newObject.telephoneNumber = 911;
       break;
     }
     case 1: {
-      // @ts-ignore
+      // @ts-expect-error
       newObject.telephoneNumber = 912;
       break;
     }
     case 2: {
-      // @ts-ignore
+      // @ts-expect-error
       newObject.telephoneNumber = 913;
       break;
     }
     case 3: {
-      // @ts-ignore
+      // @ts-expect-error
       newObject.telephoneNumber = 914;
       break;
     }
@@ -99,7 +99,7 @@ console.log(arr12);
 console.log(mapArr);
 
 const filterArr = arr13.filter(function (currentElement) {
-  // @ts-ignore
+  // @ts-expect-error
   return currentElement.age >= 18 && currentElement.gender !== undefined;
 });
 

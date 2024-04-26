@@ -18,7 +18,7 @@ function RegisterForm() {
     values: typeof initialValues,
     formikBag: FormikHelpers<typeof initialValues>,
   ) => {
-    // @ts-ignore
+    // @ts-expect-error
     dispatch(register(values));
   };
 

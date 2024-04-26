@@ -18,7 +18,7 @@ const countTimeout = (i = 0) => {
   setTimeout(() => {
     console.log(++i);
     if (i === 20) {
-      // @ts-ignore
+      // @ts-expect-error
       clearTimeout(countTimeout);
       console.timeEnd('interval');
     } else {
@@ -71,8 +71,7 @@ loginRequest
     (loginData) => {
       if (usersOnServer.has(loginData.login)) {
         const foundUser = usersOnServer.get(loginData.login);
-        // @ts-ignore
-        if (loginData.password === foundUser.password) {
+        if (foundUser && loginData.password === foundUser.password) {
           return foundUser;
         }
         throw new Error('Incorrect password');
@@ -81,12 +80,11 @@ loginRequest
       // console.log(resolve);
       // return resolve
     },
-    (reject) => {
-      // console.log(reject);
-    },
+    // (error) => {
+    //   console.log(error);
+    // },
   )
   .then((user) => {
-    // @ts-ignore
     console.log(`Successful login for ${user.login}`);
     return user;
   })
@@ -156,13 +154,13 @@ async function loadJson(url) {
   if (response.status == 200) {
     return await response.json();
   }
-  // @ts-ignore
+  // @ts-expect-error
   throw new Error(response.status);
+  // throw new HttpError(response);
+  // await Promise.reject(new HttpError(response));
 }
 
-const parsedData = loadJson('https://javascript.info/no-such-user.json').catch(
-  console.log,
-);
+const parsedData = loadJson('https://javascript.info/no-such-user.json').catch(console.log);
 
 class HttpError extends Error {
   constructor(response) {
@@ -172,19 +170,10 @@ class HttpError extends Error {
   }
 }
 
-async function loadJson(url) {
-  const response = await fetch(url);
-
-  if (response.status === 200) {
-    return response.json();
-  }
-  throw new HttpError(response);
-  // await Promise.reject(new HttpError(response));
-}
-
 // Запитуйте ім’я користувача, поки github не поверне дійсного користувача
 async function demoGithubUser() {
   let user;
+  // eslint-disable-next-line no-constant-condition
   while (true) {
     const name = prompt('Введіть ім’я?', 'iliakan');
     try {

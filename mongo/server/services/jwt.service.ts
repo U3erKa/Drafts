@@ -14,10 +14,10 @@ const tokenConfig = {
 };
 
 const createToken = async (payload, options) =>
-  // @ts-ignore
+  // @ts-expect-error
   jwtSign(payload, options.secret, { expiresIn: options.expiresIn });
 
-// @ts-ignore
+// @ts-expect-error
 const verifyToken = async (token, options) => jwtVerify(token, options.secret);
 
 export const createAccessToken = (payload) =>
