@@ -28,9 +28,7 @@ function numToText(number: string | number) {
   number += '';
   let result = '';
 
-  // @ts-expect-error
   if (number[0] !== '1') {
-    // @ts-expect-error
     switch (number[0]) {
       case '2': {
         result += 'twenty ';
@@ -70,7 +68,6 @@ function numToText(number: string | number) {
         break;
       }
     }
-    // @ts-expect-error
     switch (number[1]) {
       case '1': {
         result += 'one';
@@ -115,7 +112,6 @@ function numToText(number: string | number) {
       }
     }
   } else {
-    // @ts-expect-error
     switch (number[1]) {
       case '0': {
         result += 'ten';
@@ -227,9 +223,7 @@ function phraseToAbbreviation(phrase: string) {
 function isPalindrom(phrase: string) {
   phrase = phrase.split(' ').join('');
   for (let i = 0; i < phrase.length / 2; i++) {
-    if (
-      phrase[i].toLowerCase() !== phrase[phrase.length - i - 1].toLowerCase()
-    ) {
+    if (phrase[i].toLowerCase() !== phrase[phrase.length - i - 1].toLowerCase()) {
       return false;
     }
   }
@@ -268,8 +262,8 @@ function lolEmoji(string: string) {
   return result.join(' ');
 }
 
-function splitString(string: string, splitter: string = '/') {
-  const result = [];
+function splitString(string: string, splitter = '/') {
+  const result: string[] = [];
   let currentPos = 0;
   let i = 0;
   string = `${string}${splitter}`;

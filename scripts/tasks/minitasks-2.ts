@@ -3,18 +3,16 @@
 runTest();
 
 function createNewArray(length: number, min: number, max: number) {
-  return new Array(length)
-    .fill(undefined)
-    .map(() => Math.floor(Math.random() * (max - min) + min));
+  return new Array(length).fill(undefined).map(() => Math.floor(Math.random() * (max - min) + min));
 }
 
 function arrayMinMax(arr: number[]) {
   return [Math.min(...arr), Math.max(...arr)];
 }
 
-function showRepeatsInArray(array: any[]) {
-  const set = new Set();
-  const result = [];
+function showRepeatsInArray<T>(array: T[]) {
+  const set = new Set<T>();
+  const result: T[] = [];
 
   for (let i = 0; i < array.length; i++) {
     if (array.indexOf(array[i]) !== array.lastIndexOf(array[i])) {
@@ -29,17 +27,14 @@ function showRepeatsInArray(array: any[]) {
 }
 
 function temperatureInfo(dailyTemperature: number[], threshold: number) {
-  const avg =
-    dailyTemperature.reduce((acc, num) => acc + num) / dailyTemperature.length;
-  const daysBelowThreshold = dailyTemperature.filter(
-    (value) => value < threshold,
-  ).length;
+  const avg = dailyTemperature.reduce((acc, num) => acc + num) / dailyTemperature.length;
+  const daysBelowThreshold = dailyTemperature.filter((value) => value < threshold).length;
 
   return { avg, daysBelowThreshold };
 }
 
-function concatArrays(a: any[], b: any[], isFollowing = true) {
-  const result = [];
+function concatArrays<T1, T2>(a: T1[], b: T2[], isFollowing = true) {
+  const result: (T1 | T2)[] = [];
   if (isFollowing) {
     result.push(...a, ...b);
   } else {
@@ -65,25 +60,18 @@ function carCostInfo(prices: number[]) {
   return [mostExpensive, cheapest];
 }
 
-function getHouseStats(
-  house: number[][][],
-  entrance: number,
-  floor: number,
-  flat: number,
-) {
+function getHouseStats(house: number[][][], entrance: number, floor: number, flat: number) {
   const flats = house[entrance][floor];
   const owners = flats[flat];
   const neighbours = flats[1 - flat];
-  const livesInEntrance = [];
+  const livesInEntrance: number[] = [];
 
   for (let i = 0; i < house.length; i++) {
     livesInEntrance.push(house[i].flat().reduce((acc, num) => acc + num));
   }
-  const livesManyPeople = house
-    .flat(Infinity)
+  const livesManyPeople = (house.flat(Infinity) as number[])
     .map((num, i) => {
-      const result = [];
-      // @ts-ignore
+      const result: number[] = [];
       if (num > 5) {
         result.push(i);
       }
@@ -97,8 +85,8 @@ function getHouseStats(
 function runTest() {
   const arr = createNewArray(25, 0, 10);
   const dailyTemperature = createNewArray(31, -15, 5);
-  const a = [];
-  const b = [];
+  const a: `a${number}`[] = [];
+  const b: `b${number}`[] = [];
   for (let i = 0; i < 10; i++) {
     a.push(`a${i}`);
     b.push(`b${i}`);
@@ -129,11 +117,4 @@ function runTest() {
   console.log(getHouseStats(house, 0, 0, 0));
 }
 
-export {
-  createNewArray,
-  arrayMinMax,
-  showRepeatsInArray,
-  temperatureInfo,
-  concatArrays,
-  carCostInfo,
-};
+export { createNewArray, arrayMinMax, showRepeatsInArray, temperatureInfo, concatArrays, carCostInfo };

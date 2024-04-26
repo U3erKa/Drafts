@@ -18,9 +18,9 @@ type Options = {
 
 function translate(string: string, { from, to }: { from: string; to: string }) {
   const currentStr = string.trim().split('');
-  let result = [];
-  let searchValue: number;
-  let replacedChar: string;
+  const result: string[] = [];
+  let searchValue: number | undefined;
+  let replacedChar: string | null;
 
   for (let i = 0; i < currentStr.length; i++) {
     switch (string[i]) {
@@ -50,9 +50,8 @@ function translate(string: string, { from, to }: { from: string; to: string }) {
       }
     }
 
-    result[i] =
-      searchValue === -1 ? currentStr[i] : replacedChar ?? to[searchValue];
     replacedChar = null;
+    result[i] = searchValue === -1 ? currentStr[i] : replacedChar ?? to[searchValue!];
   }
   return result.join('');
 }
@@ -66,7 +65,7 @@ function translateWd(string: string, isFromWd = false) {
   const from = isFromWd ? wingdingsVoc.wd : wingdingsVoc.en;
   const to = !isFromWd ? wingdingsVoc.wd : wingdingsVoc.en;
 
-  const result = [];
+  const result: string[] = [];
 
   for (let i = 0; i < currentStr.length; i++) {
     const charIndex = from.indexOf(string[i]);
@@ -83,12 +82,9 @@ export const createTranslator = ({ from, to }: Options) => {
     return (string: string) => translateWd(string, false);
   }
   if (from !== to) {
-    return (string: string) =>
-      translate(string, { from: languages[from], to: languages[to] });
+    return (string: string) => translate(string, { from: languages[from], to: languages[to] });
   }
-  throw new TypeError(
-    `Current vocabularies combination is not supported: ${from} and ${to}`,
-  );
+  throw new TypeError(`Current vocabularies combination is not supported: ${from} and ${to}`);
 };
 
 const test = () => {
@@ -99,21 +95,9 @@ const test = () => {
   const wdToEn = createTranslator({ from: 'wingdings', to: 'english' });
   // const broken = createTranslator({ from: 'wingdings', to: 'wingdings' });
 
-  console.log(
-    engToUkr(
-      `qwerttyuiop[]asdfghjkl;'zxcvbnm,./ QWERTYUIOP{}ASDFGHJKL:"ZXCVBNM<>? /@#$^&`,
-    ),
-  );
-  console.log(
-    urkToEng(
-      `йцукеенгшщзхїфівапролджєячсмитьбю. ЙЦУКЕНГШЩЗХЇФІВАПРОЛДЖЄЯЧСМИТЬБЮ, ."№;:?`,
-    ),
-  );
-  console.log(
-    engToRus(
-      'cgjcj, gthtrk.xtybz hfcrkflrb rkfdbfnehs d jgthfwbjyyjq cbcntvt ,bkkfutqncf&',
-    ),
-  );
+  console.log(engToUkr(`qwerttyuiop[]asdfghjkl;'zxcvbnm,./ QWERTYUIOP{}ASDFGHJKL:"ZXCVBNM<>? /@#$^&`));
+  console.log(urkToEng(`йцукеенгшщзхїфівапролджєячсмитьбю. ЙЦУКЕНГШЩЗХЇФІВАПРОЛДЖЄЯЧСМИТЬБЮ, ."№;:?`));
+  console.log(engToRus('cgjcj, gthtrk.xtybz hfcrkflrb rkfdbfnehs d jgthfwbjyyjq cbcntvt ,bkkfutqncf&'));
   // console.log(wdToEn('✌👌👍👎☜☞☝☟🖐☺😐☹💣☠🏳🏱✈☼💧❄🕆✞🕈✠✡☪☯ॐ☸♈♉♊♋♌♍♎♏♐♑♒♓🙰🙵●🔾■□🞐❑❒⬧⧫◆❖⬥⌧⮹⌘'));
   console.log(enToWd('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghigklmnopqrstuvwxyz'));
 };

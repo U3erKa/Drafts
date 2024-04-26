@@ -32,7 +32,6 @@ class Cat extends Animal {
   constructor(name: string) {
     super('catty', name);
   }
-  // @ts-ignore
   eat(food: string) {
     if (food === 'mouse') {
       return 'Eating mouse';

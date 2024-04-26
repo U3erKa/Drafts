@@ -116,10 +116,10 @@ function checkNumberArray() {
 
 //task 4
 class Book {
-  #author: string;
-  #name: string;
-  #year: number;
-  #publishing: string;
+  #author!: string;
+  #name!: string;
+  #year!: number;
+  #publishing!: string;
   constructor(author: string, name: string, year: number, publishing: string) {
     this.author = author;
     this.name = name;
@@ -177,8 +177,8 @@ class Book {
 }
 
 class EBook extends Book {
-  #format: string;
-  #id: string;
+  #format!: string;
+  #id!: string;
   constructor(book: Book, format: string, id: string) {
     super(book.author, book.name, book.year, book.publishing);
     this.format = format;
@@ -233,8 +233,7 @@ function createBook(isEBook: boolean, valueId: number, alteredValue: string) {
         break;
       }
       case 2: {
-        // @ts-ignore
-        year = alteredValue;
+        year = alteredValue as unknown as number;
         break;
       }
       case 3: {
@@ -316,12 +315,4 @@ const {
 } = serverResponse;
 const [, , user3, user4] = users;
 
-export {
-  sumOfNums,
-  studentInfo,
-  logStudentInfo,
-  Book,
-  EBook,
-  createBook,
-  fizzBuzzNumbers,
-};
+export { sumOfNums, studentInfo, logStudentInfo, Book, EBook, createBook, fizzBuzzNumbers };

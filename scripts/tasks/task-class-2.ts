@@ -2,7 +2,7 @@ class User {
   name: string;
   email: string;
   password: string;
-  isBanned: boolean;
+  isBanned?: boolean;
   constructor(name: string, email: string, password: string) {
     this.name = name;
     this.email = email;
@@ -27,8 +27,7 @@ class Admin extends Moder {
   age: number;
   isRoot: boolean;
   constructor(email: string, password: string, age: number) {
-    // @ts-ignore
-    super('Root_User', email, password);
+    super(email, password);
     this.age = age;
     this.isRoot = true;
     delete this.isBanned;

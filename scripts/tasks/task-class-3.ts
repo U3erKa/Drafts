@@ -6,8 +6,8 @@ class Figure {
 }
 
 class Rectangle extends Figure {
-  #a: number;
-  #b: number;
+  #a!: number;
+  #b!: number;
   constructor(a: number, b: number) {
     super(a === b ? 'square' : 'rectangle');
     this.a = a;

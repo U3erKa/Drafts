@@ -1,9 +1,12 @@
-const User: any = function (
-  firstName: string,
-  lastName: string,
-  email: string,
-  age: string,
-) {
+interface IUser {
+  firstName: string;
+  lastName: string;
+  email: string;
+  age: string;
+  isLoggedIn: boolean;
+}
+
+const User = function (this: IUser, firstName: string, lastName: string, email: string, age: string) {
   this.firstName = firstName;
   this.lastName = lastName;
   this.email = email;
@@ -12,7 +15,7 @@ const User: any = function (
 };
 
 const userProto = {
-  getFullName: function () {
+  getFullName: function (this: IUser) {
     console.log(
       `Info about the user:
 First name: ${this.firstName}
@@ -20,11 +23,11 @@ Last  name: ${this.lastName}`,
     );
     return `${this.firstName} ${this.lastName}`;
   },
-  logout: function () {
+  logout: function (this: IUser) {
     this.isLoggedIn = false;
     console.log(`${this.firstName} just logged out`);
   },
-  login: function () {
+  login: function (this: IUser) {
     this.isLoggedIn = true;
     console.log(`${this.firstName} just logged in`);
   },
@@ -63,7 +66,7 @@ function allLogin(index: number) {
   console.log(users);
 }
 
-function allLogout(index: number) {
+function allLogout(index?: number) {
   if (index === undefined) {
     users.forEach(function (User) {
       console.log(User.logout());

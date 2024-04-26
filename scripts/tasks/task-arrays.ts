@@ -4,6 +4,6 @@ const lastDeletedFromEnd = cars.pop();
 cars.unshift('Ferrari');
 cars.unshift('IH8Cars', 'Temperus');
 const lastDeletedFromStart = cars.shift();
-cars.push(lastDeletedFromEnd);
+cars.push(lastDeletedFromEnd!);
 
 export {};

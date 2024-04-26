@@ -1,15 +1,13 @@
 const input1 = prompt('Enter 1st number');
 const input2 = prompt('Enter 2nd number');
 
-const isFirstNumberBigger = function (
-  num1: string | number,
-  num2: string | number,
-) {
-  const result = +num1 > +num2;
-  return result;
+const isFirstNumberBigger = function (num1: string | null, num2: string | null) {
+  if (!num1 || !num2) return null;
+  return +num1 > +num2;
 };
 
 const result = isFirstNumberBigger(input1, input2);
-console.log('Is ' + input1 + ' > ' + input2 + '? ' + result);
+
+if (result !== null) console.log('Is', input1, '>', input2, '?', result);
 
 export { isFirstNumberBigger };

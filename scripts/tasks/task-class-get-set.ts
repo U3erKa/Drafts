@@ -1,7 +1,7 @@
 'use strict';
 class RangeValidator {
-  private _from: number;
-  private _to: number;
+  private _from!: number;
+  private _to!: number;
   constructor(from: number, to: number) {
     this.from = from;
     this.to = to;
@@ -45,7 +45,7 @@ class RangeValidator {
     if (this._from > this._to) {
       throw new RangeError('from must not be higher than to');
     }
-    let array = [];
+    const array: number[] = [];
     for (let i = 0; i <= to - from; i++) {
       array[i] = i + from;
     }
