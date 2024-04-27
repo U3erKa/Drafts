@@ -1,5 +1,5 @@
 // @ts-expect-error
-import { productDetails } from './products.js';
+import { productDetails } from './products.ts';
 
 // Example of JSDoc, multiline comment
 /**

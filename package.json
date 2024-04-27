@@ -28,7 +28,7 @@
     "express",
     "mongo",
     "nextjs",
-    "nodejs",
+    "node",
     "react"
   ],
   "devDependencies": {
