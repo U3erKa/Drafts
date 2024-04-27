@@ -1,4 +1,5 @@
-import { getNumberOfDigits } from './sortingUtils.js';
+import { getNumberOfDigits } from './utils.js';
+
 /** globalThis: DedicatedWorkerGlobalScope */
 self.addEventListener(
   'message',
