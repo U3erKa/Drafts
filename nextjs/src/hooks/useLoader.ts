@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
-import { getFromJsonPlaceholder, JSONPLACEHOLDER_RESOURCES } from '@/api/fetch';
 
-export function useLoader<T>(resource: JSONPLACEHOLDER_RESOURCES) {
-  const [data, setData] = useState<T[]>([]);
+export function useLoader<T>(resource: string, options?: RequestInit) {
+  const [data, setData] = useState<T>();
   const [error, setError] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -10,14 +9,18 @@ export function useLoader<T>(resource: JSONPLACEHOLDER_RESOURCES) {
     (async () => {
       try {
         setIsLoading(true);
-        const data: any = await getFromJsonPlaceholder(resource);
+        const res = await fetch(resource, options);
+        const data = await res.json();
+        if (!res.ok) throw data;
         setData(data);
+        setError(null);
       } catch (error) {
         setError(error);
       } finally {
         setIsLoading(false);
       }
     })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [resource]);
   return { data, error, isLoading };
 }
