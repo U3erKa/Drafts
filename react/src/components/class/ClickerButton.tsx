@@ -1,13 +1,10 @@
 import PropTypes from 'prop-types';
-import { Component, MouseEventHandler } from 'react';
+import { Component, type ComponentProps } from 'react';
 
-export default class ClickerButton extends Component<{
-  clicker: MouseEventHandler<HTMLButtonElement>;
-}> {
-  static propTypes = { clicker: PropTypes.func.isRequired };
+export default class ClickerButton extends Component<ComponentProps<'button'>> {
+  static propTypes = { onClick: PropTypes.func.isRequired };
 
   render() {
-    const { clicker } = this.props;
-    return <button onClick={clicker}>ClickerButton</button>;
+    return <button {...this.props}>ClickerButton</button>;
   }
 }

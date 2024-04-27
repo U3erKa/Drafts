@@ -1,36 +1,45 @@
-import { useReducer } from 'react';
+import { useReducer, type FormEventHandler } from 'react';
 
-function reducer(state, action) {
-  const newState = { ...state, [action.type]: action.payload };
-  return newState;
+function reducer(state: typeof initialState, action: { type: string; payload }) {
+  return { ...state, [action.type]: action.payload };
 }
 
 const initialState = {
   email: '',
   password: '',
-  isRemembering: false,
+  age: '' as `${number}`,
+  isRemembered: false,
 };
 
 export default function LoginForm() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const handleChange = ({ target: { name, value, checked, type } }) => {
-    const newData = type === 'checkbox' ? checked : value;
-    dispatch({ type: name, payload: newData });
+    dispatch({ type: name, payload: type === 'checkbox' ? checked : value });
   };
-  const handleSubmit = (e) => {
+
+  const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    console.log(Object.fromEntries(formData), state);
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <input type="text" name="email" value={state.email} onChange={handleChange} />
-      <input type="password" name="password" value={state.password} onChange={handleChange} />
+      <input type="text" name="email" placeholder="Email" value={state.email} onChange={handleChange} />
+      <input type="password" name="password" placeholder="Password" value={state.password} onChange={handleChange} />
+      <input type="number" name="age" placeholder="Age" value={state.age} onChange={handleChange} />
       <label>
-        <input type="checkbox" name="isRemembering" checked={state.isRemembering} onChange={handleChange} />
+        <input
+          type="checkbox"
+          name="isRemembered"
+          value={`${state.isRemembered}`}
+          checked={state.isRemembered}
+          onChange={handleChange}
+        />
         Remember me
       </label>
-      <button>Login</button>
+      <button type="submit">Login</button>
     </form>
   );
 }

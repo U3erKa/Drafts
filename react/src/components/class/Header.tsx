@@ -1,17 +1,16 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 import HeaderUserCard from '../function/HeaderUserCard';
+import type { User } from './Example';
 
-// function Header(props) {
-//   return (
-//     <header>
-//       <h1>My react site</h1>
-//       <img src={props.src} alt={props.name} />
-//     </header>
-//   );
-// }
+type Props = {
+  name?: string;
+  profilePicSrc?: string;
+  user: User;
+  logout: () => void;
+};
 
-class Header extends Component<{ name: string; profilePicSrc: string }> {
+class Header extends Component<Props> {
   static defaultProps: { profilePicSrc: string; alt: string };
   static propTypes: {
     name: PropTypes.Validator<string>;
@@ -27,7 +26,6 @@ class Header extends Component<{ name: string; profilePicSrc: string }> {
           <h1>My site</h1>
           <img src={profilePicSrc} alt={name} />
         </header>
-        {/* @ts-ignore */}
         <HeaderUserCard {...userProps} />
       </>
     );

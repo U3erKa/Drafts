@@ -1,6 +1,5 @@
 import { Component } from 'react';
 import ClickerButton from './ClickerButton';
-import ClickerScore from './ClickerScore';
 
 export default class Clicker extends Component<Record<string, never>, { counter: number }> {
   state = {
@@ -9,19 +8,17 @@ export default class Clicker extends Component<Record<string, never>, { counter:
 
   clicker = () => {
     const { counter } = this.state;
-    const newState = {
+    this.setState({
       counter: counter + 1,
-    };
-
-    this.setState({ counter: newState.counter });
+    });
   };
 
   render() {
     const { counter } = this.state;
     return (
       <div>
-        <ClickerScore score={counter} />
-        <ClickerButton clicker={this.clicker} />
+        <p>Clicks: {counter}</p>
+        <ClickerButton onClick={this.clicker} />
       </div>
     );
   }

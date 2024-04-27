@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { bindActionCreators } from '@reduxjs/toolkit';
 import cx from 'classnames';
 import styles from './Header.module.scss';
-import { THEMES } from 'app/constants';
-import { RootState } from 'app/store';
+import { THEMES } from 'const';
+import type { RootState } from 'store';
 import { setTheme } from 'slices/theme';
 
 const Header: FC = function () {

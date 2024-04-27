@@ -1,4 +1,4 @@
-import { Component, MouseEventHandler } from 'react';
+import { Component, type MouseEventHandler, type JSX } from 'react';
 
 export type CounterProps = {};
 
@@ -16,21 +16,17 @@ export default class Counter extends Component<CounterProps, CounterState> {
 
   static defaultProps: CounterProps = {};
   static getDerivedStateFromProps(nextProps: CounterProps, prevState: CounterState): CounterState | null {
-    return false ? { count: 2 } : null;
+    return null;
+    return { count: 2 };
   }
 
-  componentDidMount(): void {
-    this.setState({});
-  }
+  componentDidMount(): void {}
 
   shouldComponentUpdate(nextProps: CounterProps, nextState: CounterState, nextContext: any): boolean {
-    // if (nextProps.count !== nextContext.) {}
     return true;
   }
 
-  componentDidUpdate(prevProps: CounterProps, prevState: CounterState, snapshot?: any): void {
-    // if (prevProps.count !== this.) {}
-  }
+  componentDidUpdate(prevProps: CounterProps, prevState: CounterState, snapshot?: any): void {}
 
   componentWillUnmount(): void {}
 
@@ -39,9 +35,6 @@ export default class Counter extends Component<CounterProps, CounterState> {
     this.setState(({ count }) => ({
       count: ++count,
     }));
-    // this.setState({
-    //   count: this.state.count + 1,
-    // });
   };
 
   render(): JSX.Element {

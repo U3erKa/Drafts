@@ -29,7 +29,6 @@ class DataLoader extends Component<
 
   load = async () => {
     try {
-      // const { page } = this.state;
       const { loadData } = this.props;
       this.setState({ isLoading: true });
 
@@ -42,7 +41,7 @@ class DataLoader extends Component<
     }
   };
 
-  mapDataEntries = (data: JSON, id: number) => (
+  mapDataEntries = (data: any, id: number) => (
     <div key={id}>
       <pre>{JSON.stringify(data, undefined, 4)}</pre>
     </div>
