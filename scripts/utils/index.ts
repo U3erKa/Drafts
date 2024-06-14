@@ -1,3 +1,3 @@
 export function nanoid() {
-  return BigInt(parseInt(crypto.randomUUID().replace(/-/g, ''), 16)).toString(36);
+  return BigInt(`0x${crypto.randomUUID().replace(/-/g, '')}`).toString(36);
 }
