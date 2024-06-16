@@ -9,6 +9,7 @@ import { ArbitraryActionButton } from '@/components/custom/ArbitraryActionButton
 import { onDataAction, onFormAction } from '@/serverActions';
 import { HookFormComponent } from '@/components/custom/HookFormComponent';
 import { AddTodo, TodoList } from '@/components/custom/Todos';
+import { Greeting, SetGreeting } from '@/components/custom/Greeting';
 
 const routes = [
   { path: '/', name: 'Home' },
@@ -37,6 +38,10 @@ export default function Home() {
       <div className="flex flex-col gap-2">
         <AddTodo />
         <TodoList />
+      </div>
+      <div className="flex flex-col gap-2">
+        <Greeting />
+        <SetGreeting />
       </div>
       <nav>
         <ul>
