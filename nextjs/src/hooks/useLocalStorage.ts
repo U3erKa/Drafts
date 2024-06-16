@@ -1,6 +1,6 @@
 import { useSyncExternalStore } from 'react';
 
-let listeners: { [key: string]: (() => void)[] } = {};
+const listeners: { [key: string]: (() => void)[] } = {};
 
 function getServerSnapshot() {
   return null;
@@ -17,9 +17,9 @@ export function useLocalStorage<T = unknown>(key: string) {
   const value: T | null = rawValue === null ? rawValue : JSON.parse(rawValue);
 
   function subscribe(listener: () => void) {
-    listeners = { ...listeners, [key]: [...(listeners[key] ?? []), listener] };
+    listeners[key] = [...(listeners[key] ?? []), listener];
     return () => {
-      listeners = { ...listeners, [key]: listeners[key].filter((l) => l !== listener) };
+      listeners[key] = listeners[key].filter((l) => l !== listener);
     };
   }
 
