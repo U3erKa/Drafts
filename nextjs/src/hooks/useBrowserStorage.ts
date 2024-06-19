@@ -18,14 +18,14 @@ function onStoreChange(listeners: ListenersMap[string]) {
 }
 
 export function useSessionStorage<T = unknown>(key: string) {
-  return useBrowserStorage<T>(key, sessionStorage, sessionStorageListeners);
+  return useWebStorage<T>(key, globalThis.sessionStorage, sessionStorageListeners);
 }
 
 export function useLocalStorage<T = unknown>(key: string) {
-  return useBrowserStorage<T>(key, localStorage, localStorageListeners);
+  return useWebStorage<T>(key, globalThis.localStorage, localStorageListeners);
 }
 
-function useBrowserStorage<T = unknown>(key: string, storage: Storage, listeners: ListenersMap) {
+function useWebStorage<T = unknown>(key: string, storage: Storage, listeners: ListenersMap) {
   const rawValue = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
   const value: T | undefined = rawValue !== null ? JSON.parse(rawValue) : undefined;
 
