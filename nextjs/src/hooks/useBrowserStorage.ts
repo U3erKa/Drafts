@@ -25,17 +25,13 @@ export function useLocalStorage<T = unknown>(key: string) {
   return useBrowserStorage<T>(key, localStorage, localStorageListeners);
 }
 
-function useBrowserStorage<T = unknown>(
-  key: string,
-  storage: typeof localStorage | typeof sessionStorage,
-  listeners: ListenersMap,
-) {
+function useBrowserStorage<T = unknown>(key: string, storage: Storage, listeners: ListenersMap) {
   const rawValue = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
   const value: T | undefined = rawValue !== null ? JSON.parse(rawValue) : undefined;
 
   function subscribe(listener: () => void) {
     listeners[key] = [...(listeners[key] ?? []), listener];
-    return () => {
+    return function unsubscribe() {
       listeners[key] = listeners[key].filter((l) => l !== listener);
     };
   }
