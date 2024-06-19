@@ -1,17 +1,15 @@
-import { useSyncExternalStore } from 'react';
+import { useSyncExternalStore } from "react";
 
-interface ListenersMap {
-  [key: string]: (() => void)[];
-}
+type Listener = () => void;
 
-const sessionStorageListeners: ListenersMap = {};
-const localStorageListeners: ListenersMap = {};
+const sessionStorageListeners: Record<string, Listener[]> = {};
+const localStorageListeners: Record<string, Listener[]> = {};
 
 function getServerSnapshot() {
   return null;
 }
 
-function onStoreChange(listeners: ListenersMap[string]) {
+function onStoreChange(listeners: Listener[]) {
   for (const listener of listeners) {
     listener();
   }
@@ -25,11 +23,11 @@ export function useLocalStorage<T = unknown>(key: string) {
   return useWebStorage<T>(key, globalThis.localStorage, localStorageListeners);
 }
 
-function useWebStorage<T = unknown>(key: string, storage: Storage, listeners: ListenersMap) {
+function useWebStorage<T = unknown>(key: string, storage: Storage, listeners: Record<string, Listener[]>) {
   const rawValue = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
-  const value: T | undefined = rawValue !== null ? JSON.parse(rawValue) : undefined;
+  const _value: T | undefined = rawValue !== null ? JSON.parse(rawValue) : undefined;
 
-  function subscribe(listener: () => void) {
+  function subscribe(listener: Listener) {
     listeners[key] = [...(listeners[key] ?? []), listener];
     return function unsubscribe() {
       listeners[key] = listeners[key].filter((l) => l !== listener);
@@ -48,5 +46,5 @@ function useWebStorage<T = unknown>(key: string, storage: Storage, listeners: Li
     if (oldValue !== newValue) onStoreChange(listeners[key]);
   }
 
-  return [value, setValue] as const;
+  return [_value, setValue] as const;
 }

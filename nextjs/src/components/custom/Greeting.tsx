@@ -1,6 +1,6 @@
 'use client';
 import { useRef } from 'react';
-import { useLocalStorage } from '@/hooks/useBrowserStorage';
+import { useLocalStorage } from '@/hooks/useWebStorage';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 
