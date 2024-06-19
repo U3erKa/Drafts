@@ -1,8 +1,10 @@
-import type { promisify as promisifyUtil } from 'util';
-import { type ClassValue, clsx } from 'clsx';
-import { twMerge } from 'tailwind-merge';
-import { z } from 'zod';
 import { validateZipcode } from '@/serverActions';
+import { clsx, type ClassValue } from 'clsx';
+import { type FormEvent } from 'react';
+import { type FieldValues, type UseFormReturn } from 'react-hook-form';
+import { twMerge } from 'tailwind-merge';
+import type { promisify as promisifyUtil } from 'util';
+import { z } from 'zod';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -30,3 +32,18 @@ export const registrationSchema = z.object({
     message: 'Invalid zipcode.',
   }),
 });
+
+export function submitAction<
+  TFieldValues extends FieldValues = FieldValues,
+  TContext = unknown,
+  TTransformedValues extends FieldValues | undefined = undefined,
+>(form: Pick<UseFormReturn<TFieldValues, TContext, TTransformedValues>, 'formState' | 'clearErrors' | 'trigger'>) {
+  return async function onSubmit(e: FormEvent<HTMLFormElement>) {
+    if (form.formState.isValid) {
+      form.clearErrors();
+    } else {
+      e.preventDefault();
+      await form.trigger();
+    }
+  };
+}

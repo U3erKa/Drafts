@@ -1,25 +1,25 @@
 'use client';
-import { useFormState } from 'react-dom';
 import { useRef } from 'react';
+import { useFormState } from 'react-dom';
 
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import {
-  FormProvider,
   FormControl,
   FormDescription,
   FormField,
+  FormFieldProvider,
   FormItem,
   FormLabel,
   FormMessage,
-  FormFieldProvider,
+  FormProvider,
 } from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
-import { registrationSchema } from '@/utils';
+import { registrationSchema, submitAction } from '@/utils';
 
 export type RegistrationData = {
   message: string;
@@ -57,10 +57,7 @@ export const RegistrationForm = ({ onDataAction, onFormAction }: RegistrationFor
 
   const onSubmit = async (data: z.infer<typeof registrationSchema>) => {
     console.log(data);
-    const formData = new FormData();
-    formData.append('first', data.first);
-    formData.append('last', data.last);
-    formData.append('email', data.email);
+    const formData = new FormData(formRef.current ?? undefined);
     console.log(await onDataAction(data));
     return;
 
@@ -82,14 +79,7 @@ export const RegistrationForm = ({ onDataAction, onFormAction }: RegistrationFor
       <form
         ref={formRef}
         action={formAction}
-        onSubmit={(e) => {
-          if (form.formState.isValid) {
-            form.clearErrors();
-          } else {
-            e.preventDefault();
-            form.trigger();
-          }
-        }}
+        onSubmit={submitAction(form)}
         // onSubmit={form.handleSubmit(onSubmit)}
         // onSubmit={form.handleSubmit(() => formRef.current?.requestSubmit())}
         className="space-y-8 bg-secondary p-4 rounded-lg"
