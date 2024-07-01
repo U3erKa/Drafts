@@ -1,4 +1,4 @@
-import { type RouteProps } from 'react-router-dom';
+import { type RouteObject, createBrowserRouter } from 'react-router-dom';
 import Tree from 'components/Tree/Tree';
 import { DataLoader, Clicker } from 'components/function/UserLoaderHooks';
 import HookTimer from 'components/function/HookTimer';
@@ -38,4 +38,6 @@ export const PAGES = [
   { path: '/redux/counter', element: <ReduxCounter /> },
   { path: '/redux/users', element: <ReduxUsers /> },
   { path: '/mobx', element: <MobxPage /> },
-] satisfies RouteProps[];
+] satisfies RouteObject[];
+
+export const router = createBrowserRouter(PAGES);
