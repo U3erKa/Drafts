@@ -1,11 +1,4 @@
-import {
-  action,
-  autorun,
-  computed,
-  makeAutoObservable,
-  makeObservable,
-  observable,
-} from 'mobx';
+import { action, autorun, computed, makeAutoObservable, makeObservable, observable } from 'mobx';
 
 export type Todo = {
   task: string;
@@ -42,6 +35,7 @@ export const observableTodoStore = makeAutoObservable({
   },
 });
 
+/** @deprecated */
 export class ObservableTodoStore {
   todos: Todo[] = [];
   pendingRequests = 0;

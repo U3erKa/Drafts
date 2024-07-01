@@ -1,10 +1,7 @@
-import { RootState } from 'app/store';
-import { useSelector, useDispatch } from 'react-redux';
-import { AnyAction } from '@reduxjs/toolkit';
 import { Field, Form, Formik, FormikHelpers } from 'formik';
 import { User } from 'types/api/getFromOwnDB';
-import { register } from 'slices/auth';
-import { AuthSliceState } from 'types/slices';
+import { useState } from 'react';
+import { useRegisteredUser } from 'hooks/query';
 
 const initialValues: User = {
   nickName: '',
@@ -16,11 +13,11 @@ const initialValues: User = {
 };
 
 export default function Register() {
-  const { isLoading, error } = useSelector<RootState, AuthSliceState>((state) => state.auth);
+  const [values, setValues] = useState<User | undefined>(undefined);
+  const { data, isLoading, error } = useRegisteredUser(values);
 
-  const dispatch = useDispatch();
   const handleSubmit = (values: typeof initialValues, formikBag: FormikHelpers<typeof initialValues>) => {
-    dispatch(register(values) as unknown as AnyAction);
+    setValues(values);
     formikBag.resetForm();
   };
 
