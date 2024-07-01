@@ -7,17 +7,22 @@ import { Provider } from 'react-redux';
 import { store } from 'store';
 import ErrorBoundary from 'components/ErrorBoundary';
 import { router } from 'routes';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 // import reportWebVitals from './reportWebVitals';
 
 const container = document.getElementById('root')!;
 const root = createRoot(container);
+
+const queryClient = new QueryClient();
 
 root.render(
   <StrictMode>
     <ErrorBoundary fallback={'Oops...'}>
       <Suspense fallback={null}>
         <Provider store={store}>
-          <RouterProvider router={router} />
+          <QueryClientProvider client={queryClient}>
+            <RouterProvider router={router} />
+          </QueryClientProvider>
         </Provider>
       </Suspense>
     </ErrorBoundary>
