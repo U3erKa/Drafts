@@ -16,8 +16,3 @@ export async function getUsers(options): Promise<any> {
 
   return result.results;
 }
-
-export async function getData(data = 'users'): Promise<any> {
-  const res = await fetch(`https://jsonplaceholder.typicode.com/${data}`);
-  return await res.json();
-}

@@ -2,7 +2,7 @@ import { Component, type JSX } from 'react';
 
 class DataLoader extends Component<
   {
-    loadData: () => Promise<JSON[]>;
+    loadData: () => Promise<any[]>;
     render: (...args: unknown[]) => JSX.Element;
   },
   { data: unknown[]; isLoading: boolean; error: string | null; page: number }
