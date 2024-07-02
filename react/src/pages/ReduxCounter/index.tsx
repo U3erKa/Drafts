@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { bindActionCreators } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
-import cx from 'classnames';
+import clsx from 'clsx';
 import { LANGUAGES, THEMES } from 'const';
 import { RootState } from 'store';
 import { setLang, languages } from 'slices/lang';
@@ -52,7 +52,7 @@ const Counter: FC = function () {
 
   return (
     <div
-      className={cx({
+      className={clsx({
         [styles.lightTheme]: theme === THEMES.LIGHT,
         [styles.darkTheme]: theme === THEMES.DARK,
       })}

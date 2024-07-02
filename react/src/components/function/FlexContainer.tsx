@@ -1,7 +1,7 @@
 import { type ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import styles from './FlexContainer.module.scss';
-// import cx from 'classnames';
+// import clsx from 'clsx';
 
 const FlexContainer = (props: { children: ReactNode; justify?: string; align?: string }) => {
   const { justify = 'flex-start', align = 'stretch', children } = props;
@@ -16,7 +16,7 @@ const FlexContainer = (props: { children: ReactNode; justify?: string; align?: s
 
   const isJCCenter = justContent === 'center';
 
-  const classes = cx(styles.container, {
+  const classes = clsx(styles.container, {
     [styles.jcCenter]: isJCCenter,
     [styles.jcFlexStart]: justContent === 'flex-start',
     [styles.aiCenter]: alignItems === 'center',

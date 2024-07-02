@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { bindActionCreators } from '@reduxjs/toolkit';
-import cx from 'classnames';
+import clsx from 'clsx';
 import styles from './Header.module.scss';
 import { THEMES } from 'const';
 import type { RootState } from 'store';
@@ -12,7 +12,7 @@ const Header: FC = function () {
   const dispatch = useDispatch();
   const actionCreators = bindActionCreators({ setTheme }, dispatch);
 
-  const className = cx(styles.header, {
+  const className = clsx(styles.header, {
     [styles.darkTheme]: theme === THEMES.DARK,
     [styles.lightTheme]: theme === THEMES.LIGHT,
   });
