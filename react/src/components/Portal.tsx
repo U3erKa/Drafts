@@ -1,22 +1,18 @@
-import { Component, ReactElement, ReactNode } from 'react';
+import { PureComponent, type PropsWithChildren } from 'react';
 import { createPortal } from 'react-dom';
 
-type PortalProps = {
-  children: ReactNode;
-};
+export default class Portal extends PureComponent<PropsWithChildren, {}> {
+  #el = document.createElement('div');
 
-export default class Portal extends Component<PortalProps, {}> {
-  private el: HTMLDivElement = document.createElement('div');
-
-  public componentDidMount(): void {
-    document.body.appendChild(this.el);
+  public componentDidMount() {
+    document.body.appendChild(this.#el);
   }
 
-  public componentWillUnmount(): void {
-    document.body.removeChild(this.el);
+  public componentWillUnmount() {
+    document.body.removeChild(this.#el);
   }
 
-  public render(): ReactElement<PortalProps> {
-    return createPortal(this.props.children, this.el);
+  public render() {
+    return createPortal(this.props.children, this.#el);
   }
 }

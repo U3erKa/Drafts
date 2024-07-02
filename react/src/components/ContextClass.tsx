@@ -14,7 +14,6 @@ export default class Login extends Component {
   static contextType = AuthContext;
 
   render(): ReactElement {
-    // prettier-ignore
     const { isAuth, toggleAuth } = this.context as ContextType<typeof AuthContext>;
     return <button onClick={toggleAuth}>{!isAuth ? 'Login' : 'Logout'}</button>;
   }

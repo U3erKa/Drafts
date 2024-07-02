@@ -2,7 +2,6 @@ import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import otherCounterReducer from './slices/counter';
 import langReducer from './slices/lang';
 import themeReducer from './slices/theme';
-import usersReducer from './slices/users';
 import counterReducer from 'features/counter/counterSlice';
 
 export const store = configureStore({
@@ -11,11 +10,10 @@ export const store = configureStore({
     otherCounter: otherCounterReducer,
     lang: langReducer,
     theme: themeReducer,
-    users: usersReducer,
   },
 });
 export default store;
 
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;
-export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, RootState, unknown, Action<string>>;
+export type AppThunk<Return = void> = ThunkAction<Return, RootState, unknown, Action<string>>;

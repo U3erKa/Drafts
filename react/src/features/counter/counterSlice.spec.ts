@@ -1,3 +1,4 @@
+// @ts-nocheck
 import counterReducer, { CounterState, increment, decrement, incrementByAmount } from './counterSlice';
 
 describe('counter reducer', () => {

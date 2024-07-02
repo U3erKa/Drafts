@@ -1,4 +1,4 @@
-import { useState, useEffect, SetStateAction, MutableRefObject, useDebugValue } from 'react';
+import { useDebugValue, useEffect, useState, type RefObject, type SetStateAction } from 'react';
 
 export function useData(getData: (...args: any[]) => Promise<SetStateAction<never[]>>) {
   const [data, setData] = useState([]);
@@ -43,7 +43,7 @@ export function useClicker() {
   return [click, handleClick] as const;
 }
 
-export function useClickerRef(elemRef: MutableRefObject<HTMLElement | undefined>) {
+export function useClickerRef(elemRef: RefObject<HTMLElement>) {
   const [click, setClick] = useState(0);
 
   const handleClick = () => {
@@ -52,13 +52,10 @@ export function useClickerRef(elemRef: MutableRefObject<HTMLElement | undefined>
 
   useEffect(() => {
     const elem = elemRef.current;
-    if (elem) {
-      elem.addEventListener('click', handleClick);
-    }
+    if (!elem) return;
+    elem.addEventListener('click', handleClick);
     return () => {
-      if (elem) {
-        elem.removeEventListener('click', handleClick);
-      }
+      elem.removeEventListener('click', handleClick);
     };
   }, [elemRef]);
 

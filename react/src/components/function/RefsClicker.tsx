@@ -2,7 +2,7 @@ import { useClickerRef } from 'hooks';
 import { MutableRefObject, useCallback, useEffect, useRef, useState } from 'react';
 
 export const RefsClicker = (props) => {
-  const elemRef = useRef<HTMLDivElement>();
+  const elemRef = useRef<HTMLDivElement>(null);
   const [clicks] = useClickerRef(elemRef);
   const inputRef: MutableRefObject<HTMLInputElement> = useRef(null!);
   const prevClicks = useRef(clicks);
@@ -39,7 +39,6 @@ export const RefsClicker = (props) => {
       <input ref={inputRef} type="text" value={value} onChange={handleChange} />
       <button onClick={logValue}>Log value</button>
       <div
-        // @ts-expect-error
         ref={elemRef}
         style={{
           width: '300px',
