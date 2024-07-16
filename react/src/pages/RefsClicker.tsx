@@ -1,7 +1,7 @@
 import { useClickerRef } from 'hooks';
 import { MutableRefObject, useCallback, useEffect, useRef, useState } from 'react';
 
-export const RefsClicker = (props) => {
+export default function RefsClicker(props) {
   const elemRef = useRef<HTMLDivElement>(null);
   const [clicks] = useClickerRef(elemRef);
   const inputRef: MutableRefObject<HTMLInputElement> = useRef(null!);
@@ -44,6 +44,4 @@ export const RefsClicker = (props) => {
       ></div>
     </div>
   );
-};
-
-export default RefsClicker;
+}
