@@ -1,11 +1,22 @@
-export type PostEntry = {
+import type { JSONPLACEHOLDER_RESOURCES } from 'const';
+
+export type JSONPlaceholderData = {
+  [JSONPLACEHOLDER_RESOURCES.ALBUMS]: Album[];
+  [JSONPLACEHOLDER_RESOURCES.COMMENTS]: Comment[];
+  [JSONPLACEHOLDER_RESOURCES.PHOTOS]: Photo[];
+  [JSONPLACEHOLDER_RESOURCES.POSTS]: Post[];
+  [JSONPLACEHOLDER_RESOURCES.TODOS]: Todo[];
+  [JSONPLACEHOLDER_RESOURCES.USERS]: User[];
+};
+
+export type Post = {
   userId: number;
   id: number;
   title: string;
   body: string;
 };
 
-export type CommentEntry = {
+export type Comment = {
   postId: number;
   id: number;
   name: string;
@@ -13,13 +24,13 @@ export type CommentEntry = {
   body: string;
 };
 
-export type AlbumEntry = {
+export type Album = {
   userId: number;
   id: number;
   title: string;
 };
 
-export type PhotoEntry = {
+export type Photo = {
   albumId: number;
   id: number;
   title: string;
@@ -27,14 +38,14 @@ export type PhotoEntry = {
   thumbnailUrl: string;
 };
 
-export type TodoEntry = {
+export type Todo = {
   userId: number;
   id: number;
   title: string;
   completed: boolean;
 };
 
-export type UserEntry = {
+export type User = {
   id: number;
   name: string;
   username: string;

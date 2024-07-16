@@ -1,7 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 import type { JSONPLACEHOLDER_RESOURCES } from 'const';
+import type { JSONPlaceholderData } from 'types/jsonPlaceholder';
 
-export function useJSONPlaceholderData<T>(resource: JSONPLACEHOLDER_RESOURCES) {
+export function useJSONPlaceholderData<T extends JSONPLACEHOLDER_RESOURCES>(resource: T) {
   return useQuery({
     queryKey: ['jsonplaceholder', resource],
     async queryFn({ signal }) {
@@ -9,7 +10,7 @@ export function useJSONPlaceholderData<T>(resource: JSONPLACEHOLDER_RESOURCES) {
         method: 'GET',
         signal,
       });
-      const data: T = await response.json();
+      const data: JSONPlaceholderData[T] = await response.json();
       return data;
     },
   });
