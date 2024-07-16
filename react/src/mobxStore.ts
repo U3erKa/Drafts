@@ -17,10 +17,7 @@ export const observableTodoStore = makeAutoObservable({
   get report() {
     if (this.todos.length === 0) return '<none>';
     const nextTodo = this.todos.find((todo: Todo) => todo.completed === false);
-    return (
-      `Next todo: "${nextTodo ? nextTodo.task : '<none>'}". ` +
-      `Progress: ${this.completedTodosCount}/${this.todos.length}`
-    );
+    return `Next todo: "${nextTodo ? nextTodo.task : '<none>'}". Progress: ${this.completedTodosCount}/${this.todos.length}`;
   },
 
   addTodo(task: Todo['task'] | null) {
@@ -28,7 +25,7 @@ export const observableTodoStore = makeAutoObservable({
       return;
     }
     this.todos.push({
-      task: task,
+      task,
       completed: false,
       assignee: null,
     });
@@ -59,10 +56,7 @@ export class ObservableTodoStore {
   get report() {
     if (this.todos.length === 0) return '<none>';
     const nextTodo = this.todos.find((todo) => todo.completed === false);
-    return (
-      `Next todo: "${nextTodo ? nextTodo.task : '<none>'}". ` +
-      `Progress: ${this.completedTodosCount}/${this.todos.length}`
-    );
+    return `Next todo: "${nextTodo ? nextTodo.task : '<none>'}". Progress: ${this.completedTodosCount}/${this.todos.length}`;
   }
 
   addTodo(task: Todo['task'] | null) {

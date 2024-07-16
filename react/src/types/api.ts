@@ -1,4 +1,4 @@
-import type { JSONPLACEHOLDER_RESOURCES } from 'const';
+import type { JSONPLACEHOLDER_RESOURCES } from 'lib/const';
 
 export type JSONPlaceholderData = {
   [JSONPLACEHOLDER_RESOURCES.ALBUMS]: Album[];

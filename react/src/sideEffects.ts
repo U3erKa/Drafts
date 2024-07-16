@@ -1,4 +1,4 @@
-import { messWithTodos, addRandomTodo } from 'functions';
+import { messWithTodos, addRandomTodo } from 'lib/functions';
 import { store, peopleStore } from 'mobxStore';
 
 console.log(store);

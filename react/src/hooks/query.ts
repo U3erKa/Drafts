@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import type { JSONPLACEHOLDER_RESOURCES } from 'const';
-import type { JSONPlaceholderData } from 'types/jsonPlaceholder';
+import type { JSONPLACEHOLDER_RESOURCES } from 'lib/const';
+import type { JSONPlaceholderData } from 'types/api';
 
 export function useJSONPlaceholderData<T extends JSONPLACEHOLDER_RESOURCES>(resource: T) {
   return useQuery({

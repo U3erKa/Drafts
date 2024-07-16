@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { bindActionCreators } from '@reduxjs/toolkit';
 import clsx from 'clsx';
 import styles from './Header.module.scss';
-import { THEMES } from 'const';
+import { THEMES } from 'lib/const';
 import type { RootState } from 'store';
 import { setTheme } from 'slices/theme';
 
