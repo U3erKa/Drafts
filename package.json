@@ -22,6 +22,7 @@
     "format": "prettier --write --list-different **/src/**/*"
   },
   "workspaces": [
+    "astro",
     "cra-eject",
     "electron-app-vite",
     "electron-app",
