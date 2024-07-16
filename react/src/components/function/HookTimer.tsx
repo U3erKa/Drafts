@@ -1,49 +1,33 @@
-import { useState, useEffect, ChangeEvent } from 'react';
+import { useState, useEffect, ChangeEvent, useRef } from 'react';
 
 export default function HookTimer() {
   const [startingNumber, setStartingNumber] = useState(10);
   const [currentNumber, setCurrentNumber] = useState(0);
   const [isStarted, setIsStarted] = useState(false);
-  const [intervalId, setIntervalId] = useState(null as any);
+  const intervalRef = useRef<any>(null);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  useEffect(() => stop, []);
+
+  function handleChange(e: ChangeEvent<HTMLInputElement>) {
     const { value } = e.target;
     setStartingNumber(+value);
-    // setState({ ...state, startingNumber: value });
-  };
-  const start = () => {
-    if (!isStarted) {
-      setIsStarted(true);
-      setCurrentNumber(startingNumber);
-      setIntervalId(setInterval(tick, 1000));
-    }
-  };
-  const stop = () => {
-    clearInterval(intervalId);
+  }
+
+  function start() {
+    if (isStarted) return;
+    setIsStarted(true);
+    setCurrentNumber(startingNumber);
+    intervalRef.current = setInterval(tick, 1000);
+  }
+
+  function stop() {
+    clearInterval(intervalRef.current);
     setIsStarted(false);
-  };
-  const tick = () => {
+  }
+
+  function tick() {
     setCurrentNumber((oldCurrentNumber) => oldCurrentNumber - 1);
-  };
-
-  useEffect(() => {
-    console.log('useEffect');
-    // const intervalId = setInterval(tick, 1000);
-
-    return () => {
-      console.log('cleanup');
-      // clearInterval(intervalId);
-    };
-  });
-  useEffect(() => {
-    console.log(true);
-    return () => {
-      console.log('will unmount');
-    };
-  }, []);
-  useEffect(() => {
-    console.log(currentNumber);
-  }, [currentNumber]);
+  }
 
   return (
     <div>

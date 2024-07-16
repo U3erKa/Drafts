@@ -24,12 +24,7 @@ export const RefsClicker = (props) => {
   }, [inputRef]);
 
   const handleChange = useCallback((e) => setValue(e.target.value), []);
-
   const logValue = useCallback(() => console.log(`value is ${value}`), [value]);
-
-  useEffect(() => {
-    console.log('logValue is created');
-  }, [logValue]);
 
   return (
     <div id="test">
