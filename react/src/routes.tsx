@@ -1,5 +1,5 @@
-import { type RouteObject, createBrowserRouter } from 'react-router-dom';
 import { lazy } from 'react';
+import type { RouteObject } from 'react-router-dom';
 
 export const HomePage = lazy(() => import('pages/HomePage'));
 export const LoginPage = lazy(() => import('pages/LoginPage'));
@@ -16,5 +16,3 @@ export const PAGES = [
   { path: '/signup', element: <SignUpForm /> },
   { path: '/transition', element: <TabContainer /> },
 ] satisfies RouteObject[];
-
-export const router = createBrowserRouter(PAGES);
