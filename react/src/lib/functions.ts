@@ -1,3 +1,4 @@
+'use no memo';
 import { action, runInAction } from 'mobx';
 import { store } from 'mobxStore';
 

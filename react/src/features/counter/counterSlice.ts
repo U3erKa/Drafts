@@ -1,3 +1,4 @@
+'use no memo';
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { AppThunk, RootState } from 'store';
 import { fetchCount } from './counterAPI';

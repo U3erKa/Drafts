@@ -20,7 +20,6 @@ export function useData(getData: (...args: any[]) => Promise<SetStateAction<neve
 
   useEffect(() => {
     load();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return { data, isLoading, error, load };
