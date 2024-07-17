@@ -1,12 +1,12 @@
 {
-  "name": "my-app",
+  "name": "vite-project",
   "version": "0.11.3",
   "exports": "./index.tsx",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc -b && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
@@ -17,59 +17,32 @@
     "formik": "^2.4.6",
     "mobx": "^6.12.3",
     "mobx-react-lite": "^4.0.7",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "react": "19.0.0-rc-01172397-20240716",
+    "react-dom": "19.0.0-rc-01172397-20240716",
     "react-redux": "^9.1.1",
     "react-router-dom": "^6.23.0",
     "web-vitals": "^3.5.2"
   },
   "devDependencies": {
     "@types/node": "^20.12.7",
-    "@types/react": "^18.3.1",
+    "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@types/react-router-dom": "^5.3.3",
-    "@typescript-eslint/eslint-plugin": "^7.7.1",
-    "@typescript-eslint/parser": "^7.7.1",
-    "@vitejs/plugin-react-swc": "^3.6.0",
+    "@typescript-eslint/eslint-plugin": "^7.15.0",
+    "@typescript-eslint/parser": "^7.15.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "babel-plugin-react-compiler": "0.0.0-experimental-696af53-20240625",
     "browserslist-to-esbuild": "^2.1.1",
-    "eslint": "^8.57.0",
-    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-compiler": "0.0.0-experimental-0998c1e-20240625",
     "eslint-plugin-react-hooks": "^4.6.2",
-    "eslint-plugin-react-refresh": "^0.4.6",
+    "eslint-plugin-react-refresh": "^0.4.7",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint": "^8.57.0",
     "sass": "^1.75.0",
     "turbo": "^1.13.3",
-    "typescript": "^5.4.5",
-    "vite": "^5.2.10",
-    "vite-tsconfig-paths": "^4.3.2"
-  },
-  "eslintConfig": {
-    "env": {
-      "browser": true,
-      "es2021": true,
-      "node": true
-    },
-    "extends": [
-      "eslint:recommended",
-      "react-app",
-      "react-app/jest",
-      "plugin:react/recommended"
-    ],
-    "plugins": [
-      "react",
-      "react-hooks"
-    ],
-    "rules": {
-      "linebreak-style": [
-        "error",
-        "unix"
-      ],
-      "@typescript-eslint/ban-ts-comment": "warn",
-      "@typescript-eslint/no-explicit-any": "off",
-      "no-unused-vars": "warn",
-      "no-undef": "warn",
-      "react/react-in-jsx-scope": "off",
-      "react/prop-types": "off"
-    }
+    "typescript": "^5.2.2",
+    "vite-tsconfig-paths": "^4.3.2",
+    "vite": "^5.3.4"
   },
   "browserslist": {
     "production": [
