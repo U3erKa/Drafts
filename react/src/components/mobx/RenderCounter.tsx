@@ -1,3 +1,4 @@
+'use no memo';
 import { observer } from 'mobx-react-lite';
 import { store } from 'mobxStore';
 
