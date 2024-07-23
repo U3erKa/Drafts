@@ -683,12 +683,18 @@ importers:
       '@tanstack/react-query':
         specifier: ^5.49.2
         version: 5.49.2(react@19.0.0-rc-01172397-20240716)
+      '@tinymce/tinymce-react':
+        specifier: ^5.1.1
+        version: 5.1.1(react-dom@19.0.0-rc-01172397-20240716(react@19.0.0-rc-01172397-20240716))(react@19.0.0-rc-01172397-20240716)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
       formik:
         specifier: ^2.4.6
         version: 2.4.6(react@19.0.0-rc-01172397-20240716)
+      fs-extra:
+        specifier: ^11.2.0
+        version: 11.2.0
       mobx:
         specifier: ^6.12.3
         version: 6.12.3
@@ -707,6 +713,9 @@ importers:
       react-router-dom:
         specifier: ^6.23.0
         version: 6.23.0(react-dom@19.0.0-rc-01172397-20240716(react@19.0.0-rc-01172397-20240716))(react@19.0.0-rc-01172397-20240716)
+      tinymce:
+        specifier: ^7.2.1
+        version: 7.2.1
       web-vitals:
         specifier: ^3.5.2
         version: 3.5.2
@@ -768,6 +777,10 @@ importers:
       vite-tsconfig-paths:
         specifier: ^4.3.2
         version: 4.3.2(typescript@5.5.3)(vite@5.3.4(@types/node@20.12.7)(sass@1.75.0)(terser@5.30.4))
+
+  react/public/tinymce: {}
+
+  react/public/tinymce/tinymce: {}
 
 packages:
 
@@ -3241,6 +3254,12 @@ packages:
     engines: {node: '>=12', npm: '>=6'}
     peerDependencies:
       '@testing-library/dom': '>=7.21.4'
+
+  '@tinymce/tinymce-react@5.1.1':
+    resolution: {integrity: sha512-DQ0wpvnf/9z8RsOEAmrWZ1DN1PKqcQHfU+DpM3llLze7FHmxVtzuN8O+FYh0oAAF4stzAXwiCIVacfqjMwRieQ==}
+    peerDependencies:
+      react: ^18.0.0 || ^17.0.1 || ^16.7.0
+      react-dom: ^18.0.0 || ^17.0.1 || ^16.7.0
 
   '@tootallnate/once@2.0.0':
     resolution: {integrity: sha512-XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A==}
@@ -5964,6 +5983,7 @@ packages:
 
   glob@7.2.3:
     resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
+    deprecated: Glob versions prior to v9 are no longer supported
 
   glob@8.1.0:
     resolution: {integrity: sha512-r8hpEjiQEYlF2QU0df3dS+nxxSIreXQS1qRhMJM0Q5NDdR386C7jb7Hwwod8Fgiuex+k0GFjgft18yvxm5XoCQ==}
@@ -6288,6 +6308,7 @@ packages:
 
   inflight@1.0.6:
     resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==}
+    deprecated: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
 
   inherits@2.0.3:
     resolution: {integrity: sha512-x00IRNXNy63jwGkJmzPigoySHbaqpNuzKbBOmzK+g2OdZpQ9w+sxCN+VSB3ja7IAge2OP2qpfxTjeNcyjmW1uw==}
@@ -9566,6 +9587,9 @@ packages:
 
   tiny-warning@1.0.3:
     resolution: {integrity: sha512-lBN9zLN/oAf68o3zNXYrdCt1kP8WsiGW8Oo2ka41b2IM5JL/S1CTyX1rW0mb/zSuJun0ZUrDxx4sqvYS2FWzPA==}
+
+  tinymce@7.2.1:
+    resolution: {integrity: sha512-ADd1cvdIuq6NWyii0ZOZRuu+9sHIdQfcRNWBcBps2K8vy7OjlRkX6iw7zz1WlL9kY4z4L1DvIP+xOrVX/46aHA==}
 
   tmp-promise@3.0.3:
     resolution: {integrity: sha512-RwM7MoPojPxsOBYnyd2hy0bxtIlVrihNs9pj5SUvY8Zz1sQcQG2tG1hSr8PDxfgEB8RNKDhqbIlroIarSNDNsQ==}
@@ -13512,6 +13536,13 @@ snapshots:
     dependencies:
       '@testing-library/dom': 10.0.0
 
+  '@tinymce/tinymce-react@5.1.1(react-dom@19.0.0-rc-01172397-20240716(react@19.0.0-rc-01172397-20240716))(react@19.0.0-rc-01172397-20240716)':
+    dependencies:
+      prop-types: 15.8.1
+      react: 19.0.0-rc-01172397-20240716
+      react-dom: 19.0.0-rc-01172397-20240716(react@19.0.0-rc-01172397-20240716)
+      tinymce: 7.2.1
+
   '@tootallnate/once@2.0.0': {}
 
   '@trysound/sax@0.2.0': {}
@@ -15961,7 +15992,7 @@ snapshots:
       '@one-ini/wasm': 0.1.1
       commander: 10.0.1
       minimatch: 9.0.1
-      semver: 7.6.0
+      semver: 7.6.2
 
   ee-first@1.1.1: {}
 
@@ -21567,6 +21598,8 @@ snapshots:
     optional: true
 
   tiny-warning@1.0.3: {}
+
+  tinymce@7.2.1: {}
 
   tmp-promise@3.0.3:
     dependencies:
