@@ -780,8 +780,6 @@ importers:
 
   react/public/tinymce: {}
 
-  react/public/tinymce/tinymce: {}
-
 packages:
 
   7zip-bin@5.2.0:
@@ -14055,7 +14053,7 @@ snapshots:
       debug: 4.3.5
       globby: 11.1.0
       is-glob: 4.0.3
-      semver: 7.6.0
+      semver: 7.6.2
       tsutils: 3.21.0(typescript@5.4.5)
     optionalDependencies:
       typescript: 5.4.5
@@ -14117,7 +14115,7 @@ snapshots:
       '@typescript-eslint/typescript-estree': 5.62.0(typescript@5.4.5)
       eslint: 8.57.0
       eslint-scope: 5.1.1
-      semver: 7.6.0
+      semver: 7.6.2
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -17331,7 +17329,7 @@ snapshots:
       es6-error: 4.1.1
       matcher: 3.0.0
       roarr: 2.15.4
-      semver: 7.6.0
+      semver: 7.6.2
       serialize-error: 7.0.1
     optional: true
 
@@ -18266,7 +18264,7 @@ snapshots:
       jest-util: 29.7.0
       natural-compare: 1.4.0
       pretty-format: 29.7.0
-      semver: 7.6.0
+      semver: 7.6.2
     transitivePeerDependencies:
       - supports-color
 
@@ -19270,7 +19268,7 @@ snapshots:
 
   node-abi@3.62.0:
     dependencies:
-      semver: 7.6.0
+      semver: 7.6.2
 
   node-abort-controller@3.1.1: {}
 
@@ -19281,7 +19279,7 @@ snapshots:
 
   node-api-version@0.2.0:
     dependencies:
-      semver: 7.6.0
+      semver: 7.6.2
 
   node-fetch@2.7.0(encoding@0.1.13):
     dependencies:
@@ -19301,7 +19299,7 @@ snapshots:
       nopt: 6.0.0
       npmlog: 6.0.2
       rimraf: 3.0.2
-      semver: 7.6.0
+      semver: 7.6.2
       tar: 6.2.1
       which: 2.0.2
     transitivePeerDependencies:
