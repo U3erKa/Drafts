@@ -7,6 +7,7 @@ export const MobxPage = lazy(() => import('pages/MobxPage'));
 export const RefsClicker = lazy(() => import('pages/RefsClicker'));
 export const SignUpForm = lazy(() => import('components/forms/SignUpForm'));
 export const TabContainer = lazy(() => import('pages/TabContainer'));
+export const TinyMCEExample = lazy(() => import('pages/TinyMCEExample'));
 
 export const PAGES = [
   { path: '/', element: <HomePage /* throws */ /> },
@@ -14,5 +15,6 @@ export const PAGES = [
   { path: '/login', element: <LoginPage /> },
   { path: '/mobx', element: <MobxPage /> },
   { path: '/signup', element: <SignUpForm /> },
+  { path: '/tinymce', element: <TinyMCEExample /> },
   { path: '/transition', element: <TabContainer /> },
 ] satisfies RouteObject[];
