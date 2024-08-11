@@ -69,15 +69,13 @@ function getHouseStats(house: number[][][], entrance: number, floor: number, fla
   for (let i = 0; i < house.length; i++) {
     livesInEntrance.push(house[i].flat().reduce((acc, num) => acc + num));
   }
-  const livesManyPeople = (house.flat(Infinity) as number[])
-    .map((num, i) => {
-      const result: number[] = [];
-      if (num > 5) {
-        result.push(i);
-      }
-      return result;
-    })
-    .flat();
+  const livesManyPeople = (house.flat(Infinity) as number[]).flatMap((num, i) => {
+    const result: number[] = [];
+    if (num > 5) {
+      result.push(i);
+    }
+    return result;
+  });
 
   return [[owners, neighbours], livesInEntrance, livesManyPeople];
 }

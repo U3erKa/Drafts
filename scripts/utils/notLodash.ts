@@ -32,7 +32,7 @@ const hasRegExpChar = RegExp(reRegExpChar.source).test;
  */
 function get(object: Record<string, any>, path: string | string[], defaultValue) {
   if (typeof path === 'string') path = path.split(PATH_DELIMITER);
-  return path.reduce((obj, key) => (obj?.[key] ? obj[key] : defaultValue), object);
+  return path.reduce((obj, key) => (key in obj ? obj[key] : defaultValue), object);
 }
 
 /**
