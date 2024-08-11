@@ -1,4 +1,4 @@
-import { PureComponent, type PropsWithChildren } from 'react';
+import { PureComponent, type PropsWithChildren, type ReactElement } from 'react';
 import { createPortal } from 'react-dom';
 
 export default class Portal extends PureComponent<PropsWithChildren, {}> {
@@ -12,7 +12,7 @@ export default class Portal extends PureComponent<PropsWithChildren, {}> {
     document.body.removeChild(this.#el);
   }
 
-  public render() {
+  public render(): ReactElement<PropsWithChildren> {
     return createPortal(this.props.children, this.#el);
   }
 }

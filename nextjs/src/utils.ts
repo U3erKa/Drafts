@@ -38,11 +38,11 @@ export function submitAction<
   TContext = unknown,
   TTransformedValues extends FieldValues | undefined = undefined,
 >(form: Pick<UseFormReturn<TFieldValues, TContext, TTransformedValues>, 'formState' | 'clearErrors' | 'trigger'>) {
-  return async function onSubmit(e: FormEvent<HTMLFormElement>) {
+  return async function onSubmit(event: FormEvent<HTMLFormElement>) {
     if (form.formState.isValid) {
       form.clearErrors();
     } else {
-      e.preventDefault();
+      event.preventDefault();
       await form.trigger();
     }
   };
