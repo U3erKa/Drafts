@@ -39,8 +39,8 @@ const LOG_LEVEL = {
 } as const
 
 type ObjectKeys<T> = (keyof T)[]
-type ObjectValues<TObj extends object> = TObj[keyof TObj]
-// type ObjectEntries<TObj extends object> = [ObjectKeys<TObj>, ObjectValues<TObj>][]
+type ObjectValues<T extends object> = T[keyof T]
+type ObjectEntries<T extends object> = [ObjectKeys<T>, ObjectValues<T>][]
 type LogLevel = ObjectValues<typeof LOG_LEVEL>
 
 function log(_message: string, _level: LogLevel) {}
