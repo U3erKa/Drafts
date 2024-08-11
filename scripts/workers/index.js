@@ -36,26 +36,33 @@ export function createWorker(workerPath, options) {
     const id = crypto.randomUUID();
     worker.postMessage({ ...workerData, id });
     return new Promise((resolve, reject) => {
-      const handleMessage = (/** @type {MessageEvent} */ e) => {
-        if (e.data.id !== id) return;
-        resolve(e.data);
-        worker.removeEventListener('message', handleMessage);
-      };
-      const handleError = (/** @type {ErrorEvent} */ e) => {
-        const message = JSON.parse(e.message.replace(/Uncaught [^{]*/, ''));
-        if (message.id !== id) return;
-        reject(message);
-        worker.removeEventListener('error', handleError);
-      };
-      const handleMessageError = (/** @type {MessageEvent} */ e) => {
-        reject(e.data);
-      };
       worker.addEventListener('message', handleMessage);
       worker.addEventListener('error', handleError);
       worker.addEventListener('messageerror', handleMessageError, { once: true });
+
+      function cleanup() {
+        worker.removeEventListener('message', handleMessage);
+        worker.removeEventListener('error', handleError);
+        worker.removeEventListener('messageerror', handleMessageError);
+      }
+      function handleMessage(event) {
+        if (event.data.id !== id) return;
+        resolve(event.data);
+        cleanup();
+      }
+      function handleError(event) {
+        const message = JSON.parse(event.message.replace(/Uncaught [^{]*/, ''));
+        if (message.id !== id) return;
+        reject(message);
+        cleanup();
+      }
+      function handleMessageError(event) {
+        reject(event.data);
+        cleanup();
+      }
     });
   }
-  return [invokeWorker, () => worker.terminate()];
+  return [invokeWorker, worker.terminate.bind(worker)];
 }
 
 const workers = Array.from({ length: navigator.hardwareConcurrency }).map(() =>
