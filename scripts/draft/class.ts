@@ -1,43 +1,5 @@
 'use strict';
 
-// class User {
-//   name: string;
-//   surname: string;
-//   age: number | undefined;
-//   constructor(name: string, surname: string, age: number | undefined) {
-//     this.name = name;
-//     this.surname = surname;
-//     this.age = age;
-//   }
-//   isAdult(adultAge = 18) {
-//     return this.age >= adultAge;
-//   }
-//   getFullName() {
-//     return `${this.name} ${this.surname}`;
-//   }
-// }
-
-class User {
-  constructor(
-    public name: string,
-    public surname: string,
-    public age: number = 0,
-  ) {}
-
-  isAdult(adultAge = 18) {
-    return this.age >= adultAge;
-  }
-  getFullName() {
-    return `${this.name} ${this.surname}`;
-  }
-}
-
-const user001 = new User('Vik', 'S');
-const user002 = new User('Viktor', 'Stepanov', 20);
-const user003 = new User('U3erKa', 'U3', 69420);
-const user004 = new User('U2erKa', 'U2', 17);
-const user005 = new User('U4erKa', 'U4', 0);
-
 class Worker {
   // constructor(firstName: string, lastName: string, daysWorked = 0, paymentRate = MIN_SALARY) {
   //   this.firstName = firstName;
@@ -132,71 +94,6 @@ for (let i = 0; i < employee.length; i++) {
 
 // employee[0].setFirstName('u11')
 
-// inheritance
-class Animal {
-  // #name: string;
-  // species: string;
-  // color: string;
-  // diet: string;
-
-  // constructor(species: string, name: string, color: string, diet: string) {
-  //   this.name = name;
-  //   this.species = species;
-  //   this.color = color;
-  //   this.diet = diet;
-  // }
-
-  #name!: string;
-  constructor(
-    public species: string,
-    name: string,
-    public color?: string,
-    public diet?: string,
-  ) {
-    this.name = name;
-  }
-
-  // методи об'єкта
-  get name() {
-    // повертає приватне значення
-    return this.#name;
-  }
-
-  set name(value) {
-    if (typeof value !== 'string') {
-      throw new TypeError('Must be string');
-    }
-
-    // задає значення для приватного значення
-    this.#name = value;
-  }
-
-  eat() {
-    return `${this.name} is eating`;
-  }
-
-  static isAnimal(obj: Animal) {
-    return obj instanceof Animal;
-  }
-
-  static Pi = 3.14;
-}
-
-const animal1 = new Animal('Grizun', 'Willy', 'brown', 'herbivore');
-
-if (Animal.isAnimal(animal1)) {
-  console.log('this is animal');
-}
-
-class Squirrel extends Animal {
-  constructor(name: string, color: string) {
-    // calls constructor Animal and gives it some values
-    super('squirrel', name, color, 'acorn');
-  }
-}
-
-const sq = new Squirrel('Belkas', 'orange');
-
 // incapsulation
 class Figure {
   name: string;
@@ -204,30 +101,6 @@ class Figure {
     this.name = name;
   }
 }
-
-// class Triangle extends Figure {
-//   #a;
-//   #h;
-//   constructor(a, h) {
-//     super('triangle');
-//     this.a = a;
-//     this.h = h;
-//     // this.#a = a; // without getters
-//     // this.#h = h; // without getters
-//   }
-//   get area() {
-//     return this.#a * this.#h * 0.5;
-//   }
-//   get dimensions() {
-//     return `side: ${this.#a}, height: ${this.#h}`;
-//   }
-//   set a(value) {
-//     this.#a = value;
-//   }
-//   set h(value) {
-//     this.#h = value;
-//   }
-// }
 
 class Triangle extends Figure {
   #a: number;
@@ -290,41 +163,36 @@ class Rectangle extends Figure {
   }
 
   set sideA(num) {
-    if (typeof num !== 'number' || isNaN(num)) {
-      throw new TypeError();
-    }
-
-    if (num <= 0) {
-      throw new RangeError();
-    }
-
+    this.assertPositiveNumber(num);
     this.#sideA = num;
   }
 
   set sideB(num) {
-    if (typeof num !== 'number' || isNaN(num)) {
-      throw new TypeError();
-    }
-
-    if (num <= 0) {
-      throw new RangeError();
-    }
-
+    this.assertPositiveNumber(num);
     this.#sideB = num;
   }
 
   getArea() {
     return this.#sideA * this.#sideB;
   }
+
+  private assertPositiveNumber(num: number): asserts num is number {
+    if (typeof num !== 'number' || isNaN(num)) {
+      throw new TypeError();
+    }
+
+    if (num <= 0) {
+      throw new RangeError();
+    }
+  }
 }
 
 class Rhombus extends Figure {
-  a: number;
-  h: number;
-  constructor(a: number, h: number) {
+  constructor(
+    public a: number = a,
+    public h: number = h,
+  ) {
     super('rhombus');
-    this.a = a;
-    this.h = h;
   }
 
   getArea() {
@@ -337,77 +205,6 @@ const triangle1 = new Triangle(10, 5, 3, 8);
 const rect1 = new Rectangle(5, 8);
 const rhombus1 = new Rhombus(5, 7);
 
-function getFigureArea(figure: { getArea: (mode: string) => number }, mode: string) {
-  if (figure instanceof Figure) {
-    return figure.getArea(mode);
-  }
-  throw new TypeError('not figure');
-}
-
 console.log(triangle1);
-
-function getFigureAreaAlt(figure: { area: number }) {
-  return figure.area;
-}
-
-/*
-class Animal {
-  #species;
-  #nickname;
-  constructor(species, nickname) {
-    this.#species = species;
-    this.#nickname = nickname;
-  }
-
-  get species() {
-    return this.#species;
-  }
-  get nickname() {
-    return this.#nickname;
-  }
-
-  speak() {
-    return `${this.#species} ${this.#nickname} is speaking`;
-  }
-
-  eat() {
-    return `${this.#species} ${this.#nickname} is eating`;
-  }
-}
-*/
-
-class Cat extends Animal {
-  speech: string;
-  nickname?: string;
-  constructor(nickname: string, speech = 'meow', diet = 'fish') {
-    super('Cat', nickname);
-    this.speech = speech;
-    this.diet = diet;
-  }
-
-  speak() {
-    return `${this.species} ${this.nickname} is ${this.speech}ing`;
-  }
-
-  eat() {
-    return `${this.species} ${this.nickname} is eating ${this.diet}`;
-  }
-}
-
-const cat1 = new Cat('Pushok');
-
-const trainer = {
-  trainVoice: function (animal: { nickname: string; speak: () => string; speech: string }) {
-    if (!(animal instanceof Animal)) {
-      throw new TypeError();
-    }
-
-    if (Math.random() > 0.5) {
-      return `Trainer is training ${animal.nickname} voice
-${animal.speak()}`;
-    }
-    return `${animal.nickname} doesnt want to ${animal.speech}`;
-  },
-};
 
 export {};
