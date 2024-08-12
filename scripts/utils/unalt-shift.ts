@@ -6,7 +6,7 @@ const languages = {
 
 // prettier-ignore
 const wingdingsVoc = {
-  en: [ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',],
+  en: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split(''),
   wd: [ '✌', '👌', '👍', '👎', '☜', '☞', '☝', '☟', '🖐', '☺', '😐', '☹', '💣', '☠', '🏳', '🏱', '✈', '☼', '💧', '❄', '🕆', '✞', '🕈', '✠', '✡', '☪', '♋', '♌', '♍', '♎', '♏', '♐', '♑', '♒', '♓', '🙰', '🙵', '●', '🔾', '■', '□', '🞐', '❑', '❒', '⬧', '⧫', '◆', '❖', '⬥', '⌧', '⮹', '⌘',],
 };
 
@@ -51,7 +51,7 @@ function translate(string: string, { from, to }: { from: string; to: string }) {
     }
 
     replacedChar = null;
-    result[i] = searchValue === -1 ? currentStr[i] : (replacedChar ?? to[searchValue!]);
+    result[i] = searchValue === -1 ? currentStr[i] : replacedChar ?? to[searchValue!];
   }
   return result.join('');
 }
