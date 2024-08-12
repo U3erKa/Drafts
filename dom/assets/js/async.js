@@ -1,4 +1,3 @@
-// @ts-check
 const countInterval = () => {
   console.time('interval');
   let i = 1;
@@ -15,14 +14,13 @@ const countTimeout = (i = 0) => {
   if (!i) {
     console.time('interval');
   }
-  setTimeout(() => {
+  const timeout = setTimeout(() => {
     console.log(++i);
     if (i === 20) {
-      // @ts-expect-error
-      clearTimeout(countTimeout);
+      clearTimeout(timeout);
       console.timeEnd('interval');
     } else {
-      countTimeout(i);
+      console.log(timeout);
     }
   }, 100);
 };
@@ -80,8 +78,6 @@ loginRequest
       // console.log(resolve);
       // return resolve
     },
-    // (error) => {
-    //   console.log(error);
     // },
   )
   .then((user) => {
@@ -154,7 +150,6 @@ async function loadJson(url) {
   if (response.status == 200) {
     return await response.json();
   }
-  // @ts-expect-error
   throw new Error(response.status);
   // throw new HttpError(response);
   // await Promise.reject(new HttpError(response));

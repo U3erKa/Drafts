@@ -11,11 +11,8 @@ test('spies on a function', () => {
   assert.strictEqual(sum.mock.calls.length, 1);
 
   const call = sum.mock.calls[0];
-  // @ts-expect-error
   assert.deepStrictEqual(call.arguments, [3, 4]);
-  // @ts-expect-error
   assert.strictEqual(call.result, 7);
-  // @ts-expect-error
   assert.strictEqual(call.error, undefined);
 
   // Reset the globally tracked mocks.
@@ -30,13 +27,10 @@ test('spies on an object method', (t) => {
   };
 
   t.mock.method(number, 'add');
-  // @ts-expect-error
   assert.strictEqual(number.add.mock.calls.length, 0);
   assert.strictEqual(number.add(3), 8);
-  // @ts-expect-error
   assert.strictEqual(number.add.mock.calls.length, 1);
 
-  // @ts-expect-error
   const call = number.add.mock.calls[0];
 
   assert.deepStrictEqual(call.arguments, [3]);

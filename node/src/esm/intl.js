@@ -23,7 +23,6 @@ const breadTest = ['Паляниця', 'Полуниця', 'Попільниця
 
 for (let i = 0; i < 10; i++) {
   const pluralRule = pluralRules.select(i);
-  // @ts-expect-error
   console.log(numberFormat.format(i), bread[pluralRule]);
 }
 

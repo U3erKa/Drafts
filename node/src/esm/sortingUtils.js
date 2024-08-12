@@ -1,7 +1,6 @@
 export function merge(/** @type {number[]} */ left, /** @type {number[]} */ right) {
   const arr = /** @type {number[]} */ ([]);
   while (left.length && right.length) {
-    // @ts-expect-error
     arr.push(left[0] < right[0] ? left.shift() : right.shift());
   }
 
@@ -31,11 +30,9 @@ export function siftDown(/** @type {number[]} */ arr, /** @type {number} */ star
   while (root * 2 + 1 <= end) {
     child = root * 2 + 1;
     toSwap = root;
-    // @ts-expect-error
     if (arr[toSwap] < arr[child]) {
       toSwap = child;
     }
-    // @ts-expect-error
     if (child + 1 <= end && arr[toSwap] < arr[child + 1]) {
       toSwap = child + 1;
     }
@@ -51,9 +48,7 @@ export function siftDown(/** @type {number[]} */ arr, /** @type {number} */ star
 export function swap(/** @type {number[]} */ arr, /** @type {number} */ i, /** @type {number} */ j) {
   // simple, creates temp variable
   const temp = arr[i];
-  // @ts-expect-error
   arr[i] = arr[j];
-  // @ts-expect-error
   arr[j] = temp;
 
   // advanced, seems slower
@@ -65,7 +60,6 @@ export function partition(/** @type {number[]} */ arr, /** @type {number} */ lef
   let partitionIndex = left;
 
   for (let i = left; i < right; i++) {
-    // @ts-expect-error
     if (arr[i] < pivotValue) {
       swap(arr, i, partitionIndex);
       partitionIndex++;
@@ -90,7 +84,6 @@ export function shuffle(/** @type {number[]} */ arr) {
 
 export function isSorted(/** @type {number[]} */ arr) {
   for (let i = 0; i < arr.length - 1; i++) {
-    // @ts-expect-error
     if (arr[i + 1] < arr[i]) {
       return false;
     }
