@@ -21,7 +21,7 @@ export const DIVISORS: Divisors = [
  * console.log(formatTimeAgo(pastDate)) // "5 months ago"
  */
 export function formatTimeAgo(
-  date: Date | string | number,
+  date: Date | string | number = Date.now(),
   { lang, ...options }: Intl.RelativeTimeFormatOptions & { lang?: string } = {},
 ) {
   const formatter = new Intl.RelativeTimeFormat(lang, { numeric: 'auto', ...options });
