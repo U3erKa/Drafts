@@ -23,9 +23,7 @@ export async function validateZipcode(zipcode: string): Promise<boolean> {
   return /^\d{5}$/.test(zipcode) && zipcode.startsWith('9');
 }
 
-export const onDataAction = async (
-  data: z.infer<typeof registrationSchema>,
-) => {
+export const onDataAction = async (data: z.infer<typeof registrationSchema>) => {
   const parsed = registrationSchema.safeParse(data);
 
   if (parsed.success) {

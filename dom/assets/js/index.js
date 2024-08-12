@@ -70,11 +70,7 @@ for (const btn of document.querySelectorAll('.style-btn')) {
   btn.addEventListener('click', commonEventListener);
 }
 
-document
-  .querySelector('#reset')
-  .addEventListener('click', (e) =>
-    text.classList.remove(...colorsArr, ...stylesArr),
-  );
+document.querySelector('#reset').addEventListener('click', (e) => text.classList.remove(...colorsArr, ...stylesArr));
 
 const colorsArr = ['red', 'green', 'blue'];
 const stylesArr = ['italic', 'normal', 'bold'];

@@ -2,21 +2,11 @@ import { JsonWebTokenError, TokenExpiredError } from 'jsonwebtoken';
 
 import type { ErrorRequestHandler } from 'express';
 
-export const basicErrorHandler: ErrorRequestHandler = async (
-  err,
-  req,
-  res,
-  next,
-) => {
+export const basicErrorHandler: ErrorRequestHandler = async (err, req, res, next) => {
   res.status(err.status || 500).send({ error: err });
 };
 
-export const tokenErrorHandler: ErrorRequestHandler = async (
-  err,
-  req,
-  res,
-  next,
-) => {
+export const tokenErrorHandler: ErrorRequestHandler = async (err, req, res, next) => {
   if (err instanceof JsonWebTokenError) {
     return res.status(401).send({ error: { message: 'Invalid JWT' } });
   }

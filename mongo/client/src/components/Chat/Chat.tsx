@@ -12,9 +12,7 @@ const initialValues = {
 
 export default function Chat() {
   const { data } = useSelector((state: any) => state.user);
-  const { messages, isLoading, error } = useSelector(
-    (state: any) => state.message,
-  );
+  const { messages, isLoading, error } = useSelector((state: any) => state.message);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -22,10 +20,7 @@ export default function Chat() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const submitForm = (
-    values: typeof initialValues,
-    formikBag: FormikHelpers<typeof initialValues>,
-  ) => {
+  const submitForm = (values: typeof initialValues, formikBag: FormikHelpers<typeof initialValues>) => {
     const newMessage = { ...values, author: data?._id };
     sendMessage(newMessage);
     formikBag.resetForm();

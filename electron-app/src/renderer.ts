@@ -32,9 +32,7 @@ import './index.css';
 declare const window: Window & typeof globalThis & { versions: Versions };
 declare const versions: Versions;
 
-console.log(
-  '👋 This message is being logged by "renderer.js", included via webpack',
-);
+console.log('👋 This message is being logged by "renderer.js", included via webpack');
 
 const fizzBuzz: (string | number)[] = [];
 

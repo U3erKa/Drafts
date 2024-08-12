@@ -8,8 +8,6 @@
     "migrationStorage": "sequelize",
     "seederStorage": "sequelize"
   },
-  "test": {
-  },
-  "production": {
-  }
+  "test": {},
+  "production": {}
 }

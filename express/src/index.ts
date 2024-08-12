@@ -57,10 +57,7 @@ const ordersToProductsString = orders
     const filteredProducts = [...new Set(productsInOrder)];
     // повернути строку строку типу (1, 4 , 18)
     return filteredProducts
-      .map(
-        (product) =>
-          `(${order.id}, ${product.id}, ${_.random(minQuantity, maxQuantity)})`,
-      )
+      .map((product) => `(${order.id}, ${product.id}, ${_.random(minQuantity, maxQuantity)})`)
       .join(',');
   })
   .join(',');

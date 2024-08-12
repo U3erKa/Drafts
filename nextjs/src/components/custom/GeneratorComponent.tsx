@@ -1,4 +1,4 @@
-import { Suspense, type AwaitedReactNode, type FC } from "react";
+import { Suspense, type AwaitedReactNode, type FC } from 'react';
 
 export type Generator = AsyncGenerator<AwaitedReactNode, AwaitedReactNode, AwaitedReactNode>;
 

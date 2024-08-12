@@ -13,7 +13,7 @@ export function launchWorker(workerPath, options) {
       worker.terminate();
     };
     const handleError = (/** @type {ErrorEvent | MessageEvent} */ e) => {
-      reject(e instanceof MessageEvent ? e.data : e.error ?? e.message);
+      reject(e instanceof MessageEvent ? e.data : (e.error ?? e.message));
       worker.terminate();
     };
     worker.addEventListener('message', handleMessage, { once: true });

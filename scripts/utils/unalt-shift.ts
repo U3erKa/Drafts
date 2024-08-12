@@ -51,7 +51,7 @@ function translate(string: string, { from, to }: { from: string; to: string }) {
     }
 
     replacedChar = null;
-    result[i] = searchValue === -1 ? currentStr[i] : replacedChar ?? to[searchValue!];
+    result[i] = searchValue === -1 ? currentStr[i] : (replacedChar ?? to[searchValue!]);
   }
   return result.join('');
 }

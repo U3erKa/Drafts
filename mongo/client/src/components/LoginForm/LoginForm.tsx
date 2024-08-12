@@ -11,10 +11,7 @@ const initialValues = {
 
 function LoginForm() {
   const dispatch = useDispatch();
-  const submitHandler = (
-    values: typeof initialValues,
-    formikBag: FormikHelpers<typeof initialValues>,
-  ) => {
+  const submitHandler = (values: typeof initialValues, formikBag: FormikHelpers<typeof initialValues>) => {
     // @ts-expect-error
     dispatch(login(values));
   };

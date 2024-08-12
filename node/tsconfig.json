@@ -16,10 +16,7 @@
     "noUncheckedIndexedAccess": true,
     "importHelpers": true,
     "noUnusedLocals": false,
-    "noUnusedParameters": false,
+    "noUnusedParameters": false
   },
-  "exclude": [
-    "node_modules",
-    "dist",
-  ],
+  "exclude": ["node_modules", "dist"]
 }

@@ -9,23 +9,23 @@
     <button onClick="toggleDarkMode()">Toggle</button>
     <input type="text" placeholder="Example of element that uses 'color-scheme' CSS property" style="width: 350px" />
     <script>
-      const { classList } = document.documentElement
-      const THEME = Object.freeze({ LIGHT: "light", DARK: "dark" })
-      const THEME_KEY = "theme"
+      const { classList } = document.documentElement;
+      const THEME = Object.freeze({ LIGHT: 'light', DARK: 'dark' });
+      const THEME_KEY = 'theme';
       /** @type {THEME[keyof THEME] | null} */
-      const theme = localStorage.getItem(THEME_KEY)
+      const theme = localStorage.getItem(THEME_KEY);
       // Set class for either light of dark theme
       if (theme == null) {
-        classList.add(window.matchMedia("(prefers-color-scheme: dark)").matches ? THEME.DARK : THEME.LIGHT)
+        classList.add(window.matchMedia('(prefers-color-scheme: dark)').matches ? THEME.DARK : THEME.LIGHT);
       } else {
-        classList.add(theme === THEME.DARK ? THEME.DARK : THEME.LIGHT)
+        classList.add(theme === THEME.DARK ? THEME.DARK : THEME.LIGHT);
       }
       /** toggle to switch classes between .light and .dark */
       function toggleDarkMode() {
-        classList.toggle(THEME.LIGHT)
-        classList.toggle(THEME.DARK)
+        classList.toggle(THEME.LIGHT);
+        classList.toggle(THEME.DARK);
 
-        localStorage.setItem(THEME_KEY, classList.contains(THEME.DARK) ? THEME.DARK : THEME.LIGHT)
+        localStorage.setItem(THEME_KEY, classList.contains(THEME.DARK) ? THEME.DARK : THEME.LIGHT);
       }
     </script>
     <style>

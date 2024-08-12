@@ -3,8 +3,7 @@ const responseData = [
     id: 1,
     firstName: 'Jason',
     lastName: 'Statham',
-    profilePicture:
-      'https://www.themoviedb.org/t/p/w500/whNwkEQYWLFJA8ij0WyOOAD5xhQ.jpg',
+    profilePicture: 'https://www.themoviedb.org/t/p/w500/whNwkEQYWLFJA8ij0WyOOAD5xhQ.jpg',
     contacts: [
       'https://www.facebook.com/JasonStatham/',
       'https://twitter.com/realjstatham',
@@ -17,10 +16,7 @@ const responseData = [
     lastName: 'Johnson',
     profilePicture:
       'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Dwayne_Johnson_2%2C_2013.jpg/800px-Dwayne_Johnson_2%2C_2013.jpg',
-    contacts: [
-      'https://www.facebook.com/DwayneJohnson',
-      'https://www.instagram.com/therock/?hl=ru',
-    ],
+    contacts: ['https://www.facebook.com/DwayneJohnson', 'https://www.instagram.com/therock/?hl=ru'],
   },
   {
     id: 3,
@@ -28,38 +24,27 @@ const responseData = [
     lastName: 'Stone',
     profilePicture:
       'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Emma_Stone_at_he_39th_Mill_Valley_Film_Festival_%28cropped%29.jpg/320px-Emma_Stone_at_the_39th_Mill_Valley_Film_Festival_%28cropped%29.jpg',
-    contacts: [
-      'https://www.facebook.com/DwayneJohnson',
-      'https://www.instagram.com/therock/?hl=ru',
-    ],
+    contacts: ['https://www.facebook.com/DwayneJohnson', 'https://www.instagram.com/therock/?hl=ru'],
   },
   {
     id: 4,
     firstName: 'Somebody',
     lastName: 'Tuffak',
     profilePicture: null,
-    contacts: [
-      'https://twitter.com/realjstatham',
-      'https://www.instagram.com/therock/?hl=ru',
-    ],
+    contacts: ['https://twitter.com/realjstatham', 'https://www.instagram.com/therock/?hl=ru'],
   },
   {
     id: 999,
     firstName: '',
     lastName: '',
-    profilePicture:
-      'https://m.media-amazon.com/images/M/MV5BMTM3OTUwMDYwNl5BMl5BanBnXkFtZTcwTUyNzc3Nw@@._V1_.jpg',
-    contacts: [
-      'https://twitter.com/realjstatham',
-      'https://www.instagram.com/therock/?hl=ru',
-    ],
+    profilePicture: 'https://m.media-amazon.com/images/M/MV5BMTM3OTUwMDYwNl5BMl5BanBnXkFtZTcwTUyNzc3Nw@@._V1_.jpg',
+    contacts: ['https://twitter.com/realjstatham', 'https://www.instagram.com/therock/?hl=ru'],
   },
   {
     id: 5,
     firstName: 'Scarlett',
     lastName: 'Johansson',
-    profilePicture:
-      'https://m.media-amazon.com/images/M/MV5BMTM3OTUwMDYwNl5BMl5BanBnXkFtZTcwNTUyNzc3Nw@@._V1_.jpg',
+    profilePicture: 'https://m.media-amazon.com/images/M/MV5BMTM3OTUwMDYwNl5BMl5BanBnXkFtZTcwNTUyNzc3Nw@@._V1_.jpg',
     contacts: [
       'https://www.facebook.com/pages/category/Actor/Scarlett-Johansson-Official-101457158013203/',
       'https://twitter.com/scarlett_jo',

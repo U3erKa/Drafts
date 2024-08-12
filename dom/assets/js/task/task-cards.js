@@ -11,22 +11,11 @@ workersList.append(...userCards);
  * @returns {HTMLElement}
  */
 function createUserCard(user) {
-  const fullName =
-    !user.firstName && !user.lastName
-      ? 'NO DATA'
-      : `${user.firstName} ${user.lastName}`;
+  const fullName = !user.firstName && !user.lastName ? 'NO DATA' : `${user.firstName} ${user.lastName}`;
 
   const linkItems = createLinks(user.contacts);
-  const linksList = createElement(
-    'ul',
-    { className: 'linksList' },
-    ...linkItems,
-  );
-  const linksContainer = createElement(
-    'div',
-    { className: 'linksContainer' },
-    linksList,
-  );
+  const linksList = createElement('ul', { className: 'linksList' }, ...linkItems);
+  const linksContainer = createElement('div', { className: 'linksContainer' }, linksList);
   const h1 = createElement('h1', {
     className: 'cardName',
     textContent: fullName,
@@ -39,29 +28,15 @@ function createUserCard(user) {
   const cardInfo = createElement('div', { className: 'cardInfo' }, h1, p);
   const initials = createElement('p', {
     className: 'initials',
-    textContent:
-      fullName === 'NO DATA'
-        ? 'N/A'
-        : `${user.firstName[0]} ${user.lastName[0]}`,
+    textContent: fullName === 'NO DATA' ? 'N/A' : `${user.firstName[0]} ${user.lastName[0]}`,
   });
   const img = createElement('img', {
     className: 'cardImg',
     eventListeners: { error: (e) => e.target.remove() },
     attributes: { src: user.profilePicture, alt: fullName },
   });
-  const imgWrapper = createElement(
-    'div',
-    { className: 'imgWrapper' },
-    initials,
-    img,
-  );
-  const article = createElement(
-    'article',
-    { className: 'workerCard' },
-    imgWrapper,
-    cardInfo,
-    linksContainer,
-  );
+  const imgWrapper = createElement('div', { className: 'imgWrapper' }, initials, img);
+  const article = createElement('article', { className: 'workerCard' }, imgWrapper, cardInfo, linksContainer);
   const card = createElement('li', { className: 'workerItem' }, article);
 
   return card;

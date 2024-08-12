@@ -6,11 +6,7 @@ const employee = {
 const error = new Error('Worst kind of bad badness');
 
 function multiply(num1: number, num2: number) {
-  if (
-    typeof num1 === 'number' &&
-    typeof num2 === 'number' &&
-    !isNaN(num1 - num2)
-  ) {
+  if (typeof num1 === 'number' && typeof num2 === 'number' && !isNaN(num1 - num2)) {
     return num1 * num2;
   }
   // throw "Tapok v User'a";

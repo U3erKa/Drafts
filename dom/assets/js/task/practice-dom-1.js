@@ -1,8 +1,7 @@
 // const red = document.querySelector('#red');
 // const green = document.querySelector('#green');
 // const blue = document.querySelector('#blue');
-const [red, green, blue, normal, italic, bold, reset, bgReset] =
-  document.querySelectorAll('.color-btn');
+const [red, green, blue, normal, italic, bold, reset, bgReset] = document.querySelectorAll('.color-btn');
 const text = document.querySelector('.text');
 
 red.addEventListener('click', commonEventListener);

@@ -21,10 +21,7 @@ export const getUsers: RequestHandler = async (req, res, next) => {
   } = req;
 
   try {
-    const users = await User.find()
-      .select(['-password', '-__v'])
-      .limit(+limit)
-      .skip(+offset);
+    const users = await User.find().select(['-password', '-__v']).limit(+limit).skip(+offset);
 
     res.status(200).send({ data: users });
   } catch (error) {
@@ -73,10 +70,7 @@ export const deleteUser: RequestHandler = async (req, res, next) => {
   } = req;
 
   try {
-    const deletedUser = await User.findByIdAndDelete(userId).select([
-      '-password',
-      '-__v',
-    ]);
+    const deletedUser = await User.findByIdAndDelete(userId).select(['-password', '-__v']);
 
     if (!deletedUser) {
       throw createHttpError(404, `User not found: ${userId}`);
